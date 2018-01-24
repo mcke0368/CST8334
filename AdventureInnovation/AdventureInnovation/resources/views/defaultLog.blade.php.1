@@ -1,0 +1,126 @@
+@extends('layoutGuide')
+
+@section('headGuide')
+    <style>
+        
+        .form-box {
+            background: #E3E3E3;
+            margin: 7%; 
+            padding: 5%;
+        }
+        
+        .form-box div {
+            padding: 0.5%;
+            padding-right: 2%;
+            padding-left: 2%;
+        }
+        
+        .datetime-local {
+            color: aliceblue;
+        }
+        
+        div h3, div h4 {
+            display: inline-block;
+        }
+        
+    </style>
+    <script>
+        $( function() {
+            
+            $( "#datefield" ).datepicker();
+            
+            $( "#datefield" ).datepicker( "setDate", new Date());
+        } );
+        
+        
+        
+    </script>
+@stop
+
+@section('bodyGuide')
+
+<div class="container-fulid backgroundSeaBlue"><h1 class="text-center" style="margin:0; padding:1%; color:white;">Logbook - Default Log</h1></div>
+
+<div class="container-fulid form-box text-center">
+    
+    <div class="row">
+    <div class="col-sm-4">
+        <h3>Log Title: Log Title</h3>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-4">
+        <h3>Posted: Mar 7, 2017</h3>
+    </div>
+    <div class="col-sm-4">
+        <h3>Weather: 12&#176;C</h3>
+    </div>
+    <div class="col-sm-4">
+        <button type="button" class="btn btn-default">View Attachments</button>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-6">
+            <h3>Trip Debrief: </h3>
+            <h4>Yes</h4>
+    </div>
+    <div class="col-sm-6">
+        <h3>Water Levels: 6</h3>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-6">
+        <h3>Activity</h3>
+    </div>
+    <div class="col-sm-6">
+        <h3>Route</h3>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-6">
+        <h3>Length</h3>
+    </div>
+    <div class="col-sm-6">
+        <h3>Date</h3>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-6">
+        <h3>Location</h3>
+    </div>
+    <div class="col-sm-6">
+        <h3>Format</h3>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-6">
+        <h3>Group Size</h3>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-12">
+        <h3>Instruction Notes:</h3>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-12">
+        <h3>Trip Summary</h3>
+    </div>
+    </div>
+    
+    <div class="row pull-right">
+    <div class="col-sm-4">
+        <a href="#" class="btn btn-danger">Create</a>
+    </div>
+    </div>
+</div>
+
+@stop
