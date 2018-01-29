@@ -25,7 +25,7 @@ $(document).ready(function() {
     });
 
     $("#b1").click(function() {
-      window.location.href="http://localhost/AdventureInnovation/public/login"; 
+      window.location.href="http://localhost/login"; 
     });
 
     $.ajaxSetup({
@@ -41,7 +41,7 @@ $(document).ready(function() {
         e.preventDefault();
         $.ajax({
            type: "POST",
-           url: '/AdventureInnovation/public/signin',
+           url: '/signin',
            data: { email: email, password: password },
            success: function(data)
            {
@@ -72,7 +72,7 @@ function addCertification(certification_name, expiration, link) {
         '<div id="cert-modal"></div>'+
         '<div style="overflow:hidden">'+
         '<h4>' + certification_name + '</h4>'+
-        '<a target="_blank" href="http://localhost/AdventureInnovation/public/pdfs/'+ link +'" class="btn btn-info float-right" role="button">Download Certificate</a>'+
+        '<a target="_blank" href="http://localhost/pdfs/'+ link +'" class="btn btn-info float-right" role="button">Download Certificate</a>'+
         '</div>'+
         '<div>'+
         '<div class="small"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Expiry Date:' + expiration + '</div>'+
@@ -85,7 +85,7 @@ function addCertification(certification_name, expiration, link) {
     //call an ajax enter this into the DB
     $.ajax({
         type: "POST",
-        url: '/AdventureInnovation/public/updateCerts',
+        url: '/updateCerts',
         data: { name: certification_name, link: link, expiry:expiration },    
     })
     .done(function(msg) {
@@ -109,7 +109,7 @@ function getAllFields() {
     //call an ajax enter this into the DB
     $.ajax({
         type: "POST",
-        url: '/AdventureInnovation/public/updateProfile',
+        url: '/updateProfile',
         data: { about: about, work: work, employment:employment, training:training },    
     })
     .done(function(msg) {
@@ -125,7 +125,7 @@ function createUser(firstname, lastname, username, email, password) {
    //call an ajax enter this into the DB
    $.ajax({
     type: "POST",
-    url: '/AdventureInnovation/public/signup',
+    url: '/signup',
     data: { firstname: firstname, lastname: lastname, username:username, email:email, 
         password:password },    
     })

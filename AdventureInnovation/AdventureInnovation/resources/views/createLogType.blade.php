@@ -28,7 +28,7 @@
         
 			$.ajax({
 				type: "POST",
-				url: '/AdventureInnovation/public/saveType',
+				url: '/saveType',
 				data: { type_name: type_name, type_html: type_html },
 				success: function(data)
 				{

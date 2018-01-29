@@ -7,7 +7,7 @@
 	$( function() {
 		$("#ref-logout").click(function() {
 				$.ajax({
-					url: '/AdventureInnovation/public/logout'
+					url: '/logout'
 				});
 		   
 		});	
