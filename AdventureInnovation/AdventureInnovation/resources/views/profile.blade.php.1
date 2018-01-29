@@ -1,8 +1,8 @@
 @extends('layout')
 
 @section('head')
-<link rel="stylesheet" href="{{ URL::asset('http://localhost/AdventureInnovation/public/slick/slick.css') }}" />
-<link rel="stylesheet" href="{{ URL::asset('http://localhost/AdventureInnovation/public/slick/slick-theme.css') }}" />
+<link rel="stylesheet" href="{{ URL::asset('http://localhost/slick/slick.css') }}" />
+<link rel="stylesheet" href="{{ URL::asset('http://localhost/slick/slick-theme.css') }}" />
 <script>
         $(document).on("click", "#b2", function(){
             $('html, body').animate({
@@ -380,7 +380,7 @@
             <a href="{{ url('profile/edit') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
     </div>
 
-<script type="text/javascript" src="{{ URL::asset('http://localhost/AdventureInnovation/public/slick/slick.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('http://localhost/slick/slick.min.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $('.carousel').slick({

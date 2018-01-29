@@ -82,7 +82,7 @@
 					
 				$.ajax({
 					type: "POST",
-					url: '/AdventureInnovation/public/saveLog',
+					url: '/saveLog',
 					data: { logbook_title: logbook_title, logbook_html: logbook_html},
 					success: function(data)
 					{

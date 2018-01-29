@@ -3,7 +3,7 @@
 @section('head')
 	<style type="text/css">
 		.jumbotron{
-			 background-image: url('http://localhost/adventureinnovation/public/images/kayaking-1.jpg');
+			 background-image: url('http://localhost/images/kayaking-1.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             min-height: 450px;

@@ -159,7 +159,7 @@
                             <li class="list-group-item">
                                 <div style="overflow:hidden">
                                     <h4>{{ $cert->cert_name }}</h4>
-                                    <a href="<?php echo 'http://localhost/AdventureInnovation/public/pdfs/' .$cert->cert_link;?>" class="btn btn-info float-right" role="button">Download Certificate</a>
+                                    <a href="<?php echo 'http://localhost/pdfs/' .$cert->cert_link;?>" class="btn btn-info float-right" role="button">Download Certificate</a>
                                 </div>
                                 <div>
                                     <div class="small">

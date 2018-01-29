@@ -46,7 +46,7 @@
 				var type_id = $(this).attr('id') ;
 				$.ajax({
 					type: "POST",
-					url: '/AdventureInnovation/public/setLogType',
+					url: '/setLogType',
 					data: { type_id: type_id },
 					success: function(data)
 					{
@@ -66,7 +66,7 @@
 				var log_id = $(this).attr('id') ;
 				$.ajax({
 					type: "POST",
-					url: '/AdventureInnovation/public/setLog',
+					url: '/setLog',
 					data: { log_id: log_id },
 					success: function(data)
 					{
@@ -95,7 +95,7 @@
 				
 				$.ajax({
 					type: "POST",
-					url: '/AdventureInnovation/public/deleteLogType',
+					url: '/deleteLogType',
 					data: { logbook_type_id: logbook_type_id },
 					success: function(data)
 					{
@@ -130,7 +130,7 @@
 				
 				$.ajax({
 					type: "POST",
-					url: '/AdventureInnovation/public/deleteLog',
+					url: '/deleteLog',
 					data: { logbook_id: logbook_id },
 					success: function(data)
 					{
