@@ -1,0 +1,278 @@
+@extends('layoutGuide')
+
+@section('headGuide')
+    <style>
+     #Dashboard_div {
+            color: black;
+            padding: 0%;
+            padding-left: 15%;
+            padding-right: 15%
+        }   
+       
+    </style>
+@stop
+
+@section('bodyGuide')
+
+
+<body> 
+
+<div id="Dashboard_div" class="container-fluid">
+    <div  class="container-fluid">
+        <h1 class="text-center" style="margin-bottom:3%;"> Welcome to your Guide Dashboard</h1>
+	</div>
+	
+   			
+    <div  class="row" style = "margin-bottom:2%">
+         	
+		
+	   	 <div id = "calendar" class="col-md-4" style = "background-color:seaShell" >	    
+		    
+        </div>
+		<div id = "calendar" class="col-md-1"  >	    
+		    
+        </div>
+        
+	    <div class="col-md-12" >					
+			<div style = "background-color: seaShell" class="row">	
+                <h4 style="margin-bottom:2%;align:left;"> Favourited Jobs</h4>			
+				<div class="col-md-2">
+                   <img src="kayaking.jpg" class="img-rounded" alt="kayaking" width="112" height="78">
+				</div>
+				
+				<div class="col-md-10">				    
+				    <div class="row">				
+			            <div class="col-md-7">
+		                    <h5>Adventure Company</h5>
+							<h5>Enthusiastic Lead</h5>
+							<h5>Montreal, QC</h5>
+				        </div>
+						
+				         <div class="form-group col-md-5">
+						    <a href="Jobs.html" class="btn btn-danger" role="button">Apply</a>
+		                    <p style="margin-top:5%">Expires in 14 days</p>
+				         </div>
+						 
+					</div>
+				
+				</div>
+			</div>
+			
+			<div  style = "background-color: seaShell" class="row">				
+				<div class="col-md-2">
+                   <img src="kayaking.jpg" class="img-rounded" alt="kayaking" width="112" height="78">
+				</div>
+				
+				<div class="col-md-10">
+				    
+				    <div class="row">				
+			            <div class="col-md-7">
+		                    <h5>Adventure Company</h5>
+							<p>Enthusiastic Lead<p>
+							<p>Montreal, QC</p>
+				        </div>
+						
+				         <div class="form-group col-md-5">
+						    <a href="Jobs.html" class="btn btn-danger" role="button">Apply</a>
+		                    <p style="margin-top:5%">Expires in 14 days</p>
+				         </div>
+						 
+					</div>
+				
+				</div>
+			</div>
+			
+			<div style = "text-align: center;background-color: seaShell; margin-bottom:4%">
+			    <a href="#">
+                <span class="glyphicon glyphicon-chevron-down"></span>
+                </a>
+			</div>
+			
+			
+			<div class="row" style="margin-bottom:1%;">				
+				<div style="background-color:wheat" class="col-md-2">
+                 <span>9:00AM</span></br>
+				 <span>12:00PM</span>                 				 
+				</div>
+				
+				<div class="col-md-3">
+				    <h5>Bear Lake Loop </h5>				    							            										       						 
+				</div>
+				
+				<div class="col-md-3">
+				    <button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#Modal">Trip Details</button>	
+                    <div id="Modal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title">Modal Header</h4>
+                                </div>
+                                <div class="modal-body">
+                                     <p></p>
+                                </div>
+                                <div class="modal-footer">
+                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  </div>
+                            </div>
+
+                         </div>
+                    </div>					
+				</div>
+				
+				<div class="col-md-4">
+				    <h5> March 3-10, 2017</h5>				    							            										       						 
+				</div>
+				
+			</div>
+			
+			<div class="row" style="margin-bottom:1%">				
+				<div style="background-color:wheat" class="col-md-2">
+                  <span>9:00AM</span></br>
+				 <span>12:00PM</span>    
+				</div>
+				
+				<div class="col-md-6">
+				    <h5>CPR Training</h5>				    							            										       						 
+				</div>
+				
+				<div class="col-md-4">
+				    <h5> March 12, 2017</h5>				    							            										       						 
+				</div>
+				
+			</div>
+			
+			<div class="row" style="margin-top:1%">				
+				<div style="background-color:wheat" class="col-md-2">
+                <span>9:00AM</span></br>
+				<span>12:00PM</span>    
+				</div>
+				
+				<div class="col-md-6">
+				    <h5>Mount Evie Exp.</h5>				    							            										       						 
+				</div>
+				
+				<div class="col-md-4">
+				    <h5> March 21-25, 2017</h5>				    							            										       						 
+				</div>
+				
+			</div>
+		</div>
+				
+	</div>	
+         
+    <div class="row" >	
+	    <div class="col-md-5" >			    		    			
+		    <h4 style="margin-bottom:2%; align:left;"> RECENT LOGBOOK ENTRIES</h4>					
+		    <div style = "background-color:seaShell" class="row">	
+				<div class="col-md-8">
+                    <h5>Castle Guard Cave</h5>  
+				</div>
+				
+				<div class="col-md-4">
+				    <span>Updated 3 hours ago</span></br>
+				    <span>March 21, 2017</span>                     		    							            										       						 					
+				</div>	
+            </div>	
+			
+            <div style = "background-color: Gainsboro" class="row">	
+				<div class="col-md-8">
+                    <h5>Spelunking</h5>  
+				</div>
+				
+				<div class="col-md-4">
+				<p></p>
+				<a href="logbook.html" style="align:bottom;text-decoration: underline"; >Read More</a>    
+				    
+                    		    							            										       						 					
+				</div>	
+            </div>				
+
+            <div style = "background-color:seaShell" class="row">	
+			    <div class="col-md-8">
+                    <h5>Booth Rock Trail</h5>  
+			    </div>
+				
+			    <div class="col-md-4">
+				    <span>Updated 3 hours ago</span></br>
+				    <span>March 21, 2017</span>     	
+                   		    							            										       						 					
+			    </div>	
+           </div>
+		   
+		   <div style = "background-color: Gainsboro" class="row">	
+				<div class="col-md-8">
+                    <h5>Default</h5>  
+				</div>
+				
+				<div class="col-md-4">
+				<p></p>
+				<a href="logbook.html" style="align:bottom;text-decoration: underline"; >Read More</a>                        		    							            										       						 					
+				</div>	
+            </div>	
+			
+            <div style="text-align: center; margin-top: 6%; margin-bottom:10%">
+		         <a href="newlogbook.html" class="btn btn-danger" role="button" >Create New Log</a>
+		    </div>		   
+		</div>
+		
+		<div class="col-md-2" >
+		</div>
+					
+	    <div class="col-md-5" >			    		    			
+		    <h4 style="margin-bottom:2%; align:left;"> RECENT REPORTS</h4>					
+		    <div style = "background-color:seaShell" class="row">	
+				<div class="col-md-8">
+                    <h5>Bear Lake Loop</h5>  
+				</div>
+				
+				<div class="col-md-4">
+				    <span>Updated 3 hours ago</span></br>
+				    <span>March 21, 2017</span>                     		    							            										       						 					
+				</div>	
+            </div>	
+			
+            <div style = "background-color: Gainsboro" class="row">	
+				<div class="col-md-8">
+                    <h5>Equipment Inspection</h5>  
+				</div>
+				
+				<div class="col-md-4">
+				    <p></p>
+				    <a href="logbook.html" style="align:bottom;text-decoration: underline"; >Read More</a>                       		    							            										       						 					
+				</div>	
+            </div>				
+
+            <div style = "background-color:seaShell" class="row">	
+			    <div class="col-md-8">
+                    <h5>Mount Evie Exp.</h5>  
+			    </div>
+				
+			    <div class="col-md-4">
+				    <span>Updated 3 hours ago</span></br>
+				    <span>March 21, 2017</span>     	
+                   		    							            										       						 					
+			    </div>	
+           </div>
+		   
+		   <div style = "background-color: Gainsboro" class="row">	
+				<div class="col-md-8">
+                    <h5>Near Miss</h5>  
+				</div>
+				
+				<div class="col-md-4">
+				<p></p>
+				<a href="createLogType" style="align:bottom;text-decoration: underline"; >Read More</a>                        		    							            										       						 					
+				</div>	
+            </div>	
+			
+            <div style="text-align: center; margin-top: 6%; margin-bottom:10%">
+		         <a href="createDefaultLogbook" class="btn btn-danger" role="button" >Create New Report</a>
+		    </div>		   
+		</div>
+						
+    </div>	
+	
+</div>
+</body>
+@stop

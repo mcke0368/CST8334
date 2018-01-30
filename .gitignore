@@ -1,0 +1,11 @@
+
+# exclude database files
+.sql
+
+# exclude all files in vendor as these can be redownloaded
+vendor/*
+
+# mac specific
+.DS_Store
+
+

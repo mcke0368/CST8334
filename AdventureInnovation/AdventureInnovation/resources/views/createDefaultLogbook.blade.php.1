@@ -1,0 +1,199 @@
+@extends('layoutGuide')
+
+@section('headGuide')
+    <style>
+        
+        .form-box {
+            background: #E3E3E3;
+            margin: 7%; 
+            padding: 5%;
+        }
+        
+        .form-box div {
+            padding: 0.5%;
+            padding-right: 2%;
+            padding-left: 2%;
+        }
+        
+        .datetime-local {
+            color: aliceblue;
+        }
+        
+    </style>
+    <script>
+        $( function() {
+            
+            $( "#datefield" ).datepicker();
+            
+            $( "#datefield" ).datepicker( "setDate", new Date());
+        } );
+        
+        
+        
+    </script>
+@stop
+
+@section('bodyGuide')
+
+<div class="container-fulid backgroundSeaBlue"><h1 class="text-center" style="margin:0; padding:1%; color:white;">Default Log</h1></div>
+
+<div class="container-fulid form-box text-center">
+    
+    <div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <input type="text" class="form-control" id="title" placeholder="Enter Log Title Here">
+        </div>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <input type="text" class="form-control" id="datefield" maxlength="10">
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <input type="text" class="form-control" id="title" placeholder="Enter Weather Here">
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <button type="button" class="btn btn-default">Post Attachments</button>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="radio-inline" style="font-weight: bold; pointer-events: none;">Trip Debrief:
+            <input type="radio" name="" style="visibility: hidden;"></label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">Option 1
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">Option 2
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">Option 3
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="radio-inline" style="font-weight: bold; pointer-events: none;">Water Levels:
+            <input type="radio" name="" style="visibility: hidden;"></label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">1
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">2
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">3
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">4
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">5
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">6
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">7
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">8
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">9
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="optradio">10
+            </label>
+        </div>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        <label for="act">Activity:</label>
+        <input type="text" class="form-control" id="act">
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        <label for="rt">Route:</label>
+        <input type="text" class="form-control" id="rt">
+        </div>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        <label for="len">Length:</label>
+        <input type="text" class="form-control" id="len">
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        <label for="dat">Date:</label>
+        <input type="text" class="form-control" id="dat">
+        </div>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        <label for="loc">Location:</label>
+        <input type="text" class="form-control" id="loc">
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        <label for="fmt">Format:</label>
+        <input type="text" class="form-control" id="fmt">
+        </div>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        <label for="grz">Group Size:</label>
+        <input type="text" class="form-control" id="grz">
+        </div>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        <label for="inot">Instruction Notes</label>
+        <textarea class="form-control" rows="5" id="inot"></textarea>
+        </div>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        <label for="tsum">Trip Summary</label>
+        <textarea class="form-control" rows="5" id="tsum"></textarea>
+        </div>
+    </div>
+    </div>
+    
+    <div class="row pull-right">
+    <div class="col-sm-4">
+        <a href="defaultLog" class="btn btn-danger">Create</a>
+    </div>
+    </div>
+</div>
+
+@stop
