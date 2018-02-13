@@ -1,0 +1,515 @@
+@extends('layout')
+
+@section('head')
+<link rel="stylesheet" href="{{ URL::asset('http://localhost/slick/slick.css') }}" />
+<link rel="stylesheet" href="{{ URL::asset('http://localhost/slick/slick-theme.css') }}" />
+<script>
+        $(document).on("click", "#b2", function(){
+            $('html, body').animate({
+                scrollTop: $("#f1").offset().top
+            }, 500);
+        });
+</script>
+
+<script> 
+    $(function(){
+      $("#bio-modal").load("{{ asset('../resources/modals/edit-bio-modal.html') }}");
+      $("#cert-modal").load("{{ asset('../resources/modals/edit-cert-modal.html') }}");
+      $("#work-modal").load("{{ asset('../resources/modals/edit-work-modal.html') }}");
+      $("#emp-modal").load("{{ asset('../resources/modals/edit-emp-modal.html') }}");
+      $("#edu-modal").load("{{ asset('../resources/modals/edit-edu-modal.html') }}");
+      $("#training-modal").load("{{ asset('../resources/modals/edit-training-modal.html') }}");
+      $("#refer-modal").load("{{ asset('../resources/modals/edit-refer-modal.html') }}");
+      $("#contact-modal").load("{{ asset('../resources/modals/edit-contact-modal.html') }}");
+      $("#profile-pic-modal").load("{{ asset('../resources/modals/edit-profile-pic-modal.html') }}");
+    });
+</script>   
+
+<style>
+    .inline-block {
+        display: inline-block;
+    }
+
+    .float-right {
+        float: right;
+        vertical-align: middle;
+    }
+
+    .float-left {
+        float: left;
+    }
+
+    #c1 {
+    }
+
+    #work-experience-panel{
+        padding:10px;
+    }
+
+    #profile-img{
+       margin: 0 auto;
+       max-width: 100%;
+       max-height: auto;
+       padding: 10px;  
+       display: block; 
+    }
+  
+    .carousel-container {
+    }
+    
+    .carousel {
+        margin: 20px;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    .carousel img {
+        width: 100%;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .employer-panel{
+        margin: 15px;
+    }
+
+    .school-panel{
+        margin: 15px;
+    }
+
+    .emp-his-panel{
+    }
+
+    .col-no-padding{
+        padding: 0px;
+    }
+
+    .panel-no-margin{
+        margin: 0px;
+    }
+    
+    .slick-prev:before, .slick-next:before { 
+    color: #d9534f;
+    }
+
+    .btn {
+        background-color: #d9534f;
+        color: white;
+    }
+
+    .edit-btn{
+        background-color: #337ab7;
+        color: white;
+    }
+
+    .edit-pencil{
+        float: right;
+        font-size: 20px;
+        vertical-align: middle;
+        margin: 10px;
+    }
+
+    .float-right{
+        float: right;
+    }
+
+    .panel-default>.panel-heading {
+        background-color: #523E3A;
+        color: white;
+    }
+
+    .orange-badge{
+        background-color: orange;
+    }
+
+    .purple-badge{
+        background-color: purple;
+    }
+
+    .red-badge{
+        background-color: red;
+    }
+
+    .modal-header{
+        background-color: #d9534f;
+        color: white;
+    }
+    
+</style>
+
+@stop
+
+@section('body')
+
+<div id="c1" class="container-fluid">
+    <div class="col-xs-4 panel panel-default col-xs-offset-1 col-no-padding">
+    <div id="name-panel" class="panel panel-heading panel-no-margin">
+        <h2> Brennan</h2>
+    </div>
+    <div class="panel panel-body panel-no-margin">
+        <div id="badge-block">
+            <div class="activity-badge inline-block badge badge-primary purple-badge">Sea Kayaking</div>
+            <div class="activity-badge inline-block badge badge-primary orange-badge">Rock Climbing</div>
+            <div class="activity-badge inline-block badge badge-primary red-badge">Scuba</div>
+        </div>
+        <a data-toggle="modal" href="#edit-profile-pic-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+        <!-- Add in the edit-bio-modal -->
+        <div id="profile-pic-modal"></div>
+        <div><img id="profile-img" src="{{ asset('images/11.png') }}"></img></div>
+    </div>
+    <div class="panel panel-default panel-no-margin">
+            <div class="panel panel-heading"><h4><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Contact Me!</h4></div>
+            <div class="panel panel-body panel-no-margin">
+                <a data-toggle="modal" href="#edit-contact-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                <!-- Add in the edit-bio-modal -->
+                <div id="contact-modal"></div>
+                <div><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: brennan@brennan.com</div>
+                <div><i class="fa fa-phone" aria-hidden="true"></i> Phone: 613-323-4124</div>
+            </div>
+        </div>
+</div>
+    <div class="col-xs-6">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                            <h4><i class="fa fa-user" aria-hidden="true"></i> About Me </h4>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+
+                    
+                    <!-- Trigger the modal with an href -->
+                    <a data-toggle="modal" href="#edit-bio-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                    <!-- Add in the edit-bio-modal -->
+                    <div id="bio-modal"></div>
+
+                    <div class="panel-body">Hi I’m Brennan, A passionate individual who loves to facilitate growth and higher experiences in
+                        others. I have been working in the industry for over 3 years now and have never looked back!
+                        I love working with different people while having fun and achieving our goals. I possess a very
+                        entrepreneurial mindset that keeps me motivated and continually recognizing new opportunities.
+                        I possess many different skills and training as well so check out my logs and profile if you
+                        want a better look under the hood!
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                            <h4><i class="fa fa-certificate" aria-hidden="true"></i> Certifications</h4>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+
+                                <!-- Trigger the modal with an href -->
+                                <a data-toggle="modal" href="#edit-cert-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+
+                                <!-- Add in the edit-bio-modal -->
+                                <div id="cert-modal"></div>
+
+
+                                <div style="overflow:hidden">
+                                    <h4>Swiftwater Safety Awareness</h4>
+                                    <a href="{{ asset('pdfs/certificate_sample.pdf') }}" class="btn btn-info float-right" role="button">Download Certificate</a>
+                                </div>
+                                <div>
+                                    <div class="small"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Expiry Date: </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+
+                                <!-- Trigger the modal with an href -->
+                                <a data-toggle="modal" href="#edit-cert-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                <!-- Add in the edit-bio-modal -->
+                                <div id="cert-modal"></div>
+
+                                <div style="overflow:hidden">
+                                    <h4>Rock Climbing Training</h4>
+                                    <a href="{{ asset('pdfs/certificate_sample.pdf') }}" class="btn btn-info float-right" role="button">Download Certificate</a>
+                                </div>
+                                <div>
+                                    <div class="small"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Expiry Date: </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+
+                                <!-- Trigger the modal with an href -->
+                                <a data-toggle="modal" href="#edit-cert-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                <!-- Add in the edit-bio-modal -->
+                                <div id="cert-modal"></div>
+
+                                <div style="overflow:hidden">
+                                    <h4>Zipline Saftety Course</h4>
+                                    <a href="{{ asset('pdfs/certificate_sample.pdf') }}" class="btn btn-info float-right" role="button">Download Certificate</a>
+                                </div>
+                                <div>
+                                    <div class="small"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Expiry Date: </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="btn float-left edit-btn edit-btn" data-toggle="modal" data-target="#edit-cert-modal"><i class="fa fa-plus" aria-hidden="true"></i>  Add new certificate!</button>
+                        <!-- Add in the edit-bio-modal -->
+                        <div id="cert-modal"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                            <h4><i class="fa fa-file-text" aria-hidden="true"></i> Resume</h4>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><h4>Work Experience</h4></div>
+                                <div class="panel-body work-exp-panel">
+                                    <div class="exp-panel">
+                                        <a data-toggle="modal" href="#edit-work-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                        <!-- Add in the edit-work-modal -->
+                                        <div id="work-modal"></div>
+
+                                        <h5><strong>Adventure Guide</strong></h5>
+                                        <ul>
+                                            <li>Guiding clients on a variety of wilderness adventures including canoeing, kayaking, fishing, and day hikes while delivering an enjoyable, educational and safe environment</li>
+                                            <li>Experience organizing, hosting and planning events for adults, youth and children</li>
+                                            <li>Leadership skills such as communication, decision making and risk management</li> 
+                                            <li>Office duties including answering call/emails, booking clients, scheduling tours, filing client information, and office organization</li>
+                                            <li>Planning, preparing, and guiding all multi day tours</li>
+                                            <li>​​​​​​​Outdoor adventure leadership</li>
+                                            <li>Professionalism and ethics</li>
+                                            <li>Search and rescue training</li>
+                                            <li>Accounting</li>
+                                            <li>Ecology</li>
+                                            <li>Communications</li>
+                                            <li>Computer applications</li>
+                                        </ul>
+                                    </div>
+                                    <div class="exp-panel">
+                                        <a data-toggle="modal" href="#edit-work-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                        <!-- Add in the edit-work-modal -->
+                                        <div id="work-modal"></div>
+                                        <h5><strong>Charity Fundraiser</strong></h5>
+                                        <ul>
+                                            <li>Inform the public about Plans work/history in a positive and inspiring manner</li>
+                                            <li>Connect a donner with the opportunity to sponsor a child overseas or support a project</li>
+                                            <li>Work in a verity of public spaces while adhering to city laws and regulations </li>
+                                            <li>Use of hand held devices such as IPad for sponsor registration</li>
+                                            <li>Representing and promotion of Plan in public events such as film festivals </li>
+                                        </ul>    
+                                    </div>
+                                    <button class="btn float-left edit-btn edit-btn" data-toggle="modal" data-target="#edit-work-modal"><i class="fa fa-plus" aria-hidden="true"></i>  Add new experience!</button>
+                                    <!-- Add in the edit-bio-modal -->
+                                    <div id="work-modal"></div>
+                                </div>
+
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><h4>Employment History</h4></div>
+                                <div class="panel-body emp-his-panel">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <div style="overflow:hidden">
+                                                <a data-toggle="modal" href="#edit-emp-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                                <!-- Add in the edit-emp-modal -->
+                                                <div id="emp-modal"></div>
+                                                <h4><span class="emp-name">Employer Name</span></h4>
+                                                <div class="emp-his row">
+                                                    <div class="col-xs-6">Position</div>
+                                                    <div class="col-xs-6"><i class="fa fa-location-arrow" aria-hidden="true"></i> Location</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div style="overflow:hidden">
+                                                <a data-toggle="modal" href="#edit-emp-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                                <!-- Add in the edit-emp-modal -->
+                                                <div id="emp-modal"></div>
+                                                <h4><span class="emp-name">Employer Name</span></h4>
+                                                <div class="emp-his row">
+                                                    <div class="col-xs-6">Position</div>
+                                                    <div class="col-xs-6"><i class="fa fa-location-arrow" aria-hidden="true"></i> Location</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div style="overflow:hidden">
+                                                <a data-toggle="modal" href="#edit-emp-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                                <!-- Add in the edit-emp-modal -->
+                                                <div id="emp-modal"></div>
+                                                <h4><span class="emp-name">Employer Name</span></h4>
+                                                <div class="emp-his row">
+                                                    <div class="col-xs-6">Position</div>
+                                                    <div class="col-xs-6"><i class="fa fa-location-arrow" aria-hidden="true"></i> Location</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <button class="btn float-left edit-btn edit-btn" data-toggle="modal" data-target="#edit-emp-modal"><i class="fa fa-plus" aria-hidden="true"></i>  Add new employer!</button>
+                                    <!-- Add in the edit-bio-modal -->
+                                    <div id="emp-modal"></div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><h4>Education</h4></div>
+                                <div class="panel-body edu-panel">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <div style="overflow:hidden">
+                                                <a data-toggle="modal" href="#edit-edu-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                                <!-- Add in the edit-edu-modal -->
+                                                <div id="edu-modal"></div>
+                                                <h4><span class="school-name">School Name</span><span class="attendance-date"> (2016-Current)</span></h4>
+                                                <div class="emp-his row">
+                                                    <div class="col-xs-6">Program</div>
+                                                    <div class="col-xs-6"><i class="fa fa-location-arrow" aria-hidden="true"></i> Location</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div style="overflow:hidden">
+                                                <a data-toggle="modal" href="#edit-edu-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                                <!-- Add in the edit-edu-modal -->
+                                                <div id="edu-modal"></div>
+                                                <h4><span class="school-name">School Name</span><span class="attendance-date"> (2016-Current)</span></h4>
+                                                <div class="emp-his row">
+                                                    <div class="col-xs-6">Program</div>
+                                                    <div class="col-xs-6"><i class="fa fa-location-arrow" aria-hidden="true"></i> Location</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div style="overflow:hidden">
+                                                <a data-toggle="modal" href="#edit-edu-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                                <!-- Add in the edit-edu-modal -->
+                                                <div id="edu-modal"></div>
+                                                <h4><span class="school-name">School Name</span><span class="attendance-date"> (2016-Current)</span></h4>
+                                                <div class="emp-his row">
+                                                    <div class="col-xs-6">Program</div>
+                                                    <div class="col-xs-6"><i class="fa fa-location-arrow" aria-hidden="true"></i> Location</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <button class="btn float-left edit-btn edit-btn" data-toggle="modal" data-target="#edit-edu-modal"><i class="fa fa-plus" aria-hidden="true"></i>  Add new education!</button>
+                                    <!-- Add in the edit-bio-modal -->
+                                    <div id="edu-modal"></div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><h4>Training/Courses</h4></div>
+                                <div class="panel-body training-panel">
+                                    <a data-toggle="modal" href="#edit-training-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                    <!-- Add in the edit-training-modal -->
+                                    <div id="training-modal"></div>
+                                    <ul>
+                                        <li>Outdoor adventure leadership</li>
+                                        <li>Professionalism and ethics</li>
+                                        <li>Search and rescue training</li> 
+                                        <li>Accounting</li>
+                                        <li>Risk management</li>
+                                        <li>Ecology</li>
+                                        <li>Communications</li>
+                                        <li>Computer applications</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div style="margin-top: 10px; text-align: right;"><a href="{{ asset('pdfs/functionalSample.pdf') }}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> View resume as PDF</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                            <h4><i class="fa fa-address-card" aria-hidden="true"></i> References</h4>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <div style="overflow:hidden">
+                                    <a data-toggle="modal" href="#edit-refer-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                    <!-- Add in the edit-training-modal -->
+                                    <div id="refer-modal"></div>
+                                    <h4><span class="reference-name">Green Adventures<span class="reference-date"> (2014-2015)</span></h4>
+                                    <h5 class="reference-contact"><i class="fa fa-user" aria-hidden="true"></i> Bill Berk</h5>
+                                    <div class="reference-info row">
+                                        <div class="reference-position col-xs-6">Manager</div>
+                                        <div class="reference-email col-xs-6"><i class="fa fa-envelope-o" aria-hidden="true"></i> billberk@gmail.com</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div style="overflow:hidden">
+                                    <a data-toggle="modal" href="#edit-refer-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                    <!-- Add in the edit-training-modal -->
+                                    <div id="refer-modal"></div>
+                                    <h4><span class="reference-name">Plan International<span class="reference-date"> (2015)</span></h4>
+                                    <h5 class="reference-name"><i class="fa fa-user" aria-hidden="true"></i> Sally Green</h5>
+                                    <div class="reference-info row">
+                                        <div class="reference-position col-xs-6">Manager</div>
+                                        <div class="reference-email col-xs-6"><i class="fa fa-envelope-o" aria-hidden="true"></i> sallygreen@gmail.com</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div style="overflow:hidden">
+                                    <a data-toggle="modal" href="#edit-refer-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                                    <!-- Add in the edit-training-modal -->
+                                    <div id="refer-modal"></div>
+                                    <h4><span class="reference-name">Treks in the Wild<span class="reference-date"> (2013)</span></h4>
+                                    <h5 class="reference-name"><i class="fa fa-user" aria-hidden="true"></i> Jimmy Deanie</h5>
+                                    <div class="reference-info row">
+                                        <div class="reference-position col-xs-6">Manager</div>
+                                        <div class="reference-email col-xs-6"><i class="fa fa-envelope-o" aria-hidden="true"></i> jimmydeanie@gmail.com</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="btn float-left edit-btn edit-btn" data-toggle="modal" data-target="#edit-refer-modal"><i class="fa fa-plus" aria-hidden="true"></i>  Add new reference!</button>
+                        <!-- Add in the edit-bio-modal -->
+                        <div id="refer-modal"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div><img src="{{ asset('images/adventure_sport.jpg') }}" alt="Picture 2"></div>
+                    <div><img src="{{ asset('images/1200px-Kayakersview.jpg') }}" alt="Picture 3"></div>
+                    <div><img src="{{ asset('images/11.png') }}" alt="Picture 1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-1 col-no-padding">
+            <a href="{{ url('profile') }}"><i class="fa fa-check" aria-hidden="true"></i> Finished Editing</a>
+    </div>
+
+<script type="text/javascript" src="{{ URL::asset('http://localhost/slick/slick.min.js') }}"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.carousel').slick({
+        arrows: true,
+        autoPlay: true
+    });
+});
+</script>
+</div>
+
+
+
+@stop
