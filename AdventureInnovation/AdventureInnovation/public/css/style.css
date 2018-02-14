@@ -1,0 +1,19 @@
+.backgroundRed {
+    background: #C34632;
+}
+
+.backgroundSeaBlue {
+    background: #54B2C7;
+}
+
+.backgroundWhite {
+    background: #F7F8F8;
+}
+
+.backgroundRockBlack {
+    background: #523E3A;
+}
+
+.hideme {
+    display: none;
+}
