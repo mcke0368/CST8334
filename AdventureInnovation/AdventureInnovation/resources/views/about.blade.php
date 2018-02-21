@@ -3,7 +3,7 @@
 @section('head')
 	<style type="text/css">
 		.jumbotron{
-			 background-image: url('http://localhost/images/kayaking-1.jpg');
+			 background-image: url({{ URL::asset('images/kayaking-1.jpg') }});
             background-repeat: no-repeat;
             background-size: cover;
             min-height: 450px;
