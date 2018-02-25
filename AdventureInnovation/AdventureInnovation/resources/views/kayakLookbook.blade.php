@@ -127,7 +127,7 @@
             color: #555;
         }
         .form-header-group .form-header {
-            color: #555;
+            color: #5DB4CB;
         }
         .form-header-group .form-subHeader {
             color: #555;
@@ -169,6 +169,12 @@
 
         .form-all {
             background-image: none;
+            background-color: #eeeeee;
+            border-color:#54B2C7;
+            text-align: left;
+            vertical-align: middle;
+            width:850px;
+            border-width:5px;
         }
 
         .ie-8 .form-all:before { display: none; }
@@ -184,7 +190,7 @@
 
 @stop
 @section('bodyGuide')
-
+<center>
     <form class="jotform-form" action="https://submit.jotform.ca/submit/80517764748266/" method="post" name="form_80517764748266" id="80517764748266" accept-charset="utf-8">
         <input type="hidden" name="formID" value="80517764748266" />
         <div class="form-all">
@@ -529,5 +535,6 @@
             </ul>
         </div>
     </form>
+</center>>
     <script type="text/javascript">JotForm.ownerView=true;</script>
 @stop
