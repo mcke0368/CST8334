@@ -115,4 +115,13 @@ Route::get('kayakLookbook', function()
 {
     return view('kayakLookbook');
 });
+Route::get('rockClimbingLogbook', function()
+{
+    return view('rockClimbingLogbook');
+});
+Route::get('companyLogin', function()
+{
+    return view('companyLogin');
+});
+
 /** Ki Beom ends **/
