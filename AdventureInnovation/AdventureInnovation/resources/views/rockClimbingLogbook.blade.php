@@ -41,8 +41,8 @@
             width:150px;
         }
         .form-all{
-            width:690px;
-            color:#555 !important;
+            width:850px;
+            color:#54B2C !important;
             font-family:'Arial';
             font-size:14px;
         }
@@ -93,7 +93,7 @@
         }
 
         .form-all {
-            width: 690px;
+            width: 850px;
         }
 
         .form-label-left,
@@ -127,7 +127,7 @@
             color: #555;
         }
         .form-header-group .form-header {
-            color: #555;
+            color: #5DB4CB;
         }
         .form-header-group .form-subHeader {
             color: #555;
@@ -169,6 +169,11 @@
 
         .form-all {
             background-image: none;
+            background-color: #eeeeee;
+            border-color:#54B2C7;
+            text-align: left;
+            vertical-align: middle;
+            border-width:5px;
         }
 
         .ie-8 .form-all:before { display: none; }
@@ -186,7 +191,7 @@
 @section('bodyGuide')
 
 
-
+<center>
     <form class="jotform-form" action="https://submit.jotform.ca/submit/80515931548258/" method="post" name="form_80515931548258" id="80515931548258" accept-charset="utf-8">
         <input type="hidden" name="formID" value="80515931548258" />
         <div class="form-all">
@@ -873,7 +878,9 @@
                 </li>
             </ul>
         </div>
-    </form></body>
+    </form>
+</center>>
+    </body>
     </html>
     <script type="text/javascript">JotForm.ownerView=true;</script>
 @stop
