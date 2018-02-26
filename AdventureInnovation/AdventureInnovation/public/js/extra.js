@@ -25,7 +25,7 @@ $(document).ready(function() {
     });
 
     $("#b1").click(function() {
-      window.location.href="http://localhost/login"; 
+      window.location.href="login";
     });
 
     $.ajaxSetup({
@@ -72,7 +72,7 @@ function addCertification(certification_name, expiration, link) {
         '<div id="cert-modal"></div>'+
         '<div style="overflow:hidden">'+
         '<h4>' + certification_name + '</h4>'+
-        '<a target="_blank" href="http://localhost/pdfs/'+ link +'" class="btn btn-info float-right" role="button">Download Certificate</a>'+
+        '<a target="_blank" href="pdfs/'+ link +'" class="btn btn-info float-right" role="button">Download Certificate</a>'+
         '</div>'+
         '<div>'+
         '<div class="small"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Expiry Date:' + expiration + '</div>'+

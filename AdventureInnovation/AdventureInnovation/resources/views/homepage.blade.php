@@ -9,7 +9,7 @@
         }
         
        #c1 {
-            background-image: url('http://localhost/images/s3.amazonaws.com_upload.uxpin_files_272217_618567_feet-morning-adventure-camping-2.jpg');
+            background-image: url({{ URL::asset('/images/s3.amazonaws.com_upload.uxpin_files_272217_618567_feet-morning-adventure-camping-2.jpg')}});
             background-repeat: no-repeat;
             background-size: cover;
             padding: 10%;
