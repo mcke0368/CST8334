@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class UserLogin extends Model
 {
     private $id;
     private $firstname;
@@ -28,16 +28,22 @@ class User extends Model
         return $this->firstname;
     }
 
-    public function getCertifications() {
-        return $this->certifications;
+    public function getLastName() {
+        return $this->lastname;
     }
+
+     public function getEmail() {
+        return $this->email;
+    }
+
+    // public function getCertifications() {
+    //     return $this->certifications;
+    // }
 
     public function getPassword() {
         return $this->password;
     }
 
-    public function getId() {
-        return $this->id;
-    }
-    
+
+
 }
