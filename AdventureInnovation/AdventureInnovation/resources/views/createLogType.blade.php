@@ -538,7 +538,7 @@
     
     <div class="row pull-right">
 	<div class="col-sm-4">
-		 <a href="logbook" class="btn btn-success">Back</a>
+		 <a href="/logbook" class="btn btn-success">Back</a>
     </div>
     <div class="col-sm-4">
 		<button id="save-logbook-type-button" class="btn btn-danger">Save</button>

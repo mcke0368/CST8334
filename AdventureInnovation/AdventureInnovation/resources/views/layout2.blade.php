@@ -70,7 +70,7 @@
 		<nav class="navbar navbar-inverse navbar-static-top backgroundRockBlack">
 		  <div class="container-fluid">
 			<div class="navbar-header">
-			  <a class="navbar-brand" href="homepage">
+			  <a class="navbar-brand" href="/homepage">
 			  <span><img src="{{ URL::asset('images/s3.amazonaws.com_upload.uxpin_files_272217_618567_newlogo_adventureibw-1.png') }}" alt="" 
 style="max-height:50px; max-width:50px;"></span></a>
 			</div>
@@ -80,17 +80,17 @@ style="max-height:50px; max-width:50px;"></span></a>
 					  <input type="text" class="form-control" placeholder="Search">
 					</div>
 <!--					<button type="submit" class="btn btn-danger">Login</button>-->
-                        <a href="login" class="btn btn-danger" role="button">Login</a>
+                        <a href="/login" class="btn btn-danger" role="button">Login</a>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 				    <li class="nav-item">
-					  <a class="nav-link" href="about"><h4>About</h4></a>
+					  <a class="nav-link" href="/about"><h4>About</h4></a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#"><h4>Blog</h4></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="contact"><h4>Contact</h4></a>
+						<a class="nav-link" href="/contact"><h4>Contact</h4></a>
 					</li>
 				</ul>
 			</div>
@@ -101,10 +101,10 @@ style="max-height:50px; max-width:50px;"></span></a>
         
     <footer class="navbar-default backgroundRockBlack text-center">
         <p class="footer-links">
-            <a href="about">About</a>
-            <a href="blog">Blog</a>
-            <a href="companyContact">Contact</a>
-            <a href="legal">Legal</a>
+            <a href="/about">About</a>
+            <a href="/blog">Blog</a>
+            <a href="/companyContact">Contact</a>
+            <a href="/legal">Legal</a>
         </p>
         <p class="footer-company-name">&copy; Copyright 2017, Advenure Innovation, Inc. All rights reserved.</p>
     </footer>

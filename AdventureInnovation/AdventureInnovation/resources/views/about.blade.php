@@ -58,7 +58,7 @@
 				</div>
 				
 				<div class="col-sm-12 text-center">
-					<button class="btn btn-warning"><a href="contact"> Contact us</a></button>
+					<button class="btn btn-warning"><a href="/contact"> Contact us</a></button>
 				</div>
 			</div>
 			<div class="col-sm-6 bg-primary center-block">

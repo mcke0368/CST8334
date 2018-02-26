@@ -116,7 +116,7 @@
     <div class="tab-content col-md-8 col-md-offset-2">
         <div id="t1" class="tab-pane fade in active">
             <div style="text-align: center;  margin: 20px">
-                <a href="login" class="btn btn-primary">Log In</a>
+                <a href="/login" class="btn btn-primary">Log In</a>
             </div>
             <ul class="list-group row">
                 <li class="list-group-item col-xs-6"><h4><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Access anywhere around the world</h4></li>
@@ -133,7 +133,7 @@
         </div>
         <div id="t2" class="tab-pane fade">
             <div style="text-align: center; margin: 20px">
-                <a href="companyLogin" class="btn btn-primary">Log In</a>
+                <a href="/companyLogin" class="btn btn-primary">Log In</a>
             </div>
             <ul class="list-group row">
                 <li class="list-group-item col-xs-6"><h4><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;All guides granted log books</h4></li>

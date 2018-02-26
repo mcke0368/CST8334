@@ -56,7 +56,7 @@
 						Interested in creating a Company Account?
 					</div>
 					<div class="col-sm-12 text-right">
-						<a href="companyLogin" class="btn btn-primary">Inquiry Here</a>
+						<a href="/companyLogin" class="btn btn-primary">Inquiry Here</a>
 						<!--
 						<button class="btn btn-danger">Inquiry Here</button>
 						-->

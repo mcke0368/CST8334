@@ -215,7 +215,7 @@
         <div class="card text-center" style="background-color: #FFA458; color: #FF4747; border-style: solid; border-color: #DD7800;">
             <div class="card-block">
                 <h3 class="card-title">Create New Type</h3> 
-                <a href="createLogType" class="btn btn-primary">Create</a>
+                <a href="/createLogType" class="btn btn-primary">Create</a>
             </div>
         </div>
     </div>

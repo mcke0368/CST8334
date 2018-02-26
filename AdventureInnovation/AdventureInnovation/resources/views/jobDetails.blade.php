@@ -31,11 +31,11 @@
 		
 	<div class="container-fluid">
 	           
-	    <a href="basic_info.html" class="btn btn-info" role="button" style = "background-color: #696969; font-size:20px; margin-left:100px;">Basic Information</a>
+	    <a href="/basic_info.html" class="btn btn-info" role="button" style = "background-color: #696969; font-size:20px; margin-left:100px;">Basic Information</a>
          
-	    <a href="job_detail.html" class="btn btn-info" role="button" style = "background-color: #B22222; font-size:20px; padding-left: 40px; padding-right: 40px;margin-left: 60px; margin-right: 60px">Job Details</a>
+	    <a href="/job_detail.html" class="btn btn-info" role="button" style = "background-color: #B22222; font-size:20px; padding-left: 40px; padding-right: 40px;margin-left: 60px; margin-right: 60px">Job Details</a>
 		
-	    <a href="finish.html" class="btn btn-info" role="button" style = "background-color: #696969; font-size:20px; padding-left: 50px; padding-right: 50px; margin-right:100px">Finish</a><br><br>
+	    <a href="/finish.html" class="btn btn-info" role="button" style = "background-color: #696969; font-size:20px; padding-left: 50px; padding-right: 50px; margin-right:100px">Finish</a><br><br>
 	</div>
 	
        
@@ -94,8 +94,8 @@
                         
     </form>
     	
-    <a href="previous.html" class="btn btn-danger" role="button" style = "background-color: #B22222; font-size:15px; margin-left:10px;">previous</a>
-    <a href="preview.html" class="btn btn-info" role="button" style = "background-color: #B22222; font-size:15px; margin-left:700px;">preview</a><br><br><br>
+    <a href="/previous.html" class="btn btn-danger" role="button" style = "background-color: #B22222; font-size:15px; margin-left:10px;">previous</a>
+    <a href="/preview.html" class="btn btn-info" role="button" style = "background-color: #B22222; font-size:15px; margin-left:700px;">preview</a><br><br><br>
     
 </div>
 

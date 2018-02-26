@@ -18,7 +18,7 @@
                             </div>
                             <div class="panel-footer" style="text-align: center">
                                 <!-- Jo : the href should be populated by logType-->
-                                <a href="logbook" class="btn btn-primary">Create</a>
+                                <a href="/logbook" class="btn btn-primary">Create</a>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                             </div>
                             <div class="panel-footer" style="text-align: center">
                                 <!-- Jo : the href should be populated by logType-->
-                                <a href="rockClimbingLogbook" class="btn btn-primary">Create</a>
+                                <a href="/rockClimbingLogbook" class="btn btn-primary">Create</a>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="panel-footer" style="text-align: center">
                                 <!-- Jo : the href should be populated by logType-->
-                                <a href="kayakLookbook" class="btn btn-primary">Create</a>
+                                <a href="/kayakLookbook" class="btn btn-primary">Create</a>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                             </div>
                             <div class="panel-footer" style="text-align: center">
                                 <!-- Jo : the href should be populated by logType-->
-                                <a href="createReportType" class="btn btn-primary">Create</a>
+                                <a href="/createReportType" class="btn btn-primary">Create</a>
                             </div>
                         </div>
                     </div>
