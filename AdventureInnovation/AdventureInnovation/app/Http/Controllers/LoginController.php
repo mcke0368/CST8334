@@ -53,8 +53,8 @@ class LoginController extends Controller
 
     public function editGuide () {
         $guide = $this->dao->getGuideInfo($_SESSION["s_user_id"][0]->id);
-        $_SESSION["guide"] = $guide[0]->Id;
-        $certs = $this->dao->getAllCerts($guide[0]->Id);
+        $_SESSION["guide"] = $guide[0]->id;
+        $certs = $this->dao->getAllCerts($guide[0]->id);
         return view('editprofile', ['guide' => $guide, 'certs' => $certs, 
         'firstname' => $_SESSION["s_user_id"][0]->firstname,
         'email' => $_SESSION["s_user_id"][0]->email]);
