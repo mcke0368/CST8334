@@ -105,4 +105,23 @@ Route::get('/deleteLogType', function()
 {
     return view('logbook');
 });
+//joanna add this for test
+Route::get('logbookMainPage', function()
+{
+    return view('logbookMainPage');
+});
+
+Route::get('kayakLookbook', function()
+{
+    return view('kayakLookbook');
+});
+Route::get('rockClimbingLogbook', function()
+{
+    return view('rockClimbingLogbook');
+});
+Route::get('companyLogin', function()
+{
+    return view('companyLogin');
+});
+
 /** Ki Beom ends **/
