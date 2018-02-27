@@ -16,7 +16,7 @@ class ConstraintsLogbooksTable extends Migration
         Schema::table('logbooks', function (Blueprint $table) {
             // add foreign key to logbook_type_id and user_id
             $table->integer('user_id')->unsigned()->nullable(true);
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('Cascade');
             $table->integer('logbook_type_id')->unsigned()->nullable(true);
             $table->foreign('logbook_type_id')->references('id')->on('logbook_types');
             //

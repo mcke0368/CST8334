@@ -16,7 +16,7 @@ class ConstraintsLogsTable extends Migration
         Schema::table('logs', function (Blueprint $table) {
             // add foreign key for guide
             $table->integer('guide_id')->unsigned()->nullable(true);
-            $table->foreign('guide_id')->references('id')->on('guides');
+            $table->foreign('guide_id')->references('id')->on('guides')->onDelete('Cascade');
 
         });
     }
