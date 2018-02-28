@@ -143,7 +143,7 @@
 	
 	<div class="row pull-right" style="padding:1%;">
 		<div class="col-sm-4" style="margin-right: 10%">
-			<a href="logbook" class="btn btn-success">Back</a>
+			<a href="/logbook" class="btn btn-success">Back</a>
 		</div>
 		<div class="col-sm-4" style="margin-left: 10%">
 			<button id="save-logbook-button" class="btn btn-danger">Save</button>

@@ -7,36 +7,37 @@
 @section('body')
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-6" style="padding: 20px;margin-top:15px;">
-				<div class="col-sm-12">
-					Here for the first time?
-
+			<div class="col-sm-6" style="padding: 20px;margin-top:15px ">
+				<div class="col-sm-12" style="font-size: large; font-weight: bold; text-decoration-color: #54B2C7">
+					Sign Up As A Company User
 				</div>
 				<div class="col-sm-12" style="padding: 20px;margin-top:15px;">
 					<form id="signup-form">
 						<div class="form-group">
-					    <label for="inputfirstname">First Name</label>
-					    <input type="name" class="form-control" id="inputfirstname" placeholder="firstname">
+					    <label for="inputfirstname">Your Name</label>
+					    <input type="name" class="form-control" id="inputYourName" placeholder="Your Name">
 					  </div>
 					   <div class="form-group">
-					    <label for="inputlastname">Last Name</label>
-					    <input type="name" class="form-control" id="inputlastname" placeholder="lastname">
+					    <label for="inputlastname">Your Position</label>
+					    <input type="name" class="form-control" id="inputPositionName" placeholder="Your Position">
 					  </div>
 					   <div class="form-group">
 					    <label for="emailInput">Email address</label>
 					    <input type="email" class="form-control" id="emailInput" placeholder="Email">
 					  </div>
 					   <div class="form-group">
-					    <label for="inputUsername">Username</label>
-					    <input type="name" class="form-control" id="inputUsername" placeholder="username">
+					    <label for="inputUsername">Company Name</label>
+					    <input type="name" class="form-control" id="inputCompanyName" placeholder="Company Name">
 					  </div>
 					  <div class="form-group">
-					    <label for="passwordInput">Password</label>
-					    <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+					    <label for="passwordInput">Number of Members</label>
+					    <input type="password" class="form-control" id="inputNumberOfMember" placeholder="Number of Members">
 					  </div>
 					  <div class="form-group">
-					    <label for="confirmPasswordInput">Confirm Password</label>
-					    <input type="password" class="form-control" id="confirmPasswordInput" placeholder="Confirm Password">
+						  <label class="form-label form-label-top form-label-auto" id="label_17" for="input_17"> Additional Message : </label>
+						  <div id="cid_17" class="form-input-wide">
+							  <textarea id="input_17" class="form-textarea" name="q17_note" cols="83" rows="6" data-component="textarea"></textarea>
+						  </div>
 					  </div>
 					  <div class="checkbox">
 					    <label>
@@ -44,25 +45,15 @@
 					    </label>
 					  </div>
 						<div style="text-align: center">
-					 	 <button class="btn btn-danger" type="submit"><a>Register</a></button>
-						</div>>
+							<button class="btn btn-danger" type="submit" style="text-align: right"><a>Send</a></button>
+						</div>
+
 					</form>
 				</div>
 			</div>
 			
 			<div class="col-sm-12 col-md-6">
-				<div class="col-sm-12 text-right" style="padding: 20px;margin-top:15px;">
-					<div class="col-sm-12">
-						Interested in creating a Company Account?
-					</div>
-					<div class="col-sm-12 text-right">
-						<a href="/companyLogin" class="btn btn-primary">Inquiry Here</a>
-						<!--
-						<button class="btn btn-danger">Inquiry Here</button>
-						-->
-					</div>
-				</div>
-				<div class="col-sm-12 bg-primary" style="padding: 20px;margin-top:15px; ">
+				<div class="col-sm-12 bg-primary" style="padding: 20px;margin-top:50px; ">
 					<form class="form-horizontal" id ="loginForm">
 						<div class="form-group text-center">
 							Login

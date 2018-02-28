@@ -28,82 +28,101 @@ Route::get('homepage', function () {
 });
 
 /** Christian starts **/
-    Route::get('/profile', 'LoginController@getGuide');
+Route::get('/profile', 'LoginController@getGuide');
 
-    Route::get('/profile/edit', 'LoginController@editGuide');
+Route::get('/profile/edit', 'LoginController@editGuide');
 /** Christian ends **/
 
 
 /** Nadia  starts **/
-    Route::get('/login', function () {
-        return view('login');
-    });
+Route::get('/login', function () {
+    return view('login');
+});
 
-    Route::get('/about', function () {
-        return view('about');
-    });
+Route::get('/about', function () {
+    return view('about');
+});
 
-    Route::get('/confirmation', function () {
-        return view('confirmaton');
-    });
+Route::get('/confirmation', function () {
+    return view('confirmaton');
+});
 /** Nadia ends **/
 
 
 /** Lilian starts **/
-    Route::get('/jobDetails', function () {
-        return view('jobDetails');
-    });
+Route::get('/jobDetails', function () {
+    return view('jobDetails');
+});
 
-    Route::get('/guideDashboard', function () {
-        return view('guideDashboard');
-    });
+Route::get('/guideDashboard', function () {
+    return view('guideDashboard');
+});
 
-    Route::get('/manageAccount', function () {
-        return view('manageAccount');
-    });
+Route::get('/manageAccount', function () {
+    return view('manageAccount');
+});
 /** Lilian ends **/
 
 /** Ki Beom starts **/
 
-    Route::get('/logout', 'LoginController@logout');
+Route::get('/logout', 'LoginController@logout');
 
-    Route::post('/saveType', 'LogbookTypeController@saveType');
+Route::post('/saveType', 'LogbookTypeController@saveType');
 
-    Route::get('contact', function()
-    {
-        return view('contact');
-    });
+Route::get('contact', function()
+{
+    return view('contact');
+});
 
-    Route::get('companyContact', function()
-    {
-        return view('companyContact');
-    });
+Route::get('companyContact', function()
+{
+    return view('companyContact');
+});
 
-    Route::get('logbook', 'LogbookListController@passLogbookData');
+Route::get('logbook', 'LogbookListController@passLogbookData');
 
-    Route::post('/saveLog', 'LogbookController@saveLog');
+Route::post('/saveLog', 'LogbookController@saveLog');
 
-    Route::post('/setLog', 'LogbookController@setLog');
+Route::post('/setLog', 'LogbookController@setLog');
 
-    Route::get('defaultLog', 'LogbookController@showLog');
+Route::get('defaultLog', 'LogbookController@showLog');
 
-    Route::post('/setLogType', 'LogbookController@setLogType');
+Route::post('/setLogType', 'LogbookController@setLogType');
 
-    Route::get('createDefaultLogbook', 'LogbookController@showLogTemplate');
+Route::get('createDefaultLogbook', 'LogbookController@showLogTemplate');
 
-    Route::get('createLogType', 'LogbookTypeController@showTemplate');
+Route::get('createLogType', 'LogbookTypeController@showTemplate');
 
-    Route::post('/deleteLogType', 'LogbookListController@deleteLogType');
+Route::post('/deleteLogType', 'LogbookListController@deleteLogType');
 
-    Route::post('/deleteLog', 'LogbookListController@deleteLog');
+Route::post('/deleteLog', 'LogbookListController@deleteLog');
 
-    Route::get('/deleteLogType', function()
-    {
-        return view('logbook');
-    });
+Route::get('/deleteLogType', function()
+{
+    return view('logbook');
+});
 
-    Route::get('/deleteLogType', function()
-    {
-        return view('logbook');
-    });
+Route::get('/deleteLogType', function()
+{
+    return view('logbook');
+});
+//joanna add this for test
+Route::get('logbookMainPage', function()
+{
+    return view('logbookMainPage');
+});
+
+Route::get('kayakLookbook', function()
+{
+    return view('kayakLookbook');
+});
+Route::get('rockClimbingLogbook', function()
+{
+    return view('rockClimbingLogbook');
+});
+Route::get('companyLogin', function()
+{
+    return view('companyLogin');
+});
+
 /** Ki Beom ends **/
