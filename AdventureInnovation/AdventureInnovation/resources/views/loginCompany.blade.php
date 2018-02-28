@@ -76,8 +76,6 @@
 						</div>
 					  	<div class="reset-left">Don't have an account? <a href="register" class="reset-register">Register a new account</a>
 						</div>
-					  	<div class="reset-left">Interested in creating a Company Account? <a href="companyContact" class="reset-register">Inquiry Here</a>
-						</div>
 					    <div class="input-group text-center btn-login col-md-4 col-md-offset-4">
 					  	<button type="submit" class="btn btn-lg btn-danger btn-block">Login</button>
 						</div>
