@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class UserLogin extends Model
 {
     private $id;
     private $firstname;
@@ -35,9 +35,4 @@ class User extends Model
     public function getPassword() {
         return $this->password;
     }
-
-    public function getId() {
-        return $this->id;
-    }
-    
 }
