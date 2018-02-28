@@ -19,6 +19,7 @@ class DatabaseTest extends TestCase
         // when put into production
         // $user = factory(App\User::class)->create();
         // $this->assertDatabaseHas($user);
+<<<<<<< HEAD
 
         // Test to see if there are any values in the tables
         $this->assertDatabaseHas('users',['firstname' => 'admin']);
@@ -41,5 +42,8 @@ class DatabaseTest extends TestCase
         $this->assertDatabaseMissing('trips',['id' => '1']);
 
 
+=======
+        $this->assertDatabaseHas('users',['firstname' => 'bob']);
+>>>>>>> c1d18e74c74f01f214210a8f60c655a786506f2b
     }
 }
