@@ -10,14 +10,10 @@
 |
 */
 
-//Route::get('/', 'GuideController@khalid');
 Route::post('/signin', 'LoginController@login');
 
 Route::post('/signup', 'LoginController@signup');
 
-Route::post('updateProfile', 'LoginController@updateProfile');
-
-Route::post('updateCerts', 'LoginController@updateCerts');
 
 Route::get('/', function () {
     return view('homepage');
@@ -28,16 +24,11 @@ Route::get('homepage', function () {
 });
 
 /** Christian starts **/
-Route::get('/profile', 'LoginController@getGuide');
 
-Route::get('/profile/edit', 'LoginController@editGuide');
 /** Christian ends **/
 
 
-/** Nadia  starts **/
-Route::get('/login', function () {
-    return view('login');
-});
+
 
 Route::get('/about', function () {
     return view('about');
@@ -65,7 +56,6 @@ Route::get('/manageAccount', function () {
 
 /** Ki Beom starts **/
 
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::post('/saveType', 'LogbookTypeController@saveType');
 
@@ -78,6 +68,11 @@ Route::get('companyContact', function()
 {
     return view('companyContact');
 });
+
+
+/**********************************************************************************
+* Logs and Logbooks
+**********************************************************************************/
 
 Route::get('logbook', 'LogbookListController@passLogbookData');
 
@@ -125,25 +120,40 @@ Route::get('companyLogin', function()
     return view('companyLogin');
 });
 
-/** Ki Beom ends **/
 
+/**********************************************************************************
+* Profile Controller
+**********************************************************************************/
 
-/** setup the defaul laravel auth routes */
+Route::post('updateProfile', 'ProfileController@updateProfile')->name('updateProfile');
+Route::post('updateCerts', 'ProfileController@updateCerts')->name('updateCerts');
+Route::get('profile', 'ProfileController@getGuide')->name('profile');
+Route::get('profile/edit', 'ProfileController@editGuide')->name('profile_edit');
 
-//$this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
-$this->post('login', 'Auth\LoginController@login')->name('login');
-$this->post('logout', 'Auth\LoginController@logout')->name('logout');
-$this->get('logout', 'Auth\LoginController@logout')->name('logout');
+/**********************************************************************************
+* Login Controller  and Authentication
+**********************************************************************************/
+/* GET request for login should go the the joined login/register page called 'login'
+   The commented out GET is for going to the Laravel login page in the Auth namespace */
+//Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('/login', function () { return view('login'); });
+Route::post('login', 'Auth\LoginController@login')->name('login');
 
-// Registration Routes...
-$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-$this->post('register', 'Auth\RegisterController@register');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+/* TODO - remove the get route for logout.  It's only here for debugging because if something
+   goes wrong you cannot logout easily via post request. */
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+/* Registration Routes...
+   NOTE - we're not using the GET as it points to the single register page in Auth namespace */
+//Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register')->name('register');
 
 // Password Reset Routes...
-$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-$this->post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

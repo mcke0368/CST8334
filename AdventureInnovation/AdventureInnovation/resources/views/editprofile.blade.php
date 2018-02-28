@@ -189,7 +189,7 @@
 
                     <div class="panel-body">
                         <textarea id="tiny-about">
-                        <?php echo $guide[0]->about; ?>
+                        <?php echo $guide->about; ?>
                         </textarea>
                     </div>
                 </div>
@@ -242,7 +242,7 @@
                                 <div class="panel-body work-exp-panel">
                                     <div class="exp-panel">
                                     <textarea id="tiny-work">
-                                    <?php echo $guide[0]->work_experience;?> 
+                                    <?php echo $guide->work_experience;?>
                                     </textarea>   
                                     </div> 
                                 </div>
@@ -251,7 +251,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Employment History</h4></div>
                                 <textarea id="tiny-employment">
-                                <?php echo $guide[0]->employment_history; ?>
+                                <?php echo $guide->employment_history; ?>
                                 </textarea>
                             </div>
                             <div class="panel panel-default">
@@ -260,7 +260,7 @@
                                     <!-- Add in the edit-training-modal -->
                                     <div id="training-modal"></div>
                                     <textarea id="tiny-training">
-                                    <?php echo $guide[0]->training;?>
+                                    <?php echo $guide->training;?>
                                     </textarea>
                                 </div>
                             </div>
