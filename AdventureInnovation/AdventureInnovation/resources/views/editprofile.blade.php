@@ -173,7 +173,7 @@ $(document).ready(function(){
             </div>
             <div class="panel panel-body panel-no-margin">
                 <a data-toggle="modal" data-target="#emp-modal" href="#emp-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
-
+                
                 <!-- Add in the edit-bio-modal -->
                 <div id="contact-modal"></div>
                 <div><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: {{$email}}</div>
