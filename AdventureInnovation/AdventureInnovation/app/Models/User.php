@@ -27,7 +27,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /** roles sample from https://medium.com/@ezp127/laravel-5-4-native-user-authentication-role-authorization-3dbae4049c8a */
+    /**********************************************************************************
+     * Guides
+     **********************************************************************************/
+
+    public function guide() {
+        return $this->hasOne('App\Models\Guide');
+    }
+
+    /**********************************************************************************
+     * Roles
+     **********************************************************************************/
+
+
+    /**  TODO implement better roles.   Current role sample from
+     * https://medium.com/@ezp127/laravel-5-4-native-user-authentication-role-authorization-3dbae4049c8a */
 
     public function roles()
     {

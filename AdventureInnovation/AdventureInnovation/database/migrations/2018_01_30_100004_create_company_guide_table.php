@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKayakingLogsTable extends Migration
+class CreateCompanyGuideTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateKayakingLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('kayaking_logs', function (Blueprint $table) {
+        Schema::create('company_guide', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('water_level',100);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateKayakingLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kayaking_logs');
+        Schema::dropIfExists('company_guide');
     }
 }
