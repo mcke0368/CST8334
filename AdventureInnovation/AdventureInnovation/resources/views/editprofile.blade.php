@@ -13,9 +13,16 @@
         });
 </script>
 
+<script type="text/javascript" src="{{ URL::asset('slick/slick.min.js') }}"></script>
 <script> 
+$(document).ready(function(){
     $(function(){
-      $("#bio-modal").load("{{ asset('../resources/modals/edit-bio-modal.html') }}");
+      $("#bio-modal").load("{{ asset('../resources/modals/edit-bio-modal.html') }}",
+        function( response, status, xhr ) {
+          if ( status == "error" ) {
+            var msg = "Sorry but there was an error: ";
+            $( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
+          }});
       $("#cert-modal").load("{{ asset('../resources/modals/edit-cert-modal.html') }}");
       $("#work-modal").load("{{ asset('../resources/modals/edit-work-modal.html') }}");
       $("#emp-modal").load("{{ asset('../resources/modals/edit-emp-modal.html') }}");
@@ -25,6 +32,7 @@
       $("#contact-modal").load("{{ asset('../resources/modals/edit-contact-modal.html') }}");
       $("#profile-pic-modal").load("{{ asset('../resources/modals/edit-profile-pic-modal.html') }}");
     });
+});
 </script>   
 
 <style>
@@ -164,14 +172,19 @@
             <div class="panel panel-heading"><h4><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Contact Me!</h4>
             </div>
             <div class="panel panel-body panel-no-margin">
-                <a data-toggle="modal" href="#edit-contact-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                <a data-toggle="modal" data-target="#emp-modal" href="#emp-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+
                 <!-- Add in the edit-bio-modal -->
                 <div id="contact-modal"></div>
                 <div><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: {{$email}}</div>
                 <div><i class="fa fa-phone" aria-hidden="true"></i> Phone: {{"613-test"}}</div>
-                <div><i class="fa fa-twitter-square" aria-hidden="true"></i></div>
-                <div><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                <div><i class="fa fa-facebook-official" aria-hidden="true"></i></div>
+                
+                <!-- SOCIAL MEDIA BUTTONS -->
+                <div class="fa-stack-2x" style="margin-top:10px" >
+                    <i class="fa fa-twitter" style="padding:10px" aria-hidden="true"></i>
+                    <i class="fa fa-instagram" style="padding:10px" aria-hidden="true"></i>
+                    <i class="fa fa-facebook-official" style="padding:20px" aria-hidden="true"></i>
+                </div>
 
             </div>
         </div>
