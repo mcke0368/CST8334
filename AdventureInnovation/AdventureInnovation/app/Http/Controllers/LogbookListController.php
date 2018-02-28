@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\UserLogin;
+use App\Models\User;
 use App\Models\GuideDAO;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request; 

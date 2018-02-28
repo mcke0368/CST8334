@@ -43,7 +43,4 @@ class UserLogin extends Model
     public function getPassword() {
         return $this->password;
     }
-
-
-
 }
