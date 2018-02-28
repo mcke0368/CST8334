@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ConstraintsCompaniesGuidesTable extends Migration
+class ConstraintsCompanyGuideTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class ConstraintsCompaniesGuidesTable extends Migration
      */
     public function up()
     {
-        Schema::table('companies_guides', function (Blueprint $table) {
+        Schema::table('company_guide', function (Blueprint $table) {
              // add foreign key to guide_id and company_id
             $table->integer('guide_id')->unsigned()->nullable(true);
             $table->foreign('guide_id')->references('id')->on('guides');
@@ -29,11 +29,11 @@ class ConstraintsCompaniesGuidesTable extends Migration
      */
     public function down()
     {
-        Schema::table('companies_guides', function (Blueprint $table) {
-            $table->dropForeign('guides_id');
-            $table->dropColumn('guides_id');
-            $table->dropForeign('companies_id');
-            $table->dropColumn('companies_id');
+        Schema::table('company_guide', function (Blueprint $table) {
+            $table->dropForeign('guide_id');
+            $table->dropColumn('guide_id');
+            $table->dropForeign('company_id');
+            $table->dropColumn('company_id');
         });
     }
 }

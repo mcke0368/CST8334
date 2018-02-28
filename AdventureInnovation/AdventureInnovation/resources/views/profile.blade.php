@@ -140,7 +140,7 @@
                 </div>
                 <div id="collapse1" class="panel-collapse collapse in">
                     <div class="panel-body">
-                    <?php echo $guide[0]->about; ?>
+                    <?php echo $guide->about; ?>
                     </div>
                 </div>
             </div>
@@ -187,7 +187,7 @@
                                 <div class="panel-heading"><h4>Work Experience</h4></div>
                                 <div class="panel-body work-exp-panel">
                                     <div class="exp-panel">
-                                        <?php echo $guide[0]->work_experience;?>
+                                        <?php echo $guide->work_experience;?>
                                     </div>
                                 </div>
 
@@ -195,13 +195,13 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Employment History</h4></div>
                                 <div class="panel-body emp-his-panel">
-                                <?php echo $guide[0]->employment_history; ?>
+                                <?php echo $guide->employment_history; ?>
                                 </div>
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Training/Courses</h4></div>
                                 <div class="panel-body training-panel">
-                                <?php echo $guide[0]->training;?>
+                                <?php echo $guide->training;?>
                                 </div>
                             </div>
                             <div style="margin-top: 10px; text-align: right;"><a href="{{ asset('pdfs/functionalSample.pdf') }}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> View resume as PDF</a></div>

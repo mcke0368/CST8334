@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompaniesGuidesTable extends Migration
+class CreateGuideCertificationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCompaniesGuidesTable extends Migration
      */
     public function up()
     {
-        Schema::create('companies_guides', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('guide_certification', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('guide_id')->unsigned();
+            $table->integer('certification_id')->unsigned();
         });
     }
 
@@ -27,6 +27,6 @@ class CreateCompaniesGuidesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies_guides');
+        Schema::dropIfExists('guide_certification');
     }
 }

@@ -14,7 +14,13 @@ class CreateBaseLogsTable extends Migration
     public function up()
     {
         Schema::create('base_logs', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->string('title',100)->nullable(false);
+            $table->longtext('html_text')->nullable(true);
+            $table->string('attachement_location', 512)->nullable(true);
+            $table->string('logable_type');
+            $table->integer('logable_id');
             $table->timestamps();
         });
     }
