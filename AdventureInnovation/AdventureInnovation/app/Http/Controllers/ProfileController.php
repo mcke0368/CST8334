@@ -44,12 +44,11 @@ class ProfileController extends Controller
 
         $user = Auth::user();
         $guide = $user->guide;
-
         $about= $request->about;
         $work = $request->work;
         $employment = $request->employment;
         $training = $request->training;
-        $this->dao->updateProfile($guide->id,$about, $work,$employment, $training);
+        $this->dao->updateProfile($_SESSION["guide"],$about, $work,$employment, $training);
     }
 
     public function updateCerts(Request $request) {

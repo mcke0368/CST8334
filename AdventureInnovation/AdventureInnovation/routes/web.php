@@ -56,7 +56,6 @@ Route::get('/manageAccount', function () {
 
 /** Ki Beom starts **/
 
-
 Route::post('/saveType', 'LogbookTypeController@saveType');
 
 Route::get('contact', function()
@@ -154,10 +153,4 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-/** routes for homepage redirect from auth */
-Route::get('/home', 'HomeController@index')->name('home');
 
