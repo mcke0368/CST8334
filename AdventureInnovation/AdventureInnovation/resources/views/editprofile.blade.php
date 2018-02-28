@@ -207,11 +207,8 @@ $(document).ready(function(){
 
                     <div class="panel-body">
                         <textarea id="tiny-about">
-<<<<<<< HEAD
                         {{$guide[0]->about}}
-=======
                         <?php echo $guide->about; ?>
->>>>>>> updated to ORM for guides, certs, users.  Working except for update profile
                         </textarea>
                     </div>
                 </div>
