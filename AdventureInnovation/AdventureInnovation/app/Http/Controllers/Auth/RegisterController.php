@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+<<<<<<< HEAD
 use App\Models\Guide;
 use App\Models\User;
 use App\Models\Role;
+=======
+use App\Models\User;
+>>>>>>> basic login working but redirect to profile still broken because of old system
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
