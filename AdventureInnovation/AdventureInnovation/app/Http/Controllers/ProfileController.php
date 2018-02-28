@@ -28,4 +28,40 @@ class GuideController extends Controller
         return view('Guide', ['guide' => $guide]);
     }
 
+    public function getGuide () {
+        //var_dump($_SESSION["s_user_id"]);die;
+        $guide = $this->dao->getGuideInfo($_SESSION["s_user_id"][0]->id);
+        $certs = $this->dao->getAllCerts($guide[0]->id);
+        return view('profile', ['guide' => $guide, 'certs' => $certs,
+            'firstname' => $_SESSION["s_user_id"][0]->firstname,
+            'email' => $_SESSION["s_user_id"][0]->email]);
+    }
+
+    public function editGuide () {
+        $guide = $this->dao->getGuideInfo($_SESSION["s_user_id"][0]->id);
+        $_SESSION["guide"] = $guide[0]->id;
+        $certs = $this->dao->getAllCerts($guide[0]->id);
+        return view('editprofile', ['guide' => $guide, 'certs' => $certs,
+            'firstname' => $_SESSION["s_user_id"][0]->firstname,
+            'email' => $_SESSION["s_user_id"][0]->email]);
+    }
+
+    public function updateProfile(Request $request){
+        //ajax goes here to insert into DB for profile stuff
+
+        $about= $request->about;
+        $work = $request->work;
+        $employment = $request->employment;
+        $training = $request->training;
+        $this->dao->updateProfile($_SESSION["guide"],$about, $work,$employment, $training);
+    }
+
+    public function updateCerts(Request $request) {
+        //ajax goes here to insert into DB for cert  stuff
+
+        $name= $request->name;
+        $link = $request->link;
+        $exp = $request->expiry;
+        $this->dao->updateCerts($_SESSION["guide"], $name,$link,$exp);
+    }
 }
