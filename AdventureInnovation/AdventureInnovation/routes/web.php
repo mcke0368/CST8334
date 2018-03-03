@@ -10,11 +10,6 @@
 |
 */
 
-Route::post('/signin', 'LoginController@login');
-
-Route::post('/signup', 'LoginController@signup');
-
-
 Route::get('/', function () {
     return view('homepage');
 });
@@ -124,9 +119,9 @@ Route::get('companyLogin', function()
 **********************************************************************************/
 
 Route::post('updateProfile', 'GuideProfileController@updateProfile')->name('updateProfile');
-Route::post('updateCerts', 'GuideProfileController@updateCerts')->name('updateCerts');
-Route::get('profile', 'GuideProfileController@getGuide')->name('profile');
-Route::get('profile/edit', 'GuideProfileController@editGuide')->name('profile_edit');
+Route::post('/updateCerts', 'GuideProfileController@updateCerts')->name('updateCerts');
+Route::get('/profile', 'GuideProfileController@getGuide')->name('profile');
+Route::get('/profile/edit', 'GuideProfileController@editGuide')->name('profile_edit');
 
 /**********************************************************************************
 * Login Controller  and Authentication
@@ -135,12 +130,13 @@ Route::get('profile/edit', 'GuideProfileController@editGuide')->name('profile_ed
    The commented out GET is for going to the Laravel login page in the Auth namespace */
 //Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::get('/login', function () { return view('login'); });
-Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::post('/login', 'Auth\LoginController@login')->name('login');
 
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 /* TODO - remove the get route for logout.  It's only here for debugging because if something
    goes wrong you cannot logout easily via post request. */
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
 /* Registration Routes...
    NOTE - we're not using the GET as it points to the single register page in Auth namespace */
 //Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
