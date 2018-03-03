@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ConstraintsGuideCertificationTable extends Migration
+class ConstraintsCertificationGuideTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class ConstraintsGuideCertificationTable extends Migration
      */
     public function up()
     {
-        Schema::table('guide_certification', function (Blueprint $table) {
+        Schema::table('certification_guide', function (Blueprint $table) {
             // add foreign key to guide_id and company_id
             $table->foreign('certification_id')->references('id')->on('certifications');
             $table->foreign('guide_id')->references('id')->on('guides');
@@ -27,7 +27,7 @@ class ConstraintsGuideCertificationTable extends Migration
      */
     public function down()
     {
-        Schema::table('guide_certification', function (Blueprint $table) {
+        Schema::table('certification_guide', function (Blueprint $table) {
             $table->dropForeign('certification_id');
             $table->dropColumn('certification_id');
             $table->dropForeign('guide_id');

@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         // see the Guides before the certifications due to FK constraints
         $this->call(GuideTableSeeder::class);
         $this->call(CertificationTableSeeder::class);
+        $this->call(CertificationGuideTableSeeder::class);
     }
 }

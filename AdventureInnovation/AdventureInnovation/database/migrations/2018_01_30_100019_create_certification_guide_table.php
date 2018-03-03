@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGuideCertificationTable extends Migration
+class CreateCertificationGuideTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGuideCertificationTable extends Migration
      */
     public function up()
     {
-        Schema::create('guide_certification', function (Blueprint $table) {
+        Schema::create('certification_guide', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('guide_id')->unsigned();
             $table->integer('certification_id')->unsigned();
@@ -27,6 +27,6 @@ class CreateGuideCertificationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guide_certification');
+        Schema::dropIfExists('certification_guide');
     }
 }

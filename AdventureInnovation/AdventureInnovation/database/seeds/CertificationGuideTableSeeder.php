@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Certification;
 
-class GuideCertificationTableSeeder extends Seeder
+class CertificationGuideTableSeeder extends Seeder
 
 {
     /**
@@ -14,6 +14,8 @@ class GuideCertificationTableSeeder extends Seeder
      */
     public function run()
     {
+
+        // add pivot table data in here because there's a whacky larvel error saying that GuideCertificationTableSeeder doesn't exist.
         $user = User::where('email', '=', 'brennan@brennan.com')->firstOrFail();
         $guide = $user->guide;
 

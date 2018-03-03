@@ -42,14 +42,7 @@ class CertificationTableSeeder extends Seeder
         $cert->save();
 
 
-        // add pivot table data in here because there's a whacky larvel error saying that GuideCertificationTableSeeder doesn't exist.
-        $user = User::where('email', '=', 'brennan@brennan.com')->firstOrFail();
-        $guide = $user->guide;
 
-        $certs = Certification::all();
-        foreach ( $certs as $cert) {
-            $cert->guides()->attach($guide);
-        }
 
 
     }
