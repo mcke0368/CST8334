@@ -42,8 +42,5 @@ class CertificationTableSeeder extends Seeder
         $cert->save();
 
 
-
-
-
     }
 }
