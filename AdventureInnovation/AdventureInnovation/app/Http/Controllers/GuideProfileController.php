@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
-use App\Models\Guide;
+
 use App\Models\GuideDAO;
-use App\Models\User;
 
 //use Illuminate\Support\Facades\DB; needed for DB access
 //use Illuminate\Http\Request; needed for DB access
