@@ -11,7 +11,7 @@ use App\Models\User;
 //use Illuminate\Support\Facades\DB; needed for DB access
 //use Illuminate\Http\Request; needed for DB access
 
-class ProfileController extends Controller
+class GuideProfileController extends Controller
 {
     private $dao;
 

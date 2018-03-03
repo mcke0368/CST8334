@@ -125,10 +125,10 @@ Route::get('companyLogin', function()
 * Profile Controller
 **********************************************************************************/
 
-Route::post('updateProfile', 'ProfileController@updateProfile')->name('updateProfile');
-Route::post('updateCerts', 'ProfileController@updateCerts')->name('updateCerts');
-Route::get('profile', 'ProfileController@getGuide')->name('profile');
-Route::get('profile/edit', 'ProfileController@editGuide')->name('profile_edit');
+Route::post('updateProfile', 'GuideProfileController@updateProfile')->name('updateProfile');
+Route::post('updateCerts', 'GuideProfileController@updateCerts')->name('updateCerts');
+Route::get('profile', 'GuideProfileController@getGuide')->name('profile');
+Route::get('profile/edit', 'GuideProfileController@editGuide')->name('profile_edit');
 
 /**********************************************************************************
 * Login Controller  and Authentication
