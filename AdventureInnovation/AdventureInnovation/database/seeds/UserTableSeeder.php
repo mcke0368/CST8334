@@ -17,13 +17,14 @@ class UserTableSeeder extends Seeder
         $role_guide_user = Role::where('name', 'guide_role')->first();
 
         $guide_user = new User();
-        $guide_user->firstname = 'admin';
-        $guide_user->lastname = 'admin';
-        $guide_user->username = 'admin';
-        $guide_user->email = 'admin@localhost';
-        $guide_user->password = bcrypt('admin');
+        $guide_user->firstname = env('ADMIN_USER_NAME');
+        $guide_user->lastname = env('ADMIN_USER_NAME');
+        $guide_user->username = env('ADMIN_USER_NAME');
+        $guide_user->email = env('ADMIN_USER_EMAIL');
+        $guide_user->password = bcrypt(env('ADMIN_USER_PASSWORD'));
         $guide_user->save();
         $guide_user->roles()->attach($role_guide_user);
+
 
         $guide_user = new User();
         $guide_user->firstname = 'Brennan';
