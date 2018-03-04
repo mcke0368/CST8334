@@ -148,3 +148,7 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> cleaned out some of the old unused code and appended ajax to ajax function calls
