@@ -120,8 +120,8 @@ Route::get('companyLogin', function()
 * Profile Controller
 **********************************************************************************/
 
-Route::post('updateProfile', 'GuideProfileController@updateProfile')->name('updateProfile');
-Route::post('/updateCerts', 'GuideProfileController@updateCerts')->name('updateCerts');
+Route::post('/ajaxUpdateProfile', 'GuideProfileController@ajaxUpdateProfile')->name('ajaxUpdateProfile');
+Route::post('/ajaxUpdateCerts', 'GuideProfileController@ajaxUpdateCerts')->name('ajaxUpdateCerts');
 Route::get('/profile', 'GuideProfileController@getGuide')->name('profile');
 Route::get('/profile/edit', 'GuideProfileController@editGuide')->name('profile_edit');
 
@@ -150,9 +150,4 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-/** routes for homepage redirect from auth */
-Route::get('/home', 'HomeController@index')->name('home');
 
