@@ -15,16 +15,6 @@ class GuideDAO {
         return $guide;
     }
 
-    public function logUserIn($email, $password) {
-        
-        $login = DB::select("select id, firstname, lastname, username, email, password from users 
-        where email = '" . $email . "' and password = '" . $password . "'");
-
-        if (sizeof($login) > 0) {
-            return 'true';
-        }
-        return false;     
-	}
 
 	public function signup($firstname, $lastname, $email, $username, $password) {
 		$lastInsertedId = DB::table('users')->insertGetId(
