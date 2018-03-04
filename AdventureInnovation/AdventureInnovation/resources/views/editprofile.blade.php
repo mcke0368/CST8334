@@ -13,9 +13,16 @@
         });
 </script>
 
+<script type="text/javascript" src="{{ URL::asset('slick/slick.min.js') }}"></script>
 <script> 
+$(document).ready(function(){
     $(function(){
-      $("#bio-modal").load("{{ asset('../resources/modals/edit-bio-modal.html') }}");
+      $("#bio-modal").load("{{ asset('../resources/modals/edit-bio-modal.html') }}",
+        function( response, status, xhr ) {
+          if ( status == "error" ) {
+            var msg = "Sorry but there was an error: ";
+            $( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
+          }});
       $("#cert-modal").load("{{ asset('../resources/modals/edit-cert-modal.html') }}");
       $("#work-modal").load("{{ asset('../resources/modals/edit-work-modal.html') }}");
       $("#emp-modal").load("{{ asset('../resources/modals/edit-emp-modal.html') }}");
@@ -25,6 +32,7 @@
       $("#contact-modal").load("{{ asset('../resources/modals/edit-contact-modal.html') }}");
       $("#profile-pic-modal").load("{{ asset('../resources/modals/edit-profile-pic-modal.html') }}");
     });
+});
 </script>   
 
 <style>
@@ -147,7 +155,7 @@
 <div id="c1" class="container-fluid">
     <div class="col-xs-4 panel panel-default col-xs-offset-1 col-no-padding">
     <div id="name-panel" class="panel panel-heading panel-no-margin">
-        <h2> <?php echo $firstname;?></h2>
+        <h2>{{$firstname}}</h2>
     </div>
     <div class="panel panel-body panel-no-margin">
         <div id="badge-block">
@@ -161,13 +169,23 @@
         <div><img id="profile-img" src="{{ asset('images/11.png') }}"></div>
     </div>
     <div class="panel panel-default panel-no-margin">
-            <div class="panel panel-heading"><h4><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Contact Me!</h4></div>
+            <div class="panel panel-heading"><h4><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Contact Me!</h4>
+            </div>
             <div class="panel panel-body panel-no-margin">
-                <a data-toggle="modal" href="#edit-contact-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                <a data-toggle="modal" data-target="#emp-modal" href="#emp-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                
                 <!-- Add in the edit-bio-modal -->
                 <div id="contact-modal"></div>
-                <div><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: <?php echo $email;?></div>
-                <div><i class="fa fa-phone" aria-hidden="true"></i> Phone: 613-323-4124</div>
+                <div><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: {{$email}}</div>
+                <div><i class="fa fa-phone" aria-hidden="true"></i> Phone: {{"613-test"}}</div>
+                
+                <!-- SOCIAL MEDIA BUTTONS -->
+                <div class="fa-stack-2x" style="margin-top:10px" >
+                    <i class="fa fa-twitter" style="padding:10px" aria-hidden="true"></i>
+                    <i class="fa fa-instagram" style="padding:10px" aria-hidden="true"></i>
+                    <i class="fa fa-facebook-official" style="padding:20px" aria-hidden="true"></i>
+                </div>
+
             </div>
         </div>
 </div>
@@ -189,7 +207,7 @@
 
                     <div class="panel-body">
                         <textarea id="tiny-about">
-                        <?php echo $guide[0]->about; ?>
+                        {{$guide[0]->about}}
                         </textarea>
                     </div>
                 </div>
@@ -242,7 +260,7 @@
                                 <div class="panel-body work-exp-panel">
                                     <div class="exp-panel">
                                     <textarea id="tiny-work">
-                                    <?php echo $guide[0]->work_experience;?> 
+                                        {{$guide[0]->work_experience}} 
                                     </textarea>   
                                     </div> 
                                 </div>
@@ -251,7 +269,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Employment History</h4></div>
                                 <textarea id="tiny-employment">
-                                <?php echo $guide[0]->employment_history; ?>
+                                    {{$guide[0]->employment_history}}
                                 </textarea>
                             </div>
                             <div class="panel panel-default">
@@ -260,7 +278,7 @@
                                     <!-- Add in the edit-training-modal -->
                                     <div id="training-modal"></div>
                                     <textarea id="tiny-training">
-                                    <?php echo $guide[0]->training;?>
+                                        {{$guide[0]->training}}
                                     </textarea>
                                 </div>
                             </div>

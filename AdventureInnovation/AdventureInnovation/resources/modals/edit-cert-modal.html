@@ -1,2 +1,48 @@
-
-    
+<!DOCTYPE html>
+<html>
+<!-- Modal -->
+    <div id="edit-cert-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" 
+                       data-dismiss="modal">
+                           <span aria-hidden="true">&times;</span>
+                           <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Edit Certification</h4>
+                </div>
+                
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="cert-name">Certification: </label>
+                            <input type="text" class="form-control" id="cert-name" value="Swiftwater Safety Awareness"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="cert-exp-date">Expiry Date: </label>
+                            <input type="date" class="form-control" id="cert-exp-date"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="cert-pdf">Upload Cerificate PDF</label>
+                            <input type="file" name="cert-pdf" id="cert-pdf">
+                        </div>
+                    </form>     
+                </div>
+                
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">
+                                Close
+                    </button>
+                    <button type="button" class="btn btn-primary" id="cert-button">
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</html> 
