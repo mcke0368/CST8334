@@ -207,7 +207,6 @@ $(document).ready(function(){
 
                     <div class="panel-body">
                         <textarea id="tiny-about">
-                        {{$guide[0]->about}}
                         <?php echo $guide->about; ?>
                         </textarea>
                     </div>
