@@ -16,6 +16,12 @@ class GuideProfileController extends Controller
     private $dao;
 
     public function __construct() {
+
+        // make sure they're authorized and logged in. If not, they are redirected to login
+        $this->middleware('auth');
+
+        // fire up the GuideDAO so we can access the guide data
+        // TODO - get rid of this!!!!! and use proper methods.
         $this->dao = new GuideDAO();
     }
 
@@ -39,7 +45,8 @@ class GuideProfileController extends Controller
             'email' => $user->email]);
     }
 
-    public function updateProfile(Request $request){
+    /* called via AJAX to update profile information */
+    public function ajaxUpdateProfile(Request $request){
         //ajax goes here to insert into DB for profile stuff
 
         $user = Auth::user();
@@ -51,7 +58,8 @@ class GuideProfileController extends Controller
         $this->dao->updateProfile($guide->id,$about, $work,$employment, $training);
     }
 
-    public function updateCerts(Request $request) {
+    /* called via AJAX to update the certificates */
+    public function ajaxUpdateCerts(Request $request) {
         //ajax goes here to insert into DB for cert  stuff
 
         $name= $request->name;
