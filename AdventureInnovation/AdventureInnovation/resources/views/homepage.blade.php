@@ -19,6 +19,10 @@
             margin-top: 5%;
         }
         
+        h1{
+            font-size: 350%;
+        } 
+        
         #c2, #c3 {
             padding-top: 5%;
             padding-right: 10%;
@@ -51,8 +55,8 @@
         }
         
         .nav-tabs > li > a {
-            margin-left: 50px;
-            margin-right: 50px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
         
         #b1 {
@@ -60,9 +64,8 @@
             padding-top: 1%;
             padding-bottom: 1%;
             padding-right: 3%;
-            padding-left: 3%;
-            border-radius: 10px;
-            margin-bottom: 3%;
+            padding-left: 3%;            
+            margin-top:5%;
         }
         
         #b2 {
@@ -77,6 +80,10 @@
             text-align: left;
             color: black;
         }
+
+        .login-button{
+            margin-bottom:10px;
+        }
         
     </style>
     <script>
@@ -85,16 +92,19 @@
                 scrollTop: $("#f1").offset().top
             }, 500);
         });
+
     </script>
+
+
 @stop
 
 @section('body')
 <!-- First Container -->
 <div id="c1" class="container-fluid text-center">
     <h1>Easy, Organized, and Secure</h1>
-    <h4 style="margin-top: 1%;">~ Log books for any adventure ~</h4>
-    <button id="b1" type="button" class="btn backgroundRed" style="color:white;">Get Yours Started</button>
-
+    <h3 style="margin-top: 1%;">~ Log books for any adventure ~</h3>
+    <a href="register" id="b1" class="btn btn-danger btn-lg " role="button" aria-pressed="true">Get Yours Started</a>
+    
 </div>
 
 <!-- Second Container -->
@@ -115,9 +125,6 @@
 <div id="c3" class="container-fluid text-center" style="background-color: #e6e6e6;">
     <div class="tab-content col-md-8 col-md-offset-2">
         <div id="t1" class="tab-pane fade in active">
-            <div style="text-align: center;  margin: 20px">
-                <a href="/login" class="btn btn-primary">Log In</a>
-            </div>
             <ul class="list-group row">
                 <li class="list-group-item col-xs-6"><h4><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Access anywhere around the world</h4></li>
                 <li class="list-group-item col-xs-6"><h4><i class="fa fa-desktop" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Fast and easy to use</h4></li>
@@ -132,9 +139,6 @@
             </ul>
         </div>
         <div id="t2" class="tab-pane fade">
-            <div style="text-align: center; margin: 20px">
-                <a href="/companyLogin" class="btn btn-primary">Log In</a>
-            </div>
             <ul class="list-group row">
                 <li class="list-group-item col-xs-6"><h4><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;All guides granted log books</h4></li>
                 <li class="list-group-item col-xs-6"><h4><i class="fa fa-desktop" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Track completed logs</h4></li>
@@ -148,7 +152,44 @@
                 <li class="list-group-item col-xs-6"><h4><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Access to the Adventure Community</h4></li>
             </ul>
         </div>
+
+        <div class="btn-group dropup">           
+            <button class="dropdown-toggle btn btn-danger btn-lg login-button" data-toggle="dropdown" id="login-menu-home" type="button" aria-haspopup="true" aria-expanded="false">Login your account</button>
+            <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="login-menu-home" id="login-item-home">
+                <li class="dropdown-item">
+                    <div class="btn btn-default btn-xs" type="button">
+                        <a href="login" class="login-page">Login as a guide</a>
+                    </div> 
+                </li>
+                <li class="dropdown-item">
+                    <div class="btn btn-default btn-xs" type="button">
+                        <a href="login" class="login-page">Login as a company</a>
+                    </div>
+                </li>
+            </ul>
+            
+        </div>
+
     </div>
 </div>
 
 @stop
+
+@section ('script')
+<script>
+       
+    $("#login-menu-home").mouseover(function(){
+        $("#login-item-home").show();
+        });
+    $("#login-menu-home").mouseout(function(){
+        $("#login-item-home").hide();
+        });
+    $("#login-item-home").mouseover(function(){
+        $(this).show();
+        }); 
+    $("#login-item-home").mouseout(function(){
+        $(this).hide();
+        });
+ 
+   </script>
+@endsection
