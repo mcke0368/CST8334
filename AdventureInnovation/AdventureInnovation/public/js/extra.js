@@ -9,57 +9,15 @@ $(document).ready(function() {
         addCertification(cert, expiration, link);
     });
 
-    $('#signup-form').submit(function (e) {
-        e.preventDefault();
-        var firstname = $('#inputfirstname').val();
-        var lastname = $('#inputlastname').val();
-        var username = $('#inputUsername').val();
-        var email = $('#emailInput').val();
-        var password = $('#passwordInput').val();
-
-        createUser(firstname, lastname, username, email, password);
-    });
-
     $('#send-all-data').click(function(){
         getAllFields();    
     });
 
-    $("#b1").click(function() {
-      window.location.href="login";
-    });
-
+    /* setup AJAX by adding csrf token to each request */
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    });
-
-    $('#loginForm').submit(function(e) {
-        var email = $("#exampleInputEmail1").val();
-        var password = $("#exampleInputPassword1").val();
-        
-        e.preventDefault();
-        $.ajax({
-           type: "POST",
-           url: '/signin',
-           data: { email: email, password: password },
-           success: function(data)
-           {
-                if(data == "true"){
-                    console.log("LOGGED IN VIA AJAX.");
-                    window.location.href = "profile";
-                }
-           }, 
-           error: function(response)
-            {
-                alert('Incorrect Credentials');
-            }
-       });
-     });
-
-    $("#submit-contact").click( function (e) {
-        e.preventDefault();
-        $(".hideme").removeClass("hideme");
     });
 });
 
@@ -85,7 +43,7 @@ function addCertification(certification_name, expiration, link) {
     //call an ajax enter this into the DB
     $.ajax({
         type: "POST",
-        url: '/updateCerts',
+        url: '/ajaxUpdateCerts',
         data: { name: certification_name, link: link, expiry:expiration },    
     })
     .done(function(msg) {
@@ -109,7 +67,7 @@ function getAllFields() {
     //call an ajax enter this into the DB
     $.ajax({
         type: "POST",
-        url: '/updateProfile',
+        url: '/ajaxUpdateProfile',
         data: { about: about, work: work, employment:employment, training:training },    
     })
     .done(function(msg) {
@@ -121,20 +79,4 @@ function getAllFields() {
     });
 }
 
-function createUser(firstname, lastname, username, email, password) {
-   //call an ajax enter this into the DB
-   $.ajax({
-    type: "POST",
-    url: '/signup',
-    data: { firstname: firstname, lastname: lastname, username:username, email:email, 
-        password:password },    
-    })
-    .done(function(msg) {
-        console.log(msg);
-        window.location.href = "confirmation";
-    })
-    .fail(function(jqXHR, textStatus) {
-        console.log(jqXHR);
-        console.log( "Request failed: " + textStatus );
-    }); 
-}
+

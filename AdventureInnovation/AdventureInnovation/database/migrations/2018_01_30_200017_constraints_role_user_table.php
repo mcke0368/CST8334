@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ConstraintsGuidesTable extends Migration
+class ConstraintsRoleUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class ConstraintsGuidesTable extends Migration
      */
     public function up()
     {
-        Schema::table('guides', function (Blueprint $table) {
-            // add foreign key
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        Schema::table('role_user', function (Blueprint $table) {
+            // add foreign key to guide_id and company_id
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 
@@ -27,9 +27,9 @@ class ConstraintsGuidesTable extends Migration
      */
     public function down()
     {
-        Schema::table('guides', function (Blueprint $table) {
+        Schema::table('role_user', function (Blueprint $table) {
             $table->dropForeign('user_id');
-            $table->dropColumn('user_id');
+            $table->dropForeign('role_id');
         });
     }
 }

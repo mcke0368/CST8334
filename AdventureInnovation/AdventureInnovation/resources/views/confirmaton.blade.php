@@ -18,7 +18,7 @@
 		</div>
 		<div class="row" style="padding: 10px; border-bottom: 2px solid black">
 			<div class="col-sm-12">
-				<button class="btn btn-danger">Continue</button>
+				<a class="btn btn-danger" href="{{ route('profile') }}">Continue</a>
 			</div>
 		</div>
 		<div class="row">

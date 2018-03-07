@@ -207,7 +207,7 @@ $(document).ready(function(){
 
                     <div class="panel-body">
                         <textarea id="tiny-about">
-                        {{$guide[0]->about}}
+                        <?php echo $guide->about; ?>
                         </textarea>
                     </div>
                 </div>
@@ -260,7 +260,7 @@ $(document).ready(function(){
                                 <div class="panel-body work-exp-panel">
                                     <div class="exp-panel">
                                     <textarea id="tiny-work">
-                                        {{$guide[0]->work_experience}} 
+                                    <?php echo $guide->work_experience;?>
                                     </textarea>   
                                     </div> 
                                 </div>
@@ -269,7 +269,7 @@ $(document).ready(function(){
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Employment History</h4></div>
                                 <textarea id="tiny-employment">
-                                    {{$guide[0]->employment_history}}
+                                <?php echo $guide->employment_history; ?>
                                 </textarea>
                             </div>
                             <div class="panel panel-default">
@@ -278,7 +278,7 @@ $(document).ready(function(){
                                     <!-- Add in the edit-training-modal -->
                                     <div id="training-modal"></div>
                                     <textarea id="tiny-training">
-                                        {{$guide[0]->training}}
+                                    <?php echo $guide->training;?>
                                     </textarea>
                                 </div>
                             </div>

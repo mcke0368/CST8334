@@ -73,17 +73,20 @@
 		  <div class="container-fluid">
 			<div class="navbar-header">
 			  <a class="navbar-brand" href="/homepage">
-			  <span><img src="{{ URL::asset('images/s3.amazonaws.com_upload.uxpin_files_272217_618567_newlogo_adventureibw-1.png') }}" alt="" 
-style="max-height:50px; max-width:50px;"></span></a>
+			    <span>
+                    <img src="{{ URL::asset('images/s3.amazonaws.com_upload.uxpin_files_272217_618567_newlogo_adventureibw-1.png') }}"
+                         alt="" style="max-height:50px; max-width:50px;">
+                </span>
+              </a>
 			</div>
 			<div id="navbar">
 				<form class="navbar-form navbar-nav navbar-right" style="padding-top:10px;">
 					<div class="form-group">
 					  <input type="text" class="form-control" placeholder="Search">
 					</div>
-<!--					<button type="submit" class="btn btn-danger">Login</button>-->
-                        <a href="/login" class="btn btn-danger" role="button">Login</a>
 				</form>
+
+
 				<ul class="nav navbar-nav navbar-right">
 				    <li class="nav-item">
 					  <a class="nav-link" href="/about"><h4>About</h4></a>
@@ -94,6 +97,16 @@ style="max-height:50px; max-width:50px;"></span></a>
 					<li class="nav-item">
 						<a class="nav-link" href="/contact"><h4>Contact</h4></a>
 					</li>
+                    <li class="nav-item">
+                        @if(Auth::check())
+                            <form id="form-inline" action="{{ route('logout') }}" method="POST">
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-danger" style="padding:7px 15px; margin-top:17px">Logout of {{Auth::user()->username}}</button>
+                            </form>
+                        @else
+                            <a href="/login" class="btn btn-danger nohover" role="button" style="padding:7px 15px; margin-top:17px">Login</a>
+                        @endif
+                    </li>
 				</ul>
 			</div>
 		  </div>

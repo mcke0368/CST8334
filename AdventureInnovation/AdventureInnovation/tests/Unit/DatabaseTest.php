@@ -31,7 +31,7 @@ class DatabaseTest extends TestCase
         $this->assertDatabaseMissing('climbing_logs',['id' => '1']);
         $this->assertDatabaseMissing('base_logs',['id' => '1']);
         $this->assertDatabaseMissing('companies',['id' => '1']);
-        $this->assertDatabaseMissing('companies_guides',['id' => '1']);
+        $this->assertDatabaseMissing('company_guide',['id' => '1']);
         $this->assertDatabaseMissing('employees',['id' => '1']);
         $this->assertDatabaseMissing('kayaking_logs',['id' => '1']);
         $this->assertDatabaseMissing('logbook_types',['id' => '1']);

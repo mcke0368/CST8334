@@ -6,41 +6,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class Guide extends Model
 {
-    private $id;
-    private $firstname;
-    private $lastname;
-    private $username;
-    private $password;
-    private $province;
-    private $city;
-    private $address;
-    private $postal_code;
-    private $email;
-    private $skills;
-    private $phone;
-    private $certifications;
-    private $resume;
-    private $image;
-    private $description;
+    protected $fillable = [
+        'about', 'work_experience', 'employement_history', 'training',
+    ];
 
-    public function __construct($id, $firstname, $lastname, $username, $password, $province, $city, $address, $postal_code, $email,
-    $skills, $phone, $certifications,$resume, $image, $description) {
-        $this->id = $id;
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
-        
-        $this->certifications = $certifications;
+     /**********************************************************************************
+     * User
+     **********************************************************************************/
+
+    public function user() {
+        return $this->belongsTo('App\Models\User');
     }
 
-    public function getId() {
-        return $this->id;
+     /**********************************************************************************
+     * certifications
+     **********************************************************************************/
+
+    public function certifications() {
+        return $this->belongsToMany('App\Models\Certification', 'guide_certification');
     }
 
-    public function getFirstName() {
-        return $this->firstname;
-    }
+     /**********************************************************************************
+     * logbooks
+     **********************************************************************************/
 
-    public function getCertifications() {
-        return $this->certifications;
+    public function logbooks() {
+        return $this->hasMany('App\Models\BaseLog');
     }
 }

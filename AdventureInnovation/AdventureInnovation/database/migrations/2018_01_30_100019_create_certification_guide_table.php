@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKayakingLogsTable extends Migration
+class CreateCertificationGuideTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateKayakingLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('kayaking_logs', function (Blueprint $table) {
+        Schema::create('certification_guide', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('water_level',100);
-            $table->timestamps();
+            $table->integer('guide_id')->unsigned();
+            $table->integer('certification_id')->unsigned();
         });
     }
 
@@ -27,6 +27,6 @@ class CreateKayakingLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kayaking_logs');
+        Schema::dropIfExists('certification_guide');
     }
 }
