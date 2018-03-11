@@ -125,6 +125,8 @@
             <div class="panel panel-body panel-no-margin">
                 <div><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: <?php echo $email;?></div>
                 <div><i class="fa fa-phone" aria-hidden="true"></i> Phone: 613-323-4124</div>
+                <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
             </div>
         </div>
 </div>
