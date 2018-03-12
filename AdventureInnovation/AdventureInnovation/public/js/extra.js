@@ -110,18 +110,24 @@ function dropdown_logbooks_callback() {
 /* Logout requires a post request so add this function to the onclick of logout button */
 function dropdown_logout_callback() {
 
+
     $.ajax({
         type: "POST",
         url: '/logout',
         data: { }
     })
         .done( function(msg) {
-            console.log(msg);
+            /* TODO: anything needs to go here? */
+            console.log('dropdown_logout_callback: done');
         })
         .fail( function (msg) {
-            console.log(msg);
+            /* TODO: if this fails, is there a fallback for logout? */
+            console.log('dropdown_logout_callbad: fail');
+
         })
         .success( function(msg) {
-            console.log(msg);
-        })
+            /* logout successful, redirect to root */
+            console.log('dropdown_logout_callback: success');
+            location.href = '/';
+        });
 }

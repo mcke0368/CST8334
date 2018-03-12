@@ -109,24 +109,24 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="login-menu" id="login-item">
                                     <li class="dropdown-item">
-                                        <div class="btn-default btn-xs" type="button">
-                                            <span class="fa" id="dropdown-profile">Profile</span>
+                                        <div class="btn-default btn-xs" id="dropdown-profile" type="button">
+                                            <span class="fa" >Profile</span>
                                         </div>
                                     </li>
                                     <li class="dropdown-item">
-                                        <div class="btn-default btn-xs" type="button">
-                                            <span class="fa" id="dropdown-edit-profile">Edit Profile</span>
+                                        <div class="btn-default btn-xs" id="dropdown-edit-profile" type="button">
+                                            <span class="fa" >Edit Profile</span>
                                         </div>
                                     </li>
                                     <li class="dropdown-item">
-                                        <div class="btn-default btn-xs" type="button">
-                                            <span class="fa" id="dropdown-logbooks">Logbooks</span>
+                                        <div class="btn-default btn-xs" id="dropdown-logbooks" type="button">
+                                            <span class="fa">Logbooks</span>
                                         </div>
                                     </li>
 
                                     <li>
-                                        <div class="btn-default btn-xs" type="button">
-                                            <span class = "fa" id="dropdown-logout">Logout</span>
+                                        <div class="btn-default btn-xs" id="dropdown-logout" type="button">
+                                            <span class = "fa" >Logout</span>
                                         </div>
 
                                     </li>
