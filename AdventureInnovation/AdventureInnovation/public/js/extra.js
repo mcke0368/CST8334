@@ -91,7 +91,7 @@ function getAllFields() {
 function setup_dropdown_links() {
     document.getElementById('dropdown-profile').onclick = dropdown_profile_callback;
     document.getElementById('dropdown-edit-profile').onclick = dropdown_edit_profile_callback;
-    document.getElementById('dropdown-logout').onclick = dropdown_logout_callback;
+    document.getElementById('dropdown-logbooks').onclick = dropdown_logbooks_callback;
     document.getElementById('dropdown-logout').onclick = dropdown_logout_callback;
 
 }
