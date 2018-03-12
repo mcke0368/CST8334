@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<br lang="{{ app()->getLocale() }}">
+<div>{{Auth::id()}}</div>>
     {!! Form::open(array('route' => 'videos.store')) !!}
     {{Form::label('Title','Titles:')}}
     {{Form::text('Title',null,array('class' => 'form-control'))}}

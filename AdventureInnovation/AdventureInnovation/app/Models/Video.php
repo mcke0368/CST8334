@@ -10,6 +10,6 @@ class Video extends Model
         'Title', 'URL',
     ];
     public function guides() {
-        return $this->belongsTo('App\Models\Guide');
+        return $this->belongsToMany('App\Models\Guide');
     }
 }

@@ -33,4 +33,10 @@ class Guide extends Model
     public function logbooks() {
         return $this->hasMany('App\Models\BaseLog');
     }
+    /**********************************************************************************
+     * video
+     **********************************************************************************/
+    public function video(){
+        return $this->hasMany('App\Models\Video');
+    }
 }

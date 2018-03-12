@@ -44,12 +44,10 @@ class VideoController extends Controller
         $video->Title = $request->Title;
         $video->URL = $request->URL;
         $user_id = Auth::id();
-        $guide = DB::table('guides')::where('user_id','=',$user_id)->get();
-        $guide_id = $guide->id;
-        $video->guide_id = $guide_id;
+        $guide = DB::table('guides')->where('user_id', $user_id)->first();
+        $id = $guide->id;
+        $video->guide_id = $id;
         $video->save();
-        return redirect()->route('/profile');
-
     }
 
     /**
@@ -60,7 +58,7 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('/profile');
     }
 
     /**
