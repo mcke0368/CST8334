@@ -126,6 +126,7 @@ function dropdown_logbooks_callback() {
 /* Logout requires a post request so add this function to the onclick of logout button */
 function dropdown_logout_callback() {
 
+
     $.ajax({
         type: "POST",
         url: '/logout',
