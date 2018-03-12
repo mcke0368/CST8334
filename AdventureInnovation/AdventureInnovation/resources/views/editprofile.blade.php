@@ -195,13 +195,13 @@ $(document).ready(function(){
             <div>
                 {!! Form::open(array('route' => 'videos.store')) !!}
                 {{Form::label('YoutubeL','YouTube URL :')}}
-                {{Form::text('Youtube_URL',null,array('class' => 'form-control', ))}}
+                {{Form::text('Youtube_URL',null,array('class' => 'form-control', 'required' => 'required'))}}
                 {{Form::label('Facebook','Facebook Link:')}}
-                {{Form::text('Facebook_URL',null,array('class' => 'form-control'))}}
+                {{Form::text('Facebook_URL',null,array('class' => 'form-control','required' => 'required'))}}
                 {{Form::label('Twitter','Twitter Link:')}}
-                {{Form::text('Twitter_URL',null,array('class' => 'form-control'))}}
+                {{Form::text('Twitter_URL',null,array('class' => 'form-control','required' => 'required'))}}
                 {{Form::label('Instagram','Instagram Link:')}}
-                {{Form::text('Instagram_URL',null,array('class' => 'form-control'))}}
+                {{Form::text('Instagram_URL',null,array('class' => 'form-control','required' => 'required'))}}
                 {{Form::submit('Update')}}
                 {!! Form::close() !!}
             </div>
