@@ -61,9 +61,12 @@ class VideoController extends Controller
         else {
         DB::table('videos')
             ->where('guide_id', $id)
-            ->update(array('Youtube_URL' => $request->URL, 'Facebook_URL' => $request->Facebook_URL, 'Twitter_URL' => $request->Twitter_URL, 'Instagram_URL' => $request->Instagram_URL ));
+            ->update(array('Youtube_URL' => $request->Youtube_URL, 'Facebook_URL' => $request->Facebook_URL, 'Twitter_URL' => $request->Twitter_URL, 'Instagram_URL' => $request->Instagram_URL ));
         }
         // reroute the page
+        return redirect()->action(
+            'GuideProfileController@getGuide'
+        );
 
     }
 

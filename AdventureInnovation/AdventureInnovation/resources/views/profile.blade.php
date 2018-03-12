@@ -136,6 +136,14 @@
             $guide = DB::table('guides')->where('user_id', $user_id)->first();
             $id = $guide->id;
             $social_media = DB::table('videos')->where('guide_id', $id)->first();
+            $Raw_Youtube_link = $social_media->Youtube_URL;
+            function convertYoutube($string) {
+            return preg_replace(
+                "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+                "<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
+                $string);
+            }
+            $Youtube_link = convertYoutube($Raw_Youtube_link);
             ?>
             <div class="fa-stack-2x" style="margin-top:10px" >
                 <a  href="{{$social_media->Twitter_URL}}"><i class="fa fa-twitter" style="padding:10px" aria-hidden="true"></i></a>
@@ -143,8 +151,7 @@
                 <a href="{{$social_media->Facebook_URL}}"><i class="fa fa-facebook-official" style="padding:20px" aria-hidden="true" ></i></a>>
             </div>
             <div>
-                <iframe width="420" height="345" src={{$social_media->Youtube_URL}}>
-                </iframe>
+                <?php  echo $Youtube_link ?>
             </div>
 
 
