@@ -19,6 +19,9 @@ $(document).ready(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    /* setup the dropdown links for the menu bar */
+    setup_dropdown_links();
 });
 
 function addCertification(certification_name, expiration, link) {
@@ -80,3 +83,45 @@ function getAllFields() {
 }
 
 
+/********************************************************************************************
+ * Methods for the common dropdown method: profile link, logbooks link and logout
+ *********************************************************************************************/
+
+/* add required callback functions to onclick on the dropdown */
+function setup_dropdown_links() {
+    document.getElementById('dropdown-profile').onclick = dropdown_profile_callback;
+    document.getElementById('dropdown-edit-profile').onclick = dropdown_edit_profile_callback;
+    document.getElementById('dropdown-logout').onclick = dropdown_logout_callback;
+    document.getElementById('dropdown-logout').onclick = dropdown_logout_callback;
+
+}
+/* callback for the profile link */
+function dropdown_profile_callback() {
+    location.href = "/profile";
+}
+/* callback for the edit profile link */
+function dropdown_edit_profile_callback() {
+    location.href = "/profile/edit";
+}
+/* callback for the logbooks page */
+function dropdown_logbooks_callback() {
+    location.href = "/logbookMainPage";
+}
+/* Logout requires a post request so add this function to the onclick of logout button */
+function dropdown_logout_callback() {
+
+    $.ajax({
+        type: "POST",
+        url: '/logout',
+        data: { }
+    })
+        .done( function(msg) {
+            console.log(msg);
+        })
+        .fail( function (msg) {
+            console.log(msg);
+        })
+        .success( function(msg) {
+            console.log(msg);
+        })
+}
