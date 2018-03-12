@@ -135,7 +135,7 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 /* TODO - remove the get route for logout.  It's only here for debugging because if something
    goes wrong you cannot logout easily via post request. */
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+//Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 /* Registration Routes...
    NOTE - we're not using the GET as it points to the single register page in Auth namespace */
