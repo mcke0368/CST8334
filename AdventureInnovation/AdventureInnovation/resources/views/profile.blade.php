@@ -127,6 +127,27 @@
                 <div><i class="fa fa-phone" aria-hidden="true"></i> Phone: 613-323-4124</div>
             </div>
         </div>
+
+
+        <div class="panel panel-heading"><h4><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Social Media</h4>
+        </div>
+            <?php
+            $user_id = Auth::id();
+            $guide = DB::table('guides')->where('user_id', $user_id)->first();
+            $id = $guide->id;
+            $social_media = DB::table('videos')->where('guide_id', $id)->first();
+            ?>
+            <div class="fa-stack-2x" style="margin-top:10px" >
+                <a  href="{{$social_media->Twitter_URL}}"><i class="fa fa-twitter" style="padding:10px" aria-hidden="true"></i></a>
+                <a href="{{$social_media->Instagram_URL}}"><i class="fa fa-instagram" style="padding:10px" aria-hidden="true" ></i></a>
+                <a href="{{$social_media->Facebook_URL}}"><i class="fa fa-facebook-official" style="padding:20px" aria-hidden="true" ></i></a>>
+            </div>
+            <div>
+                <iframe width="420" height="345" src={{$social_media->Youtube_URL}}>
+                </iframe>
+            </div>
+
+
 </div>
     <div class="col-xs-6">
         <div class="panel-group" id="accordion">

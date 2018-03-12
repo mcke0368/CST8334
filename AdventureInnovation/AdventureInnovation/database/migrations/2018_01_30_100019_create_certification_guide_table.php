@@ -15,6 +15,7 @@ class CreateCertificationGuideTable extends Migration
     {
         Schema::create('certification_guide', function (Blueprint $table) {
             $table->increments('id');
+            $table->timestamps();
             $table->integer('guide_id')->unsigned();
             $table->integer('certification_id')->unsigned();
         });
