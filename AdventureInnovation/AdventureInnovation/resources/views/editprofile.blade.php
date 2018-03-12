@@ -178,15 +178,35 @@ $(document).ready(function(){
                 <div id="contact-modal"></div>
                 <div><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: {{$email}}</div>
                 <div><i class="fa fa-phone" aria-hidden="true"></i> Phone: {{"613-test"}}</div>
+
+
                 
-                <!-- SOCIAL MEDIA BUTTONS -->
+                <!--
                 <div class="fa-stack-2x" style="margin-top:10px" >
                     <i class="fa fa-twitter" style="padding:10px" aria-hidden="true"></i>
                     <i class="fa fa-instagram" style="padding:10px" aria-hidden="true"></i>
                     <i class="fa fa-facebook-official" style="padding:20px" aria-hidden="true"></i>
                 </div>
+                SOCIAL MEDIA BUTTONS -->
 
             </div>
+        <div class="panel panel-heading"><h4><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Social Media</h4>
+        </div>
+            <div>
+                {!! Form::open(array('route' => 'videos.store')) !!}
+                {{Form::label('YoutubeL','YouTube URL :')}}
+                {{Form::text('Youtube_URL',null,array('class' => 'form-control', ))}}
+                {{Form::label('Facebook','Facebook Link:')}}
+                {{Form::text('Facebook_URL',null,array('class' => 'form-control'))}}
+                {{Form::label('Twitter','Twitter Link:')}}
+                {{Form::text('Twitter_URL',null,array('class' => 'form-control'))}}
+                {{Form::label('Instagram','Instagram Link:')}}
+                {{Form::text('Instagram_URL',null,array('class' => 'form-control'))}}
+                {{Form::submit('Update')}}
+                {!! Form::close() !!}
+            </div>
+
+
         </div>
 </div>
     <div class="col-xs-6">
