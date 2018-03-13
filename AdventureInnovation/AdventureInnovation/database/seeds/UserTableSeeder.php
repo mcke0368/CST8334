@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Guide;
 
 class UserTableSeeder extends Seeder
 {
@@ -24,6 +25,10 @@ class UserTableSeeder extends Seeder
         $guide_user->password = bcrypt(env('ADMIN_USER_PASSWORD'));
         $guide_user->save();
         $guide_user->roles()->attach($role_guide_user);
+
+        /* add an empty guide for this user */
+        $guide = new Guide();
+        $guide_user->guide()->save($guide);
 
 
         $guide_user = new User();

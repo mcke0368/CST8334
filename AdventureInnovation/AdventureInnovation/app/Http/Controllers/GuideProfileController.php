@@ -28,12 +28,20 @@ class GuideProfileController extends Controller
     public function getGuide () {
         $user = Auth::user();
         $guide = $user->guide;
-        $certs = $guide->certifications->all();
-        //$certs = $this->dao->getAllCerts($guide[0]->id);
+        if ($guide) {
+            $certs = $guide->certifications->all();
 
-        return view('profile', ['guide' => $guide, 'certs' => $certs,
-            'firstname' => $user->firstname,
-            'email' => $user->email]);
+            return view('profile', ['guide' => $guide, 'certs' => $certs,
+                'firstname' => $user->firstname,
+                'email' => $user->email]);
+        }
+        else {
+            /* log the person out and go back to welcome screen
+            TODO = make it known to end-user why this redirect is happening!!!!
+             */
+            auth()->logout();
+            return redirect('/');
+        }
     }
 
     public function editGuide () {
