@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Guide;
 use App\Models\User;
 use App\Models\Role;
 use App\Http\Controllers\Controller;
@@ -73,8 +74,16 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
+        /* create associated guide */
+        $guide = new Guide();
+
+        /* assign a new guide to the user */
+        $user->guide()->save($guide);
+
         /* attache guide role */
         $user->roles()->attach(Role::where('name', 'guide_role')->first());
+
+
         return $user;
     }
 }
