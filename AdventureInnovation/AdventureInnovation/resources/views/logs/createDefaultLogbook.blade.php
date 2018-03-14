@@ -1,4 +1,4 @@
-@extends('layoutLogbook')
+@extends('logs.layoutLogbook')
 
 @section('headLogbook')
     <style>

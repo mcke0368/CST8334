@@ -205,8 +205,8 @@
 	<div class="col-sm-6">
 		<div class="card text-center log-type-card">
 			<h3 class="card-title">{{ $logbook_type->title }}</h3>
-			<a id="lt{{ $logbook_type->id }}" class="btn btn-primary btn-create-log">Create</a>
-			<a id="dl{{ $logbook_type->id }}" name="{{ $logbook_type->title }}" class="btn btn-danger delete-log-type-btn">Delete</a>
+			<a id="create_logtype_{{ $logbook_type->id }}" class="btn btn-primary btn-create-log">Create</a>
+			<a id="delete_logtype_{{ $logbook_type->id }}" name="{{ $logbook_type->title }}" class="btn btn-danger delete-log-type-btn">Delete</a>
 		</div>
 	</div>
 	@endforeach
