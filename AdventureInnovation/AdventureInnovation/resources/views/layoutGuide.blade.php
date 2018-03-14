@@ -19,7 +19,7 @@
 @stop
 
 @section('body')
-
+<!--
 <nav id="sub-navbar" class="navbar navbar-inverse navbar-static-top" style="background: #E7E7E7; color: #000000;">
     <div class="container-fluid">
             <ul class="nav navbar-nav navbar-right">
@@ -36,7 +36,7 @@
             </ul>
     </div>
 </nav>
-
+-->
 @yield('bodyGuide')
 
 @stop

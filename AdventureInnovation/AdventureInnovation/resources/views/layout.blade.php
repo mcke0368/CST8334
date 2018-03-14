@@ -99,10 +99,43 @@
 					</li>
                     <li class="nav-item">
                         @if(Auth::check())
-                            <form id="form-inline" action="{{ route('logout') }}" method="POST">
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-danger" style="padding:7px 15px; margin-top:17px">Logout of {{Auth::user()->username}}</button>
-                            </form>
+
+                            <div class="btn-group">
+                                <button class="dropdown-toggle btn btn-danger btn-lg"
+                                        data-toggle="dropdown" id="login-menu" type="button"
+                                        aria-haspopup="true" aria-expanded="false"
+                                        style="padding:7px 15px; margin-top:17px">
+                                    {{ Auth::user()->username }}
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="login-menu" id="login-item">
+                                    <li class="dropdown-item">
+                                        <div class="btn-default btn-xs" id="dropdown-profile" type="button">
+                                            <span class="fa" >Profile</span>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <div class="btn-default btn-xs" id="dropdown-edit-profile" type="button">
+                                            <span class="fa" >Edit Profile</span>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <div class="btn-default btn-xs" id="dropdown-logbooks" type="button">
+                                            <span class="fa">Logbooks</span>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="btn-default btn-xs" id="dropdown-logout" type="button">
+                                            <span class = "fa" >Logout</span>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                            </div>
+
+
+
+
                         @else
                             <a href="/login" class="btn btn-danger nohover" role="button" style="padding:7px 15px; margin-top:17px">Login</a>
                         @endif
