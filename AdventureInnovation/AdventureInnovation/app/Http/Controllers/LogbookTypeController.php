@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\UserLogin;
 use App\Models\GuideDAO;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LogbookTypeController extends Controller
 {
@@ -16,10 +17,9 @@ class LogbookTypeController extends Controller
 	
 	public function showTemplate(Request $request) {
 
-		session_start();
-		
-		if(isset($_SESSION["s_user_id"])) {
-			return view('createLogType');
+	    if ( Auth::check()) {
+	        $user = Auth::user();
+			return view('logs.createLogType');
 		} else {
 			return "No Authentication";
 		}	
@@ -32,16 +32,9 @@ class LogbookTypeController extends Controller
         $type_name = (string)$request->type_name;
         $type_html = $request->type_html;
 		
-		session_start();
-		
-		if(isset($_SESSION["s_user_id"])) {
-			
-			$s_user_id = $_SESSION["s_user_id"];
-			
-			foreach($s_user_id as $js_user_id) break;
-			$js_user_id = $js_user_id->id;
-			$this->dao->createNewLogbookType($js_user_id, $type_name, $type_html);
-			
+	    if ( Auth::check()) {
+	        $user = Auth::user();
+			$this->dao->createNewLogbookType($user->id, $type_name, $type_html);
 			return 'true';
 			
 		} else {
@@ -50,5 +43,15 @@ class LogbookTypeController extends Controller
 		
         return false;
     }
-	
+
+    public function showTemplateList(Request $request) {
+
+        if ( Auth::check()) {
+            $user = Auth::user();
+
+
+            //$logbook_types =
+            //return view('logTemplate-partial', ['logbook_types' => $logbook_types]);
+        }
+    }
 }

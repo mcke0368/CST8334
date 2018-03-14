@@ -89,10 +89,18 @@ function getAllFields() {
 
 /* add required callback functions to onclick on the dropdown */
 function setup_dropdown_links() {
-    document.getElementById('dropdown-profile').onclick = dropdown_profile_callback;
-    document.getElementById('dropdown-edit-profile').onclick = dropdown_edit_profile_callback;
-    document.getElementById('dropdown-logbooks').onclick = dropdown_logbooks_callback;
-    document.getElementById('dropdown-logout').onclick = dropdown_logout_callback;
+    if (elem = document.getElementById('dropdown-profile')) {
+        elem.onclick = dropdown_profile_callback;
+    }
+    if (elem = document.getElementById('dropdown-edit-profile')) {
+        elem.onclick = dropdown_edit_profile_callback;
+    }
+    if (elem = document.getElementById('dropdown-logbooks')) {
+        elem.onclick = dropdown_logbooks_callback;
+    }
+    if (elem = document.getElementById('dropdown-logout')) {
+        elem.onclick = dropdown_logout_callback;
+    }
 
 }
 /* callback for the profile link */

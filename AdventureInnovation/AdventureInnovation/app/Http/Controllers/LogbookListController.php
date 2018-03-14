@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Models\GuideDAO;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
 
 class LogbookListController extends Controller
 {
@@ -14,62 +13,45 @@ class LogbookListController extends Controller
         $this->dao = new GuideDAO();
     }
  
- 
+    /* get the logbook templates for this user then return logbook view */
 	public function passLogbookData(Request $request) {
 
-		session_start();
-		
-		if(isset($_SESSION["s_user_id"])) {
-			$s_user_id = $_SESSION["s_user_id"];
-			
-			foreach($s_user_id as $js_user_id) break;
-			$js_user_id = $js_user_id->id;
-			$logbook_types = $this->dao->getLogbookTypes($js_user_id);
-			$logbooks = $this->dao->getLogs($js_user_id);
-			
-			return view('logbook', ['logbook_types' => $logbook_types, 'logs' => $logbooks]);
-			
-		} else {
-			return "No Authentication";
-		}	
-		
-		return "No Authentication";
+	    if ( Auth::check()) {
+	        $user = Auth::user();
+
+            $logbook_types = $this->dao->getLogbookTypes($user->id);
+			$logbooks = $this->dao->getLogs($user->id);
+
+			return view('logs.logbook', ['logbook_types' => $logbook_types, 'logs' => $logbooks]);
+
+        }
+        return "User is not authenticated";
     }
-	
+
+    /* process request to delete log template */
 	public function deleteLogType(Request $request) {
 
-		session_start();
-		
-		if(isset($_SESSION["s_user_id"])) {
-			$s_user_id = $_SESSION["s_user_id"];
-			
-			foreach($s_user_id as $js_user_id) break;
-			$js_user_id = $js_user_id->id;
-			
+	    if ( Auth::check()) {
+	        $user = Auth::user();
+
 			$logbook_type_id = $request->logbook_type_id;
 			$logbook_type_id = $this->dao->deleteLogType($logbook_type_id);
-			
-			
-		}	
-		
+		}
+
+        return "User is not authenticated";
     }
-	
+
+    /* process request to delete log */
 	public function deleteLog(Request $request) {
 
-		session_start();
-		
-		if(isset($_SESSION["s_user_id"])) {
-			$s_user_id = $_SESSION["s_user_id"];
-			
-			foreach($s_user_id as $js_user_id) break;
-			$js_user_id = $js_user_id->id;
-			
+	    if ( Auth::check()) {
+	        $user = Auth::user();
+
 			$logbook_id = $request->logbook_id;
 			$logbook_id = $this->dao->deleteLog($logbook_id);
 			
-		} else {
-		}	
-		
+		}
+        return "User is not authenticated";
     }
 	
 }
