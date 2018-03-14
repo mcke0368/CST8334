@@ -1,16 +1,7 @@
 @extends('layout')
 
 @section('head')
-    <style>
-        
-        #contact_div {
-            color: black;
-            padding: 5%;
-            padding-left: 15%;
-            padding-right: 15%
-        }
-
-    </style>
+    
     <script>
     </script>
 @stop
@@ -18,7 +9,7 @@
 @section('body')
 
 <div id="contact_div" class="container-fluid">
-    <h1 class="text-center" style="margin-bottom:6%;">Contact Us</h1>
+    <h2 class="text-center" style="margin-bottom:6%;">Contact Us</h2>
     <div class="alert alert-success hideme">
         <strong>Success!</strong> You contacted us!
     </div>
