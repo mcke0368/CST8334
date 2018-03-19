@@ -99,7 +99,7 @@ class GuideDAO {
 		DB::table('logbooks')->where('id', '=', $logbook_id)->delete();
 	}
 
-	public function updateProfile($guide_id, $about,  $work, $employment, $training, $video, $social_media){
+	public function updateProfile($guide_id, $about,  $work, $employment, $training, $phone, $video, $social_media){
 
 	    $user = Auth::user();
 	    $guide = $user->guide;
@@ -127,6 +127,9 @@ class GuideDAO {
         }
 	    $vid->Youtube_URL = $video;
 	    $user->videos()->save($vid);
+
+	    $user->phone = $phone;
+	    $user->save();
 
 	    /*
 	    DB::table('guides')

@@ -128,8 +128,8 @@
                 <div class="panel panel-heading"><h4><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Contact Me!
                     </h4></div>
                 <div class="panel panel-body panel-no-margin">
-                    <div><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: <?php echo $email;?></div>
-                    <div><i class="fa fa-phone" aria-hidden="true"></i> Phone: 613-323-4124</div>
+                    <div><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: {{ $user->email }}</div>
+                    <div><i class="fa fa-phone" aria-hidden="true"></i> Phone: {{ $user->phone }}</div>
 
                     <div class="fa-2x">
                         <a href="{{$social_media->Twitter_URL}}">

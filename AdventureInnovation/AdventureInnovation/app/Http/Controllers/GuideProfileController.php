@@ -35,7 +35,7 @@ class GuideProfileController extends Controller
             $certs = $guide->certifications->all();
             $video = $user->videos()->first();
             $social_media = $user->socialmedia()->first();
-            return view('profile', ['guide' => $guide, 'certs' => $certs,
+            return view('profile', ['user' => $user, 'guide' => $guide, 'certs' => $certs,
                 'firstname' => $user->firstname,
                 'email' => $user->email, 'video' => $video, 'social_media' => $social_media]);
         } else {
@@ -55,7 +55,7 @@ class GuideProfileController extends Controller
         $video = $user->videos()->first();
         $social_media = $user->socialmedia()->first();
 
-        return view('editprofile', ['guide' => $guide, 'certs' => $certs,
+        return view('editprofile', ['user' => $user, 'guide' => $guide, 'certs' => $certs,
             'firstname' => $user->firstname,
             'email' => $user->email, 'video' => $video, 'social_media' => $social_media]);
     }
@@ -71,10 +71,11 @@ class GuideProfileController extends Controller
             $work = $request->work;
             $employment = $request->employment;
             $training = $request->training;
+            $phone = $request->phone;
             $videos = $request->videos;
             $social_media = $request->social_media;
 
-            $this->dao->updateProfile($guide->id, $about, $work, $employment, $training, $videos, $social_media);
+            $this->dao->updateProfile($guide->id, $about, $work, $employment, $training, $phone, $videos, $social_media);
         }
         catch (Execption $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";

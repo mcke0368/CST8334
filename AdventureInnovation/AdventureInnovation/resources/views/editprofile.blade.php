@@ -183,10 +183,10 @@
                     <!-- Add in the edit-bio-modal -->
                     <div id="contact-modal"></div>
                     <div><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: {{$email}}</div>
-                    <div><i class="fa fa-phone" aria-hidden="true"></i> Phone: {{"613-test"}}</div>
-
                     <div>
                         {!! Form::open(array('route' => 'videos.store')) !!}
+                        {{Form::label('PhoneL','phone :')}}
+                        {{Form::text('phoneNr', empty($user) ? null : $user->phone, array('class' => 'form-control', 'required' => 'required'))}}
                         {{Form::label('YoutubeL','YouTube URL :')}}
                         {{Form::text('Youtube_URL', empty($video) ? null : $video->Youtube_URL, array('class' => 'form-control', 'required' => 'required'))}}
                         {{Form::label('Facebook','Facebook Link:')}}

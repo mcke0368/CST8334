@@ -67,6 +67,9 @@ function getAllFields() {
     var employment = tinymce.get('tiny-employment').getContent();
     var training = tinymce.get('tiny-training').getContent();
     var social_media = {};
+
+    var phone = document.getElementsByName("phoneNr")[0].value;
+
     social_media["Facebook_URL"] = document.getElementsByName("Facebook_URL")[0].value;
     social_media["Instagram_URL"] = document.getElementsByName("Instagram_URL")[0].value;
     social_media["Twitter_URL"] = document.getElementsByName("Twitter_URL")[0].value;
@@ -76,7 +79,7 @@ function getAllFields() {
     $.ajax({
         type: "POST",
         url: '/ajaxUpdateProfile',
-        data: { about: about, work: work, employment:employment, training:training, social_media:social_media, videos:videos },
+        data: { about: about, work: work, employment:employment, training:training, phone:phone, social_media:social_media, videos:videos },
     })
     .done(function(msg) {
         console.log(msg);
