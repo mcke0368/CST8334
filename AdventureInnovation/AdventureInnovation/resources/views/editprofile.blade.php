@@ -190,12 +190,11 @@
                         {{Form::label('YoutubeL','YouTube URL :')}}
                         {{Form::text('Youtube_URL', empty($video) ? null : $video->Youtube_URL, array('class' => 'form-control', 'required' => 'required'))}}
                         {{Form::label('Facebook','Facebook Link:')}}
-                        {{Form::text('Facebook_URL', empty($video) ? null : $video->Facebook_URL, array('class' => 'form-control','required' => 'required'))}}
+                        {{Form::text('Facebook_URL', empty($video) ? null : $social_media->Facebook_URL, array('class' => 'form-control','required' => 'required'))}}
                         {{Form::label('Twitter','Twitter Link:')}}
-                        {{Form::text('Twitter_URL',empty($video) ? null : $video->Twitter_URL,array('class' => 'form-control','required' => 'required'))}}
+                        {{Form::text('Twitter_URL',empty($video) ? null : $social_media->Twitter_URL,array('class' => 'form-control','required' => 'required'))}}
                         {{Form::label('Instagram','Instagram Link:')}}
-                        {{Form::text('Instagram_URL', empty($video) ? null : $video->Instagram_URL, array('class' => 'form-control','required' => 'required'))}}
-                        {{Form::submit('Update')}}
+                        {{Form::text('Instagram_URL', empty($social_media) ? null : $social_media->Instagram_URL, array('class' => 'form-control','required' => 'required'))}}
                         {!! Form::close() !!}
                     </div>
                     <!--

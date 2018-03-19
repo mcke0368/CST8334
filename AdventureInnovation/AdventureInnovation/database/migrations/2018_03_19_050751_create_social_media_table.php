@@ -16,6 +16,15 @@ class CreateSocialMediaTable extends Migration
         Schema::create('social_media', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->longText('Facebook_URL');
+            $table->longText('Twitter_URL');
+            $table->longText('Instagram_URL');
+
+            $table->integer('user_id')->unsigned();
+        });
+
+        Schema::table('social_media', function($table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

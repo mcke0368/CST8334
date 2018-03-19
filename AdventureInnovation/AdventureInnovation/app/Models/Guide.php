@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Guide extends Model
 {
     protected $fillable = [
-        'about', 'work_experience', 'employement_history', 'training',
+        'about', 'work_experience', 'employment_history', 'training',
     ];
 
      /**********************************************************************************
@@ -33,10 +33,5 @@ class Guide extends Model
     public function logbooks() {
         return $this->hasMany('App\Models\BaseLog');
     }
-    /**********************************************************************************
-     * video
-     **********************************************************************************/
-    public function video(){
-        return $this->hasMany('App\Models\Video');
-    }
+
 }

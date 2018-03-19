@@ -18,14 +18,11 @@ class CreateVideosTable extends Migration
             $table->timestamps();
             //variables
             $table->longText('Youtube_URL');
-            $table->longText('Facebook_URL');
-            $table->longText('Twitter_URL');
-            $table->longText('Instagram_URL');
 
-            $table->integer('guide_id')->unsigned();
+            $table->integer('user_id')->unsigned();
         });
         Schema::table('videos', function($table) {
-            $table->foreign('guide_id')->references('id')->on('guides');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -132,11 +132,11 @@
                     <div><i class="fa fa-phone" aria-hidden="true"></i> Phone: 613-323-4124</div>
 
                     <div class="fa-2x">
-                        <a href="{{$video->Twitter_URL}}">
+                        <a href="{{$social_media->Twitter_URL}}">
                             <i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a href="{{$video->Instagram_URL}}">
+                        <a href="{{$social_media->Instagram_URL}}">
                             <i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        <a href="{{$video->Facebook_URL}}">
+                        <a href="{{$social_media->Facebook_URL}}">
                             <i class="fa fa-facebook-official" aria-hidden="true"></i></a>
                     </div>
                 </div>
@@ -149,11 +149,9 @@
 
                 <div class="panel panel-body panel-no-margin">
                     <?php
-                    $user_id = Auth::id();
-                    $guide = DB::table('guides')->where('user_id', $user_id)->first();
-                    $id = $guide->id;
-                    $social_media = DB::table('videos')->where('guide_id', $id)->first();
-                    $Raw_Youtube_link = $social_media->Youtube_URL;
+                    $user = Auth::user();
+                    $Raw_Youtube_link = $user->videos()->first()->Youtube_URL;
+                    // TODO store this converter function somewhere other than inline
                     function convertYoutube($string)
                     {
                         return preg_replace(

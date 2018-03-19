@@ -17,10 +17,7 @@ class VideosTableSeeder extends Seeder
 
         $video = new Video();
         $video->Youtube_URL = 'https://youtu.be/tgbNymZ7vqY';
-        $video->Facebook_URL = 'https://www.facebook.com/canada150th/';
-        $video->Twitter_URL = 'https://twitter.com/canada150th?lang=en';
-        $video->Instagram_URL = 'https://www.instagram.com/explore/tags/canada150/';
-        $video->guide_id = $user->guide->id;
+        $video->user_id = $user->id;
 
         $video->save();
 

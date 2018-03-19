@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Video extends Model
+class SocialMedia extends Model
 {
     protected $fillable = [
-        'Youtube_URL',
+        'Facebook_URL','Twitter_URL','Instagram_URL'
     ];
 
     public function user() {
