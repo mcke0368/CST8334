@@ -47,23 +47,17 @@
                 </div>
             </div>
             <div class="col-40 col-sm-4">
-                <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading" style="text-align: center;background-color: #54B2C7">Log History</div>
-                    <div class="panel-footer" id=logscroll>
                         @component('logBookScroll')
                             @slot('title')
                                 Joel's Test Logbooks
                             @endslot
+                            @slot('bannerColour')
+                                #54B2C7
+                            @endslot
 
                             Joel
                         @endcomponent
-                    </div>
-                    <!-- Table -->
-                    <!-- <table class="table">
-                        ...
-                    </table> -->
-                </div>
+
             </div>
             <!-- Force next columns to break to new line -->
         </div>
