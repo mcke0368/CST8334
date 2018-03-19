@@ -17,3 +17,8 @@
 .hideme {
     display: none;
 }
+
+#logscroll {
+    height: 200px;
+    overflow-y:auto;
+}
