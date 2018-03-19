@@ -5,6 +5,7 @@
 namespace App\Models;
 use App;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class GuideDAO {
@@ -98,14 +99,47 @@ class GuideDAO {
 		DB::table('logbooks')->where('id', '=', $logbook_id)->delete();
 	}
 
-	public function updateProfile($guide_id, $about,  $work, $employment, $training){
-		DB::table('guides')
+	public function updateProfile($guide_id, $about,  $work, $employment, $training, $phone, $video, $social_media){
+
+	    $user = Auth::user();
+	    $guide = $user->guide;
+
+	    $guide->about = $about;
+	    $guide->work_experience = $work;
+	    $guide->employment_history = $employment;
+	    $guide->training = $training;
+        $guide->save();
+
+        if ($user->socialmedia == null) {
+            $soc = new SocialMedia();
+        } else {
+            $soc = $user->socialmedia()->first();
+        }
+        $soc->Facebook_URL = $social_media["Facebook_URL"];
+        $soc->Twitter_URL = $social_media["Twitter_URL"];
+	    $soc->Instagram_URL = $social_media["Instagram_URL"];
+        $user->socialmedia()->save($soc);
+
+        if ($user->videos()->count() == 0) {
+            $vid = new Video();
+        } else {
+            $vid = $user->videos()->first();
+        }
+	    $vid->Youtube_URL = $video;
+	    $user->videos()->save($vid);
+
+	    $user->phone = $phone;
+	    $user->save();
+
+	    /*
+	    DB::table('guides')
 			->where('id', $guide_id)
 			->update(
 			['about' => $about, 
 			'work_experience' => $work,
 			'employment_history' => $employment,
 			'training' => $training]);
+*/
 	}
 
 	public function updateCerts($guide_id, $name, $link, $expiry){

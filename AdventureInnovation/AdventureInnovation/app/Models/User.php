@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'username', 'email', 'password',
+        'firstname', 'lastname', 'username', 'email', 'password', 'phone',
     ];
 
     /**
@@ -33,6 +33,22 @@ class User extends Authenticatable
 
     public function guide() {
         return $this->hasOne('App\Models\Guide');
+    }
+
+    /**********************************************************************************
+     * Social Media
+     **********************************************************************************/
+
+    public function socialmedia() {
+        return $this->hasOne('App\Models\SocialMedia');
+    }
+
+    /**********************************************************************************
+     * Videos
+     **********************************************************************************/
+
+    public function videos() {
+        return $this->hasMany('App\Models\Video');
     }
 
     /**********************************************************************************

@@ -66,12 +66,20 @@ function getAllFields() {
     var work = tinymce.get('tiny-work').getContent();
     var employment = tinymce.get('tiny-employment').getContent();
     var training = tinymce.get('tiny-training').getContent();
+    var social_media = {};
+
+    var phone = document.getElementsByName("phoneNr")[0].value;
+
+    social_media["Facebook_URL"] = document.getElementsByName("Facebook_URL")[0].value;
+    social_media["Instagram_URL"] = document.getElementsByName("Instagram_URL")[0].value;
+    social_media["Twitter_URL"] = document.getElementsByName("Twitter_URL")[0].value;
+    var videos = document.getElementsByName("Youtube_URL")[0].value;
 
     //call an ajax enter this into the DB
     $.ajax({
         type: "POST",
         url: '/ajaxUpdateProfile',
-        data: { about: about, work: work, employment:employment, training:training },    
+        data: { about: about, work: work, employment:employment, training:training, phone:phone, social_media:social_media, videos:videos },
     })
     .done(function(msg) {
         console.log(msg);
@@ -131,3 +139,5 @@ function dropdown_logout_callback() {
             location.href = '/';
         });
 }
+
+

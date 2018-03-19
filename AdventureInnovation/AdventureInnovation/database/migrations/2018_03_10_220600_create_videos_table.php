@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCertificationGuideTable extends Migration
+class CreateVideosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,16 @@ class CreateCertificationGuideTable extends Migration
      */
     public function up()
     {
-        Schema::create('certification_guide', function (Blueprint $table) {
+        Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('guide_id')->unsigned();
-            $table->integer('certification_id')->unsigned();
+            //variables
+            $table->longText('Youtube_URL');
+
+            $table->integer('user_id')->unsigned();
+        });
+        Schema::table('videos', function($table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -28,6 +33,6 @@ class CreateCertificationGuideTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('certification_guide');
+        Schema::dropIfExists('videos');
     }
 }
