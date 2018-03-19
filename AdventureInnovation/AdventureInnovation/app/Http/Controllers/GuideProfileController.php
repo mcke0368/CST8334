@@ -30,10 +30,10 @@ class GuideProfileController extends Controller
         $guide = $user->guide;
         if ($guide) {
             $certs = $guide->certifications->all();
-
+            $video = $guide->video()->first();
             return view('profile', ['guide' => $guide, 'certs' => $certs,
                 'firstname' => $user->firstname,
-                'email' => $user->email]);
+                'email' => $user->email, 'video' => $video]);
         }
         else {
             /* log the person out and go back to welcome screen
@@ -48,9 +48,10 @@ class GuideProfileController extends Controller
         $user = Auth::user();
         $guide = $user->guide;
         $certs = $guide->certifications->all();
+        $video = $guide->video()->first();
         return view('editprofile', ['guide' => $guide, 'certs' => $certs,
             'firstname' => $user->firstname,
-            'email' => $user->email]);
+            'email' => $user->email, 'video' => $video]);
     }
 
     /* called via AJAX to update profile information */
