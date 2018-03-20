@@ -1,35 +1,88 @@
-<div class="container">
+<div class="panel panel-default">
+    <div class="panel-body">
 
-    <div class="row" style="margin-top: 1em">
+        <div class="row" style="margin-top: 1em">
+            <div class="col-sm-6 ">
+                {{ Form::label('base-1-logtitle', 'Log Title') }}
+                {{ Form::text('base-1-logtitle', null, array('class' => 'form-control')) }}
+            </div>
 
-        <div class="col-sm-1  col-sm-offset-3">
-            <label for="weather-temperature" class="col-form-label"><i
-                        class="wi wi-thermometer" style="font-size: x-large"></i></label>
+            <div class="col-sm-6 ">
+                {{ Form::label('base-1-date','Date') }}
+                {{ Form::text('base-1-date', null, array('class' => 'form-control')) }}
+            </div>
         </div>
+        <div class="row" style="margin-top: 1em">
+            <div class="col-sm-6 ">
+                {{ Form::label('base-1-location', 'Location') }}
+                {{ Form::text('base-1-location', null, array('class' => 'form-control')) }}
+            </div>
 
-        <div class="col-sm-2 ">
-            {{ Form::text('weather-temperature', null, array('class' => 'form-control')) }}
+            <div class="col-sm-6 ">
+                {{ Form::label('base-1-route', 'Route') }}
+                {{ Form::text('base-1-route', null, array('class' => 'form-control')) }}
+            </div>
         </div>
-        <div class="col-sm-1  ">
-            <label for="weather-wind" class="col-form-label"><i
-                        class="wi wi-strong-wind" style="font-size: x-large"></i></label>
+        <div class="row" style="margin-top: 1em">
+            <div class="col-sm-6 ">
+                {{ Form::label('base-1-position', 'Position') }}
+                {{ Form::select('base-1-position',
+                    ['0' => 'Team Leader', '1' => 'Asst. Team Leader', '2' => 'Instructor', '4' => 'Guide', '5' => 'Training', '6' => 'Personal' ],
+                    null, array('class' => 'form-control'))
+                }}
+            </div>
+
+            <div class="col-sm-6 ">
+                {{ Form::label('base-1-company', 'Company') }}
+                {{ Form::text('base-1-company', null, array('class' => 'form-control')) }}
+            </div>
         </div>
+        <div class="row" style="margin-top: 1em">
+            <div class="col-sm-6 ">
+                {{ Form::label('base-1-nrparticipants', 'Start Time') }}
+                {{ Form::text('base-1-nrparticipants', null, array('class' => 'form-control')) }}
+            </div>
 
-        <div class="col-sm-2">
-            {{ Form::select('weather-wind', ['0' => 'No Wind', '1' => 'Light', '2' => 'Strong'], '0', array('class' => 'form-control')) }}
+            <div class="col-sm-6 ">
+                {{ Form::label('base-1-endtime', 'End Time') }}
+                {{ Form::text('base-1-enttime', null, array('class' => 'form-control')) }}
+            </div>
         </div>
+        <div class="row" style="margin-top: 1em">
+            <div class="col-sm-6 ">
+                {{ Form::label('base-1-duration', 'Duration') }}
+                {{ Form::text('base-1-duration', null, array('class' => 'form-control')) }}
+            </div>
 
+            <div class="col-sm-6 ">
+                <div>
+                    {{ Form::label('base-1-incident', 'Incident') }}
+                </div>
+                <div>
 
-    </div>
+                    {{ Form::label('base-1-incident', 'yes') }}
+                    {{ Form::radio('base-1-incident', 'yes', array('class' => 'form-control')) }}
+                    {{ Form::label('base-1-incident', 'no') }}
+                    {{ Form::radio('base-1-incident', 'no', array('class' => 'form-control')) }}
+                </div>
 
-    <!-- Notes -->
-    <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-            <div class="form-group">
-                <label for="weather-notes" class="col-form-label">Notes</label>
-                {{ Form::textarea('weather-notes', null, array('class' => 'form-control')) }}
+            </div>
+        </div>
+        <div class="row" style="margin-top: 1em">
+            <div class="col-sm-6 ">
+                {{ Form::label('base-1-nrparticipants', '# of Participants') }}
+                {{ Form::text('base-1-nrparticipants', null, array('class' => 'form-control')) }}
+            </div>
+            <div class="col-sm-6 ">
+                {{ Form::label('base-1-grpsize', 'Group Size') }}
+                {{ Form::text('base-1-grpsize', null, array('class' => 'form-control')) }}
+            </div>
+        </div>
+        <div class="row" style="margin-top: 1em">
+            <div class="col-sm-12">
+                {{ Form::label('base-1-leaders', 'Other leaders') }}
+                {{ Form::textarea('base-1-leaders', null, array('class' => 'form-control')) }}
             </div>
         </div>
     </div>
-
 </div>
