@@ -33,9 +33,7 @@ class ConstraintsLogbooksTable extends Migration
         Schema::table('logbooks', function (Blueprint $table) {
             // drop fk constraint and the columns for user_id and logbook_type_id
             $table->dropForeign('user_id');
-            $table->dropColumn('user_id');
             $table->dropForeign('logbook_type_id');
-            $table->dropColumn('logbook_type_id');
         });
     }
 }

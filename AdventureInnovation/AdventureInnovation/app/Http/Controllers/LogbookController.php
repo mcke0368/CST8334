@@ -51,12 +51,10 @@ class LogbookController extends Controller
     function showLogTemplate(Request $request)
     {
         if (Auth::check()) {
-            $logtype_id = $request->session()->pull('logtype_id');
+            $logtype_id = $request->session()->get('logtype_id');
             $log_types = $this->dao->getLogbookTypeHTML($logtype_id);
             return view('logs.createDefaultLogbook', ['log_types' => $log_types]);
 
-        } else {
-            return "No Authentication";
         }
 
         return "No Authentication";
@@ -66,21 +64,13 @@ class LogbookController extends Controller
     function saveLog(Request $request)
     {
 
-        session_start();
-
-        if (isset($_SESSION["s_user_id"])) {
-
+        if (Auth::check()) {
+            $user = Auth::user();
             $logbook_title = $request->logbook_title;
             $logbook_html = $request->logbook_html;
 
-            $logtype_id = $_SESSION["logtype_id"];
-            $logtype_id = substr($logtype_id, 2);
-
-            $s_user_id = $_SESSION["s_user_id"];
-            foreach ($s_user_id as $js_user_id) break;
-            $js_user_id = $js_user_id->id;
-
-            $this->dao->createNewLogbook($logbook_title, $logtype_id, $js_user_id, $logbook_html);
+            $logtype_id = $request->session()->get('logtype_id');
+            $this->dao->createNewLogbook($logbook_title, $logtype_id, $user->id, $logbook_html);
 
             return 'true';
 

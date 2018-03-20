@@ -14,8 +14,11 @@ class CreateKayakingLogsTable extends Migration
     public function up()
     {
         Schema::create('kayaking_logs', function (Blueprint $table) {
+            $table->engine = 'InnoDB';        
             $table->increments('id');
             $table->string('water_level',100);
+            $table->integer('base_log_id')->unsigned()->nullable(true);
+            $table->integer('template_id')->unsigned()->nullable(true);
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClimbingLogsTable extends Migration
+class CreateLogTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateClimbingLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('climbing_logs', function (Blueprint $table) {
+        Schema::create('log_types', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->integer('base_log_id')->unsigned()->nullable(true);
-            $table->integer('template_id')->unsigned()->nullable(true);
+            $table->string('logable_type',64)->primary();
+            $table->longText('description');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateClimbingLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('climbing_logs');
+        Schema::dropIfExists('log_types');
     }
 }

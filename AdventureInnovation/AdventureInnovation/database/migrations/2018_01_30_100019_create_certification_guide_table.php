@@ -14,6 +14,7 @@ class CreateCertificationGuideTable extends Migration
     public function up()
     {
         Schema::create('certification_guide', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->timestamps();
             $table->integer('guide_id')->unsigned();

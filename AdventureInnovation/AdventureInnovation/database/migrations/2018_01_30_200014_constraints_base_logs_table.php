@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGuideCertificationTable extends Migration
+class ConstraintsBaseLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateGuideCertificationTable extends Migration
      */
     public function up()
     {
-        Schema::create('guide_certification', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('guide_id')->unsigned();
-            $table->integer('certification_id')->unsigned();
+        Schema::table('base_logs', function (Blueprint $table) {
+            // add foreign key
+            $table->foreign('logable_type')->references('logable_type')->on('log_types');
         });
     }
 
@@ -27,6 +26,8 @@ class CreateGuideCertificationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guide_certification');
+        Schema::table('base_logs', function (Blueprint $table) {
+            $table->dropForeign('logable_type');
+        });
     }
 }

@@ -156,3 +156,14 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::resource('videos', 'VideoController');
 
+
+
+
+
+/**********************************************************************************
+ * Testing Controller
+ **********************************************************************************/
+Route::get('testingWeather', 'TestingController@getWeather')->name('getWeather');
+
+
+
