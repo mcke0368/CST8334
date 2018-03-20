@@ -171,6 +171,14 @@
                     ?>
                 </div>
             </div>
+            @component('logBookScroll')
+                @slot('title')
+                    Logbook History
+                @endslot
+                @slot('bannerColour')
+                    #523E3A
+                @endslot
+            @endcomponent
         </div>
 
 
