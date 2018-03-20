@@ -15,28 +15,18 @@
         });
     </script>
 
-    <script type="text/javascript" src="{{ URL::asset('slick/slick.min.js') }}"></script>
-    <script>
-        $(document).ready(function () {
-            $(function () {
-                $("#bio-modal").load("{{ asset('../resources/modals/edit-bio-modal.html') }}",
-                    function (response, status, xhr) {
-                        if (status == "error") {
-                            var msg = "Sorry but there was an error: ";
-                            $("#error").html(msg + xhr.status + " " + xhr.statusText);
-                        }
-                    });
-                $("#cert-modal").load("{{ asset('../resources/modals/edit-cert-modal.html') }}");
-                $("#work-modal").load("{{ asset('../resources/modals/edit-work-modal.html') }}");
-                $("#emp-modal").load("{{ asset('../resources/modals/edit-emp-modal.html') }}");
-                $("#edu-modal").load("{{ asset('../resources/modals/edit-edu-modal.html') }}");
-                $("#training-modal").load("{{ asset('../resources/modals/edit-training-modal.html') }}");
-                $("#refer-modal").load("{{ asset('../resources/modals/edit-refer-modal.html') }}");
-                $("#contact-modal").load("{{ asset('../resources/modals/edit-contact-modal.html') }}");
-                $("#profile-pic-modal").load("{{ asset('../resources/modals/edit-profile-pic-modal.html') }}");
-            });
-        });
-    </script>
+    <!-- INCLUDE MODALS... blade @ include not working -->
+    <?php
+    include ('../resources/modals/edit-cert-modal.html');
+    include ('../resources/modals/edit-bio-modal.html');
+    include ('../resources/modals/edit-work-modal.html');
+    include ('../resources/modals/edit-emp-modal.html');
+    include ('../resources/modals/edit-edu-modal.html');
+    include ('../resources/modals/edit-training-modal.html');
+    include ('../resources/modals/edit-refer-modal.html');
+    include ('../resources/modals/edit-contact-modal.html');
+    include ('../resources/modals/edit-profile-pic-modal.html');
+    ?>
 
     <style>
         .inline-block {
