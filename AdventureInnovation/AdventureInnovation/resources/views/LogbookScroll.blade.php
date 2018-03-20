@@ -30,7 +30,7 @@
         <div class="list-group" id=logscroll>
 
             <?php foreach ($logs as $log) { ?>
-                <a href="#" class="list-group-item flex-column list-group-item-action">
+                <a href="printLog" class="list-group-item flex-column list-group-item-action">
                     <div class="row">
                       <h4> {{$log->debrief}}
                           <span class="badge badge-primary badge-pill pull-right" style ="background-color: {{$bannerColour}}">{{date('F j, Y',strtotime($log->date_occurred))}}</span>

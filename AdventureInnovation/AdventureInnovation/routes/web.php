@@ -114,6 +114,11 @@ Route::get('companyLogin', function()
     return view('companyLogin');
 });
 
+/** Added print view for log */
+Route::get('printLog', function(){
+   return view('logPrintView');
+});
+
 /**********************************************************************************
 * Profile Controller
 **********************************************************************************/
