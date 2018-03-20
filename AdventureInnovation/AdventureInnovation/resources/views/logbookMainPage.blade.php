@@ -49,13 +49,11 @@
             <div class="col-40 col-sm-4">
                         @component('logBookScroll')
                             @slot('title')
-                                Joel's Test Logbooks
+                                Logbook History
                             @endslot
                             @slot('bannerColour')
                                 #54B2C7
                             @endslot
-
-                            Joel
                         @endcomponent
 
             </div>

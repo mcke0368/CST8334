@@ -13,12 +13,13 @@
 <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading d-flex justify-content-center align-items-center" style="background-color: {{$bannerColour}}">
-        <h3>{{$title}}</h3>
-        @if ($logcount > 0)
-            <small>Log Count <?php echo$logcount?></small>
-        @elseif ($logcount === 0 )
-            <small>You have no logs to show</small>
-        @endif
+        <h4><i class="glyphicon glyphicon-book" ></i> {{$title}}
+            @if ($logcount > 0)
+                <small class = "pull-right align-items-center">Log Count: {{$logcount}} </small>
+            @elseif ($logcount === 0 )
+                <small class = "pull-right align-items-center">You have no logs to show</small>
+            @endif
+        </h4>
     </div>
     <div class="panel-footer">
 
@@ -29,17 +30,18 @@
         <div class="list-group" id=logscroll>
 
             <?php foreach ($logs as $log) { ?>
-            <a href="#" class="list-group-item flex-column list-group-item-action">
-                <div class="row">
-                  <h3 class="pull-left"><?php echo$log->debrief?> </h3>
-                  <span class="badge badge-primary badge-pill pull-right align-center"><?php echo date('F j, Y',strtotime($log->date_occurred))?></span>
-                </div>
-                <p class="mb-1"><?php echo$log->summary?></p>
-                <small class="text-muted"><?php echo$log->activity?></small>
-            </a>
-          <?php } ?>
+                <a href="#" class="list-group-item flex-column list-group-item-action">
+                    <div class="row">
+                      <h4> {{$log->debrief}}
+                          <span class="badge badge-primary badge-pill pull-right" style ="background-color: {{$bannerColour}}">{{date('F j, Y',strtotime($log->date_occurred))}}</span>
+                      </h4>
+                    </div>
+                    <h5 class="mb-1">{{$log->summary}}
+                        <small class="pull-right">{{$log->activity}}</small>
+                    </h5>
+                </a>
+            <?php } ?>
 
         </div>
     </div>
-Hi {{ $slot }}
 </div>
