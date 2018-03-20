@@ -1,5 +1,10 @@
 
-$(document).ready(function() { 
+$(document).ready(function() {
+
+    $('#about-save-button').click(function(){
+        var about = $('#about-text').val();
+        addAboutMeText(about);
+    });
     
     $('#cert-button').click(function(){
         var cert = $('#cert-name').val();
@@ -24,6 +29,31 @@ $(document).ready(function() {
     setup_dropdown_links();
 });
 
+function addAboutMeText(about) {
+
+    $("#bio").empty().append(
+        '<div id="edit-bio-modal"></div>'+
+        '<div style="overflow:hidden">'+
+        '<p>'+about+'</p>'+
+        '</a></li>'
+    );
+    //TESTING
+    $.ajax({
+        type: "POST",
+        url: '/ajaxUpdateAboutMe',
+        data: {about: about},
+        success: function (msg) {
+            console.log(msg);
+        },
+        fail: function (jqXHR, textStatus) {
+            console.log(jqXHR);
+            console.log("Request failed: " + textStatus);
+        }
+    });
+
+    $('#edit-bio-modal').modal('toggle');
+}
+
 function addCertification(certification_name, expiration, link) {
    
     $("#edit-cert ul").append(
@@ -40,9 +70,6 @@ function addCertification(certification_name, expiration, link) {
         '</div>'+
         '</a></li>'
     );
-
-    
-
     //call an ajax enter this into the DB
     $.ajax({
         type: "POST",
@@ -62,7 +89,7 @@ function addCertification(certification_name, expiration, link) {
 
 
 function getAllFields() {
-    var about = tinymce.get('tiny-about').getContent();
+    var about = $("#bio").val();
     var work = tinymce.get('tiny-work').getContent();
     var employment = tinymce.get('tiny-employment').getContent();
     var training = tinymce.get('tiny-training').getContent();

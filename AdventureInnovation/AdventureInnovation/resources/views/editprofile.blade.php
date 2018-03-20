@@ -3,10 +3,13 @@
 @section('headGuide')
     <link rel="stylesheet" href="{{ URL::asset('slick/slick.css') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('slick/slick-theme.css') }}"/>
+
+    <!-- COMMENTING OUT TINYMCE TO TEST WITHOUT IT
     <script>tinymce.init({
             selector: 'textarea',
             plugins: "lists"
         });</script>
+    -->
     <script>
         $(document).on("click", "#b2", function () {
             $('html, body').animate({
@@ -216,13 +219,9 @@
                         <!-- Trigger the modal with an href -->
                         <a data-toggle="modal" href="#edit-bio-modal"><i class="fa fa-pencil-square-o edit-pencil"
                                                                          aria-hidden="true"></i></a>
-                        <!-- Add in the edit-bio-modal -->
-                        <div id="bio-modal"></div>
 
-                        <div class="panel-body">
-                        <textarea id="tiny-about">
-                        <?php echo $guide->about; ?>
-                        </textarea>
+                        <div class="panel-body" id="bio">
+                            {{$guide->about}}
                         </div>
                     </div>
                 </div>
