@@ -26,6 +26,10 @@ class PagesLoadTest extends TestCase
         $response = $this->get('/login');
         $response->assertStatus(200);
 
+        // About
+        $response = $this->get('/about');
+        $response->assertStatus(200);
+
         //checks to make sure you can't access profile pages
         //without logging in.  Check status 302 (redirect) and
         $response = $this->get('/profile');
