@@ -124,6 +124,8 @@ Route::get('printlog', function (){
 * Profile Controller
 **********************************************************************************/
 
+Route::post('/ajaxUpdateWorkExperience','GuideProfileController@ajaxUpdateWorkExperience')->name('ajaxUpdateWorkExperience');
+Route::post('/ajaxUpdateAboutMe','GuideProfileController@ajaxUpdateAboutMe')->name('ajaxUpdateAboutMe');
 Route::post('/ajaxUpdateProfile', 'GuideProfileController@ajaxUpdateProfile')->name('ajaxUpdateProfile');
 Route::post('/ajaxUpdateCerts', 'GuideProfileController@ajaxUpdateCerts')->name('ajaxUpdateCerts');
 Route::get('/profile', 'GuideProfileController@getGuide')->name('profile');

@@ -3,10 +3,13 @@
 @section('headGuide')
     <link rel="stylesheet" href="{{ URL::asset('slick/slick.css') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('slick/slick-theme.css') }}"/>
+
+    <!-- COMMENTING OUT TINYMCE TO TEST WITHOUT IT
     <script>tinymce.init({
             selector: 'textarea',
             plugins: "lists"
         });</script>
+    -->
     <script>
         $(document).on("click", "#b2", function () {
             $('html, body').animate({
@@ -15,28 +18,18 @@
         });
     </script>
 
-    <script type="text/javascript" src="{{ URL::asset('slick/slick.min.js') }}"></script>
-    <script>
-        $(document).ready(function () {
-            $(function () {
-                $("#bio-modal").load("{{ asset('../resources/modals/edit-bio-modal.html') }}",
-                    function (response, status, xhr) {
-                        if (status == "error") {
-                            var msg = "Sorry but there was an error: ";
-                            $("#error").html(msg + xhr.status + " " + xhr.statusText);
-                        }
-                    });
-                $("#cert-modal").load("{{ asset('../resources/modals/edit-cert-modal.html') }}");
-                $("#work-modal").load("{{ asset('../resources/modals/edit-work-modal.html') }}");
-                $("#emp-modal").load("{{ asset('../resources/modals/edit-emp-modal.html') }}");
-                $("#edu-modal").load("{{ asset('../resources/modals/edit-edu-modal.html') }}");
-                $("#training-modal").load("{{ asset('../resources/modals/edit-training-modal.html') }}");
-                $("#refer-modal").load("{{ asset('../resources/modals/edit-refer-modal.html') }}");
-                $("#contact-modal").load("{{ asset('../resources/modals/edit-contact-modal.html') }}");
-                $("#profile-pic-modal").load("{{ asset('../resources/modals/edit-profile-pic-modal.html') }}");
-            });
-        });
-    </script>
+    <!-- INCLUDE MODALS... blade @ include not working -->
+    <?php
+    include ('../resources/modals/edit-cert-modal.html');
+    include ('../resources/modals/edit-bio-modal.html');
+    include ('../resources/modals/edit-work-modal.html');
+    include ('../resources/modals/edit-emp-modal.html');
+    include ('../resources/modals/edit-edu-modal.html');
+    include ('../resources/modals/edit-training-modal.html');
+    include ('../resources/modals/edit-refer-modal.html');
+    include ('../resources/modals/edit-contact-modal.html');
+    include ('../resources/modals/edit-profile-pic-modal.html');
+    ?>
 
 @stop
 
@@ -107,14 +100,10 @@
                     <div id="collapse1" class="panel-collapse collapse in">
                         <!-- Trigger the modal with an href -->
                         <a data-toggle="modal" href="#edit-bio-modal"><i class="fa fa-pencil-square-o edit-pencil"
-                aria-hidden="true"></i></a>
-                        <!-- Add in the edit-bio-modal -->
-                        <div id="bio-modal"></div>
-
-                        <div class="panel-body">
-                        <textarea id="tiny-about">
-                        <?php echo $guide->about; ?>
-                        </textarea>
+                                                                         aria-hidden="true"></i></a>
+                        
+                        <div class="panel-body" id="bio">
+                            {{$guide->about}}
                         </div>
                     </div>
                 </div>
@@ -167,28 +156,30 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Work Experience</h4></div>
                                 <div class="panel-body work-exp-panel">
-                                    <div class="exp-panel">
-                                    <textarea id="tiny-work">
-                                    <?php echo $guide->work_experience;?>
-                                    </textarea>
+                                    <a data-toggle="modal" href="#edit-work-modal"><i class="fa fa-pencil-square-o edit-pencil"
+                                                                                     aria-hidden="true"></i></a>
+                                    <div id="work-experience">
+                                        {{ $guide->work_experience }}
                                     </div>
                                 </div>
-
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Employment History</h4></div>
-                                <textarea id="tiny-employment">
-                                <?php echo $guide->employment_history; ?>
-                                </textarea>
+                                <a data-toggle="modal" href="#edit-emp-modal"><i class="fa fa-pencil-square-o edit-pencil"
+                                                                                 aria-hidden="true"></i></a>
+                                    <textarea class="form-control" rows="6" id="employment-history">
+                                        {{ $guide->employment_history }}
+                                    </textarea>
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Training/Courses</h4></div>
+                                <a data-toggle="modal" href="#edit-training-modal"><i class="fa fa-pencil-square-o edit-pencil"
+                                                                                 aria-hidden="true"></i></a>
                                 <div class="panel-body training-panel">
-                                    <!-- Add in the edit-training-modal -->
                                     <div id="training-modal"></div>
-                                    <textarea id="tiny-training">
-                                    <?php echo $guide->training;?>
-                                    </textarea>
+                                        <textarea class="form-control" rows="6" id="training">
+                                            {{ $guide->training }}
+                                        </textarea>
                                 </div>
                             </div>
                             <div class="pdf-link">

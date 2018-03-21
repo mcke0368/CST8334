@@ -1,5 +1,10 @@
 
-$(document).ready(function() { 
+$(document).ready(function() {
+
+    $('#about-save-button').click(function(){
+        var about = $('#about-text').val();
+        addAboutMeText(about);
+    });
     
     $('#cert-button').click(function(){
         var cert = $('#cert-name').val();
@@ -7,6 +12,12 @@ $(document).ready(function() {
         var link = file.substring(12, file.length);
         var expiration = $('#cert-exp-date').val();
         addCertification(cert, expiration, link);
+    });
+
+    $('#work-save-button').click(function(){
+      //  var title = $('#work-title').val();
+        var description = $('#work-text').val();
+        addWorkExperience(description);
     });
 
     $('#send-all-data').click(function(){
@@ -24,6 +35,61 @@ $(document).ready(function() {
     setup_dropdown_links();
 });
 
+function addAboutMeText(about) {
+
+    $("#bio").empty().append(
+        '<div id="edit-bio-modal"></div>'+
+        '<div style="overflow:hidden">'+
+        '<p>'+about+'</p>'+
+        '</a></li>'
+    );
+    $.ajax({
+        type: "POST",
+        url: '/ajaxUpdateAboutMe',
+        data: {about: about},
+        success: function (msg) {
+            console.log(msg);
+        },
+        fail: function (jqXHR, textStatus) {
+            console.log(jqXHR);
+            console.log("Request failed: " + textStatus);
+        }
+    });
+
+    $('#edit-bio-modal').modal('toggle');
+}
+
+/** RESUME ----------------------------------------------------------------------- */
+function addWorkExperience(work_experience) {
+
+    $("#work-experience").empty().append(
+        '<li class="list-group-item">'+
+        '<a data-toggle="modal" href="#edit-work-modal">'+
+        '<i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>'+
+        '<div id="edit-work-modal"></div>'+
+        '<div style="overflow:hidden">'+
+        '<p>' + work_experience + '</p>'+
+        '</div>'+
+        '</a></li>'
+    );
+    $.ajax({
+        type: "POST",
+        url: '/ajaxUpdateWorkExperience',
+        data: {work_experience: work_experience},
+        success: function (msg) {
+            console.log(msg);
+        },
+        fail: function (jqXHR, textStatus) {
+            console.log(jqXHR);
+            console.log("Request failed: " + textStatus);
+        }
+    });
+
+    $('#edit-work-modal').modal('toggle');
+}
+
+
+
 function addCertification(certification_name, expiration, link) {
    
     $("#edit-cert ul").append(
@@ -40,9 +106,6 @@ function addCertification(certification_name, expiration, link) {
         '</div>'+
         '</a></li>'
     );
-
-    
-
     //call an ajax enter this into the DB
     $.ajax({
         type: "POST",
@@ -62,10 +125,10 @@ function addCertification(certification_name, expiration, link) {
 
 
 function getAllFields() {
-    var about = tinymce.get('tiny-about').getContent();
-    var work = tinymce.get('tiny-work').getContent();
-    var employment = tinymce.get('tiny-employment').getContent();
-    var training = tinymce.get('tiny-training').getContent();
+    var about = $("#bio").val();
+    var work = $("#work_experience").val();
+    var employment = $("#employment_history").val();
+    var training = $("#training").val();
     var social_media = {};
 
     var phone = document.getElementsByName("phoneNr")[0].value;
