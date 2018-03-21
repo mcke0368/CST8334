@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class viewLogController extends Controller
 {
-    public function displayLog(Log $log){
+    public function displayLog($log_id){
 
         $log = logPrintView::all(); /**??*/
-        return view('logPrintView')->with('logPrintView', $log);
+        return view('logPrintView')->with('logPrintView', $log_id);
 
     }
 }
