@@ -1,15 +1,7 @@
 @extends('layoutGuide')
 
 @section('headGuide')
-    <style>
-     #Dashboard_div {
-            color: black;
-            padding: 0%;
-            padding-left: 15%;
-            padding-right: 15%
-        }
-
-    </style>
+    
 	<script>
     setCal()
 

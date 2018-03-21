@@ -1,25 +1,7 @@
 @extends('layoutLogbook')
 
 @section('headLogbook')
-    <style>
-        
-        .form-box {
-            background: #E3E3E3;
-            margin: 7%; 
-            padding: 5%;
-        }
-        
-        .form-box div {
-            padding: 0.5%;
-            padding-right: 2%;
-            padding-left: 2%;
-        }
-        
-        .datetime-local {
-            color: aliceblue;
-        }
-        
-    </style>
+    
     <script>
 
         $( function() {

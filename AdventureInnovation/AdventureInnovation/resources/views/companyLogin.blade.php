@@ -7,11 +7,11 @@
 @section('body')
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-6" style="padding: 20px;margin-top:15px ">
-				<div class="col-sm-12" style="font-size: large; font-weight: bold; text-decoration-color: #54B2C7">
+			<div class="col-sm-6 login-pad">
+				<div class="col-sm-12 company-user">
 					Sign Up As A Company User
 				</div>
-				<div class="col-sm-12" style="padding: 20px;margin-top:15px;">
+				<div class="col-sm-12 login-pad">
 					<form id="signup-form">
 						<div class="form-group">
 					    <label for="inputfirstname">Your Name</label>
@@ -36,7 +36,7 @@
 					  <div class="form-group">
 						  <label class="form-label form-label-top form-label-auto" id="label_17" for="input_17"> Additional Message : </label>
 						  <div id="cid_17" class="form-input-wide">
-							  <textarea id="input_17" class="form-textarea" name="q17_note" cols="83" rows="6" data-component="textarea"></textarea>
+							  <textarea id="input_17" class="form-textarea" name="q17_note" cols="80" rows="4" data-component="textarea"></textarea>
 						  </div>
 					  </div>
 					  <div class="checkbox">
@@ -44,8 +44,8 @@
 					      <input type="checkbox">I agree to the Terms of Service and will adhere to them unconditionally. <a href="#">(Read Terms of Service)</a> 
 					    </label>
 					  </div>
-						<div style="text-align: center">
-							<button class="btn btn-danger" type="submit" style="text-align: right"><a>Send</a></button>
+						<div class="send-button">
+							<button class="btn btn-danger" type="submit" >Send</button>
 						</div>
 
 					</form>
@@ -74,9 +74,9 @@
 						  </div>
 					</form>
 				</div>
-				<div class="col-sm-12 text-right" style="padding: 20px; margin-top:10px">
+				<div class="col-sm-12 text-right login-pad">
 					<p>English</p>
-					<p><a href="#" style="color: black;text-decoration: underline;">Change Language?</a></p>
+					<p><a href="#" class="change-language">Change Language?</a></p>
 				</div>
 			</div>
 		</div>

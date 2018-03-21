@@ -1,24 +1,15 @@
 @extends('layout')
 
 @section('head')
-    <style>
-        
-        #contact_div {
-            color: black;
-            padding: 5%;
-            padding-left: 15%;
-            padding-right: 15%
-        }
-
-    </style>
-    <script>
-    </script>
+    
+    
 @stop
 
 @section('body')
 
 <div id="contact_div" class="container-fluid">
-    <h1 class="text-center" style="margin-bottom:6%;">Contact Us</h1>
+	<div  class="col-lg-12 bg-primary">
+    <h2 class="text-center" style="margin-bottom:6%;">Contact Us</h2>
     <div class="alert alert-success hideme">
         <strong>Success!</strong> You contacted us!
     </div>
@@ -53,12 +44,13 @@
         <textarea class="form-control" rows="5" id="comment"></textarea>
         </div>
         
-        <div class="text-center">
-        <button id="submit-contact" type="submit" class="btn btn-danger">Send</button>
+        <div class="text-center col-lg-4 col-lg-offset-4 send-button">
+        <button id="submit-contact" type="submit" class="btn btn-danger btn-block ">Send</button>
         </div>
         
         
     </form>
+	</div>
     
 </div>
 

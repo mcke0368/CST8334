@@ -1,15 +1,7 @@
 @extends('layout')
 
 @section('head')
-    <style>
-     #Job_div {
-            color: black;
-            padding: 0%;
-            padding-left: 25%;
-            padding-right: 15%
-        }   
-       
-    </style>
+    
     <script>
     </script>
 @stop
@@ -31,11 +23,11 @@
 		
 	<div class="container-fluid">
 	           
-	    <a href="/basic_info.html" class="btn btn-info" role="button" style = "background-color: #696969; font-size:20px; margin-left:100px;">Basic Information</a>
+	    <a href="/basic_info.html" class="btn btn-info basic-info" role="button">Basic Information</a>
          
-	    <a href="/job_detail.html" class="btn btn-info" role="button" style = "background-color: #B22222; font-size:20px; padding-left: 40px; padding-right: 40px;margin-left: 60px; margin-right: 60px">Job Details</a>
+	    <a href="/job_detail.html" class="btn btn-info job-detail" role="button">Job Details</a>
 		
-	    <a href="/finish.html" class="btn btn-info" role="button" style = "background-color: #696969; font-size:20px; padding-left: 50px; padding-right: 50px; margin-right:100px">Finish</a><br><br>
+	    <a href="/finish.html" class="btn btn-info job-finish" role="button">Finish</a><br><br>
 	</div>
 	
        
