@@ -155,6 +155,7 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::resource('videos', 'VideoController');
+Route::resource('Reports', 'ReportController', ['only' => ['store', 'show']]);
 
 
 
@@ -167,4 +168,5 @@ Route::get('/testingWeather', 'TestingController@getWeather')->name('testingWeat
 
 Route::post('/logbook-save-template', 'TestingController@saveTemplate')->name('lookbook-save-template');
 Route::post('/logbook-save-log', 'TestingController@saveLog')->name('lookbook-save-log');
+
 

@@ -161,7 +161,7 @@
                             "<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
                             $string);
                     }
-                   $user = Auth::user();
+                    $user = Auth::user();
 
                     if ($user->videos()->count() > 0) {
                         $Raw_Youtube_link = $user->videos()->first()->Youtube_URL;
