@@ -242,7 +242,7 @@
                                 <div class="panel-heading"><h4>Work Experience</h4></div>
                                 <div class="panel-body work-exp-panel">
                                     <div class="exp-panel">
-                                        <?php echo $guide->work_experience;?>
+                                        {{ $guide->work_experience }}
                                     </div>
                                 </div>
 

@@ -60,22 +60,22 @@ function addAboutMeText(about) {
 }
 
 /** RESUME ----------------------------------------------------------------------- */
-function addWorkExperience(work_description) {
+function addWorkExperience(work_experience) {
 
-    $("#work-experience ul").append(
+    $("#work-experience").empty().append(
         '<li class="list-group-item">'+
         '<a data-toggle="modal" href="#edit-work-modal">'+
         '<i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>'+
         '<div id="edit-work-modal"></div>'+
         '<div style="overflow:hidden">'+
-        '<p>' + work_description + '</p>'+
+        '<p>' + work_experience + '</p>'+
         '</div>'+
         '</a></li>'
     );
     $.ajax({
         type: "POST",
         url: '/ajaxUpdateWorkExperience',
-        data: {work_description: work_description},
+        data: {work_experience: work_experience},
         success: function (msg) {
             console.log(msg);
         },
