@@ -66,7 +66,7 @@
             });
 
             // Add add-new-row button at the end
-            $("<div class='row-parent' style='margin-top:3%;'><div><button id='add-new-row'  type='button' class='btn btn-success'>Add Row</button></div></div>").insertAfter("#custom-template");
+            $("<div class='row-parent' style='text-align: center; margin-top:3%;'><div><button id='add-new-row'  type='button' class='btn btn-success'>Add Row</button></div></div>").insertAfter("#custom-template");
 
             // CSS logbook type
             $("#custom-template").children().each(function (index) {

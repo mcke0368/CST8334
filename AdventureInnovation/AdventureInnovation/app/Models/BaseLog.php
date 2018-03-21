@@ -24,4 +24,12 @@ class BaseLog extends Model
     public function guide() {
         return $this->belongsTo('App\Models\Guide');
     }
+
+    /**********************************************************************************
+     * Log Types
+     **********************************************************************************/
+
+    public function logtype() {
+        return $this->hasOne('App\Models\LogType');
+    }
 }

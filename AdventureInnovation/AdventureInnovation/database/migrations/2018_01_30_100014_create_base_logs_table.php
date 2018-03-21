@@ -16,25 +16,28 @@ class CreateBaseLogsTable extends Migration
         Schema::create('base_logs', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->longtext('debrief');
-            $table->datetime('date_created');
-            $table->datetime('date_occurred');
-            $table->datetime('date_modified')->nullable(true);
-            $table->string('weather', 50)->nullable(true);
-            $table->string('temperature', 5)->nullable(true);
-            $table->string('route', 200)->nullable(true);
-            $table->string('activity', 200)->nullable(true);
-            $table->integer('groupsize')->nullable(true);
-            $table->integer('waterlevels')->nullable(true);
-            $table->string('location', 200)->nullable(true);
-            $table->string('format', 200)->nullable(true);
-            $table->longtext('notes')->nullable(true);
-            $table->longtext('summary')->nullable(true);
             $table->string('title',100)->nullable(false);
+            $table->string('location')->nullable(true);
+            $table->string('position')->nullable(true);
+            $table->string('company')->nullable(true);
+            $table->datetime('start_time')->nullable(true);
+            $table->datetime('end_time')->nullable(true);
+            $table->boolean('indicent')->nullable(true);
+            $table->integer('number_participants')->nullable(true);
+            $table->integer('group_size')->nullable(true);
+            $table->string('other_leaders')->nullable(true);
+            $table->string('weather_contitions')->nullable(true);
+            $table->string('weather_temp')->nullable(true);
+            $table->string('weather_wind')->nullable(true);
+            $table->text('weather_notes')->nullable(true);
+            $table->longtext('notes')->nullable(true);
             $table->longtext('html_text')->nullable(true);
-            $table->string('attachement_location', 512)->nullable(true);
             $table->string('logable_type',64);
-            $table->integer('logable_id');
+
+            /* foreign keys */
+            $table->integer('user_id')->unsigned();
+            $table->integer('logable_id')->unsigned();
+            $table->integer('template_id')->unsigned();
             $table->timestamps();
         });
     }

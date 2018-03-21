@@ -163,7 +163,7 @@ Route::resource('videos', 'VideoController');
 /**********************************************************************************
  * Testing Controller
  **********************************************************************************/
-Route::get('testingWeather', 'TestingController@getWeather')->name('getWeather');
+Route::get('/testingWeather', 'TestingController@getWeather')->name('testingWeather');
 
-
+Route::post('/logbook-save-template', 'TestingController@saveTemplate')->name('lookbook-save-template');
 

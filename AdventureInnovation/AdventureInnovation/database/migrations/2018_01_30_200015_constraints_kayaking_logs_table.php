@@ -15,7 +15,6 @@ class ConstraintsKayakingLogsTable extends Migration
     {
         Schema::table('kayaking_logs', function (Blueprint $table) {
             $table->foreign('base_log_id')->references('id')->on('base_logs')->onDelte('cascasde');
-            $table->foreign('template_id')->references('id')->on('log_templates')->onDelete('cascade');
         });
     }
 
@@ -28,7 +27,6 @@ class ConstraintsKayakingLogsTable extends Migration
     {
         Schema::table('kayaking_logs', function (Blueprint $table) {
             $table->dropForeign('base_log_id');
-            $table->dropForeign('template_id');
         });
     }
 }

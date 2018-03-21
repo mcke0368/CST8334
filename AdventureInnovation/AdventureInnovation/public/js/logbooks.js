@@ -1,5 +1,10 @@
 /**
- * Created by amclean on 2018-03-20.
+ * Pulled from createLogType inline script into this file
+ * by amclean on 2018-03-20.
+ *
+ * Modified by amclean on 2018-03-20
+ *
+ *
  */
 
 /* document ready jQuery call */
@@ -19,26 +24,28 @@ $(function () {
      */
     $("#modal-button-save-type").click(function () {
 
-        var type_name = $("#logbook-type-name").val();
+        var template_name = $("#logbook-template-name").val();
+        var template_desc = $("#logbook-template-desc").val();
 
         $(".row-icons").remove();
         $(".row").unwrap();
+        /*
         $(".col-sm-2").removeAttr("style");
         $(".col-sm-4").removeAttr("style");
         $(".col-sm-6").removeAttr("style");
         $(".col-sm-8").removeAttr("style");
         $(".col-sm-10").removeAttr("style");
         $(".col-sm-12").removeAttr("style");
-
-        var type_html = $("#custom-template").html();
+*/
+        var html_data = $("#custom-template").html();
 
         $.ajax({
             type: "POST",
-            url: '/saveType',
-            data: {type_name: type_name, type_html: type_html},
+            url: '/logbook-save-template',
+            data: {template_name: template_name, template_desc: template_desc, html_data: html_data},
             success: function (data) {
                 if (data == "true") {
-                    window.location.href = "logbook";
+                    //window.location.href = "logbook";
                 }
             },
             error: function (response) {
@@ -52,7 +59,13 @@ $(function () {
 
     // Add HTML icons for each rows
     $("#custom-template").find('.row').wrap("<div class='row-parent'></div>");
-    $("#custom-template").find('.row-parent').prepend("<div class='row-icons'><i class='fa fa-arrows' aria-hidden='true'></i><i class='fa fa-plus-circle' aria-hidden='true'></i><i class='fa fa-times' aria-hidden='true'></i></div>");
+    $("#custom-template").find('.row-parent').prepend(
+        "<div class='row-icons' style='text-align:center'>" +
+        "   <i class='fa fa-arrows' aria-hidden='true'></i>" +
+        "   <i class='fa fa-plus-circle' aria-hidden='true'" +
+        "   ></i><i class='fa fa-times' aria-hidden='true'></i>" +
+        "</div>"
+    );
 
     // Apply dragula to move rows
     dragula([document.getElementById('custom-template')], {
@@ -294,6 +307,19 @@ $(function () {
         });
 
     });
-
+    /* enable drag and drop when the button is clicked */
+    var state = false;
+    $('#enable-dnd').click(function () {
+        if (state == false) {
+            $('#enable-dnd').removeClass('btn-danger');
+            $('#enable-dnd').addClass('btn-success');
+            state = true;
+        } else {
+            $('#enable-dnd').removeClass('btn-success');
+            $('#enable-dnd').addClass('btn-danger');
+            state = false;
+        }
+    });
 
 });
+
