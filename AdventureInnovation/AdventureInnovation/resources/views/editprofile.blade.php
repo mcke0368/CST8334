@@ -274,28 +274,24 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Work Experience</h4></div>
                                 <div class="panel-body work-exp-panel">
-                                    <div class="exp-panel">
-                                    <textarea id="tiny-work">
-                                    <?php echo $guide->work_experience;?>
+                                    <textarea class="form-control" rows="6" id="work_experience">
+                                        {{ $guide->work_experience }}
                                     </textarea>
-                                    </div>
                                 </div>
-
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Employment History</h4></div>
-                                <textarea id="tiny-employment">
-                                <?php echo $guide->employment_history; ?>
-                                </textarea>
+                                    <textarea class="form-control" rows="6" id="employment_history">
+                                        {{ $guide->employment_history }}
+                                    </textarea>
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Training/Courses</h4></div>
                                 <div class="panel-body training-panel">
-                                    <!-- Add in the edit-training-modal -->
                                     <div id="training-modal"></div>
-                                    <textarea id="tiny-training">
-                                    <?php echo $guide->training;?>
-                                    </textarea>
+                                        <textarea class="form-control" rows="6" id="training">
+                                            {{ $guide->training }}
+                                        </textarea>
                                 </div>
                             </div>
                             <div style="margin-top: 10px; text-align: right;"><a

@@ -90,9 +90,9 @@ function addCertification(certification_name, expiration, link) {
 
 function getAllFields() {
     var about = $("#bio").val();
-    var work = tinymce.get('tiny-work').getContent();
-    var employment = tinymce.get('tiny-employment').getContent();
-    var training = tinymce.get('tiny-training').getContent();
+    var work = $("#work_experience").val();
+    var employment = $("#employment_history").val();
+    var training = $("#training").val();
     var social_media = {};
 
     var phone = document.getElementsByName("phoneNr")[0].value;
