@@ -80,8 +80,16 @@
 				}
 				?>
 			</div>
-		
+                @component('logBookScroll')
+                    @slot('title')
+                        Logbook History
+                    @endslot
+                    @slot('bannerColour')
+                        #523E3A
+                    @endslot
+                @endcomponent
         </div>
+
 
 
         <div class="col-xs-6">

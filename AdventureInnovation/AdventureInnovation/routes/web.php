@@ -116,9 +116,9 @@ Route::get('companyLogin', function()
     return view('companyLogin');
 });
 
-
-/* url for testing various partial blade files for logbooks */
-Route::get('logbookTypesPartial', 'LogbookTypeController@showTemplateList')->name('logbookTypesPartial');
+Route::get('printlog', function (){
+    return view('logPrintView');
+});
 
 /**********************************************************************************
 * Profile Controller
