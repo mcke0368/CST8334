@@ -79,7 +79,7 @@
             </div>
 
             <div class="col-sm-2 ">
-                {{ Form::text('weather-temperature', null, array('class' => 'form-control')) }}
+                {{ Form::text('weather-temperature', null, array('class' => 'form-control', 'placeholder' => '&#176;C')) }}
             </div>
             <div class="col-sm-1  ">
                 <label for="weather-wind" class="col-form-label"><i

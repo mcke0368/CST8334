@@ -9,6 +9,101 @@
 
 /* document ready jQuery call */
 $(function () {
+
+    /**
+     * add callback for template dropdown
+     */
+    $("#load-template-button").click(function () {
+        $('#modal-select-logbook-type').modal('show');
+    });
+
+    /**
+     * Modal for selecting a template.  If an existing template is chosen,
+     * load that one.  If new, remove all content from #custome-template
+     */
+    $("#modal-button-select-type").click(function () {
+
+        var value = $("#logbook-select-template").find(":selected")[0].value
+        if (value == "new") {
+            $("#custom-template").empty();
+        } else {
+            $("#custom-template").empty();
+            $("#custom-template").append(value);
+        }
+
+    });
+
+    /**
+     * clear all contents from the customization
+     */
+    $("#clear-template-button").click(function () {
+        $("#custom-template").empty();
+    });
+
+
+    /**
+     * callback for submitting a log
+     */
+
+    $('#save-log-button').click(function() {
+
+        /* TODO - make sure we're in a clean state, ie remove all dnd stuff */
+
+        /* gather up all the data */
+
+        /* base_data */
+        var base_data = {};
+        var start_time = $('#base-1-date')[0].value + " " +$('#base-1-starttime')[0].value;
+        var end_time = $('#base-1-date')[0].value + " " +$('#base-1-endtime')[0].value;
+
+        base_data['title'] = $('#base-1-logtitle')[0].value;
+        base_data['location'] = $('#base-1-location')[0].value;
+        base_data['route'] = $('#base-1-route')[0].value;
+        base_data['company'] = $('#base-1-company')[0].value;
+        base_data['starttime'] = start_time;
+        base_data['endtime'] = end_time;
+        base_data['incident'] = $('#base-1-incident')[0].value;
+        base_data['nrparticipants'] = $('#base-1-nrparticipants')[0].value;
+        base_data['grpsize'] = $('#base-1-grpsize')[0].value;
+        base_data['leaders'] = $('#base-1-leaders')[0].value;
+
+        //base['weather_conditions'] = $('#weather-sunny')[0].value;
+        /* TODO figure out if we want to save the file or path */
+        //base['attachment'] = $('#attachment-file')[0].value;
+
+        var kayak_data = {};
+
+        kayak_data['rapidclass'] = $('#kayaking-rapidclass').find(":selected")[0].value;
+        kayak_data['flowlevel'] = $('#kayaking-flowlevel')[0].value;
+        kayak_data['company'] = $('#kayaking-company')[0].value;
+        kayak_data['launchsite'] = $('#kayaking-launchsite')[0].value;
+        kayak_data['triptype'] = $('#kayaking-triptype')[0].value;
+        kayak_data['tripnr'] = $('#kayaking-tripnr')[0].value;
+
+        var custom_data = $('#custom-template').html();
+
+
+        $.ajax({
+            type: "POST",
+            url: '/logbook-save-log',
+            data: {base_data: base_data, kayak_data: kayak_data, custom_data: custom_data},
+            success: function (data) {
+                if (data == "true") {
+                    //window.location.href = "logbook";
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(xhr.responseText);
+                alert(thrownError);
+            }
+
+        });
+
+
+
+    });
+
     /*
      * callback for save button hit - this pops up a modal that prompts for
      * name and has a save button (see call method below)
@@ -16,7 +111,6 @@ $(function () {
     $("#save-template-button").click(function () {
         $('#modal-save-logbook-type').modal('show');
     });
-
 
 
     /*
@@ -50,8 +144,10 @@ $(function () {
                     //window.location.href = "logbook";
                 }
             },
-            error: function (response) {
-                alert('Error');
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(xhr.responseText);
+                alert(thrownError);
             }
         });
 
@@ -70,7 +166,7 @@ $(function () {
     );
 
     // Apply dragula to move rows
-    dragula([document.getElementById('custom-template')], {
+    var drake = dragula([document.getElementById('custom-template')], {
         moves: function (el, container, handle) {
             return handle.classList.contains('fa-arrows');
         }
@@ -90,7 +186,7 @@ $(function () {
 
     // Apply dragula to move elements in a row
     $("#custom-template").find('.row').each(function (index) {
-        dragula([$(this).get(0)]);
+        drake = dragula([$(this).get(0)]);
     });
 
     // Set row padding
@@ -312,19 +408,5 @@ $(function () {
         });
 
     });
-    /* enable drag and drop when the button is clicked */
-    var state = false;
-    $('#enable-dnd').click(function () {
-        if (state == false) {
-            $('#enable-dnd').removeClass('btn-danger');
-            $('#enable-dnd').addClass('btn-success');
-            state = true;
-        } else {
-            $('#enable-dnd').removeClass('btn-success');
-            $('#enable-dnd').addClass('btn-danger');
-            state = false;
-        }
-    });
-
 });
 

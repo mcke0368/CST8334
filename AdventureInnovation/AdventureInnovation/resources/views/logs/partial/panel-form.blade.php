@@ -43,12 +43,18 @@
 
     <div class="row">
         <div style="margin:0 auto">
-            <div class='btn-group'>
-                <button class='btn btn-primary' id='load-template-button'>Load Template</button>
-                <button class='btn btn-primary' id='save-template-button'>Save Template</button>
-                <button class='btn btn-success' id='add-new-row'>Add Row</button>
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class='btn-group'>
+                        <button class='btn btn-primary' id='load-template-button'>Load Template</button>
+                        <button class='btn btn-primary' id='clear-template-button'>Clear Template</button>
+                        <button class='btn btn-primary' id='save-template-button'>Save Template</button>
+                        <button class='btn btn-primary' id='edit-template-button'>Edit Template</button>
+                        <button class='btn btn-success' id='add-new-row'>Add Row</button>
+                        <button class='btn btn-danger' id='save-log-button'>Save Log</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 </div>

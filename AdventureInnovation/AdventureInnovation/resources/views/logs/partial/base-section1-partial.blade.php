@@ -15,7 +15,7 @@
 
             <div class="col-sm-6 ">
                 {{ Form::label('base-1-date','Date') }}
-                {{ Form::text('base-1-date', null, array('class' => 'form-control')) }}
+                {{ Form::text('base-1-date', null, array('class' => 'form-control', 'placeholder' => 'YYYY-MM-DD')) }}
             </div>
         </div>
         <div class="row" style="margin-top: 1em">
@@ -45,13 +45,13 @@
         </div>
         <div class="row" style="margin-top: 1em">
             <div class="col-sm-6 ">
-                {{ Form::label('base-1-nrparticipants', 'Start Time') }}
-                {{ Form::text('base-1-nrparticipants', null, array('class' => 'form-control')) }}
+                {{ Form::label('base-1-starttime', 'Start Time') }}
+                {{ Form::text('base-1-starttime', null, array('class' => 'form-control')) }}
             </div>
 
             <div class="col-sm-6 ">
                 {{ Form::label('base-1-endtime', 'End Time') }}
-                {{ Form::text('base-1-enttime', null, array('class' => 'form-control')) }}
+                {{ Form::text('base-1-endtime', null, array('class' => 'form-control')) }}
             </div>
         </div>
         <div class="row" style="margin-top: 1em">

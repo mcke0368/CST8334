@@ -2,6 +2,8 @@
 @include('logs.modals.logbook-add-modal')
 @include('logs.modals.logbook-delete-modal')
 @include('logs.modals.logbook-save-modal')
+@include('logs.modals.logbook-select-modal')
+
 
 <div class="panel panel-default">
 
