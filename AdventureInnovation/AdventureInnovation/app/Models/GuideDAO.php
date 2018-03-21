@@ -158,13 +158,15 @@ class GuideDAO {
 
         $guide->about = $about;
         $guide->save();
+    }
 
-        /*
-        DB::table('guides')->insert(
-          ['guide_id' => $guide_id,
-              'about' => $about]
-        );
-        */
+    public function updateWorkExperience($guide_id, $work_experience){
+
+        $user = Auth::user();
+        $guide = $user->guide;
+
+        $guide->work_experience = $work_experience;
+        $guide->save();
     }
 	
 }

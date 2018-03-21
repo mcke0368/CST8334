@@ -14,6 +14,12 @@ $(document).ready(function() {
         addCertification(cert, expiration, link);
     });
 
+    $('#work-save-button').click(function(){
+      //  var title = $('#work-title').val();
+        var description = $('#work-text').val();
+        addWorkExperience(description);
+    });
+
     $('#send-all-data').click(function(){
         getAllFields();    
     });
@@ -37,7 +43,6 @@ function addAboutMeText(about) {
         '<p>'+about+'</p>'+
         '</a></li>'
     );
-    //TESTING
     $.ajax({
         type: "POST",
         url: '/ajaxUpdateAboutMe',
@@ -53,6 +58,37 @@ function addAboutMeText(about) {
 
     $('#edit-bio-modal').modal('toggle');
 }
+
+/** RESUME ----------------------------------------------------------------------- */
+function addWorkExperience(work_description) {
+
+    $("#work-experience ul").append(
+        '<li class="list-group-item">'+
+        '<a data-toggle="modal" href="#edit-work-modal">'+
+        '<i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>'+
+        '<div id="edit-work-modal"></div>'+
+        '<div style="overflow:hidden">'+
+        '<p>' + work_description + '</p>'+
+        '</div>'+
+        '</a></li>'
+    );
+    $.ajax({
+        type: "POST",
+        url: '/ajaxUpdateWorkExperience',
+        data: {work_description: work_description},
+        success: function (msg) {
+            console.log(msg);
+        },
+        fail: function (jqXHR, textStatus) {
+            console.log(jqXHR);
+            console.log("Request failed: " + textStatus);
+        }
+    });
+
+    $('#edit-work-modal').modal('toggle');
+}
+
+
 
 function addCertification(certification_name, expiration, link) {
    

@@ -274,19 +274,25 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Work Experience</h4></div>
                                 <div class="panel-body work-exp-panel">
-                                    <textarea class="form-control" rows="6" id="work_experience">
+                                    <a data-toggle="modal" href="#edit-work-modal"><i class="fa fa-pencil-square-o edit-pencil"
+                                                                                     aria-hidden="true"></i></a>
+                                    <div id="work-experience">
                                         {{ $guide->work_experience }}
-                                    </textarea>
+                                    </div>
                                 </div>
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Employment History</h4></div>
-                                    <textarea class="form-control" rows="6" id="employment_history">
+                                <a data-toggle="modal" href="#edit-emp-modal"><i class="fa fa-pencil-square-o edit-pencil"
+                                                                                 aria-hidden="true"></i></a>
+                                    <textarea class="form-control" rows="6" id="employment-history">
                                         {{ $guide->employment_history }}
                                     </textarea>
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Training/Courses</h4></div>
+                                <a data-toggle="modal" href="#edit-training-modal"><i class="fa fa-pencil-square-o edit-pencil"
+                                                                                 aria-hidden="true"></i></a>
                                 <div class="panel-body training-panel">
                                     <div id="training-modal"></div>
                                         <textarea class="form-control" rows="6" id="training">

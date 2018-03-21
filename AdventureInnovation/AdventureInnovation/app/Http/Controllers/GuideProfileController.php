@@ -103,7 +103,7 @@ class GuideProfileController extends Controller
     }
     */
 
-    /* testing with the GuideDAO */
+    /* Updates the About Me section */
     public function ajaxUpdateAboutMe(Request $request){
         //ajax goes here to insert into DB for profile stuff
         try {
@@ -113,6 +113,23 @@ class GuideProfileController extends Controller
             $about = $request->about;
             $this->dao->updateAboutMe($guide->id, $about);
             }
+        catch (Execption $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
+    }
+
+    /* Updates the Work Experience section */
+    public function ajaxUpdateWorkExperience(Request $request){
+        //ajax goes here to insert into DB for profile stuff
+        try {
+            $user = Auth::user();
+            $guide = $user->guide;
+
+            //$job_title = $request->work_title; //TODO Need to add worktitle to the database as a job... need a table for work experience
+            $work_experience = $request->work_experience;
+
+            $this->dao->updateWorkExperience($guide->id, $work_experience);
+        }
         catch (Execption $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
