@@ -37,7 +37,7 @@
                       </h4>
                     </div>
                     <h5 class="mb-1">{{$log->summary}}
-                        <small class="pull-right">{{$log->activity}}</small>
+                        <small class="pull-right">{{$log->activity}} <span class='btn btn-danger btn-xs'> X </span></small>
                     </h5>
                 </a>
             <?php } ?>
