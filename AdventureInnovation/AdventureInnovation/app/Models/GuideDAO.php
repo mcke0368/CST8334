@@ -150,5 +150,23 @@ class GuideDAO {
 			'cert_expiry' => $expiry]
 		);
 	}
+
+	public function updateAboutMe($guide_id, $about){
+
+        $user = Auth::user();
+        $guide = $user->guide;
+
+        $guide->about = $about;
+        $guide->save();
+    }
+
+    public function updateWorkExperience($guide_id, $work_experience){
+
+        $user = Auth::user();
+        $guide = $user->guide;
+
+        $guide->work_experience = $work_experience;
+        $guide->save();
+    }
 	
 }
