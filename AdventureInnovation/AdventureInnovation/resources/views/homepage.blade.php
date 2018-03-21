@@ -4,78 +4,12 @@
 
     <style>
         
-        div {
-            color: White;
-        }
         
        #c1 {
             background-image: url({{ URL::asset('/images/s3.amazonaws.com_upload.uxpin_files_272217_618567_feet-morning-adventure-camping-2.jpg')}});
             background-repeat: no-repeat;
             background-size: cover;
             padding: 10%;
-        }
-        
-        #c1 h1, #c1 h3, #c1 button {
-            margin-top: 5%;
-        }
-        
-        #c2, #c3 {
-            padding-top: 5%;
-            padding-right: 10%;
-            padding-left: 10%;
-        }
-               
-        #f1 { 
-            width: 100%; 
-            overflow: hidden; 
-            margin: 0;
-        }
-        
-        #f1 ul { 
-            list-style: none; 
-            position: relative; 
-            float: left; 
-            display: block; 
-            left: 50%; 
-        }
-            
-        #f1 ul li { 
-            position: relative; 
-            float: left; 
-            display: block; 
-            right: 50%;
-        }
-        
-        .nav-tabs {
-            border-bottom-color: transparent;
-        }
-        
-        .nav-tabs > li > a {
-            margin-left: 50px;
-            margin-right: 50px;
-        }
-        
-        #b1 {
-            border: none;
-            padding-top: 1%;
-            padding-bottom: 1%;
-            padding-right: 3%;
-            padding-left: 3%;
-            border-radius: 10px;
-            margin-bottom: 3%;
-        }
-        
-        #b2 {
-            padding: 0;
-            border: none;
-            background: none;
-        }
-        
-        .list-group li, row li {
-            background-color: #e6e6e6;
-            border: none;
-            text-align: left;
-            color: black;
         }
         
     </style>
@@ -85,15 +19,25 @@
                 scrollTop: $("#f1").offset().top
             }, 500);
         });
+//		$(document).ready(function(){ 
+//			$("#guide").on("click", function(){
+//			$("#btlog").text("Login as a guide")
+//			});
+//		
+//			$("#company").on("click", function(){
+//			$("#btlog").text("Login as a company")
+//			});
+//		}); 
+		
     </script>
 @stop
 
 @section('body')
 <!-- First Container -->
-<div id="c1" class="container-fluid text-center">
-    <h1>Easy, Organized, and Secure</h1>
-    <h4 style="margin-top: 1%;">~ Log books for any adventure ~</h4>
-    <button id="b1" type="button" class="btn backgroundRed" style="color:white;">Get Yours Started</button>
+<div id="c1" class="container-fluid text-center white">
+    <h1 class="white">Easy, Organized, and Secure</h1>
+    <h4 class="log-book">~ Log books for any adventure ~</h4>
+	 <a href="/login" id="b1" class="btn btn-danger " role="button" aria-pressed="true">Get Yours Started</a>
 
 </div>
 
@@ -101,12 +45,12 @@
 <div id="c2" class="container-fluid text-center backgroundSeaBlue">
     <h3>Our new on-line platform lets guides complete all their daily logs and reports from their smartphone in the field or from their computer once back from a trip. Guides content is then forwarded to operational managers or promoted to other potential employers. With a host of benefits and features be the first to upgrade and join the new adventure network. </h3>
     
-    <button id="b2" type="button" class="btn" style="margin-top:2%; margin-bottom:8%; color:white;"><h4><strong>&#9661;&nbsp;&nbsp;&nbsp;To learn more check which account is for you below&nbsp;&nbsp;&nbsp;&#9661;</strong></h4></button>
+    <a id="b2" role="button" class="btn check-account"><h4><strong>&#9661;&nbsp;&nbsp;&nbsp;To learn more check which account is for you below&nbsp;&nbsp;&nbsp;&#9661;</strong></h4></a>
     
     <div id="f1">
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#t1"><h2>Guide Features</h2></a></li>
-        <li><a data-toggle="tab" href="#t2"><h2>Company Features</h2></a></li>
+    <ul class="nav nav-tabs col-md-10">
+        <li id ="guide" class="col-md-6 active"><a data-toggle="tab" href="#t1"><h2>Guide Features</h2></a></li>
+        <li id = "company" class="col-md-6"><a data-toggle="tab" href="#t2"><h2>Company Features</h2></a></li>
     </ul>
     </div>
 </div>
@@ -115,8 +59,8 @@
 <div id="c3" class="container-fluid text-center" style="background-color: #e6e6e6;">
     <div class="tab-content col-md-8 col-md-offset-2">
         <div id="t1" class="tab-pane fade in active">
-            <div style="text-align: center;  margin: 20px">
-                <a href="/login" class="btn btn-primary">Log In</a>
+            <div style="text-align: center;  margin: 20px auto;">
+                <a href="/login" class="btn btn-primary" id ="btlog">Login as a guide</a>
             </div>
             <ul class="list-group row">
                 <li class="list-group-item col-xs-6"><h4><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Access anywhere around the world</h4></li>
@@ -133,7 +77,7 @@
         </div>
         <div id="t2" class="tab-pane fade">
             <div style="text-align: center; margin: 20px">
-                <a href="/companyLogin" class="btn btn-primary">Log In</a>
+                <a href="/companyLogin" class="btn btn-primary">Login as a company</a>
             </div>
             <ul class="list-group row">
                 <li class="list-group-item col-xs-6"><h4><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;All guides granted log books</h4></li>
