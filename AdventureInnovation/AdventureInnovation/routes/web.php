@@ -114,6 +114,10 @@ Route::get('companyLogin', function()
     return view('companyLogin');
 });
 
+Route::get('printlog', function (){
+    return view('logPrintView');
+});
+
 /**********************************************************************************
 * Profile Controller
 **********************************************************************************/
@@ -151,4 +155,6 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::resource('videos', 'VideoController');
+Route::resource('Reports', 'ReportController', ['only' => ['store', 'show']]);
 
+Route::get('/report', function () { return view('report'); });

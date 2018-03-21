@@ -31,145 +31,32 @@
     include ('../resources/modals/edit-profile-pic-modal.html');
     ?>
 
-    <style>
-        .inline-block {
-            display: inline-block;
-        }
-
-        .float-right {
-            float: right;
-            vertical-align: middle;
-        }
-
-        .float-left {
-            float: left;
-        }
-
-        #c1 {
-        }
-
-        #work-experience-panel {
-            padding: 10px;
-        }
-
-        #profile-img {
-            margin: 0 auto;
-            max-width: 100%;
-            max-height: auto;
-            padding: 10px;
-            display: block;
-        }
-
-        .carousel-container {
-        }
-
-        .carousel {
-            margin: 20px;
-            height: 100%;
-            vertical-align: middle;
-        }
-
-        .carousel img {
-            width: 100%;
-            height: auto;
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .employer-panel {
-            margin: 15px;
-        }
-
-        .school-panel {
-            margin: 15px;
-        }
-
-        .emp-his-panel {
-        }
-
-        .col-no-padding {
-            padding: 0px;
-        }
-
-        .panel-no-margin {
-            margin: 0px;
-        }
-
-        .slick-prev:before, .slick-next:before {
-            color: #d9534f;
-        }
-
-        .btn {
-            background-color: #d9534f;
-            color: white;
-        }
-
-        .edit-btn {
-            background-color: #337ab7;
-            color: white;
-        }
-
-        .edit-pencil {
-            float: right;
-            font-size: 20px;
-            vertical-align: middle;
-            margin: 10px;
-        }
-
-        .float-right {
-            float: right;
-        }
-
-        .panel-default > .panel-heading {
-            background-color: #523E3A;
-            color: white;
-        }
-
-        .orange-badge {
-            background-color: orange;
-        }
-
-        .purple-badge {
-            background-color: purple;
-        }
-
-        .red-badge {
-            background-color: red;
-        }
-
-        .modal-header {
-            background-color: #d9534f;
-            color: white;
-        }
-
-    </style>
-
 @stop
 
 @section('bodyGuide')
 
     <div id="c1" class="container-fluid">
         <div class="col-xs-4 panel panel-default col-xs-offset-1 col-no-padding">
-            <div id="name-panel" class="panel panel-heading panel-no-margin">
-                <h2>{{$firstname}}</h2>
+            <div id="name-panel" class="panel-heading">
+                <h4>{{$firstname}}</h4>
             </div>
-            <div class="panel panel-body panel-no-margin">
+            <div class="panel-body">
                 <div id="badge-block">
-                    <div class="activity-badge inline-block badge badge-primary purple-badge">Sea Kayaking</div>
-                    <div class="activity-badge inline-block badge badge-primary orange-badge">Rock Climbing</div>
-                    <div class="activity-badge inline-block badge badge-primary red-badge">Scuba</div>
+                    <a href="#" class="inline-block badge purple-badge">Sea Kayaking</a>
+                    <a class="inline-block badge orange-badge">Rock Climbing</a>
+                    <a class="inline-block badge red-badge">Scuba</a>
                 </div>
-                <a data-toggle="modal" href="#edit-profile-pic-modal"><i class="fa fa-pencil-square-o edit-pencil"
-                                                                         aria-hidden="true"></i></a>
+                <a data-toggle="modal" href="#edit-profile-pic-modal"><i class="fa fa-pencil-square-o edit-pencil pencil-activity"></i></a>
+                                                                        
                 <!-- Add in the edit-bio-modal -->
                 <div id="profile-pic-modal"></div>
-                <div><img id="profile-img" src="{{ asset('images/11.png') }}"></div>
+                <div><img class="img-thumbnail" id="profile-img" src="{{ asset('images/11.png') }}"></div>
             </div>
-            <div class="panel panel-default panel-no-margin">
-                <div class="panel panel-heading"><h4><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Contact Me!
+            
+                <div class="panel-heading"><h4><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Contact Me!
                     </h4>
                 </div>
-                <div class="panel panel-body panel-no-margin">
+                <div class="panel-body">
                     <a data-toggle="modal" data-target="#emp-modal" href="#emp-modal"><i
                                 class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
 
@@ -190,20 +77,15 @@
                         {{Form::text('Instagram_URL', empty($social_media) ? null : $social_media->Instagram_URL, array('class' => 'form-control','required' => 'required'))}}
                         {!! Form::close() !!}
                     </div>
-                    <!--
-                    <div class="fa-stack-2x" style="margin-top:10px" >
-                        <i class="fa fa-twitter" style="padding:10px" aria-hidden="true"></i>
-                        <i class="fa fa-instagram" style="padding:10px" aria-hidden="true"></i>
-                        <i class="fa fa-facebook-official" style="padding:20px" aria-hidden="true"></i>
-                    </div>
-                    SOCIAL MEDIA BUTTONS -->
-
-                </div>
-                <div class="panel panel-heading"><h4><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Social Media
+                </div>                  
+                
+                
+                <div class="panel-heading">
+                    <h4><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Social Media
                     </h4>
                 </div>
 
-            </div>
+            
         </div>
         <div class="col-xs-6">
             <div class="panel-group" id="accordion">
@@ -219,7 +101,7 @@
                         <!-- Trigger the modal with an href -->
                         <a data-toggle="modal" href="#edit-bio-modal"><i class="fa fa-pencil-square-o edit-pencil"
                                                                          aria-hidden="true"></i></a>
-
+                        
                         <div class="panel-body" id="bio">
                             {{$guide->about}}
                         </div>
@@ -300,22 +182,42 @@
                                         </textarea>
                                 </div>
                             </div>
-                            <div style="margin-top: 10px; text-align: right;"><a
-                                        href="{{ asset('pdfs/functionalSample.pdf') }}"><i class="fa fa-file-pdf-o"
-                                                                                           aria-hidden="true"></i> View
-                                    resume as PDF</a></div>
+                            <div class="pdf-link">
+                                <a href="{{ asset('pdfs/functionalSample.pdf') }}" target="_blank">
+                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> View
+                                    resume as PDF</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-container">
-                    <div class="carousel">
-                        <div><img src="{{ asset('images/adventure_sport.jpg') }}" alt="Picture 2"></div>
-                        <div><img src="{{ asset('images/1200px-Kayakersview.jpg') }}" alt="Picture 3"></div>
-                        <div><img src="{{ asset('images/11.png') }}" alt="Picture 1"></div>
+            <div class="carousel slide" data-interval="false" id="carousel1">
+                <ol class="carousel-indicators">
+                    <li  data-target="#carousel1" data-slide-to="0"></li>
+                    <li  data-target="#carousel1" data-slide-to="1"></li>
+                    <li  data-target="#carousel1" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active img-responsive">
+                        <img src="{{ asset('images/adventure_sport.jpg') }}">
+                        
                     </div>
+                    <div class="item img-responsive">
+                        <img src="{{ asset('images/1200px-Kayakersview.jpg') }}">           
+                    </div>
+                    <div class="item img-responsive">
+                        <img src="{{ asset('images/11.png') }}">
+                    </div>              
                 </div>
+                <a href="#carousel1" class="left carousel-control" data-slide="prev">
+                    <span id ="icon-left" class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a href="#carousel1" class="right carousel-control" data-slide="next">
+                    <span id ="icon-left" class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+                          
             </div>
         </div>
+    </div>
         <div class="col-xs-1 col-no-padding">
             <a href="{{ url('profile') }}"><i class="fa fa-check" aria-hidden="true"></i> Finished Editing</a>
         </div>
@@ -367,17 +269,7 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="{{ URL::asset('slick/slick.min.js') }}"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('.carousel').slick({
-                    arrows: true,
-                    autoPlay: true
-                });
-            });
-        </script>
+        <script type="text/javascript" src="{{ URL::asset('slick/slick.min.js') }}"></script>        
     </div>
-
-
 
 @stop

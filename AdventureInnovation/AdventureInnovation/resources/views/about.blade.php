@@ -3,16 +3,12 @@
 @section('head')
 	<style type="text/css">
 		.jumbotron{
-			 background-image: url({{ URL::asset('images/kayaking-1.jpg') }});
-            background-repeat: no-repeat;
-            background-size: cover;
-            min-height: 450px;
-            color: White;
-		}
-		.about-page-text{
-			font-weight: bold;
-			color: white;
-		}
+		 background-image: url({{ URL::asset('images/kayaking-1.jpg') }});
+		background-repeat: no-repeat;
+		background-size: cover;
+		min-height: 450px;
+		color: White;
+	}
 	</style>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -61,9 +57,9 @@
 					<button class="btn btn-warning"><a href="/contact"> Contact us</a></button>
 				</div>
 			</div>
-			<div class="col-sm-6 bg-primary center-block">
+			<a href="#" class="col-sm-6 bg-primary center-block subcribe">
 				subscribe to check out our blog for updates and let's build our community!
-			</div>
+			</a>
 		</div>
 
 	</div>
