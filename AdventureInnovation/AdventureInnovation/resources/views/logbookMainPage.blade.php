@@ -47,23 +47,15 @@
                 </div>
             </div>
             <div class="col-40 col-sm-4">
-                <div class="list-group">
-                    <a href="#" class="list-group-item active">
-                        Log History
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading">First Log</h4>
-                        <p class="list-group-item-text">Date: </p>
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading">Second Log</h4>
-                        <p class="list-group-item-text">Date: </p>
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading">Third Log</h4>
-                        <p class="list-group-item-text">Date: </p>
-                    </a>
-                </div>
+                        @component('logBookScroll')
+                            @slot('title')
+                                Logbook History
+                            @endslot
+                            @slot('bannerColour')
+                                #54B2C7
+                            @endslot
+                        @endcomponent
+
             </div>
             <!-- Force next columns to break to new line -->
         </div>

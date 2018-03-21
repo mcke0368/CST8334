@@ -132,11 +132,11 @@
                     <div><i class="fa fa-phone" aria-hidden="true"></i> Phone: {{ $user->phone }}</div>
 
                     <div class="fa-2x">
-                        <a href="{{$social_media->Twitter_URL}}">
+                        <a href="{{ ($social_media != null) ? $social_media->Twitter_URL : ""}}">
                             <i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a href="{{$social_media->Instagram_URL}}">
+                        <a href="{{ ($social_media != null) ? $social_media->Instagram_URL : ""}}">
                             <i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        <a href="{{$social_media->Facebook_URL}}">
+                        <a href="{{ ($social_media != null) ? $social_media->Facebook_URL : ""}}">
                             <i class="fa fa-facebook-official" aria-hidden="true"></i></a>
                     </div>
                 </div>
@@ -148,9 +148,11 @@
                 </div>
 
                 <div class="panel panel-body panel-no-margin">
-                    <?php
-                    $user = Auth::user();
-                    $Raw_Youtube_link = $user->videos()->first()->Youtube_URL;
+
+                </div>
+                <div>
+
+                   <?php
                     // TODO store this converter function somewhere other than inline
                     function convertYoutube($string)
                     {
@@ -159,13 +161,24 @@
                             "<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
                             $string);
                     }
-                    $Youtube_link = convertYoutube($Raw_Youtube_link);
+                    $user = Auth::user();
+
+                    if ($user->videos()->count() > 0) {
+                        $Raw_Youtube_link = $user->videos()->first()->Youtube_URL;
+                        $Youtube_link = convertYoutube($Raw_Youtube_link);
+                        echo $Youtube_link;
+                    }
                     ?>
                 </div>
-                <div>
-                    <?php  echo $Youtube_link ?>
-                </div>
             </div>
+            @component('logBookScroll')
+                @slot('title')
+                    Logbook History
+                @endslot
+                @slot('bannerColour')
+                    #523E3A
+                @endslot
+            @endcomponent
         </div>
 
 

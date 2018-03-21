@@ -120,7 +120,7 @@ class GuideDAO {
 	    $soc->Instagram_URL = $social_media["Instagram_URL"];
         $user->socialmedia()->save($soc);
 
-        if ($user->videos() == null) {
+        if ($user->videos()->count() == 0) {
             $vid = new Video();
         } else {
             $vid = $user->videos()->first();
