@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LogTemplate;
+use App\Models\LogType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +14,8 @@ class TestingController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getWeather(Request $request) {
+
+        $templates = LogTemplate::all();
 
         return view('logs.testing');
     }
@@ -44,17 +47,14 @@ class TestingController extends Controller
 
         if ( Auth::check()) {
             $template = new LogTemplate();
-            $template->title = $template_name;
+            $template->name = $template_name;
             $template->description = $template_desc;
             $template->html_data = $html_data;
 
             $template->save();
-            return true;
-        } else {
-            return false;
+            return json_encode(true);
         }
-
-        return false;
+        return json_encode(false);
     }
 
     public function showTemplateList(Request $request) {

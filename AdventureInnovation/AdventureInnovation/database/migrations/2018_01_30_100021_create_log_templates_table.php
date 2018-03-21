@@ -16,7 +16,7 @@ class CreateLogTemplatesTable extends Migration
         Schema::create('log_templates', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('title', 100);
+            $table->string('name', 100);
             $table->longText('description');
             $table->string('base_logable_type')->nullable(true);
             $table->text('html_data');

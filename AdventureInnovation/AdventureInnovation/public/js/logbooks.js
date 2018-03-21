@@ -13,9 +13,11 @@ $(function () {
      * callback for save button hit - this pops up a modal that prompts for
      * name and has a save button (see call method below)
      */
-    $("#save-logbook-type-button").click(function () {
+    $("#save-template-button").click(function () {
         $('#modal-save-logbook-type').modal('show');
     });
+
+
 
     /*
      * Modal for save - get name an process the dom before saving.
@@ -29,14 +31,14 @@ $(function () {
 
         $(".row-icons").remove();
         $(".row").unwrap();
-        /*
+
         $(".col-sm-2").removeAttr("style");
         $(".col-sm-4").removeAttr("style");
         $(".col-sm-6").removeAttr("style");
         $(".col-sm-8").removeAttr("style");
         $(".col-sm-10").removeAttr("style");
         $(".col-sm-12").removeAttr("style");
-*/
+
         var html_data = $("#custom-template").html();
 
         $.ajax({
@@ -73,9 +75,6 @@ $(function () {
             return handle.classList.contains('fa-arrows');
         }
     });
-
-    // Add add-new-row button at the end
-    $("<div class='row-parent'><div><button id='add-new-row'  type='button' class='btn btn-success'>Add Row</button></div></div>").insertAfter("#custom-template");
 
     // CSS logbook type
     $("#custom-template").children().each(function (index) {

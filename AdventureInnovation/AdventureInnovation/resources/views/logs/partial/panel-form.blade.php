@@ -44,8 +44,9 @@
     <div class="row">
         <div style="margin:0 auto">
             <div class='btn-group'>
-                <button class='btn btn-danger' id='save-logbook-type-button'>Save</button>
-                <button class='btn btn-danger' id='enable-dnd'>Enable drag and drop</button>
+                <button class='btn btn-primary' id='load-template-button'>Load Template</button>
+                <button class='btn btn-primary' id='save-template-button'>Save Template</button>
+                <button class='btn btn-success' id='add-new-row'>Add Row</button>
             </div>
         </div>
     </div>
