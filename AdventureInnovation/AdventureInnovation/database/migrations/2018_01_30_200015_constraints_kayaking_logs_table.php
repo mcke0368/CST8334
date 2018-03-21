@@ -14,7 +14,7 @@ class ConstraintsKayakingLogsTable extends Migration
     public function up()
     {
         Schema::table('kayaking_logs', function (Blueprint $table) {
-            $table->foreign('base_log_id')->references('id')->on('base_logs')->onDelte('cascasde');
+            //$table->foreign('base_log_id')->references('id')->on('base_logs')->onDelte('cascasde');
         });
     }
 

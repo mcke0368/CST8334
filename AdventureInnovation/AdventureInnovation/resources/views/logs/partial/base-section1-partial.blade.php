@@ -1,6 +1,12 @@
 <div class="panel panel-default">
-    <div class="panel-body">
 
+    <div class="panel-heading" style="text-align: center; background-color: #54B2C7">
+        <h3 class="panel-title">
+            Base Section
+        </h3>
+    </div>
+
+    <div class="panel-body">
         <div class="row" style="margin-top: 1em">
             <div class="col-sm-6 ">
                 {{ Form::label('base-1-logtitle', 'Log Title') }}
@@ -82,6 +88,12 @@
             <div class="col-sm-12">
                 {{ Form::label('base-1-leaders', 'Other leaders') }}
                 {{ Form::textarea('base-1-leaders', null, array('class' => 'form-control')) }}
+            </div>
+        </div>
+        <div class="row" style="margin-top: 1em">
+            <div class="col-lg-4">
+                {{Form::label('attachement-file', 'Attachement')}}
+                {{Form::file('attachment-file')}}
             </div>
         </div>
     </div>

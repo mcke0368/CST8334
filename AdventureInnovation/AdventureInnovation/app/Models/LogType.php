@@ -11,10 +11,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class LogType extends Model
 {
-    protected $fillable = [
-        'logable_type', 'description'
-    ];
 
+    public $incrementing = false;
+    protected $primaryKey = 'base_logable_type';
+    protected $fillable = [
+        'base_logable_type', 'description'
+    ];
 
     /**********************************************************************************
      * Templates

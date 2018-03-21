@@ -15,7 +15,7 @@ class ConstraintsLogTemplatesTable extends Migration
     {
         Schema::table('log_templates', function (Blueprint $table) {
             // add foreign key
-            $table->foreign('logable_type')->references('logable_type')->on('log_types');
+            $table->foreign('base_logable_type')->references('base_logable_type')->on('log_types');
         });
     }
 
@@ -28,7 +28,7 @@ class ConstraintsLogTemplatesTable extends Migration
     {
         Schema::table('log_templates', function (Blueprint $table) {
             // add foreign key
-            $table->dropForeign('logable_type');
+            $table->dropForeign('base_logable_type');
         });
     }
 }

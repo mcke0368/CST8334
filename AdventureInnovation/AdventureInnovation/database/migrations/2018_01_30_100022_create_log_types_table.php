@@ -15,7 +15,7 @@ class CreateLogTypesTable extends Migration
     {
         Schema::create('log_types', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->string('logable_type',64)->primary();
+            $table->string('base_logable_type')->primary();
             $table->longText('description');
             $table->timestamps();
         });

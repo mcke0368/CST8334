@@ -75,7 +75,7 @@ $(function () {
     });
 
     // Add add-new-row button at the end
-    $("<div class='row-parent' style='margin-top:3%;'><div><button id='add-new-row'  type='button' class='btn btn-success'>Add Row</button></div></div>").insertAfter("#custom-template");
+    $("<div class='row-parent'><div><button id='add-new-row'  type='button' class='btn btn-success'>Add Row</button></div></div>").insertAfter("#custom-template");
 
     // CSS logbook type
     $("#custom-template").children().each(function (index) {
@@ -101,6 +101,9 @@ $(function () {
     // Set icon margin
     $("#custom-template i").css("margin-left", "3%");
     $("#custom-template i").css("margin-right", "3%");
+
+    // Set icon justification
+    $(".row-icons").css("text-align", "center");
 
     // When clicking deleting-row icon
     $(".fa-times").click(function () {
@@ -295,6 +298,9 @@ $(function () {
 
         $("#custom-template i").css("margin-left", "3%");
         $("#custom-template i").css("margin-right", "3%");
+
+        // Set icon justification
+        $(".row-icons").css("text-align", "center");
 
         $("#custom-template").find('.row-parent').last().find(".fa-times").click(function () {
             $('#modal-delete').find("p").attr("id", $(this).parent().parent().index());

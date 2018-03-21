@@ -18,7 +18,7 @@ class CreateLogTemplatesTable extends Migration
             $table->increments('id');
             $table->string('title', 100);
             $table->longText('description');
-            $table->string('logable_type', 64)->nullable(true);
+            $table->string('base_logable_type')->nullable(true);
             $table->text('html_data');
             $table->timestamps();
         });

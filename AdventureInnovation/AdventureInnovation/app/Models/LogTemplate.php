@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class LogTemplate extends Model
 {
     protected $fillable = [
-        'title','description', 'logable_type', 'html_data'
+        'title','description', 'base_logable_type', 'html_data'
     ];
 
     /**********************************************************************************
