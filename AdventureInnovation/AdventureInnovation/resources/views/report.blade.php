@@ -7,7 +7,11 @@
     {{Form::label('dateLabel','Date: ')}}
     {{Form::date('report_date', \Carbon\Carbon::now())}}
    <!-- {{Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'S')}} -->
+    {{Form::label('timeLabel','Time: ')}}
     {{Form::time('report_time', Carbon\Carbon::now()->format('H:i')) }}
+    </br>
+    {{Form::label('locationLabel','Location: ')}}
+    {{Form::text('location',null)}}
     </br>
     {{Form::label('TempLabel','Temp (C): ')}}
     <!-- For selectRange function. Prams are (variableName,min,max,defaultValue)-->
@@ -22,7 +26,7 @@
     ?>
     @foreach($precipitations as $precipitation)
         {{Form::radio('precipitation',$precipitation,false)}}
-        {{Form::label('precipitationLabel',$precipitation)}}
+        {{Form::label($precipitation,$precipitation)}}
     @endforeach
     </br>
     <!-- Visibility -->
@@ -58,10 +62,77 @@
             <div id="collapse6" class="panel-collapse collapse">
                 <div class="panel-body">
                     <div class="panel panel-default">
+                        <?php
+                        $incidents = array("Injury: ","Illness: ","Motivation/Behaviour: ","Near Miss: ");
+                        ?>
+                        @foreach($incidents as $incident)
+                        {{Form::label($incident,$incident)}}
+                        {{Form::checkbox('incident[]',$incident)}}
+                        @endforeach
+                        </br>
+                        {{Form::label('evacuationMethodLabel','Evacuation method: ')}}
+                        <?php
+                        $evacuationMethods = array(" Walks Unassisted "," Litter "," Vehicle "," Helicopter "," Other ");
+                        ?>
+                        @foreach($evacuationMethods as $evacuationMethod)
+                        {{Form::checkbox('evacuationMethod[]',$evacuationMethod)}}
+                        {{Form::label($evacuationMethod,$evacuationMethod)}}
+                        @endforeach
+                        </br>
+                        {{Form::label('damageLabel','Was there damage to: : ')}}
+                        <?php
+                        $damages = array("Vehicle","Equipment","Property");
+                        ?>
+                        @foreach($damages as $damage)
+                        {{Form::checkbox('damage[]',$damage)}}
+                        {{Form::label($damage,$damage)}}
+                        @endforeach
+                        </br>
+                        {{Form::label('lostDayLabel','Is this a Lost-Day case? ')}}
+                        <?php
+                        $lostDays = array("yes","no");
+                        ?>
+                        @foreach($lostDays as $lostDay)
+                        {{Form::radio('lostDay',$lostDay,false)}}
+                        {{Form::label($lostDay,$lostDay)}}
+                        @endforeach
+                        {{Form::label('lostDayLabel','If yes: # of days lost?: ')}}
+                        {{Form::text('lostNumDay',null)}}
+                        </br>
 
+                        {{Form::label('VictimLabel','Did the victim leave the field?  ')}}
+                        @foreach($lostDays as $lostDay)
+                            {{Form::radio('victimLeftField',$lostDay,false)}}
+                            {{Form::label($lostDay,$lostDay)}}
+                        @endforeach
+                        {{Form::label('DateLeftLabel','If yes, on what date?:  ')}}
+                        {{Form::text('DateLeft',null)}}
+                        <br>
 
-                    </div>
+                        {{Form::label('VictimLabel','Did the victim visit a medical facility?  ')}}
+                        @foreach($lostDays as $lostDay)
+                            {{Form::radio('victimVisitFacility',$lostDay,false)}}
+                            {{Form::label($lostDay,$lostDay)}}
+                        @endforeach
+                        {{Form::label('VictimLeftLabel','If yes, # of hours/days  ')}}
+                        {{Form::text('numberOfDateLeft',null)}}
+                        <br>
 
+                        {{Form::label('VictimLabel','Did the victim return the course?  ')}}
+                        @foreach($lostDays as $lostDay)
+                            {{Form::radio('returnField',$lostDay,false)}}
+                            {{Form::label($lostDay,$lostDay)}}
+                        @endforeach
+                        {{Form::label('returnDate','If yes, on what date?:  ')}}
+                        {{Form::text('dateReturn',null)}}
+                        <br>
+
+                        {{Form::label('VictimLabel','Is this a re-curring injury?  ')}}
+                        @foreach($lostDays as $lostDay)
+                            {{Form::radio('recurring',$lostDay,false)}}
+                            {{Form::label($lostDay,$lostDay)}}
+                        @endforeach
+                        <br>
                     </div>
                 </div>
             </div>
