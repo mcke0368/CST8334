@@ -165,7 +165,7 @@ Route::get('/report', function () { return view('report'); });
 /**********************************************************************************
  * Testing Controller
  **********************************************************************************/
-Route::get('/testingWeather', 'TestingController@getWeather')->name('testingWeather');
+Route::get('/testing-new-logbooks', 'TestingController@getWeather')->name('testing-new-logbooks');
 
 Route::post('/logbook-save-template', 'TestingController@saveTemplate')->name('lookbook-save-template');
 Route::post('/logbook-save-log', 'TestingController@saveLog')->name('lookbook-save-log');

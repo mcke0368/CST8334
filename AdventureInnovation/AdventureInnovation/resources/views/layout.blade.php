@@ -87,6 +87,11 @@
                                             <span class="fa">Logbooks</span>
                                         </div>
                                     </li>
+                                    <li class="dropdown-item">
+                                        <div class="btn-default btn-xs" id="dropdown-new-logbooks" type="button">
+                                            <span class="fa">New Logbooks</span>
+                                        </div>
+                                    </li>
 
                                     <li>
                                         <div class="btn-default btn-xs" id="dropdown-logout" type="button">

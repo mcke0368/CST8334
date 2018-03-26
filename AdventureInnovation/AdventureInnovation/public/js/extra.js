@@ -169,10 +169,12 @@ function setup_dropdown_links() {
     if (elem = document.getElementById('dropdown-logbooks')) {
         elem.onclick = dropdown_logbooks_callback;
     }
+    if (elem = document.getElementById('dropdown-new-logbooks')) {
+        elem.onclick = dropdown_new_logbooks_callback;
+    }
     if (elem = document.getElementById('dropdown-logout')) {
         elem.onclick = dropdown_logout_callback;
     }
-
 }
 /* callback for the profile link */
 function dropdown_profile_callback() {
@@ -185,6 +187,10 @@ function dropdown_edit_profile_callback() {
 /* callback for the logbooks page */
 function dropdown_logbooks_callback() {
     location.href = "/logbookMainPage";
+}
+/* callback for the new logbooks */
+function dropdown_new_logbooks_callback() {
+    location.href = "/testing-new-logbooks"
 }
 /* Logout requires a post request so add this function to the onclick of logout button */
 function dropdown_logout_callback() {
