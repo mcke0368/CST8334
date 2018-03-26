@@ -28,10 +28,23 @@ class CreateReportsTable extends Migration
             $table->date('Report_date')->nullable(true);
             $table->time('Report_time')->nullable(true);
             $table->text('Temperature')->nullable(true);
+            $table->text('Location')->nullable(true);
             $table->text('Wind')->nullable(true);
             $table->text('Precipitation')->nullable(true);
             $table->text('Visibility')->nullable(true);
             $table->text('Surface_Condition')->nullable(true);
+            $table->text('Incident')->nullable(true);
+            $table->text('Evacuation_Method')->nullable(true);
+            $table->text('Damage')->nullable(true);
+            $table->text('Lost_Day')->nullable(true);
+            $table->text('Lost_Number_Of_Days')->nullable(true);
+            $table->text('Victim_Left_Field')->nullable(true);
+            $table->text('Victim_Left_Date')->nullable(true);
+            $table->text('Visit_Facility')->nullable(true);
+            $table->text('Left_Date')->nullable(true);
+            $table->text('Return_Field')->nullable(true);
+            $table->text('Return_Date')->nullable(true);
+            $table->text('Re_Curring')->nullable(true);
             $table->integer('user_id')->unsigned();
         });
 

@@ -27,6 +27,8 @@ class ReportController extends Controller
         $report -> Report_time =Input::get('report_time');
         //temp
         $report->Temperature=Input::get('temprature');
+        //Location
+        $report->Location=Input::get('location');
         //wind
         $report->Wind =Input::get('wind');
         //percipitation
@@ -34,41 +36,57 @@ class ReportController extends Controller
         //visibility
         $report->Visibility=Input::get('visibility');
         //surface
-        $surface_array = array(Input::get('surfaceCondition'));
-        $surface_array = implode(',',$surface_array);
-        $report ->Surface_Condition = $surface_array;
+        $surface_array = (array)(Input::get('surfaceCondition'));
+        $report ->Surface_Condition = implode(',',$surface_array);
+        //incident
+        $incident_array = (array)(Input::get('incident'));
+        $report ->Incident= implode(',',$incident_array);
+        //Evacuation_Method
+        $evacuationMethod_array  = (array)(Input::get('evacuationMethod'));
+        $report ->Evacuation_Method= implode(',',$evacuationMethod_array);
+        //damage to
+        $damage_array = (array)(Input::get('damage'));
+        $report ->Damage= implode(',',$damage_array);
+        //lost day
+        $report->Lost_Day=Input::get('lostDay');
+        $report->Lost_Number_Of_Days=Input::get('lostNumDay');
+        //victime left field
+        $report->Victim_Left_Field=Input::get('victimLeftField');
+        $report->Victim_Left_Date=Input::get('DateLeft');
+        //victime visit facility
+        $report->Visit_Facility=Input::get('victimVisitFacility');
+        $report->Left_Date=Input::get('numberOfDateLeft');
+        //victime visit facility
+        $report->Return_Field=Input::get('returnField');
+        $report->Return_Date=Input::get('dateReturn');
+        //victime visit facility
+        $report->Re_Curring=Input::get('recurring');
+
 
         //type of Injury
-        $injury_array = array(Input::get('injury'));
-        $injury_array = implode(',',$injury_array);
-        $report ->Type_of_Injury = $injury_array;
+        $injury_array = (array)(Input::get('injury'));
+        $report ->Type_of_Injury = implode(',',$injury_array);
         $report -> Other_Injury = Input::get('otherInjury');
         //type of Illness
-        $illness_array = array(Input::get('illness'));
-        $illness_array = implode(',',$illness_array);
-        $report ->Type_of_Illness = $illness_array;
-        $report -> Other_Illness = Input::get('otherIllnes');
+        $illness_array = (array)(Input::get('illness'));
+        $report ->Type_of_Illness = implode(',',$illness_array);
+        $report -> Other_Illness = Input::get('otherIllness');
         //Program Activity
-        $activitie_array = array(Input::get('activitie'));
-        $activitie_array = implode(',',$activitie_array);
-        $report ->Program_Activity = $activitie_array;
+        $activitie_array = (array)(Input::get('activitie'));
+        $report ->Program_Activity = implode(',',$activitie_array);
         $report -> Other_Activity = Input::get('otherActivity');
         //Immediate Cause
-        $cause_array = array(Input::get('cause'));
-        $cause_array = implode(',',$cause_array);
-        $report ->Immediate_Cause = $cause_array;
+        $cause_array = (array)(Input::get('cause'));
+        $report ->Immediate_Cause = implode(',',$cause_array);
         $report -> Other_Cause = Input::get('otherCause');
         //anatomical location
-        $anatomical_location_array = array(Input::get('anatomical_location'));
-        $anatomical_location_array = implode(',',$anatomical_location_array);
-        $report ->Anatomical_Location = $anatomical_location_array;
+        $anatomical_location_array = (array)(Input::get('anatomical_location'));
+        $report ->Anatomical_Location = implode(',',$anatomical_location_array);
 
         //user Id
         $report->user_id = $user_id;
         $report->save();
-        return redirect()->action(
-            'GuideProfileController@getGuide'
-        );
+        return redirect('/logbookMainPage');
     }
 
     /**
