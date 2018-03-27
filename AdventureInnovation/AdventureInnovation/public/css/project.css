@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Contrail+One');
  
  /*layout*/
+
 	body {
 		font-family: 'Contrail One', cursive;
 	}
@@ -62,8 +63,7 @@
 	}
 	white-space: pre-wrap;
             
- /* homepage */
-  
+ /* homepage */ 
 	 
    #c1 {
 		background-image: url({{ URL::asset('/images/s3.amazonaws.com_upload.uxpin_files_272217_618567_feet-morning-adventure-camping-2.jpg')}});
@@ -145,8 +145,7 @@
 		border:none;
 		color:white;
 	}
-	
-	
+		
 	.list-group li, row li {
 		background-color: #e6e6e6;
 		border: none;
@@ -176,7 +175,7 @@
 		color:#ffffff;
 	}
 	
-	/* Company contact */
+/* Company contact */
   
 	#contact_company_div {
 		color: black;
@@ -189,10 +188,9 @@
 	.login-pad{
 		padding: 20px;
 		margin-top:15px;
-	}
+	}	
 	
-	
-	/* Company login */
+/* Company login */
 	
 	.company-user{
 		font-size: large; 
@@ -210,7 +208,7 @@
 	}
 
 	
-	/* profile */
+/* profile */
 	
 	.inline-block {
 		display: inline-block;
@@ -292,7 +290,7 @@
 		
 	}
 	
-	/* edit profile */
+/* edit profile */
 	
 	.edit-btn {
 		background-color: #337ab7;
@@ -316,7 +314,6 @@
 	
 /* Create default logbook */
 
-
 	.form-box {
 		background: #E3E3E3;
 		margin: 7%; 
@@ -333,10 +330,7 @@
 		color: aliceblue;
 	}
 	
-	/* default log */
-	
-	
-	/* guide Dashboard */
+/* guide Dashboard */
 	
 	 #Dashboard_div {
 		color: black;
@@ -344,7 +338,9 @@
 		padding-left: 15%;
 		padding-right: 15%
 	}
+
 /* Job details */
+
 	#Job_div {
 		color: black;
 		padding: 0%;
@@ -372,8 +368,41 @@
 		padding-right: 50px; 
 		margin-right:100px;
 	}
+
+/* Risk manager's report  */
 	  
-		
+	.background-report{
+    background-color:#ffffe6;
+	}
+	.report-title{
+	    text-align:center;
+	    margin-top:30px;
+	    margin-bottom:20px;
+	}
+	.report-elements{
+	    margin-bottom:10px;
+	}
+	.input-report{
+	    border-radius:5px;  
+	}
+
+	.report-submit{
+	    text-align:center;
+	    margin-top:20px;
+	    margin-bottom:20px;
+	} 
+
+/*Report view  */
+
+	.table-font{
+        font-size:120%;
+         border-radius: 10px;
+    }
+
+    th>h4{
+        font-size:150%;
+    }
+	
  
  
  
