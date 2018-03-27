@@ -83,6 +83,14 @@ class ReportController extends Controller
         $anatomical_location_array = (array)(Input::get('anatomical_location'));
         $report ->Anatomical_Location = implode(',',$anatomical_location_array);
 
+        //Attachement
+        $image = $request->file('attachment');
+        $name = time().'.'.$image->getClientOriginalName();
+        $destinationPath = public_path('/storage/');
+        $image->move($destinationPath, $name);
+        $report->Attachment = '/storage/'.$name;
+
+
         //user Id
         $report->user_id = $user_id;
         $report->save();
