@@ -19,16 +19,7 @@
                 scrollTop: $("#f1").offset().top
             }, 500);
         });
-//		$(document).ready(function(){ 
-//			$("#guide").on("click", function(){
-//			$("#btlog").text("Login as a guide")
-//			});
 //		
-//			$("#company").on("click", function(){
-//			$("#btlog").text("Login as a company")
-//			});
-//		}); 
-		
     </script>
 @stop
 

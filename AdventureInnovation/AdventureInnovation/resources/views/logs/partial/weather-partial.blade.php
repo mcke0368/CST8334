@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-    <div class="panel-heading" style="text-align: center; background-color: #54B2C7">
+    <div class="panel-heading text-center" style="background-color: #54B2C7">
         <h3 class="panel-title">
             Weather Section
         </h3>
@@ -10,16 +10,16 @@
         <div class="row">
 
             <div class="col-sm-1 col-sm-offset-3">
-                <label for="weather-sunny class=" class="col-form-label"><i class="wi wi-day-sunny"
-                                                                            style="font-size: x-large"></i></label>
+                <label for="weather-sunny class=" class="col-form-label"><i class="wi wi-day-sunny wi-size"
+                                                                            ></i></label>
             </div>
             <div class="col-sm-1 ">
                 {{ Form::checkbox('weather-sunny', 'on', array('class' => 'form-control')) }}
             </div>
 
             <div class="col-sm-1 col-sm-offset-1">
-                <label for="weather-partlycloudy" class="col-form-label"><i class="wi wi-day-cloudy"
-                                                                            style="font-size: x-large"></i></label>
+                <label for="weather-partlycloudy" class="col-form-label"><i class="wi wi-day-cloudy wi-size">
+                                                                            </i></label>
             </div>
             <div class="col-sm-1 ">
                 {{ Form::checkbox('weather-partlycloudy', 'on', array('class' => 'form-control')) }}
@@ -31,16 +31,14 @@
         <div class="row">
 
             <div class="col-sm-1  col-sm-offset-3">
-                <label for="weather-cloudy" class="col-form-label"><i class="wi wi-cloudy"
-                                                                      style="font-size: x-large"></i></label>
+                <label for="weather-cloudy" class="col-form-label"><i class="wi wi-cloudy wi-size"></i></label>
             </div>
             <div class="col-sm-1 ">
                 {{ Form::checkbox('weather-cloudy', 'on', array('class' => 'form-control')) }}
             </div>
 
             <div class="col-sm-1 col-sm-offset-1">
-                <label for="weather-snow" class="col-form-label"><i class="wi wi-snow"
-                                                                    style="font-size: x-large"></i></label>
+                <label for="weather-snow" class="col-form-label"><i class="wi wi-snow wi-size"></i></label>
             </div>
             <div class="col-sm-1 ">
                 {{ Form::checkbox('weather-snow', 'on', array('class' => 'form-control')) }}
@@ -52,16 +50,14 @@
         <div class="row">
 
             <div class="col-sm-1  col-sm-offset-3">
-                <label for="weather-lightning" class="col-form-label"><i class="wi wi-storm-showers"
-                                                                         style="font-size: x-large"></i></label>
+                <label for="weather-lightning" class="col-form-label"><i class="wi wi-storm-showers wi-size"></i></label>
             </div>
             <div class="col-sm-1 ">
                 {{ Form::checkbox('weather-lightning', 'on', array('class' => 'form-control')) }}
             </div>
 
             <div class="col-sm-1 col-sm-offset-1">
-                <label for="weather-raining" class="col-form-label"><i class="wi wi-rain"
-                                                                       style="font-size: x-large"></i></label>
+                <label for="weather-raining" class="col-form-label"><i class="wi wi-rain wi-size"></i></label>
             </div>
             <div class="col-sm-1 ">
                 {{ Form::checkbox('weather-raining', 'on', array('class' => 'form-control')) }}
@@ -74,8 +70,8 @@
         <div class="row" style="margin-top: 1em">
 
             <div class="col-sm-1  col-sm-offset-3">
-                <label for="weather-temperature" class="col-form-label"><i
-                            class="wi wi-thermometer" style="font-size: x-large"></i></label>
+                <label for="weather-temperature" class="col-form-label">
+                    <i class="wi wi-thermometer wi-size"></i></label>
             </div>
 
             <div class="col-sm-2 ">
@@ -83,7 +79,7 @@
             </div>
             <div class="col-sm-1  ">
                 <label for="weather-wind" class="col-form-label"><i
-                            class="wi wi-strong-wind" style="font-size: x-large"></i></label>
+                            class="wi wi-strong-wind wi-size"></i></label>
             </div>
 
             <div class="col-sm-2">
