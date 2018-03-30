@@ -3,7 +3,7 @@
 @section('headGuide')
 @stop
 @section('bodyGuide')
-    {!! Form::open(array('route' => 'Reports.store')) !!}
+    {!! Form::open(array('action' => 'ReportController@store', 'enctype'=>"multipart/form-data", 'method'=>"post", 'files' => true))!!}
     {{Form::label('dateLabel','Date: ')}}
     {{Form::date('report_date', \Carbon\Carbon::now())}}
    <!-- {{Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'S')}} -->

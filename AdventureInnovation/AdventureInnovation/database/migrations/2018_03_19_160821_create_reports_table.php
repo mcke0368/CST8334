@@ -46,6 +46,7 @@ class CreateReportsTable extends Migration
             $table->text('Return_Date')->nullable(true);
             $table->text('Re_Curring')->nullable(true);
             $table->integer('user_id')->unsigned();
+            $table->text('Attachment')->nullabe(true);
         });
 
         Schema::table('reports', function($table) {

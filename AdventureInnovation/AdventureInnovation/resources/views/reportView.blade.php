@@ -50,6 +50,10 @@
                 <h2>Immediate Cause :{{$report->Immediate_Cause}}</h2>
                 <h2>Other Cause :{{$report->Other_Cause}}</h2>
                 <h2>Anatomical Location :{{$report->Anatomical_Location}}</h2>
+                <img src="{{$report->Attachment}}" alt="" title="" ></img>
+                <div style="text-align:right;" class="form-buttons-wrapper">
+                    <button onClick="window.print()">Print this page</button>
+                </div>
             </div>
         </div>
     </div>
