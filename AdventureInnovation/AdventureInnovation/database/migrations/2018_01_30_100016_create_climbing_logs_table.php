@@ -14,7 +14,10 @@ class CreateClimbingLogsTable extends Migration
     public function up()
     {
         Schema::create('climbing_logs', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->integer('base_log_id')->unsigned()->nullable(true);
+            $table->integer('template_id')->unsigned()->nullable(true);
             $table->timestamps();
         });
     }

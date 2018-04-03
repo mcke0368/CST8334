@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGuideCertificationTable extends Migration
+class ConstraintsKayakingLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateGuideCertificationTable extends Migration
      */
     public function up()
     {
-        Schema::create('guide_certification', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('guide_id')->unsigned();
-            $table->integer('certification_id')->unsigned();
+        Schema::table('kayaking_logs', function (Blueprint $table) {
+            //$table->foreign('base_log_id')->references('id')->on('base_logs')->onDelte('cascasde');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateGuideCertificationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guide_certification');
+        Schema::table('kayaking_logs', function (Blueprint $table) {
+            $table->dropForeign('base_log_id');
+        });
     }
 }

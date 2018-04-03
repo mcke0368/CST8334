@@ -5,6 +5,7 @@
 		
         <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ URL::asset('css/weather-icons.min.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/project.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('jquery-ui-1.12.1/jquery-ui.min.css') }}">
@@ -39,10 +40,10 @@
 					</span>
 				</a>
 			</div>
-			<div id="navbar">
+			<div class="collapse navbar-collapse" id="navbar">
 				<form class="navbar-form navbar-nav navbar-right search-form">
 					<div class="input-group">
-					  <input type="text" class="form-control" placeholder="Search">
+					  <input type="text" class="form-control input-lg" placeholder="Search">
 					  <div class="input-group-addon mr-sm-2">
                             <a href=""><i class="fa fa-search" aria-hidden="true"></i></a>
                         </div>
@@ -64,32 +65,36 @@
                         @if(Auth::check())
 
                             <div class="btn-group">
-                                <button class="dropdown-toggle btn btn-danger"
+                                <button class="dropdown-toggle btn btn-danger btn-lg login-logout"
                                         data-toggle="dropdown" id="login-menu" type="button"
-                                        aria-haspopup="true" aria-expanded="false"
-                                        style="padding:7px 15px; margin-top:17px">
+                                        aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->username }}
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="login-menu" id="login-item">
-                                    <li class="dropdown-item">
-                                        <div class="btn-default btn-xs" id="dropdown-profile" type="button">
-                                            <span class="fa" >Profile</span>
+                                    <li class="dropdown-item item-pointer">
+                                        <div class="btn-default btn-xs item-changed" id="dropdown-profile" type="button">
+                                            <span class="fa item-size" >Profile</span>
                                         </div>
                                     </li>
-                                    <li class="dropdown-item">
-                                        <div class="btn-default btn-xs" id="dropdown-edit-profile" type="button">
-                                            <span class="fa" >Edit Profile</span>
+                                    <li class="dropdown-item item-pointer">
+                                        <div class="btn-default btn-xs item-changed" id="dropdown-edit-profile" type="button">
+                                            <span class="fa item-size" >Edit Profile</span>
                                         </div>
                                     </li>
-                                    <li class="dropdown-item">
-                                        <div class="btn-default btn-xs" id="dropdown-logbooks" type="button">
-                                            <span class="fa">Logbooks</span>
+                                    <li class="dropdown-item item-pointer">
+                                        <div class="btn-default btn-xs item-changed" id="dropdown-logbooks" type="button">
+                                            <span class="fa item-size">Logbooks</span>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-item item-pointer">
+                                        <div class="btn-default btn-xs item-changed" id="dropdown-new-logbooks" type="button">
+                                            <span class="fa item-size">New Logbooks</span>
                                         </div>
                                     </li>
 
-                                    <li>
-                                        <div class="btn-default btn-xs" id="dropdown-logout" type="button">
-                                            <span class = "fa" >Logout</span>
+                                    <li class="dropdown-item item-pointer">
+                                        <div class="btn-default btn-xs item-changed" id="dropdown-logout" type="button">
+                                            <span class = "fa item-size">Logout</span>
                                         </div>
 
                                     </li>

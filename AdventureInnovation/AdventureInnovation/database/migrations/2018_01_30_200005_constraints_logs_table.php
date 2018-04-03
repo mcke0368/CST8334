@@ -31,7 +31,6 @@ class ConstraintsLogsTable extends Migration
         Schema::table('logs', function (Blueprint $table) {
             // drop foreign key and column for guide
             $table->dropForeign('guide_id');
-            $table->dropColumn('guide_id');
         });
     }
 }

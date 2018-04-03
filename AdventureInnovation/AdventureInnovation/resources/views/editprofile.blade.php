@@ -36,9 +36,16 @@
 @section('bodyGuide')
 
     <div id="c1" class="container-fluid">
-        <div class="col-xs-4 panel panel-default col-xs-offset-1 col-no-padding">
+        <div class="col-md-5 panel panel-default col-no-padding">
             <div id="name-panel" class="panel-heading">
-                <h4>{{$firstname}}</h4>
+                <h4>{{$firstname}}
+                    <div class="edit-button">
+                        <div class="btn btn-primary pull-right" type="button">
+                            <a href="{{ url('profile') }}" class="edit-finished edit-profile"><!-- <i class="fa fa-check" aria-hidden="true"></i> --> Finished Editing</a>
+                        </div>
+                        <button type="button" class="btn btn-primary pull-right update-button" id="send-all-data">Update</button>
+                    </div>
+                </h4>
             </div>
             <div class="panel-body">
                 <div id="badge-block">
@@ -87,7 +94,7 @@
 
             
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-7 no-padding-right">
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -97,11 +104,9 @@
                             </a>
                         </h4>
                     </div>
-                    <div id="collapse1" class="panel-collapse collapse in">
+                    <div id="collapse1" class="panel-collapse collapse">
                         <!-- Trigger the modal with an href -->
-                        <a data-toggle="modal" href="#edit-bio-modal"><i class="fa fa-pencil-square-o edit-pencil"
-                                                                         aria-hidden="true"></i></a>
-                        
+                        <a data-toggle="modal" href="#edit-bio-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>                       
                         <div class="panel-body" id="bio">
                             {{$guide->about}}
                         </div>
@@ -156,8 +161,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Work Experience</h4></div>
                                 <div class="panel-body work-exp-panel">
-                                    <a data-toggle="modal" href="#edit-work-modal"><i class="fa fa-pencil-square-o edit-pencil"
-                                                                                     aria-hidden="true"></i></a>
+                                    <a data-toggle="modal" href="#edit-work-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
                                     <div id="work-experience">
                                         {{ $guide->work_experience }}
                                     </div>
@@ -165,16 +169,14 @@
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Employment History</h4></div>
-                                <a data-toggle="modal" href="#edit-emp-modal"><i class="fa fa-pencil-square-o edit-pencil"
-                                                                                 aria-hidden="true"></i></a>
+                                <a data-toggle="modal" href="#edit-emp-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
                                     <textarea class="form-control" rows="6" id="employment-history">
                                         {{ $guide->employment_history }}
                                     </textarea>
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Training/Courses</h4></div>
-                                <a data-toggle="modal" href="#edit-training-modal"><i class="fa fa-pencil-square-o edit-pencil"
-                                                                                 aria-hidden="true"></i></a>
+                                <a data-toggle="modal" href="#edit-training-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
                                 <div class="panel-body training-panel">
                                     <div id="training-modal"></div>
                                         <textarea class="form-control" rows="6" id="training">
@@ -190,38 +192,33 @@
                         </div>
                     </div>
                 </div>
-            <div class="carousel slide" data-interval="false" id="carousel1">
-                <ol class="carousel-indicators">
-                    <li  data-target="#carousel1" data-slide-to="0"></li>
-                    <li  data-target="#carousel1" data-slide-to="1"></li>
-                    <li  data-target="#carousel1" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="item active img-responsive">
-                        <img src="{{ asset('images/adventure_sport.jpg') }}">
-                        
+                <div class="carousel slide" data-interval="false" id="carousel1">
+                    <ol class="carousel-indicators">
+                        <li  data-target="#carousel1" data-slide-to="0"></li>
+                        <li  data-target="#carousel1" data-slide-to="1"></li>
+                        <li  data-target="#carousel1" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active img-responsive">
+                            <img src="{{ asset('images/adventure_sport.jpg') }}">
+                            
+                        </div>
+                        <div class="item img-responsive">
+                            <img src="{{ asset('images/1200px-Kayakersview.jpg') }}">           
+                        </div>
+                        <div class="item img-responsive">
+                            <img src="{{ asset('images/11.png') }}">
+                        </div>              
                     </div>
-                    <div class="item img-responsive">
-                        <img src="{{ asset('images/1200px-Kayakersview.jpg') }}">           
-                    </div>
-                    <div class="item img-responsive">
-                        <img src="{{ asset('images/11.png') }}">
-                    </div>              
+                    <a href="#carousel1" class="left carousel-control" data-slide="prev">
+                        <span id ="icon-left" class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a href="#carousel1" class="right carousel-control" data-slide="next">
+                        <span id ="icon-left" class="glyphicon glyphicon-chevron-right"></span>
+                    </a>                      
                 </div>
-                <a href="#carousel1" class="left carousel-control" data-slide="prev">
-                    <span id ="icon-left" class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a href="#carousel1" class="right carousel-control" data-slide="next">
-                    <span id ="icon-left" class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-                          
             </div>
-        </div>
-    </div>
-        <div class="col-xs-1 col-no-padding">
-            <a href="{{ url('profile') }}"><i class="fa fa-check" aria-hidden="true"></i> Finished Editing</a>
-        </div>
-        <button type="button" class="btn btn-primary" id="send-all-data">Update</button>
+        </div>       
         <!-- Modal -->
         <div id="edit-cert-modal" class="modal fade" role="dialog">
             <div class="modal-dialog">

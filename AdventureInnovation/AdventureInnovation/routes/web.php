@@ -78,8 +78,10 @@ Route::get('defaultLog', 'LogbookController@showLog');
 
 Route::post('/setLogType', 'LogbookController@setLogType');
 
+/* called when you create a new log from a template in logbook-blade */
 Route::get('createDefaultLogbook', 'LogbookController@showLogTemplate');
 
+/* called when you create a new template from logbook-blade */
 Route::get('createLogType', 'LogbookTypeController@showTemplate');
 
 Route::post('/deleteLogType', 'LogbookListController@deleteLogType');
@@ -88,26 +90,26 @@ Route::post('/deleteLog', 'LogbookListController@deleteLog');
 
 Route::get('/deleteLogType', function()
 {
-    return view('logbook');
+    return view('logs/logbook');
 });
 
 Route::get('/deleteLogType', function()
 {
-    return view('logbook');
+    return view('logs/logbook');
 });
 //joanna add this for test
 Route::get('logbookMainPage', function()
 {
-    return view('logbookMainPage');
+    return view('logs/logbookMainPage');
 });
 
 Route::get('kayakLookbook', function()
 {
-    return view('kayakLookbook');
+    return view('logs/kayakLookbook');
 });
 Route::get('rockClimbingLogbook', function()
 {
-    return view('rockClimbingLogbook');
+    return view('logs/rockClimbingLogbook');
 });
 Route::get('companyLogin', function()
 {
@@ -158,3 +160,14 @@ Route::resource('videos', 'VideoController');
 Route::resource('Reports', 'ReportController', ['only' => ['store', 'show']]);
 
 Route::get('/report', function () { return view('report'); });
+
+
+/**********************************************************************************
+ * Testing Controller
+ **********************************************************************************/
+Route::get('/testing-new-logbooks', 'TestingController@getWeather')->name('testing-new-logbooks');
+
+Route::post('/logbook-save-template', 'TestingController@saveTemplate')->name('lookbook-save-template');
+Route::post('/logbook-save-log', 'TestingController@saveLog')->name('lookbook-save-log');
+
+

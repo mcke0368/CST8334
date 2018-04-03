@@ -20,9 +20,13 @@
 @section('bodyGuide')
 
     <div id="c1" class="container-fluid">
-        <div class="col-xs-4 panel panel-default col-xs-offset-1 col-no-padding">
+        <div class="col-md-5 panel panel-default col-no-padding">
             <div id="name-panel" class="panel-heading">
-                <h4> <?php echo $firstname;?></h4>
+                <h4> <?php echo $firstname;?>
+                	<div class="col-no-padding pull-right">
+            			<a href="{{ url('profile/edit') }}" class="edit-profile"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
+	        		</div>
+	        	</h4>               
             </div>
           
             <div class="panel-body">
@@ -43,16 +47,22 @@
 				<div><i class="fa fa-phone" aria-hidden="true"></i> Phone: {{ $user->phone }}
 				</div>
 
-				<div class="fa-2x">
-					<a href="{{ ($social_media != null) ? $social_media->Twitter_URL : ""}}">
-						<i class="fa fa-twitter" aria-hidden="true"></i>
+				<div class="fa-3x row">
+					<div class="col-xs-1">
+						<a href="{{ ($social_media != null) ? $social_media->Twitter_URL : ""}}" data-toggle="tooltip" data-placement="left" title="Twitter">
+						<i class="fa fa-twitter social-icons" aria-hidden="true"></i>
 					</a>
-					<a href="{{ ($social_media != null) ? $social_media->Instagram_URL : ""}}">
-						<i class="fa fa-instagram" aria-hidden="true"></i>
-					</a>
-					<a href="{{ ($social_media != null) ? $social_media->Facebook_URL : ""}}">
-						<i class="fa fa-facebook-official" aria-hidden="true"></i>
-					</a>
+					</div>
+					<div class="col-xs-1">
+						<a href="{{ ($social_media != null) ? $social_media->Instagram_URL : ""}}" data-toggle="tooltip" data-placement="top" title="Instagram">
+						<i class="fa fa-instagram social-icons" aria-hidden="true"></i>
+						</a>
+					</div>
+					<div class="col-xs-1">
+						<a href="{{ ($social_media != null) ? $social_media->Facebook_URL : ""}}" data-toggle="tooltip" data-placement="top" title="Facebook">
+						<i class="fa fa-facebook-official social-icons" aria-hidden="true"></i>
+						</a>
+					</div>
 				</div>
 			</div>
             
@@ -68,7 +78,7 @@
 				{
 					return preg_replace(
 						"/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-						"<iframe width=\"410\" height=\"300\" src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
+						"<iframe width=\"100%\" height=\"350\" src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
 						$string);
 				}
 				$user = Auth::user();
@@ -92,7 +102,7 @@
 
 
 
-        <div class="col-xs-6">
+        <div class="col-md-7 no-padding-right">
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -102,7 +112,7 @@
                             </a>
                         </h4>
                     </div>
-                    <div id="collapse1" class="panel-collapse collapse in">
+                    <div id="collapse1" class="panel-collapse collapse">
                         <div class="panel-body">
                             <?php echo $guide->about; ?>
                         </div>
@@ -170,9 +180,7 @@
                                 </div>
                             </div>
                             <div class="pdf-link"><a
-                                        href="{{ asset('pdfs/functionalSample.pdf') }}" target="_blank"><i class="fa fa-file-pdf-o"
-                                                                                           aria-hidden="true"></i> View
-                                    resume as PDF</a></div>
+                                        href="{{ asset('pdfs/functionalSample.pdf') }}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> View resume as PDF</a></div>
                         </div>
                     </div>
                 </div>
@@ -205,9 +213,9 @@
 			             
             </div>
         </div>
-        <div class="col-xs-1 col-no-padding">
+        <!-- <div class="col-md-1 col-no-padding">
             <a href="{{ url('profile/edit') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
-        </div>
+        </div> -->
 
         <script type="text/javascript" src="{{ URL::asset('slick/slick.min.js') }}"></script>
         

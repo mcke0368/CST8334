@@ -29,7 +29,6 @@ class ConstraintsGuidesTable extends Migration
     {
         Schema::table('guides', function (Blueprint $table) {
             $table->dropForeign('user_id');
-            $table->dropColumn('user_id');
         });
     }
 }

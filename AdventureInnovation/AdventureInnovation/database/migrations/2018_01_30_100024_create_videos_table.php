@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSocialMediaTable extends Migration
+class CreateVideosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateSocialMediaTable extends Migration
      */
     public function up()
     {
-        Schema::create('social_media', function (Blueprint $table) {
+        Schema::create('videos', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->timestamps();
-            $table->longText('Facebook_URL');
-            $table->longText('Twitter_URL');
-            $table->longText('Instagram_URL');
+            //variables
+            $table->longText('Youtube_URL');
 
             $table->integer('user_id')->unsigned();
         });
-
-        Schema::table('social_media', function($table) {
+        Schema::table('videos', function($table) {
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -35,6 +34,6 @@ class CreateSocialMediaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('social_media');
+        Schema::dropIfExists('videos');
     }
 }

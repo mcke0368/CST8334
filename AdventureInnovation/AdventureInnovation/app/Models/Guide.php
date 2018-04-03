@@ -23,7 +23,7 @@ class Guide extends Model
      **********************************************************************************/
 
     public function certifications() {
-        return $this->belongsToMany('App\Models\Certification', 'guide_certification');
+        return $this->belongsToMany('App\Models\Certification', 'certification_guide');
     }
 
      /**********************************************************************************
