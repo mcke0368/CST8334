@@ -7,6 +7,66 @@
  *
  */
 
+function gather_base_data() {
+    var base_data = {};
+    var start_time = $('#base-date')[0].value + " " +$('#base-start_time')[0].value;
+    var end_time = $('#base-date')[0].value + " " +$('#base-end_time')[0].value;
+
+    base_data['base-title'] = $('#base-logtitle')[0].value;
+    base_data['base-location'] = $('#base-location')[0].value;
+    base_data['base-route'] = $('#base-route')[0].value;
+    base_data['base-company'] = $('#base-company')[0].value;
+    base_data['base-position'] = $("#base-position")[0].value
+    base_data['base-start_time'] = start_time;
+    base_data['base-end_time'] = end_time;
+    base_data['base-incident'] = $('#base-incident')[0].value;
+    base_data['base-number_participants'] = $('#base-number_participants')[0].value;
+    base_data['base-group_size'] = $('#base-group_size')[0].value;
+    base_data['base-other_leaders'] = $('#base-other_leaders')[0].value;
+
+
+    // sort out the weather
+
+    // gather all weather conditions, and put into a string all checked values.
+    var weather_conditions = "";
+    $("*[name*='weather_conditions_']").each(function() {
+        if (this.checked) {
+            var name = this.name;
+            name = name.replace("weather_conditions_","");
+            weather_conditions += name + ":";
+        }
+    });
+    base_data['base-weather_conditions'] = weather_conditions;
+    base_data['base-weather_temp'] = $('#weather_temperature')[0].value;
+    base_data['base-weather_wind'] = $('#weather_wind')[0].value;
+    base_data['base-weather_notes'] = $('#weather_notes')[0].value;
+    return base_data;
+}
+
+function gather_kayaking_data() {
+    var kayaking_data = {};
+    kayaking_data['rapid_class'] = $('#kayaking-rapid_class')[0].value;
+    kayaking_data['flow_level'] = $('#kayaking-flow_level')[0].value;
+    kayaking_data['launch_site'] = $('#kayaking-launch_site')[0].value;
+    kayaking_data['takeout_site'] = $('#kayaking-takeout_site')[0].value;
+    kayaking_data['trip_type'] = $('#kayaking-trip_type')[0].value;
+    kayaking_data['trip_number'] = $('#kayaking-trip_number')[0].value;
+    kayaking_data['notes'] = $('#kayaking-notes')[0].value;
+    return kayaking_data;
+}
+
+function gather_rafting_data() {
+    var rafting_data = {};
+    rafting_data['rapid_class'] = $('#rafting-rapid_class')[0].value;
+    rafting_data['flow_level'] = $('#rafting-flow_level')[0].value;
+    rafting_data['launch_site'] = $('#rafting-launch_site')[0].value;
+    rafting_data['takeout_site'] = $('#rafting-takeout_site')[0].value;
+    rafting_data['trip_type'] = $('#rafting-trip_type')[0].value;
+    rafting_data['trip_number'] = $('#rafting-trip_number')[0].value;
+    rafting_data['notes'] = $('#rafting-notes')[0].value;
+    return rafting_data;
+}
+
 /* document ready jQuery call */
 $(function () {
 
@@ -40,6 +100,30 @@ $(function () {
         $("#custom-template").empty();
     });
 
+    /**
+     * callback function for populating the duration.
+     */
+    function checktime() {
+        var start = new Date('2015-03-25T' + $('#base-start_time')[0].value + "Z")
+        var end = new Date('2015-03-25T' + $('#base-end_time')[0].value + "Z")
+        if (start && end) {
+            var diff =  end - start;
+            var seconds = Math.floor(diff/1000); //ignore any left over units smaller than a second
+            var minutes = Math.floor(seconds/60);
+            seconds = seconds % 60;
+            var hours = Math.floor(minutes/60);
+            minutes = minutes % 60;
+            $('#base-duration')[0].value = "Hr: " + hours + " Min: " + minutes;
+        }
+    }
+    /**
+     * Add callbacks for duration
+     */
+    $('#base-start_time').change(checktime);
+    $('#base-end_time').change(checktime);
+
+
+
 
     /**
      * callback for submitting a log
@@ -52,33 +136,12 @@ $(function () {
         /* gather up all the data */
 
         /* base_data */
-        var base_data = {};
-        var start_time = $('#base-1-date')[0].value + " " +$('#base-1-starttime')[0].value;
-        var end_time = $('#base-1-date')[0].value + " " +$('#base-1-endtime')[0].value;
+        var base_data = gather_base_data();
 
-        base_data['title'] = $('#base-1-logtitle')[0].value;
-        base_data['location'] = $('#base-1-location')[0].value;
-        base_data['route'] = $('#base-1-route')[0].value;
-        base_data['company'] = $('#base-1-company')[0].value;
-        base_data['starttime'] = start_time;
-        base_data['endtime'] = end_time;
-        base_data['incident'] = $('#base-1-incident')[0].value;
-        base_data['nrparticipants'] = $('#base-1-nrparticipants')[0].value;
-        base_data['grpsize'] = $('#base-1-grpsize')[0].value;
-        base_data['leaders'] = $('#base-1-leaders')[0].value;
-
-        //base['weather_conditions'] = $('#weather-sunny')[0].value;
         /* TODO figure out if we want to save the file or path */
         //base['attachment'] = $('#attachment-file')[0].value;
 
-        var kayak_data = {};
-
-        kayak_data['rapidclass'] = $('#kayaking-rapidclass').find(":selected")[0].value;
-        kayak_data['flowlevel'] = $('#kayaking-flowlevel')[0].value;
-        kayak_data['company'] = $('#kayaking-company')[0].value;
-        kayak_data['launchsite'] = $('#kayaking-launchsite')[0].value;
-        kayak_data['triptype'] = $('#kayaking-triptype')[0].value;
-        kayak_data['tripnr'] = $('#kayaking-tripnr')[0].value;
+        var rafting_data = gather_rafting_data();
 
         var custom_data = $('#custom-template').html();
 
@@ -86,7 +149,7 @@ $(function () {
         $.ajax({
             type: "POST",
             url: '/logbook-save-log',
-            data: {base_data: base_data, kayak_data: kayak_data, custom_data: custom_data},
+            data: {base_data: base_data, rafting_data: rafting_data, custom_data: custom_data},
             success: function (data) {
                 if (data == "true") {
                     //window.location.href = "logbook";

@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\BaseLog;
 
-class KayakingLog extends Model
+class RaftingLog extends Model
 {
     protected $fillable = [
-      'rapid_class', 'flow_level', 'launch_site', 'takeout_site', 'distance', 'boat_used', 'notes'
+      'rapid_class', 'flow_level', 'launch_site', 'takeout_site', 'trip_type', 'trip_number', 'notes'
     ];
 
-    public $name = "White Water Kayaking";
+    public $name = "Rafting";
 
     /* get access to the baselog */
     public function baselogs() {

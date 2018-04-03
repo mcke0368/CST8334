@@ -18,9 +18,11 @@ class CreateKayakingLogsTable extends Migration
             $table->increments('id');
             $table->string('rapid_class',100)->nullable(true);
             $table->string('flow_level')->nullable(true);
-            $table->string('trip_type')->nullable(true);
-            $table->integer('trip_number')->nullable(true);
-            //$table->integer('base_log_id')->unsigned()->nullable(true);
+            $table->string('launch_site')->nullable(true);
+            $table->string('takeout_site')->nullable(true);
+            $table->string('distance')->nullable(true);
+            $table->string('boat_used')->nullable(true);
+            $table->text('notes')->nullable(true);
             $table->timestamps();
         });
     }

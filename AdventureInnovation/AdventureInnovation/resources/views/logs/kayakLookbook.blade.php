@@ -295,7 +295,7 @@
                 <li class="form-line jf-required" data-type="control_textbox" id="id_6">
                     <label class="form-label form-label-top form-label-auto" id="label_6" for="input_6">
                         Launch Place :
-                        <span class="form-required">
+                        <span class="form-required"ing>ing
                 *
               </span>
                     </label>

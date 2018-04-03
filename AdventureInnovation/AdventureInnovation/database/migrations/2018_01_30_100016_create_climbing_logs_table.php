@@ -16,8 +16,13 @@ class CreateClimbingLogsTable extends Migration
         Schema::create('climbing_logs', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('base_log_id')->unsigned()->nullable(true);
-            $table->integer('template_id')->unsigned()->nullable(true);
+            $table->string('climb_type')->nullable(true);
+            $table->boolean('multi_pitch')->nullable(true);
+            $table->string('climbing_conditions')->nullable(true);
+            $table->string('rating_difficulty')->nullable(true);
+            $table->string('rating_letter')->nullable(true);
+            $table->string('height')->nullable(true);
+            $table->text('notes')->nullable(true);
             $table->timestamps();
         });
     }

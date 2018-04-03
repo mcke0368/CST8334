@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ConstraintsClimbingLogsTable extends Migration
+class ConstraintsKayakingLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class ConstraintsClimbingLogsTable extends Migration
      */
     public function up()
     {
-        Schema::table('climbing_logs', function (Blueprint $table) {
+        Schema::table('kayaking_logs', function (Blueprint $table) {
         });
     }
 
@@ -24,7 +24,7 @@ class ConstraintsClimbingLogsTable extends Migration
      */
     public function down()
     {
-        Schema::table('climbing_logs', function (Blueprint $table) {
+        Schema::table('kayaking_logs', function (Blueprint $table) {
         });
     }
 }
