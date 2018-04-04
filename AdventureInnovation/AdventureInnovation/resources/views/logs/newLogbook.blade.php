@@ -25,7 +25,7 @@
 
     <div class="container">
         <!-- pass in the activity name so it knows what partials to load -->
-        @include('logs.partial.panel-form', [ 'activity_name' => $activity_name])
+        @include('logs.partial.panel-form')
     </div>
 
 @stop

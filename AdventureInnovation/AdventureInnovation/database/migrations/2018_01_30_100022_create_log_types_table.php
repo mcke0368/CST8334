@@ -17,6 +17,8 @@ class CreateLogTypesTable extends Migration
             $table->engine = 'InnoDB';
             $table->string('base_logable_type')->primary();
             $table->longText('description');
+            $table->string('name');
+            $table->string('slug');
             $table->timestamps();
         });
     }

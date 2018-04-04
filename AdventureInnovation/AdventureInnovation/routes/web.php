@@ -173,4 +173,8 @@ Route::post('/logbook-save-log', 'TestingController@saveLog')->name('lookbook-sa
  **********************************************************************************/
 Route::get('/logbookMainPage', 'LogbookMainPageController@show');
 
-Route::get('/logbook/{activity_slug}/new/', 'NewLogbooksController@show')->name('new-activity-logbook');
+Route::get('/logbook/{activity_slug}/new/', 'NewLogbooksController@create')->name('new-activity-logbook');
+Route::get('/logbook/{activity_slug}/{id}/', 'NewLogbooksController@edit')->name('edit-activity-logbook');
+
+Route::post('/logbook/save-template', 'NewLogbooksController@saveTemplate')->name('save-activity-template');
+Route::post('/logbook/save-log', 'NewLogbooksController@saveLog')->name('save-activity-log');

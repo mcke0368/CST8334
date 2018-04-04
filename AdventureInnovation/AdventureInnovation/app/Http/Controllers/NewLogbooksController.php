@@ -45,12 +45,13 @@ class NewLogbooksController extends Controller
      * show a new template log based in input activity param
      * @param Request $request
      */
-    public function show(Request $request) {
+    public function create(Request $request) {
 
         $activity_slug = $request->route('activity_slug');
 
         // find activity by slug
-        $activity = $activity_slug;
+        $type = LogType::all()->where('slug','=',$activity_slug)->first();
+        $activity = $type->name;
 
         $templates = LogTemplate::all();
         $types = LogType::all();
@@ -64,6 +65,31 @@ class NewLogbooksController extends Controller
         ]);
     }
 
+    /**
+     * Show a given log book.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Request $request) {
+        $activity_slug = $request->route('activity_slug');
+        $log_id = $request->route('id');
+
+        // find activity by slug
+        $type = LogType::all()->where('slug','=',$activity_slug)->first();
+        $activity = $type->name;
+
+        $templates = LogTemplate::all();
+        $types = LogType::all();
+
+        return view('logs.newLogbook', [
+            'templates' => $templates,
+            'log_types' => $types,
+            'activity_name' => $activity,
+            'activity_slug' => $activity_slug
+        ]);
+
+    }
 
     /**
      * Called when saving a template.  Raw HTML markup from the template is sent
@@ -151,10 +177,6 @@ class NewLogbooksController extends Controller
 
             $log->save();
             $log->baselogs()->save($base);
-
-            $log = BaseLog::first();
-
-            $logt = $log->base_logable;
 
             return json_encode(true);
         }

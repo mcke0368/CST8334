@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-heading" style="text-align: center; background-color: #54B2C7">
         <h3 class="panel-title">
-           Kayaking Section
+            {{ $activity_name }} Section
         </h3>
     </div>
 

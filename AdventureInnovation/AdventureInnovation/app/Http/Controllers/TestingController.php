@@ -128,10 +128,6 @@ class TestingController extends Controller
             $log->save();
             $log->baselogs()->save($base);
 
-            $log = BaseLog::first();
-
-            $logt = $log->base_logable;
-
             return json_encode(true);
         }
         return json_encode(false);

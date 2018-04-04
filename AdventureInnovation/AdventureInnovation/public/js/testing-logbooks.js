@@ -148,7 +148,7 @@ $(function () {
 
         $.ajax({
             type: "POST",
-            url: '/logbook/save-log',
+            url: '/logbook-save-log',
             data: {base_data: base_data, rafting_data: rafting_data, custom_data: custom_data},
             success: function (data) {
                 if (data == "true") {
@@ -200,14 +200,10 @@ $(function () {
 
         $.ajax({
             type: "POST",
-            url: '/logbook/save-template',
+            url: '/logbook-save-template',
             data: {template_name: template_name, template_desc: template_desc, html_data: html_data},
             success: function (data) {
                 if (data == "true") {
-                    // update the options list
-                    $('#logbook-select-template')
-                        .append($("<option></option>").attr("value",html_data).text(template_name));
-
                     //window.location.href = "logbook";
                 }
             },
@@ -297,27 +293,32 @@ $(function () {
         $("#modal-add .dropdown .btn:first-child").val($(this).text());
 
         if ($(this).text() == "Input") {
-            pathname = '/logbook-field-details/input-details.html';
+            pathname = window.location.pathname;
+            pathname = pathname.substring(0, pathname.lastIndexOf('/')) + '/logbook-field-details/input-details.html';
             $.get(pathname, function (data) {
                 $("#add-item-detail").html(data);
             });
         } else if ($(this).text() == "Text Area") {
-            pathname = '/logbook-field-details/text-area-details.html';
+            pathname = window.location.pathname;
+            pathname = pathname.substring(0, pathname.lastIndexOf('/')) + '/logbook-field-details/text-area-details.html';
             $.get(pathname, function (data) {
                 $("#add-item-detail").html(data);
             });
         } else if ($(this).text() == "Checkbox") {
-            pathname = '/logbook-field-details/checkbox-details.html';
+            pathname = window.location.pathname;
+            pathname = pathname.substring(0, pathname.lastIndexOf('/')) + '/logbook-field-details/checkbox-details.html';
             $.get(pathname, function (data) {
                 $("#add-item-detail").html(data);
             });
         } else if ($(this).text() == "Radio") {
-            pathname = '/logbook-field-details/radio-details.html';
+            pathname = window.location.pathname;
+            pathname = pathname.substring(0, pathname.lastIndexOf('/')) + '/logbook-field-details/radio-details.html';
             $.get(pathname, function (data) {
                 $("#add-item-detail").html(data);
             });
         } else if ($(this).text() == "Select") {
-            pathname = '/logbook-field-details/select-details.html';
+            pathname = window.location.pathname;
+            pathname = pathname.substring(0, pathname.lastIndexOf('/')) + '/logbook-field-details/select-details.html';
             $.get(pathname, function (data) {
                 $("#add-item-detail").html(data);
             });

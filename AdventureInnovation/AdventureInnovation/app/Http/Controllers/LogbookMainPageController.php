@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\GuideDAO;
 use App\Models\BaseLog;
+use App\Models\LogType;
 
 class LogbookMainPageController extends Controller
 {
@@ -41,6 +42,7 @@ class LogbookMainPageController extends Controller
 
                 // gather up the data we need
                 $data = array(
+                    'id' => $bl->id,
                     'title' => $bl->title,
                     'location' => $bl->location,
                     'activity' => $sl->name,
@@ -52,8 +54,11 @@ class LogbookMainPageController extends Controller
             }
 
             $logcount = $base_logs->count();
+
+            $types = LogType::all();
+
             return view('logs/logbookMainPage',
-                ['user' => $user, 'guide' => $guide, 'log_data' => $log_data, 'logcount' => $logcount]);
+                ['user' => $user, 'guide' => $guide, 'log_data' => $log_data, 'log_types' => $types, 'logcount' => $logcount]);
 
         } else {
             /* log the person out and go back to welcome screen

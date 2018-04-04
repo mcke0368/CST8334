@@ -29,9 +29,11 @@
             <!--  Type specific template -->
             <div class="row">
                 <div class="col-sm-12">
-                    @if ( $activity_name == "rafting")
+                    @if ( $activity_slug == "rafting")
                         @include('logs.partial.rafting-partial')
-                    @elseif ( $activity_name == "kayaking")
+                    @elseif ( $activity_slug == "white-water-kayaking")
+                        @include('logs.partial.kayaking-partial')
+                    @elseif ( $activity_slug == "rock-climbing")
                         @include('logs.partial.kayaking-partial')
                     @endif
 
