@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html> 
+<html>
+
+<script>tinymce.init({
+    selector: 'textarea',
+    plugins: "lists"
+});</script>
+
     <!-- Modal -->
     <div id="edit-bio-modal" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -20,7 +26,12 @@
                     <form role="form">
                       <div class="form-group">
                         <label for="about-text">About Me: </label>
-                        <textarea class="form-control" id="about-text" rows="6"></textarea>
+                          <textarea class="form-control" id="tiny-about">
+                                <?php
+                                    $user = Auth::user();
+                                    $guide = $user->guide()->first();
+                                ?>
+                          </textarea>
                       </div>
                     </form>
                 </div>

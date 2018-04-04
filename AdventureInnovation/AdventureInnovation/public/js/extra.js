@@ -1,10 +1,12 @@
 
 $(document).ready(function() {
 
+    /*
     $('#about-save-button').click(function(){
         var about = $('#about-text').val();
         addAboutMeText(about);
     });
+    */
     
     $('#cert-button').click(function(){
         var cert = $('#cert-name').val();
@@ -35,9 +37,10 @@ $(document).ready(function() {
     setup_dropdown_links();
 });
 
+/* USING MODAL
 function addAboutMeText(about) {
 
-    $("#bio").empty().append(
+    $("tiny-about").empty().append(
         '<div id="edit-bio-modal"></div>'+
         '<div style="overflow:hidden">'+
         '<p>'+about+'</p>'+
@@ -58,6 +61,7 @@ function addAboutMeText(about) {
 
     $('#edit-bio-modal').modal('toggle');
 }
+*/
 
 /** RESUME ----------------------------------------------------------------------- */
 function addWorkExperience(work_experience) {
@@ -123,9 +127,10 @@ function addCertification(certification_name, expiration, link) {
     $('#edit-cert-modal').modal('toggle');
 }
 
-
 function getAllFields() {
-    var about = $("#bio").val();
+    //var about = "hi";
+    var about = tinymce.get('tiny-about').getContent();
+    //var about = tinymce.get('mceu_114-body').getContent();
     var work = $("#work_experience").val();
     var employment = $("#employment_history").val();
     var training = $("#training").val();

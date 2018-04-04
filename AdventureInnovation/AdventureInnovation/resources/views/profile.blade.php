@@ -11,6 +11,11 @@
         });
     </script>
 
+    <script>tinymce.init({
+            selector: 'textarea',
+            plugins: "lists"
+        });</script>
+
     <style>
 
     </style>
@@ -112,7 +117,7 @@
                             </a>
                         </h4>
                     </div>
-                    <div id="collapse1" class="panel-collapse collapse">
+                    <div id="collapse1" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <?php echo $guide->about; ?>
                         </div>
@@ -164,19 +169,6 @@
                                     <div class="exp-panel">
                                         {{ $guide->work_experience }}
                                     </div>
-                                </div>
-
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading"><h4>Employment History</h4></div>
-                                <div class="panel-body emp-his-panel">
-                                    <?php echo $guide->employment_history; ?>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading"><h4>Training/Courses</h4></div>
-                                <div class="panel-body training-panel">
-                                    <?php echo $guide->training;?>
                                 </div>
                             </div>
                             <div class="pdf-link"><a

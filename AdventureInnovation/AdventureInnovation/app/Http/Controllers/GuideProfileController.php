@@ -103,20 +103,22 @@ class GuideProfileController extends Controller
     }
     */
 
+    /**
     /* Updates the About Me section */
-    public function ajaxUpdateAboutMe(Request $request){
-        //ajax goes here to insert into DB for profile stuff
-        try {
-            $user = Auth::user();
-            $guide = $user->guide;
+//    public function ajaxUpdateAboutMe(Request $request){
+//        //ajax goes here to insert into DB for profile stuff
+//        try {
+//            $user = Auth::user();
+//            $guide = $user->guide;
+//
+//            $about = $request->about;
+//            $this->dao->updateAboutMe($guide->id, $about);
+//            }
+//        catch (Execption $e) {
+//            echo 'Caught exception: ',  $e->getMessage(), "\n";
+//        }
+//    }
 
-            $about = $request->about;
-            $this->dao->updateAboutMe($guide->id, $about);
-            }
-        catch (Execption $e) {
-            echo 'Caught exception: ',  $e->getMessage(), "\n";
-        }
-    }
 
     /* Updates the Work Experience section */
     public function ajaxUpdateWorkExperience(Request $request){

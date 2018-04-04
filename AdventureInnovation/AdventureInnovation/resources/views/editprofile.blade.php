@@ -3,19 +3,15 @@
 @section('headGuide')
     <link rel="stylesheet" href="{{ URL::asset('slick/slick.css') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('slick/slick-theme.css') }}"/>
-
-    <!-- COMMENTING OUT TINYMCE TO TEST WITHOUT IT
-    <script>tinymce.init({
-            selector: 'textarea',
-            plugins: "lists"
-        });</script>
-    -->
     <script>
         $(document).on("click", "#b2", function () {
             $('html, body').animate({
                 scrollTop: $("#f1").offset().top
             }, 500);
         });
+
+        tinymce.init({ selector:'textarea',
+            plugins: "lists" });
     </script>
 
     <!-- INCLUDE MODALS... blade @ include not working -->
@@ -84,15 +80,11 @@
                         {{Form::text('Instagram_URL', empty($social_media) ? null : $social_media->Instagram_URL, array('class' => 'form-control','required' => 'required'))}}
                         {!! Form::close() !!}
                     </div>
-                </div>                  
-                
-                
+                </div>
                 <div class="panel-heading">
                     <h4><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Social Media
                     </h4>
                 </div>
-
-            
         </div>
         <div class="col-md-7 no-padding-right">
             <div class="panel-group" id="accordion">
@@ -104,11 +96,12 @@
                             </a>
                         </h4>
                     </div>
-                    <div id="collapse1" class="panel-collapse collapse">
-                        <!-- Trigger the modal with an href -->
-                        <a data-toggle="modal" href="#edit-bio-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>                       
-                        <div class="panel-body" id="bio">
-                            {{$guide->about}}
+                    <div id="collapse1" class="panel-collapse collapse in">
+                        <a data-toggle="modal" href="#edit-bio-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
+                        <div class="panel-body">
+                            <textarea id="tiny-about">
+                                <?php echo $guide->about; ?>
+                            </textarea>
                         </div>
                     </div>
                 </div>
@@ -159,30 +152,13 @@
                     <div id="collapse3" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div class="panel panel-default">
-                                <div class="panel-heading"><h4>Work Experience</h4></div>
-                                <div class="panel-body work-exp-panel">
-                                    <a data-toggle="modal" href="#edit-work-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
-                                    <div id="work-experience">
-                                        {{ $guide->work_experience }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
                                 <div class="panel-heading"><h4>Employment History</h4></div>
                                 <a data-toggle="modal" href="#edit-emp-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
                                     <textarea class="form-control" rows="6" id="employment-history">
-                                        {{ $guide->employment_history }}
+                                            <h2>{{ $guide->employment_history }}</h2>
+                                            <h3>{{ $guide }}</h3>
+                                            <h3>hello</h3>
                                     </textarea>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading"><h4>Training/Courses</h4></div>
-                                <a data-toggle="modal" href="#edit-training-modal"><i class="fa fa-pencil-square-o edit-pencil" aria-hidden="true"></i></a>
-                                <div class="panel-body training-panel">
-                                    <div id="training-modal"></div>
-                                        <textarea class="form-control" rows="6" id="training">
-                                            {{ $guide->training }}
-                                        </textarea>
-                                </div>
                             </div>
                             <div class="pdf-link">
                                 <a href="{{ asset('pdfs/functionalSample.pdf') }}" target="_blank">

@@ -139,7 +139,7 @@ class GuideDAO {
 			'work_experience' => $work,
 			'employment_history' => $employment,
 			'training' => $training]);
-*/
+	    */
 	}
 
 	public function updateCerts($guide_id, $name, $link, $expiry){
