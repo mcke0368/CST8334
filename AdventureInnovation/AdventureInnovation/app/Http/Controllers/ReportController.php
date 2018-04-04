@@ -22,74 +22,78 @@ class ReportController extends Controller
         $user_id = Auth::id();
         $report = new Report;
         //date
-        $report -> Report_date = Input::get('report_date');
+        $report->Report_date = Input::get('report_date');
         //time
-        $report -> Report_time =Input::get('report_time');
+        $report->Report_time = Input::get('report_time');
         //temp
-        $report->Temperature=Input::get('temprature');
+        $report->Temperature = Input::get('temprature');
         //Location
-        $report->Location=Input::get('location');
+        $report->Location = Input::get('location');
         //wind
-        $report->Wind =Input::get('wind');
+        $report->Wind = Input::get('wind');
         //percipitation
-        $report->Precipitation=Input::get('precipitation');
+        $report->Precipitation = Input::get('precipitation');
         //visibility
-        $report->Visibility=Input::get('visibility');
+        $report->Visibility = Input::get('visibility');
         //surface
         $surface_array = (array)(Input::get('surfaceCondition'));
-        $report ->Surface_Condition = implode(',',$surface_array);
+        $report->Surface_Condition = implode(',', $surface_array);
         //incident
         $incident_array = (array)(Input::get('incident'));
-        $report ->Incident= implode(',',$incident_array);
+        $report->Incident = implode(',', $incident_array);
         //Evacuation_Method
-        $evacuationMethod_array  = (array)(Input::get('evacuationMethod'));
-        $report ->Evacuation_Method= implode(',',$evacuationMethod_array);
+        $evacuationMethod_array = (array)(Input::get('evacuationMethod'));
+        $report->Evacuation_Method = implode(',', $evacuationMethod_array);
         //damage to
         $damage_array = (array)(Input::get('damage'));
-        $report ->Damage= implode(',',$damage_array);
+        $report->Damage = implode(',', $damage_array);
         //lost day
-        $report->Lost_Day=Input::get('lostDay');
-        $report->Lost_Number_Of_Days=Input::get('lostNumDay');
+        $report->Lost_Day = Input::get('lostDay');
+        $report->Lost_Number_Of_Days = Input::get('lostNumDay');
         //victime left field
-        $report->Victim_Left_Field=Input::get('victimLeftField');
-        $report->Victim_Left_Date=Input::get('DateLeft');
+        $report->Victim_Left_Field = Input::get('victimLeftField');
+        $report->Victim_Left_Date = Input::get('DateLeft');
         //victime visit facility
-        $report->Visit_Facility=Input::get('victimVisitFacility');
-        $report->Left_Date=Input::get('numberOfDateLeft');
+        $report->Visit_Facility = Input::get('victimVisitFacility');
+        $report->Left_Date = Input::get('numberOfDateLeft');
         //victime visit facility
-        $report->Return_Field=Input::get('returnField');
-        $report->Return_Date=Input::get('dateReturn');
+        $report->Return_Field = Input::get('returnField');
+        $report->Return_Date = Input::get('dateReturn');
         //victime visit facility
-        $report->Re_Curring=Input::get('recurring');
+        $report->Re_Curring = Input::get('recurring');
 
 
         //type of Injury
         $injury_array = (array)(Input::get('injury'));
-        $report ->Type_of_Injury = implode(',',$injury_array);
-        $report -> Other_Injury = Input::get('otherInjury');
+        $report->Type_of_Injury = implode(',', $injury_array);
+        $report->Other_Injury = Input::get('otherInjury');
         //type of Illness
         $illness_array = (array)(Input::get('illness'));
-        $report ->Type_of_Illness = implode(',',$illness_array);
-        $report -> Other_Illness = Input::get('otherIllness');
+        $report->Type_of_Illness = implode(',', $illness_array);
+        $report->Other_Illness = Input::get('otherIllness');
         //Program Activity
         $activitie_array = (array)(Input::get('activitie'));
-        $report ->Program_Activity = implode(',',$activitie_array);
-        $report -> Other_Activity = Input::get('otherActivity');
+        $report->Program_Activity = implode(',', $activitie_array);
+        $report->Other_Activity = Input::get('otherActivity');
         //Immediate Cause
         $cause_array = (array)(Input::get('cause'));
-        $report ->Immediate_Cause = implode(',',$cause_array);
-        $report -> Other_Cause = Input::get('otherCause');
+        $report->Immediate_Cause = implode(',', $cause_array);
+        $report->Other_Cause = Input::get('otherCause');
         //anatomical location
         $anatomical_location_array = (array)(Input::get('anatomical_location'));
-        $report ->Anatomical_Location = implode(',',$anatomical_location_array);
+        $report->Anatomical_Location = implode(',', $anatomical_location_array);
 
         //Attachement
         $image = $request->file('attachment');
-        $name = time().'.'.$image->getClientOriginalName();
+        if ($image == null) {
+            $report->Attachment = "";
+        }
+        else {
+        $name = time() . '.' . $image->getClientOriginalName();
         $destinationPath = public_path('/storage/');
         $image->move($destinationPath, $name);
-        $report->Attachment = '/storage/'.$name;
-
+        $report->Attachment = '/storage/' . $name;
+        }
 
         //user Id
         $report->user_id = $user_id;
