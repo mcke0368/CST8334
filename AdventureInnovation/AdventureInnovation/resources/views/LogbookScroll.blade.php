@@ -5,8 +5,8 @@
     use App\Http\Controllers\Controller;
 
     $userid = Auth::user()->user_id;
-    $logs = DB::table('logs')
-                ->get();
+    $logs = App\Models\BaseLog::all();
+
     $logcount = count($logs);
     ?>
 
@@ -29,18 +29,23 @@
 
         <div class="list-group" id=logscroll>
 
-            <?php foreach ($logs as $log) { ?>
-                <a href="/printlog" class="list-group-item flex-column list-group-item-action">
-                    <div class="row">
-                      <h4> {{$log->debrief}}
-                          <span class="badge badge-primary badge-pill pull-right" style ="background-color: {{$bannerColour}}">{{date('F j, Y',strtotime($log->date_occurred))}}</span>
-                      </h4>
+            <?php foreach ($logs as $log) {
+                if ($log->is_public == 1) {?>
+                    <div class="list-group-item text-center container">
+                        <div class="row justify-content-start">
+                            <a href="/printlog" class="col-">
+                                <p class="h5">{{$log->title}}</p>
+                                <p class="h6">{{date('F j, Y',strtotime($log->start_time))}}</p>
+                                <p class="h6">{{$log->base_logable_type}}</p>
+                            </a>
+                            <div class="col-">
+
+                            </div>
+                        </div>
+
                     </div>
-                    <h5 class="mb-1">{{$log->summary}}
-                        <small class="pull-right">{{$log->activity}} <span class='btn btn-danger btn-xs'> X </span></small>
-                    </h5>
-                </a>
-            <?php } ?>
+            <?php }
+            }?>
 
         </div>
     </div>

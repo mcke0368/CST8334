@@ -47,6 +47,37 @@ class KayakingLogsTableSeeder extends Seeder
         $log->save();
         $log->baselogs()->save($base);
 
+        //Log 2
+        /* construct the base log */
+        $base = new BaseLog();
+        $base->title = '2nd kayak log';
+        $base->location = 'Algonquin College';
+        $base->position = 'Guide';
+        $base->company = 'ABCD Inc';
+        $base->start_time = Carbon::createFromFormat('Y-m-d H:i', '2016-12-31 09:00');
+        $base->start_time = Carbon::createFromFormat('Y-m-d H:i', '2016-12-31 10:00');
+        $base->incident = false;
+        $base->number_participants = 12;
+        $base->group_size = 12;
+        $base->other_leaders = 'John Smith; Peter Jackson';
+        $base->weather_conditions = 'Snow';
+        $base->is_public = true;
+        $base->weather_temp = '25.5 C';
+        $base->weather_notes = 'it was a blistfull snowy day';
+        $base->notes = 'had the best time';
+        $base->html_text = '<div><p> This is some more sample text </p></div>';
+        $base->user_id = $user->id;
+        //$base->save();
+
+
+        $log = new KayakingLog();
+        $log->rapid_class = 'V';
+        $log->flow_level = 'low';
+        $log->trip_type = 'Sport';
+        $log->trip_number = 12;
+        $log->save();
+        $log->baselogs()->save($base);
+
 
     }
 }

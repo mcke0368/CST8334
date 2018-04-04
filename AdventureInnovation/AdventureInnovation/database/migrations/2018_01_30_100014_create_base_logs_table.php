@@ -32,6 +32,7 @@ class CreateBaseLogsTable extends Migration
             $table->text('weather_notes')->nullable(true);
             $table->longtext('notes')->nullable(true);
             $table->longtext('html_text')->nullable(true);
+            $table->boolean('is_public')->nullable(false)->default(false);
 
 
             /* foreign keys */
