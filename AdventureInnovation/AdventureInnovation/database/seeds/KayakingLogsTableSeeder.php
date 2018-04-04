@@ -30,7 +30,7 @@ class KayakingLogsTableSeeder extends Seeder
         $base->number_participants = 10;
         $base->group_size = 10;
         $base->other_leaders = 'John Smith; Peter Jackson';
-        $base->weather_conditions = 'Snow';
+        $base->weather_conditions = 'snow';
         $base->weather_temp = '20.5 C';
         $base->weather_notes = 'it was a beautiful snowy day';
         $base->notes = 'had a great time';

@@ -11,7 +11,8 @@
                 {{ Form::label('kayaking-rapid_class', 'Rapid Class') }}
                 {{ Form::select('kayaking-rapid_class',
                     [ 'Class I' => "Class I", 'Class II' => "Class II", 'Class III' => "Class III", 'Class IV' => "Class IV", 'Class V' => "Class V", 'Class VI' => "Class VI" ],
-                    'Class I', ['id' => 'kayaking-rapid_class','class' => 'form-control'])
+                    isset($activity_log) ? $activity_log->takeout_site : null,
+                    ['id' => 'kayaking-rapid_class','class' => 'form-control'])
                 }}
             </div>
             <div class="col-sm-2 ">

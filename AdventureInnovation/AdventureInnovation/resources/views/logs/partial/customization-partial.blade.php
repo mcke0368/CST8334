@@ -13,9 +13,9 @@
 
         <div class="row">
             <div class="col-sm-12" id="custom-template">
-
-
-
+                @if(isset($base_log) === true)
+                     <?php echo $base_log->html_text ; ?>
+                @endif
             </div>
         </div>
     </div>
