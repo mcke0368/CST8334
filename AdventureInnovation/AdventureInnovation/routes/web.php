@@ -98,7 +98,7 @@ Route::get('/deleteLogType', function()
     return view('logs/logbook');
 });
 //joanna add this for test
-Route::get('/logbookMainPage', 'LogbookMainPageController@show');
+
 
 Route::get('kayakLookbook', function()
 {
@@ -168,3 +168,9 @@ Route::post('/logbook-save-template', 'TestingController@saveTemplate')->name('l
 Route::post('/logbook-save-log', 'TestingController@saveLog')->name('lookbook-save-log');
 
 
+/**********************************************************************************
+ * new Logbooks
+ **********************************************************************************/
+Route::get('/logbookMainPage', 'LogbookMainPageController@show');
+
+Route::get('/logbook/{activity_slug}/new/', 'NewLogbooksController@show')->name('new-activity-logbook');

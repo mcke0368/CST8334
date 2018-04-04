@@ -44,6 +44,7 @@ class LogbookMainPageController extends Controller
                     'title' => $bl->title,
                     'location' => $bl->location,
                     'activity' => $sl->name,
+                    'slug' => $sl->slug,
                     'date' => $bl->start_time
                 );
 
@@ -53,20 +54,7 @@ class LogbookMainPageController extends Controller
             $logcount = $base_logs->count();
             return view('logs/logbookMainPage',
                 ['user' => $user, 'guide' => $guide, 'log_data' => $log_data, 'logcount' => $logcount]);
-            /*
-            $base_logs = BaseLog::all()->where('user_id', '=', $user->id);
-            $logs = [];
-            foreach($base_logs as $bl) {
-                $type = $bl->base_logable_type;
-                $id = $bl->base_logable_id;
-                $sl = $type::find($id) ;
-                array_push($logs, $sl);
-            }
-            $logcount = $base_logs->count();
-            return view('logs/logbookMainPage',
-                ['user' => $user, 'guide' => $guide,
-                    'base_logs' => $base_logs, 'logs', $logs, 'logcount' => $logcount]);
-            */
+
         } else {
             /* log the person out and go back to welcome screen
             TODO = make it known to end-user why this redirect is happening!!!!

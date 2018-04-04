@@ -16,6 +16,8 @@ class CreateRaftingLogsTable extends Migration
         Schema::create('rafting_logs', function (Blueprint $table) {
             $table->engine = 'InnoDB';        
             $table->increments('id');
+            $table->string('name')->default("Rafting");
+            $table->string('slug')->default("rafting");
             $table->string('rapid_class',100)->nullable(true);
             $table->string('flow_level')->nullable(true);
             $table->string('launch_site')->nullable(true);

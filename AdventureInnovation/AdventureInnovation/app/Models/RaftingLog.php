@@ -8,10 +8,8 @@ use App\Models\BaseLog;
 class RaftingLog extends Model
 {
     protected $fillable = [
-      'rapid_class', 'flow_level', 'launch_site', 'takeout_site', 'trip_type', 'trip_number', 'notes'
+      'rapid_class', 'flow_level', 'launch_site', 'takeout_site', 'trip_type', 'trip_number', 'notes', 'name', 'slug'
     ];
-
-    public $name = "Rafting";
 
     /* get access to the baselog */
     public function baselogs() {

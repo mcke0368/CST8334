@@ -19,7 +19,7 @@
 
         <div class="list-group" id=logscroll>
             @foreach($log_data as $log)
-                <a href="/printlog" class="list-group-item flex-column list-group-item-action">
+                <a href="{{ route('new-activity-logbook', ['activity-slug' => $log['slug']]) }}" class="list-group-item flex-column list-group-item-action">
                     <div class="row">
                       <h4> {{$log['title']}}
                           <span class="badge badge-primary badge-pill pull-right" style ="background-color: {{$bannerColour}}">{{date('F j, Y',strtotime($log['date']))}}</span>

@@ -80,7 +80,7 @@
 				}
 				?>
 			</div>
-                @component('logBookScroll')
+                @component('logBookScroll', ['logcount' => $logcount, 'log_data' => $log_data])
                     @slot('title')
                         Logbook History
                     @endslot

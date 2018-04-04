@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 
 use App\Models\GuideDAO;
+use App\Models\BaseLog;
 use MongoDB\Driver\Exception\ExecutionTimeoutException;
 
 //use Illuminate\Support\Facades\DB; needed for DB access
@@ -32,12 +33,38 @@ class GuideProfileController extends Controller
         $user = Auth::user();
         $guide = $user->guide;
         if ($guide) {
+
+            // gather up log information
+            $base_logs = BaseLog::all()->where('user_id', '=', $user->id);
+            $log_data = [];
+            foreach($base_logs as $bl) {
+                $type = $bl->base_logable_type;
+                $id = $bl->base_logable_id;
+                $sl = $type::find($id) ;
+
+                // gather up the data we need
+                $data = array(
+                    'title' => $bl->title,
+                    'location' => $bl->location,
+                    'activity' => $sl->name,
+                    'slug' => $sl->slug,
+                    'date' => $bl->start_time
+                );
+
+                array_push($log_data, $data);
+            }
+            $logcount = $base_logs->count();
+
+            // get other user info
             $certs = $guide->certifications->all();
             $video = $user->videos()->first();
             $social_media = $user->socialmedia()->first();
+
             return view('profile', ['user' => $user, 'guide' => $guide, 'certs' => $certs,
                 'firstname' => $user->firstname,
-                'email' => $user->email, 'video' => $video, 'social_media' => $social_media]);
+                'email' => $user->email, 'video' => $video, 'social_media' => $social_media,
+                'logcount' => $logcount, 'log_data' => $log_data
+            ]);
         } else {
             /* log the person out and go back to welcome screen
             TODO = make it known to end-user why this redirect is happening!!!!
