@@ -34,7 +34,7 @@
                     @elseif ( $activity_slug == "white-water-kayaking")
                         @include('logs.partial.kayaking-partial')
                     @elseif ( $activity_slug == "rock-climbing")
-                        @include('logs.partial.kayaking-partial')
+                        @include('logs.partial.climbing-partial')
                     @endif
 
                 </div>

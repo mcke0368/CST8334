@@ -44,6 +44,7 @@ class GuideProfileController extends Controller
 
                 // gather up the data we need
                 $data = array(
+                    'id' => $bl->id,
                     'title' => $bl->title,
                     'location' => $bl->location,
                     'activity' => $sl->name,

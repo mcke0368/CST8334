@@ -130,7 +130,8 @@ class NewLogbooksController extends Controller
     public function saveLog(Request $request)
     {
         $base_data = $request->base_data;
-        $rafting_data = $request->rafting_data;
+        $activity_data = $request->activity_data;
+        $activity_name = $request->activity;
         $custom_data = $request->custom_data;
 
         /* validate the base data */
@@ -145,13 +146,13 @@ class NewLogbooksController extends Controller
         ]);
 
         if (Auth::check()) {
-            /* construct the base log */
 
+            /* construct the base log */
             $base = new BaseLog();
 
-            $group='base';
+            // cycle through base_data keys and use them to populate base log
             $keys = array_keys($base_data);
-            $pat = '/' . $group .'-(?P<field>\w+)$/';
+            $pat = '/base-(?P<field>\w+)$/';
             foreach( $keys as $k) {
                 $matches = array();
                 if (preg_match($pat, $k, $matches)) {
@@ -160,28 +161,28 @@ class NewLogbooksController extends Controller
                 }
             };
             $base->user_id = Auth::user()->id;
-            /*
-            $base->title = $base_data['base-title'];
-            $base->location = $base_data['base-location'];
-            $base->company = $base_data['base-company'];
-            $base->start_time = Carbon::createFromFormat('Y-m-d H:i', $base_data['base-start_time']);
-            $base->end_time = Carbon::createFromFormat('Y-m-d H:i', $base_data['base-end_time']);
-            $base->incident = ($base_data['base-incident'] == 'yes') ? true : false;
-            $base->number_participants = $base_data['base-number_participants'];
-            $base->group_size = $base_data['base-group_size'];
-            $base->other_other_leaders = $base_data['base-other_leaders'];
-            $base->user_id = Auth::user()->id;
-            */
+
             /* get custom data */
             $base->html_text = $custom_data;
 
-            $log = new RaftingLog();
-            $log->rapid_class = $rafting_data['rapid_class'];
-            $log->flow_level = $rafting_data['flow_level'];
-            $log->launch_site = $rafting_data['launch_site'];
-            $log->trip_number = $rafting_data['trip_number'];
-            $log->trip_type = $rafting_data['trip_type'];
+            /* parse activity data */
+            // get class type from LogType so we can construct log of proper type
+            $class = LogType::all()->where('name', '=', $activity_name)->first();
+            $class = $class->base_logable_type;
+            $log = new $class();
 
+            // cycle through the keys and add in the data
+            if (sizeof($activity_data)) {
+                $keys = array_keys($activity_data);
+                $pat = '/(?P<field>\w+)$/';
+                foreach ($keys as $k) {
+                    $matches = array();
+                    if (preg_match($pat, $k, $matches)) {
+                        $field = $matches['field'];
+                        $log->{$field} = $activity_data[$k];
+                    }
+                };
+            }
             $log->save();
             $log->baselogs()->save($base);
 

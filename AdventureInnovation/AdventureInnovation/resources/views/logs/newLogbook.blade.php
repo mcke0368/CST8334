@@ -19,7 +19,7 @@
 @section('body')
 
     <div class="container-fulid backgroundSeaBlue">
-        <h1 class="text-center" style="margin:0; padding:1%; color:white;">
+        <h1 class="text-center" id="logbook-activity-name" style="margin:0; padding:1%; color:white;">
             {{ $activity_name }}
         </h1>
     </div>
