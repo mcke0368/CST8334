@@ -98,10 +98,7 @@ Route::get('/deleteLogType', function()
     return view('logs/logbook');
 });
 //joanna add this for test
-Route::get('logbookMainPage', function()
-{
-    return view('logs/logbookMainPage');
-});
+Route::get('/logbookMainPage', 'LogbookMainPageController@show');
 
 Route::get('kayakLookbook', function()
 {

@@ -13,8 +13,8 @@ class BaseLog extends Model
     ];
 
     /* translation to the child tables, ie rafting log, climbing log */
-    public function logable() {
-        $this->morphsTo();
+    public function base_logable() {
+        $this->morphTo();
     }
 
     /**********************************************************************************

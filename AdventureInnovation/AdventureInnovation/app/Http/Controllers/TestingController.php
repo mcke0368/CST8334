@@ -77,6 +77,7 @@ class TestingController extends Controller
         $custom_data = $request->custom_data;
 
         /* validate the base data */
+
         $validator = Validator::make($base_data, [
             'base-title' => 'required',
             'base-location' => 'required',
@@ -126,6 +127,11 @@ class TestingController extends Controller
 
             $log->save();
             $log->baselogs()->save($base);
+
+            $log = BaseLog::first();
+
+            $logt = $log->base_logable;
+
             return json_encode(true);
         }
         return json_encode(false);

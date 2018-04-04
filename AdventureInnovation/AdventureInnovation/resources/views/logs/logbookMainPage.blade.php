@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="col-40 col-sm-4">
-                        @component('logBookScroll')
+                        @component('logBookScroll', ['logcount' => $logcount, 'log_data' => $log_data])
                             @slot('title')
                                 Logbook History
                             @endslot

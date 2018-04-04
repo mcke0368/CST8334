@@ -15,6 +15,7 @@ class KayakingLog extends Model
 
     /* get access to the baselog */
     public function baselogs() {
+        //return $this->morphOne('App\Models\BaseLog', 'base_logable');
         return $this->morphOne('App\Models\BaseLog', 'base_logable', 'base_logable_type', 'base_logable_id');
     }
 
