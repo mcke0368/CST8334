@@ -79,14 +79,21 @@ class NewLogbooksController extends Controller
         $type = LogType::all()->where('slug','=',$activity_slug)->first();
         $activity = $type->name;
 
+        // Get the log
+        $base_log = BaseLog::find($log_id);
+        $bltype = $base_log->base_logable_type;
+        $blid = $base_log->base_logable_id;
+        $activity_log = $bltype::find($blid) ;
+
         $templates = LogTemplate::all();
-        $types = LogType::all();
 
         return view('logs.newLogbook', [
             'templates' => $templates,
-            'log_types' => $types,
             'activity_name' => $activity,
-            'activity_slug' => $activity_slug
+            'activity_slug' => $activity_slug,
+            'base_log' => $base_log,
+            'activity_log' => $activity_log,
+            'editing' => true
         ]);
 
     }
