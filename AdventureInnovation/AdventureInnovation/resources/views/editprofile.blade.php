@@ -30,7 +30,6 @@
 @stop
 
 @section('bodyGuide')
-
     <div id="c1" class="container-fluid">
         <div class="col-md-5 panel panel-default col-no-padding">
             <div id="name-panel" class="panel-heading">
