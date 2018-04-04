@@ -9,6 +9,7 @@
     </style>
 
     <link rel="stylesheet" href="{{ URL::asset('js/dragula/dist/dragula.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/project.css') }}">
     <script src="{{ URL::asset('js/dragula/dist/dragula.min.js') }}"></script>
     <script src="{{URL::asset('js/logbooks.js')}}"></script>
 

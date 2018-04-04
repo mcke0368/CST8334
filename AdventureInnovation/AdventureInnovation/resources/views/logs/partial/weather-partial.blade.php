@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-    <div class="panel-heading" style="text-align: center; background-color: #54B2C7">
+    <div class="panel-heading text-center" style="background-color: #54B2C7">
         <h3 class="panel-title">
             Weather Section
         </h3>
@@ -10,16 +10,14 @@
         <div class="row">
 
             <div class="col-sm-1 col-sm-offset-3">
-                <label for="weather_conditions_sunny class=" class="col-form-label"><i class="wi wi-day-sunny"
-                                                                            style="font-size: x-large"></i></label>
+                <label for="weather_conditions_sunny class=" class="col-form-label"><i class="wi wi-day-sunny wi-size"></i></label>
             </div>
             <div class="col-sm-1 ">
                 {{ Form::checkbox('weather_conditions_sunny', 'on', false, array('id' => 'weather_conditions_sunny','class' => 'form-control')) }}
             </div>
 
             <div class="col-sm-1 col-sm-offset-1">
-                <label for="weather_conditions_partlycloudy" class="col-form-label"><i class="wi wi-day-cloudy"
-                                                                            style="font-size: x-large"></i></label>
+                <label for="weather_conditions_partlycloudy" class="col-form-label"><i class="wi wi-day-cloudy wi-size"></i></label>
             </div>
             <div class="col-sm-1 ">
                 {{ Form::checkbox('weather_conditions_partlycloudy', 'on', false, array('id' => 'weather_conditions_partlycloudy','class' => 'form-control')) }}
@@ -31,16 +29,14 @@
         <div class="row">
 
             <div class="col-sm-1  col-sm-offset-3">
-                <label for="weather_conditions_cloudy" class="col-form-label"><i class="wi wi-cloudy"
-                                                                      style="font-size: x-large"></i></label>
+                <label for="weather_conditions_cloudy" class="col-form-label"><i class="wi wi-cloudy wi-size"></i></label>
             </div>
             <div class="col-sm-1 ">
                 {{ Form::checkbox('weather_conditions_cloudy', 'on', false, array('id' => 'weather_conditions_cloudy', 'class' => 'form-control')) }}
             </div>
 
             <div class="col-sm-1 col-sm-offset-1">
-                <label for="weather_conditions_snow" class="col-form-label"><i class="wi wi-snow"
-                                                                    style="font-size: x-large"></i></label>
+                <label for="weather_conditions_snow" class="col-form-label"><i class="wi wi-snow wi-size"></i></label>
             </div>
             <div class="col-sm-1 ">
                 {{ Form::checkbox('weather_conditions_snow', 'on', false, array('id' => 'weather_conditions_snow','class' => 'form-control')) }}
@@ -52,16 +48,14 @@
         <div class="row">
 
             <div class="col-sm-1  col-sm-offset-3">
-                <label for="weather_conditions_lightning" class="col-form-label"><i class="wi wi-storm-showers"
-                                                                         style="font-size: x-large"></i></label>
+                <label for="weather_conditions_lightning" class="col-form-label"><i class="wi wi-storm-showers wi-size"></i></label>
             </div>
             <div class="col-sm-1 ">
                 {{ Form::checkbox('weather_conditions_lightning', 'on', false, array('id' => 'weather_conditions_lightning','class' => 'form-control')) }}
             </div>
 
             <div class="col-sm-1 col-sm-offset-1">
-                <label for="weather_conditions_raining" class="col-form-label"><i class="wi wi-rain"
-                                                                       style="font-size: x-large"></i></label>
+                <label for="weather_conditions_raining" class="col-form-label"><i class="wi wi-rain wi-size"></i></label>
             </div>
             <div class="col-sm-1 ">
                 {{ Form::checkbox('weather_conditions_raining', 'on', false, array('id' => 'weather_conditions_raining','class' => 'form-control')) }}
@@ -75,7 +69,7 @@
 
             <div class="col-sm-1  col-sm-offset-3">
                 <label for="weather_temperature" class="col-form-label"><i
-                            class="wi wi-thermometer" style="font-size: x-large"></i></label>
+                            class="wi wi-thermometer wi-size"></i></label>
             </div>
 
             <div class="col-sm-2 ">
@@ -83,7 +77,7 @@
             </div>
             <div class="col-sm-1  ">
                 <label for="weather_wind" class="col-form-label"><i
-                            class="wi wi-strong-wind" style="font-size: x-large"></i></label>
+                            class="wi wi-strong-wind wi-size"></i></label>
             </div>
 
             <div class="col-sm-2">
