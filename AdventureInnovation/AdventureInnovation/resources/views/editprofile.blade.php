@@ -14,6 +14,12 @@
             plugins: "lists" });
     </script>
 
+    <!-- TinyMCE - This License Agreement applies to any software library or other
+    program which contains a notice placed by the copyright holder or
+    other authorized party saying it may be distributed under the terms of
+    this Lesser General Public License (also called "this License").
+    Each licensee is addressed as "you". --> 
+
     <!-- INCLUDE MODALS... blade @ include not working -->
     <?php
     include ('../resources/modals/edit-cert-modal.html');
