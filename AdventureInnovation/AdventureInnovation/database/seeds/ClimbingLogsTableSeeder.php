@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\KayakingLog;
+use App\Models\ClimbingLog;
 use App\Models\User;
 use App\Models\BaseLog;
 
 use Illuminate\Support\Carbon;
-class KayakingLogsTableSeeder extends Seeder
+class ClimbingLogsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,12 +20,12 @@ class KayakingLogsTableSeeder extends Seeder
 
         /* construct the base log */
         $base = new BaseLog();
-        $base->title = '1st kayaking log';
+        $base->title = '1st climbing log';
         $base->location = 'Algonquin College';
         $base->position = 'Guide';
         $base->company = 'ABC Inc';
-        $base->start_time = Carbon::createFromFormat('Y-m-d H:i', '2017-12-31 10:00');
-        $base->end_time = Carbon::createFromFormat('Y-m-d H:i', '2017-12-31 13:00');
+        $base->start_time = Carbon::createFromFormat('Y-m-d H:i', '2017-12-31 09:00');
+        $base->end_time = Carbon::createFromFormat('Y-m-d H:i', '2017-12-31 15:00');
         $base->incident = false;
         $base->number_participants = 10;
         $base->group_size = 10;
@@ -36,16 +36,17 @@ class KayakingLogsTableSeeder extends Seeder
         $base->notes = 'had a great time';
         $base->html_text = '<div><p> This is some sample text </p></div>';
         $base->user_id = $user->id;
+        //$base->save();
 
 
-        $log = new KayakingLog();
-        $log->rapid_class = 'Class III';
-        $log->flow_level = 'high';
-        $log->launch_site = 'Orleans';
-        $log->takeout_site = 'Kanata';
-        $log->distance = '5 km';
-        $log->boat_used = "kayak #4";
-        $log->notes = "really fun kayaking trip, enjoyed by all";
+        $log = new ClimbingLog();
+        $log->climb_type = 'Class III';
+        $log->multi_pitch = 1;
+        $log->climbing_conditions = 'Granite:Old Bolts:Wet:Solid:';
+        $log->rating_difficulty = '5.10';
+        $log->rating_letter = 'A';
+        $log->height = "500 m";
+        $log->notes = "really fun climbing trip, almost fell though";
         $log->save();
         $log->baselogs()->save($base);
 

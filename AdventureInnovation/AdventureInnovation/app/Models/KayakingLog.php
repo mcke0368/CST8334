@@ -8,7 +8,7 @@ use App\Models\BaseLog;
 class KayakingLog extends Model
 {
     protected $fillable = [
-      'rapid_class', 'flow_level', 'company', 'trip_type', 'trip_number'
+      'rapid_class', 'flow_level', 'launch_site', 'takeout_site', 'distance', 'boat_used', 'notes', 'name', 'slug'
     ];
 
     /* get access to the baselog */
@@ -22,5 +22,5 @@ class KayakingLog extends Model
     }
 
 
-
+    
 }

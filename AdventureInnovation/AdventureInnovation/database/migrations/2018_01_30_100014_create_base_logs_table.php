@@ -20,6 +20,7 @@ class CreateBaseLogsTable extends Migration
             $table->string('location')->nullable(true);
             $table->string('position')->nullable(true);
             $table->string('company')->nullable(true);
+            $table->string('route')->nullable(true);
             $table->datetime('start_time')->nullable(true);
             $table->datetime('end_time')->nullable(true);
             $table->boolean('incident')->nullable(true);
@@ -32,6 +33,7 @@ class CreateBaseLogsTable extends Migration
             $table->text('weather_notes')->nullable(true);
             $table->longtext('notes')->nullable(true);
             $table->longtext('html_text')->nullable(true);
+            $table->boolean('public')->nullable(false)->default(true);
 
 
             /* foreign keys */

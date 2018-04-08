@@ -1,15 +1,5 @@
 <!-- /resources/views/LogbookScroll.blade.php -->
 
-    <?php
-    use Illuminate\Support\Facades\DB;
-    use App\Http\Controllers\Controller;
-
-    $userid = Auth::user()->user_id;
-    $logs = DB::table('logs')
-                ->get();
-    $logcount = count($logs);
-    ?>
-
 <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading d-flex justify-content-center align-items-center" style="background-color: {{$bannerColour}}">
@@ -28,20 +18,18 @@
         </div>
 
         <div class="list-group" id=logscroll>
-
-            <?php foreach ($logs as $log) { ?>
-                <a href="/printlog" class="list-group-item flex-column list-group-item-action">
+            @foreach($log_data as $log)
+                <a href="{{ route('edit-activity-logbook', ['activity-slug' => $log['slug'], 'id' => $log['id']]) }}" class="list-group-item flex-column list-group-item-action">
                     <div class="row">
-                      <h4> {{$log->debrief}}
-                          <span class="badge badge-primary badge-pill pull-right" style ="background-color: {{$bannerColour}}">{{date('F j, Y',strtotime($log->date_occurred))}}</span>
+                      <h4> {{$log['title']}}
+                          <span class="badge badge-primary badge-pill pull-right" style ="background-color: {{$bannerColour}}">{{date('F j, Y',strtotime($log['date']))}}</span>
                       </h4>
                     </div>
-                    <h5 class="mb-1">{{$log->summary}}
-                        <small class="pull-right">{{$log->activity}} <span class='btn btn-danger btn-xs'> X </span></small>
+                    <h5 class="mb-1">{{$log['location']}}
+                        <small class="pull-right">{{$log['activity']}} <span class='btn btn-danger btn-xs'> X </span></small>
                     </h5>
                 </a>
-            <?php } ?>
-
+            @endforeach
         </div>
     </div>
 </div>

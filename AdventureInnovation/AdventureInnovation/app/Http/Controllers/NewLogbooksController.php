@@ -10,8 +10,10 @@ use App\Models\LogType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Route;
 
-class TestingController extends Controller
+
+class NewLogbooksController extends Controller
 {
     /**
      * @param Request $request
@@ -26,7 +28,6 @@ class TestingController extends Controller
         return view('logs.testing', ['templates' => $templates, 'log_types' => $types]);
     }
 
-
     public function showTemplate(Request $request)
     {
 
@@ -40,6 +41,62 @@ class TestingController extends Controller
         return "No Authentication";
     }
 
+    /**
+     * show a new template log based in input activity param
+     * @param Request $request
+     */
+    public function create(Request $request) {
+
+        $activity_slug = $request->route('activity_slug');
+
+        // find activity by slug
+        $type = LogType::all()->where('slug','=',$activity_slug)->first();
+        $activity = $type->name;
+
+        $templates = LogTemplate::all();
+        $types = LogType::all();
+
+
+        return view('logs.newLogbook', [
+            'templates' => $templates,
+            'log_types' => $types,
+            'activity_name' => $activity,
+            'activity_slug' => $activity_slug
+        ]);
+    }
+
+    /**
+     * Show a given log book.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Request $request) {
+        $activity_slug = $request->route('activity_slug');
+        $log_id = $request->route('id');
+
+        // find activity by slug
+        $type = LogType::all()->where('slug','=',$activity_slug)->first();
+        $activity = $type->name;
+
+        // Get the log
+        $base_log = BaseLog::find($log_id);
+        $bltype = $base_log->base_logable_type;
+        $blid = $base_log->base_logable_id;
+        $activity_log = $bltype::find($blid) ;
+
+        $templates = LogTemplate::all();
+
+        return view('logs.newLogbook', [
+            'templates' => $templates,
+            'activity_name' => $activity,
+            'activity_slug' => $activity_slug,
+            'base_log' => $base_log,
+            'activity_log' => $activity_log,
+            'editing' => true
+        ]);
+
+    }
 
     /**
      * Called when saving a template.  Raw HTML markup from the template is sent
@@ -73,7 +130,8 @@ class TestingController extends Controller
     public function saveLog(Request $request)
     {
         $base_data = $request->base_data;
-        $rafting_data = $request->rafting_data;
+        $activity_data = $request->activity_data;
+        $activity_name = $request->activity;
         $custom_data = $request->custom_data;
 
         /* validate the base data */
@@ -88,13 +146,13 @@ class TestingController extends Controller
         ]);
 
         if (Auth::check()) {
-            /* construct the base log */
 
+            /* construct the base log */
             $base = new BaseLog();
 
-            $group='base';
+            // cycle through base_data keys and use them to populate base log
             $keys = array_keys($base_data);
-            $pat = '/' . $group .'-(?P<field>\w+)$/';
+            $pat = '/base-(?P<field>\w+)$/';
             foreach( $keys as $k) {
                 $matches = array();
                 if (preg_match($pat, $k, $matches)) {
@@ -103,28 +161,28 @@ class TestingController extends Controller
                 }
             };
             $base->user_id = Auth::user()->id;
-            /*
-            $base->title = $base_data['base-title'];
-            $base->location = $base_data['base-location'];
-            $base->company = $base_data['base-company'];
-            $base->start_time = Carbon::createFromFormat('Y-m-d H:i', $base_data['base-start_time']);
-            $base->end_time = Carbon::createFromFormat('Y-m-d H:i', $base_data['base-end_time']);
-            $base->incident = ($base_data['base-incident'] == 'yes') ? true : false;
-            $base->number_participants = $base_data['base-number_participants'];
-            $base->group_size = $base_data['base-group_size'];
-            $base->other_other_leaders = $base_data['base-other_leaders'];
-            $base->user_id = Auth::user()->id;
-            */
+
             /* get custom data */
             $base->html_text = $custom_data;
 
-            $log = new RaftingLog();
-            $log->rapid_class = $rafting_data['rapid_class'];
-            $log->flow_level = $rafting_data['flow_level'];
-            $log->launch_site = $rafting_data['launch_site'];
-            $log->trip_number = $rafting_data['trip_number'];
-            $log->trip_type = $rafting_data['trip_type'];
+            /* parse activity data */
+            // get class type from LogType so we can construct log of proper type
+            $class = LogType::all()->where('name', '=', $activity_name)->first();
+            $class = $class->base_logable_type;
+            $log = new $class();
 
+            // cycle through the keys and add in the data
+            if (sizeof($activity_data)) {
+                $keys = array_keys($activity_data);
+                $pat = '/(?P<field>\w+)$/';
+                foreach ($keys as $k) {
+                    $matches = array();
+                    if (preg_match($pat, $k, $matches)) {
+                        $field = $matches['field'];
+                        $log->{$field} = $activity_data[$k];
+                    }
+                };
+            }
             $log->save();
             $log->baselogs()->save($base);
 

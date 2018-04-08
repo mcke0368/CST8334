@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(LogTypesTableSeeder::class);
         $this->call(LogTemplateTableSeeder::class);
+        $this->call(RaftingLogsTableSeeder::class);
+        $this->call(ClimbingLogsTableSeeder::class);
         $this->call(KayakingLogsTableSeeder::class);
     }
 }

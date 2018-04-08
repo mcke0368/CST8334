@@ -15,7 +15,7 @@ class LogType extends Model
     public $incrementing = false;
     protected $primaryKey = 'base_logable_type';
     protected $fillable = [
-        'base_logable_type', 'description'
+        'base_logable_type', 'description', 'name', 'slug'
     ];
 
     /**********************************************************************************

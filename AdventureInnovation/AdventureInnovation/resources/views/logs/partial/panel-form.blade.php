@@ -1,6 +1,12 @@
+<!-- ******************  MODALS ***************************** -->
+@include('logs.modals.logbook-add-modal')
+@include('logs.modals.logbook-delete-modal')
+@include('logs.modals.logbook-save-modal')
+@include('logs.modals.logbook-select-modal')
+
 <div class="container">
     <div class="row">
-    {!! Form::open(array('url' => '#', 'files' => 'true')) !!}
+    {!! Form::open(array('url' => '/logbook-save-log', 'files' => 'true', 'method' => 'post')) !!}
 
     <!-- conditions checkboxes -->
         <div class="row text-center"><h1>Template Title</h1></div>
@@ -12,7 +18,7 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    @include('logs.partial.base-section1-partial')
+                    @include('logs.partial.base-partial')
                 </div>
                 <div class="col-sm-6">
                     @include('logs.partial.weather-partial')
@@ -23,12 +29,20 @@
             <!--  Type specific template -->
             <div class="row">
                 <div class="col-sm-12">
-                    @include('logs.partial.kayaking-partial')
+                    @if ( $activity_slug == "rafting")
+                        @include('logs.partial.rafting-partial')
+                    @elseif ( $activity_slug == "white-water-kayaking")
+                        @include('logs.partial.kayaking-partial')
+                    @elseif ( $activity_slug == "rock-climbing")
+                        @include('logs.partial.climbing-partial')
+                    @endif
+
                 </div>
             </div>
 
 
             <!--  customizations -->
+
             <div class="row">
                 <div class="col-sm-12">
                     @include('logs.partial.customization-partial')
@@ -37,7 +51,7 @@
             </div>
 
         </div>
-
+        <!--{!! Form::submit( 'Save', ['class' => 'btn btn-danger form-control', 'name' => 'submitbutton', 'value' => 'save'])!!}-->
         {!! Form::close() !!}
     </div>
 

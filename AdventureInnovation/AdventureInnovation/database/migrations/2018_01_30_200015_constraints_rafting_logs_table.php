@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ConstraintsKayakingLogsTable extends Migration
+class ConstraintsRaftingLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class ConstraintsKayakingLogsTable extends Migration
      */
     public function up()
     {
-        Schema::table('kayaking_logs', function (Blueprint $table) {
-            //$table->foreign('base_log_id')->references('id')->on('base_logs')->onDelte('cascasde');
+        Schema::table('rafting_logs', function (Blueprint $table) {
         });
     }
 
@@ -25,8 +24,7 @@ class ConstraintsKayakingLogsTable extends Migration
      */
     public function down()
     {
-        Schema::table('kayaking_logs', function (Blueprint $table) {
-            $table->dropForeign('base_log_id');
+        Schema::table('rafting_logs', function (Blueprint $table) {
         });
     }
 }

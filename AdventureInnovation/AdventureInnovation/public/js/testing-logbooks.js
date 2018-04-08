@@ -43,24 +43,6 @@ function gather_base_data() {
     return base_data;
 }
 
-function gather_activity_data() {
-
-    // check for kayaking
-    if ($("*[id*=kayaking]").length > 0) {
-        return gather_kayaking_data();
-    }
-    else if ($("*[id*=rafting]").length > 0) {
-        return gather_rafting_data();
-    }
-    else if ($("*[id*=climbing]").length > 0) {
-        return gather_climbing_data();
-    }
-    else {
-        return {};
-    }
-}
-
-
 function gather_kayaking_data() {
     var kayaking_data = {};
     kayaking_data['rapid_class'] = $('#kayaking-rapid_class')[0].value;
@@ -83,11 +65,6 @@ function gather_rafting_data() {
     rafting_data['trip_number'] = $('#rafting-trip_number')[0].value;
     rafting_data['notes'] = $('#rafting-notes')[0].value;
     return rafting_data;
-}
-
-function gather_climbing_data() {
-    var climbing_data = {};
-    return climbing_data;
 }
 
 /* document ready jQuery call */
@@ -164,16 +141,15 @@ $(function () {
         /* TODO figure out if we want to save the file or path */
         //base['attachment'] = $('#attachment-file')[0].value;
 
-        var activity_data = gather_activity_data();
-        var activity_name = $('#logbook-activity-name')[0].innerHTML.trim();
+        var rafting_data = gather_rafting_data();
 
         var custom_data = $('#custom-template').html();
 
 
         $.ajax({
             type: "POST",
-            url: '/logbook/save-log',
-            data: {base_data: base_data, activity_data: activity_data, activity: activity_name, custom_data: custom_data},
+            url: '/logbook-save-log',
+            data: {base_data: base_data, rafting_data: rafting_data, custom_data: custom_data},
             success: function (data) {
                 if (data == "true") {
                     //window.location.href = "logbook";
@@ -224,14 +200,10 @@ $(function () {
 
         $.ajax({
             type: "POST",
-            url: '/logbook/save-template',
+            url: '/logbook-save-template',
             data: {template_name: template_name, template_desc: template_desc, html_data: html_data},
             success: function (data) {
                 if (data == "true") {
-                    // update the options list
-                    $('#logbook-select-template')
-                        .append($("<option></option>").attr("value",html_data).text(template_name));
-
                     //window.location.href = "logbook";
                 }
             },
@@ -321,27 +293,32 @@ $(function () {
         $("#modal-add .dropdown .btn:first-child").val($(this).text());
 
         if ($(this).text() == "Input") {
-            pathname = '/logbook-field-details/input-details.html';
+            pathname = window.location.pathname;
+            pathname = pathname.substring(0, pathname.lastIndexOf('/')) + '/logbook-field-details/input-details.html';
             $.get(pathname, function (data) {
                 $("#add-item-detail").html(data);
             });
         } else if ($(this).text() == "Text Area") {
-            pathname = '/logbook-field-details/text-area-details.html';
+            pathname = window.location.pathname;
+            pathname = pathname.substring(0, pathname.lastIndexOf('/')) + '/logbook-field-details/text-area-details.html';
             $.get(pathname, function (data) {
                 $("#add-item-detail").html(data);
             });
         } else if ($(this).text() == "Checkbox") {
-            pathname = '/logbook-field-details/checkbox-details.html';
+            pathname = window.location.pathname;
+            pathname = pathname.substring(0, pathname.lastIndexOf('/')) + '/logbook-field-details/checkbox-details.html';
             $.get(pathname, function (data) {
                 $("#add-item-detail").html(data);
             });
         } else if ($(this).text() == "Radio") {
-            pathname = '/logbook-field-details/radio-details.html';
+            pathname = window.location.pathname;
+            pathname = pathname.substring(0, pathname.lastIndexOf('/')) + '/logbook-field-details/radio-details.html';
             $.get(pathname, function (data) {
                 $("#add-item-detail").html(data);
             });
         } else if ($(this).text() == "Select") {
-            pathname = '/logbook-field-details/select-details.html';
+            pathname = window.location.pathname;
+            pathname = pathname.substring(0, pathname.lastIndexOf('/')) + '/logbook-field-details/select-details.html';
             $.get(pathname, function (data) {
                 $("#add-item-detail").html(data);
             });

@@ -1,8 +1,4 @@
-<!-- ******************  MODALS ***************************** -->
-@include('logs.modals.logbook-add-modal')
-@include('logs.modals.logbook-delete-modal')
-@include('logs.modals.logbook-save-modal')
-@include('logs.modals.logbook-select-modal')
+
 
 
 <div class="panel panel-default">
@@ -17,9 +13,9 @@
 
         <div class="row">
             <div class="col-sm-12" id="custom-template">
-
-
-
+                @if(isset($base_log) === true)
+                     <?php echo $base_log->html_text ; ?>
+                @endif
             </div>
         </div>
     </div>
