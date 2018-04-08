@@ -19,7 +19,7 @@ class CreateClimbingLogsTable extends Migration
             $table->string('name')->default('Rock Climbing');
             $table->string('slug')->default('rock-climbing');
             $table->string('climb_type')->nullable(true);
-            $table->boolean('multi_pitch')->nullable(true);
+            $table->string('multi_pitch')->nullable(true);
             $table->string('climbing_conditions')->nullable(true);
             $table->string('rating_difficulty')->nullable(true);
             $table->string('rating_letter')->nullable(true);

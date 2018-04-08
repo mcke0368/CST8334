@@ -87,6 +87,24 @@ function gather_rafting_data() {
 
 function gather_climbing_data() {
     var climbing_data = {};
+
+    base_data['base-weather_conditions'] = weather_conditions;
+    climbing_data['climb_type'] = $('#climbing-type_class')[0].value; //done
+    climbing_data['multi_pitch'] = $('#climbing-multi-pitch_class')[0].value;//done
+    var climbing_conditions = "";
+    $("*[name*='climbing_conditions_']").each(function() {
+        if (this.checked) {
+            var name = this.name;
+            name = name.replace("climbing_conditions_","");
+            climbing_conditions += name + ":";
+        }
+    });
+    climbing_data['climbing_conditions'] = climbing_conditions;
+    climbing_data['rating_difficulty'] = $('#climbing-rating-difficulty_class')[0].value;//done
+    climbing_data['rating_letter'] = $('#climbing-rating-letter_class')[0].value;//done
+    climbing_data['rating_difficulty'] = $('#climbing-rating_difficulty_class')[0].value;//done
+    climbing_data['height'] = $('#climbing-hight_class')[0].value; //done
+    climbing_data['notes']= $('#climbing-notes_class')[0].value;//done
     return climbing_data;
 }
 
