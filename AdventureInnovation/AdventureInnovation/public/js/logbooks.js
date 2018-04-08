@@ -24,7 +24,6 @@ function gather_base_data() {
     base_data['base-group_size'] = $('#base-group_size')[0].value;
     base_data['base-other_leaders'] = $('#base-other_leaders')[0].value;
 
-
     // sort out the weather
 
     // gather all weather conditions, and put into a string all checked values.
@@ -161,19 +160,30 @@ $(function () {
         /* base_data */
         var base_data = gather_base_data();
 
-        /* TODO figure out if we want to save the file or path */
-        //base['attachment'] = $('#attachment-file')[0].value;
+        // attachments
+        var attachments = $('#attachments')[0].files;
+        var formData = new FormData();
+        for (var i = 0; i < attachments.length; i++) {
+            var file = attachments[i];
+
+            // Check the file type.
+            if (!file.type.match('image.*')) {
+                continue;
+            }
+
+            // Add the file to the request.
+            formData.append('files[]', file, file.name);
+        }
 
         var activity_data = gather_activity_data();
         var activity_name = $('#logbook-activity-name')[0].innerHTML.trim();
-
         var custom_data = $('#custom-template').html();
-
 
         $.ajax({
             type: "POST",
             url: '/logbook/save-log',
-            data: {base_data: base_data, activity_data: activity_data, activity: activity_name, custom_data: custom_data},
+            processData: false,
+            data: {form_data: formData, base_data: base_data, activity_data: activity_data, activity: activity_name, custom_data: custom_data},
             success: function (data) {
                 if (data == "true") {
                     //window.location.href = "logbook";
@@ -224,7 +234,7 @@ $(function () {
 
         $.ajax({
             type: "POST",
-            url: '/logbook/save-template',
+            // url: '/logbook/save-template',
             data: {template_name: template_name, template_desc: template_desc, html_data: html_data},
             success: function (data) {
                 if (data == "true") {

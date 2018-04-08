@@ -126,8 +126,8 @@
         </div>
         <div class="row" style="margin-top: 1em">
             <div class="col-lg-4">
-                {{Form::label('attachement-file', 'Attachement')}}
-                {{Form::file('attachment-file')}}
+                {{Form::label('attachement-files', 'Attachement')}}
+                <input type="file" id="attachments" name="attachement-files[]" multiple/>
             </div>
         </div>
     </div>
