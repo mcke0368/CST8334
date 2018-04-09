@@ -93,8 +93,6 @@ class NewLogbooksController extends Controller
         // get all templates
         $templates = LogTemplate::all();
 
-
-
         return view('logs.newLogbook', [
             'templates' => $templates,
             'activity_name' => $activity,
@@ -144,16 +142,22 @@ class NewLogbooksController extends Controller
         $custom_data = $request->custom_data;
 
         /* validate the base data */
-/*
+
         $validator = Validator::make($base_data, [
             'base-title' => 'required',
             'base-location' => 'required',
-            'base-company' => 'required',
-            'base-end_time' => 'rdate_format:"Y-m-d H:i"',
-            'base-start_time' => 'date_format:"Y-m-d H:i"'
+            'base-route' => 'required',
+            'base-end_time' => 'date_format:"Y-m-d H:i"',
+            'base-start_time' => 'date_format:"Y-m-d H:i"',
+            'base-number_participants' => 'filled|integer',
+            'base-group_size' => 'filled|integer',
 
         ]);
-*/
+
+        if ($validator->fails()) {
+            return json_encode(['error'=>$validator->errors()->all()]);
+        }
+
         if (Auth::check()) {
 
             /* construct the base log */

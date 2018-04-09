@@ -33,7 +33,7 @@
                 }}
             </div>            <div class="col-sm-2 ">
                 {{ Form::label('kayaking-boat_used', 'Boat Used') }}
-                {{ Form::text('kayaking-boat_used', null, array('id' => 'kayaking-notes','class' => 'form-control')) }}
+                {{ Form::text('kayaking-boat_used', null, array('id' => 'kayaking-boat_used','class' => 'form-control')) }}
             </div>
         </div>
 

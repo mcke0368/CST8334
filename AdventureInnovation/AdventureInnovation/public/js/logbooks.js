@@ -66,8 +66,8 @@ function gather_kayaking_data() {
     kayaking_data['flow_level'] = $('#kayaking-flow_level')[0].value;
     kayaking_data['launch_site'] = $('#kayaking-launch_site')[0].value;
     kayaking_data['takeout_site'] = $('#kayaking-takeout_site')[0].value;
-    kayaking_data['trip_type'] = $('#kayaking-trip_type')[0].value;
-    kayaking_data['trip_number'] = $('#kayaking-trip_number')[0].value;
+    kayaking_data['distance'] = $('#kayaking-distance')[0].value;
+    kayaking_data['boat_used'] = $('#kayaking-boat_used')[0].value;
     kayaking_data['notes'] = $('#kayaking-notes')[0].value;
     return kayaking_data;
 }
@@ -204,7 +204,24 @@ $(function () {
             //data: {base_data: base_data, activity_data: activity_data, activity: activity_name, custom_data: custom_data},
             data: formData,
             success: function (data) {
-                if (data == "true") {
+                // make sure we didn't get any errors
+                var jdata = JSON.parse(data);
+                if (jdata['error']) {
+                    var errors = jdata['error'];
+                    // clean up error messages by removing 'base-'
+                    errors = errors.map( function(item) {
+                        return item.replace('base-','');});
+
+                    // make error div visible
+                    $("#error-messages").css('display','block');
+                    // remove old meesages
+                    $("#error-messages").find("ul").empty();
+                    // add in each of the errors
+                    $.each( errors, function( key, value ) {
+                        $("#error-messages").find("ul").append('<li>'+value+'</li>');
+                    });
+                }
+                else {
                     window.location.href = "/logbookMainPage";
                 }
             },
