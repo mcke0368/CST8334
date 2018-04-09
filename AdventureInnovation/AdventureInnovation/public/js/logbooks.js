@@ -87,8 +87,8 @@ function gather_rafting_data() {
 function gather_climbing_data() {
     var climbing_data = {};
 
-    climbing_data['climb_type'] = $('#climbing-type_class')[0].value; //done
-    climbing_data['multi_pitch'] = $('#climbing-multi-pitch_class')[0].value;//done
+    climbing_data['climb_type'] = $('#climbing-climb_type')[0].value; //done
+    climbing_data['multi_pitch'] = $('#climbing-multi_pitch')[0].value;//done
     var climbing_conditions = "";
     $("*[name*='climbing_conditions_']").each(function() {
         if (this.checked) {
@@ -98,11 +98,10 @@ function gather_climbing_data() {
         }
     });
     climbing_data['climbing_conditions'] = climbing_conditions;
-    climbing_data['rating_difficulty'] = $('#climbing-rating-difficulty_class')[0].value;//done
-    climbing_data['rating_letter'] = $('#climbing-rating-letter_class')[0].value;//done
-    climbing_data['rating_difficulty'] = $('#climbing-rating_difficulty_class')[0].value;//done
-    climbing_data['height'] = $('#climbing-hight_class')[0].value; //done
-    climbing_data['notes']= $('#climbing-notes_class')[0].value;//done
+    climbing_data['rating_difficulty'] = $('#climbing-rating_difficulty')[0].value;//done
+    climbing_data['rating_letter'] = $('#climbing-rating_letter')[0].value;//done
+    climbing_data['height'] = $('#climbing-height')[0].value; //done
+    climbing_data['notes']= $('#climbing-notes')[0].value;//done
     return climbing_data;
 }
 

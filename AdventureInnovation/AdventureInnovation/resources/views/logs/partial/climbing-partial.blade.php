@@ -16,8 +16,8 @@
                 }}
             </div>
             <div class="col-sm-2 ">
-                {{ Form::label('climbing-hight', 'Height') }}
-                {{ Form::text('climbing-hight', null, array('id' => 'climbing-hight_class','class' => 'form-control')) }}
+                {{ Form::label('climbing-height', 'Height') }}
+                {{ Form::text('climbing-height', null, array('id' => 'climbing-height','class' => 'form-control')) }}
             </div>
             <div class="col-sm-2 ">
                 {{ Form::label('climbing-rating_difficulty', 'Rating Difficulty') }}
@@ -163,7 +163,7 @@
                         <div class="col-sm-1 ">
                             {{ Form::checkbox('climbing_conditions_NoBolts', 'on',
                                 (isset($activity_log) && strpos($activity_log->climbing_conditions, 'NoBolts') !== false),
-                                array('id' => 'climbing_conditions_NodBolts','class' => 'form-control'))
+                                array('id' => 'climbing_conditions_NoBolts','class' => 'form-control'))
                             }}
                         </div>
 
@@ -172,8 +172,8 @@
             </div>
             <div class="col-sm-12 ">
                 <div class="form-group">
-                    <label for="climbing-notes_class class="col-form-label">Additional Notes</label>
-                    {{ Form::textarea('climbing-notes_classs', null, array('id' => 'climbing-notes_class','class' => 'form-control')) }}
+                    <label for="climbing-notes class="col-form-label">Additional Notes</label>
+                    {{ Form::textarea('climbing-notes', null, array('id' => 'climbing-notes','class' => 'form-control')) }}
                 </div>
             </div>
         </div>

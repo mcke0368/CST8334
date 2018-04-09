@@ -135,7 +135,7 @@ class NewLogbooksController extends Controller
         $custom_data = $request->custom_data;
 
         /* validate the base data */
-
+/*
         $validator = Validator::make($base_data, [
             'base-title' => 'required',
             'base-location' => 'required',
@@ -144,7 +144,7 @@ class NewLogbooksController extends Controller
             'base-start_time' => 'date_format:"Y-m-d H:i"'
 
         ]);
-
+*/
         if (Auth::check()) {
 
             /* construct the base log */
