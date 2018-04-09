@@ -8,7 +8,8 @@ use App\Models\BaseLog;
 class ClimbingLog extends Model
 {
     protected $fillable = [
-       'climb_type', 'multi_pitch', 'climbing_conditions','rating_difficulty', 'rating_letter', 'height', 'notes', 'name', 'slug'
+       'climb_type', 'multi_pitch', 'climbing_conditions','rating_difficulty',
+        'rating_letter', 'height', 'notes', 'name', 'slug'
     ];
 
     /* get access to the baselog */

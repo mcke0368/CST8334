@@ -88,7 +88,6 @@ function gather_rafting_data() {
 function gather_climbing_data() {
     var climbing_data = {};
 
-    base_data['base-weather_conditions'] = weather_conditions;
     climbing_data['climb_type'] = $('#climbing-type_class')[0].value; //done
     climbing_data['multi_pitch'] = $('#climbing-multi-pitch_class')[0].value;//done
     var climbing_conditions = "";

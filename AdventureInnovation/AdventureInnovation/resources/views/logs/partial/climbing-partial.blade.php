@@ -8,39 +8,39 @@
     <div class="panel-body">
         <div class="row" style="margin-top: 1em">
             <div class="col-sm-2 ">
-                {{ Form::label('climbing-type_class', 'Type of Climbings') }}
-                {{ Form::select('climbing-type_class',
+                {{ Form::label('climbing-climb_type', 'Type of Climbings') }}
+                {{ Form::select('climbing-climb_type',
                     [ 'Top Rope' => "Top Rope", 'Sport Lead' => "Sport Lead", 'Trad Lead' => "Trad Lead", 'Via Feratta' => "Via Feratta" ],
                     isset($activity_log) ? $activity_log->takeout_site : null,
-                    ['id' => 'climbing-type_class','class' => 'form-control'])
+                    ['id' => 'climbing-climb_type','class' => 'form-control'])
                 }}
             </div>
             <div class="col-sm-2 ">
-                {{ Form::label('climbing-hight_class', 'Height') }}
-                {{ Form::text('climbing-hight_class', null, array('id' => 'climbing-hight_class','class' => 'form-control')) }}
+                {{ Form::label('climbing-hight', 'Height') }}
+                {{ Form::text('climbing-hight', null, array('id' => 'climbing-hight_class','class' => 'form-control')) }}
             </div>
             <div class="col-sm-2 ">
-                {{ Form::label('climbing-rating-difficulty_class', 'Rating Difficulty') }}
-                {{ Form::select('climbing-rating-difficulty_class',
+                {{ Form::label('climbing-rating_difficulty', 'Rating Difficulty') }}
+                {{ Form::select('climbing-rating_difficulty',
                     [ '5.7 and below' => "5.7 and below", '5.8' => "5.8", '5.9' => "5.9", '5.10' => "5.10", '5.11' => "5.11", '5.12' => "5.12", '5.13' => "5.13", '5.14' => "5.14"],
                     isset($activity_log) ? $activity_log->takeout_site : null,
-                    ['id' => 'climbing-rating-difficulty_class','class' => 'form-control'])
+                    ['id' => 'climbing-rating_difficulty','class' => 'form-control'])
                 }}
             </div>
             <div class="col-sm-2 ">
-                {{ Form::label('climbing-rating-difficulty_class', 'Level') }}
-                {{ Form::select('climbing-rating-difficulty_class',
+                {{ Form::label('climbing-rating_letter', 'Level') }}
+                {{ Form::select('climbing-rating_letter',
                     [ 'A' => "A", 'B' =>'B', 'C' => "C", 'D' => "D" ],
                     isset($activity_log) ? $activity_log->takeout_site : null,
-                    ['id' => 'climbing-rating-difficulty_class','class' => 'form-control'])
+                    ['id' => 'climbing-rating_letter','class' => 'form-control'])
                 }}
             </div>
             <div class="col-sm-2 ">
-                {{ Form::label('climbing-multi-pitch_class', 'Multi Pitch') }}
-                {{ Form::select('climbing-multi-pitch_classs',
+                {{ Form::label('climbing-multi_pitch', 'Multi Pitch') }}
+                {{ Form::select('climbing-multi_pitch',
                     [ 'yes' => "Yes", 'no' =>'No'],
                     isset($activity_log) ? $activity_log->takeout_site : null,
-                    ['id' => 'climbing-multi-pitch_class','class' => 'form-control'])
+                    ['id' => 'climbing-multi_pitch','class' => 'form-control'])
                 }}
             </div>
 
@@ -49,7 +49,7 @@
         <!-- Notes -->
         <div class="row"  style="margin-top: 1em">
             <div class="col-sm-12 ">
-                {{ Form::label(' climbing-conidtion_class', 'Climbing Condition') }}
+                {{ Form::label(' climbing-conditions_class', 'Climbing Condition') }}
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-sm-1 col-sm-offset-1">
@@ -131,7 +131,7 @@
                         <div class="col-sm-1 ">
                             {{ Form::checkbox('climbing_conditions_Dry', 'on',
                                 (isset($activity_log) && strpos($activity_log->climbing_conditions, 'Dry') !== false),
-                                array('id' => 'climbing_conditions_Dryt','class' => 'form-control'))
+                                array('id' => 'climbing_conditions_Dry','class' => 'form-control'))
                             }}
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                         </div>
                         <div class="col-sm-1 ">
                             {{ Form::checkbox('climbing_conditions_NewBolts', 'on',
-                                (isset($activity_log) && strpos($activity_log->climbing_conditions, 'New Bolts') !== false),
+                                (isset($activity_log) && strpos($activity_log->climbing_conditions, 'NewBolts') !== false),
                                 array('id' => 'climbing_conditions_NewBolts','class' => 'form-control'))
                             }}
                         </div>
@@ -152,7 +152,7 @@
                         </div>
                         <div class="col-sm-1 ">
                             {{ Form::checkbox('climbing_conditions_OldBolts', 'on',
-                                (isset($activity_log) && strpos($activity_log->climbing_conditions, 'Old Bolts') !== false),
+                                (isset($activity_log) && strpos($activity_log->climbing_conditions, 'OldBolts') !== false),
                                 array('id' => 'climbing_conditions_OldBolts','class' => 'form-control'))
                             }}
                         </div>
@@ -162,7 +162,7 @@
                         </div>
                         <div class="col-sm-1 ">
                             {{ Form::checkbox('climbing_conditions_NoBolts', 'on',
-                                (isset($activity_log) && strpos($activity_log->climbing_conditions, 'No Bolts') !== false),
+                                (isset($activity_log) && strpos($activity_log->climbing_conditions, 'NoBolts') !== false),
                                 array('id' => 'climbing_conditions_NodBolts','class' => 'form-control'))
                             }}
                         </div>
