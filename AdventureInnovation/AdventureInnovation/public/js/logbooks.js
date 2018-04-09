@@ -205,11 +205,12 @@ $(function () {
             data: formData,
             success: function (data) {
                 if (data == "true") {
-                    //window.location.href = "logbook";
+                    window.location.href = "/logbookMainPage";
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);
+                alert(xhr.responseText);
                 alert(thrownError);
             }
 

@@ -198,16 +198,18 @@ class NewLogbooksController extends Controller
 
             // save attachments
             $files = $request->file('files');
-            $user = Auth::user();
-            foreach($files as $f) {
+            if (is_null($files) == false) {
+                $user = Auth::user();
+                foreach ($files as $f) {
 
-                $path = $f->store($user->username . '/log-attachments/' . $base->id);
-                $attachment = new LogAttachment();
-                $attachment->original_name = $f->getClientOriginalName();
-                $attachment->storage_path = $path;
-                $attachment->base_log_id = $base->id;
-                $attachment->user_id = $user->id;
-                $attachment->save();
+                    $path = $f->store($user->username . '/log-attachments/' . $base->id);
+                    $attachment = new LogAttachment();
+                    $attachment->original_name = $f->getClientOriginalName();
+                    $attachment->storage_path = $path;
+                    $attachment->base_log_id = $base->id;
+                    $attachment->user_id = $user->id;
+                    $attachment->save();
+                }
             }
 
             return json_encode(true);
