@@ -87,12 +87,6 @@
                                         </div>
                                     </li>
                                     <li class="dropdown-item item-pointer">
-                                        <div class="btn-default btn-xs item-changed" id="dropdown-new-logbooks" type="button">
-                                            <span class="fa item-size">New Logbooks</span>
-                                        </div>
-                                    </li>
-
-                                    <li class="dropdown-item item-pointer">
                                         <div class="btn-default btn-xs item-changed" id="dropdown-logout" type="button">
                                             <span class = "fa item-size">Logout</span>
                                         </div>

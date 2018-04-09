@@ -17,7 +17,10 @@
             </div>
             <div class="col-sm-2 ">
                 {{ Form::label('climbing-height', 'Height') }}
-                {{ Form::text('climbing-height', null, array('id' => 'climbing-height','class' => 'form-control')) }}
+                {{ Form::text('climbing-height',
+                    isset($activity_log) ? $activity_log->takeout_site : null,
+                    array('id' => 'climbing-height','class' => 'form-control'))
+                }}
             </div>
             <div class="col-sm-2 ">
                 {{ Form::label('climbing-rating_difficulty', 'Rating Difficulty') }}
@@ -38,7 +41,7 @@
             <div class="col-sm-2 ">
                 {{ Form::label('climbing-multi_pitch', 'Multi Pitch') }}
                 {{ Form::select('climbing-multi_pitch',
-                    [ 'yes' => "Yes", 'no' =>'No'],
+                    [ 1 => "Yes", 0 =>'No'],
                     isset($activity_log) ? $activity_log->takeout_site : null,
                     ['id' => 'climbing-multi_pitch','class' => 'form-control'])
                 }}

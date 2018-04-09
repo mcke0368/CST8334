@@ -36,7 +36,7 @@ function gather_base_data() {
         }
     });
     base_data['base-weather_conditions'] = weather_conditions;
-    base_data['base-weather_temp'] = $('#weather_temperature')[0].value;
+    base_data['base-weather_temp'] = $('#weather_temp')[0].value;
     base_data['base-weather_wind'] = $('#weather_wind')[0].value;
     base_data['base-weather_notes'] = $('#weather_notes')[0].value;
     return base_data;
@@ -172,13 +172,15 @@ $(function () {
         /* TODO - make sure we're in a clean state, ie remove all dnd stuff */
 
         /* gather up all the data */
-
+        var formData = new FormData();
         /* base_data */
         var base_data = gather_base_data();
-
+        var activity_data = gather_activity_data();
+        var activity_name = $('#logbook-activity-name')[0].innerHTML.trim();
+        var custom_data = $('#custom-template').html();
         // attachments
         var attachments = $('#attachments')[0].files;
-        var formData = new FormData();
+
         for (var i = 0; i < attachments.length; i++) {
             var file = attachments[i];
 
@@ -190,16 +192,17 @@ $(function () {
             // Add the file to the request.
             formData.append('files[]', file, file.name);
         }
-
-        var activity_data = gather_activity_data();
-        var activity_name = $('#logbook-activity-name')[0].innerHTML.trim();
-        var custom_data = $('#custom-template').html();
-
+        formData.append('base_data', JSON.stringify(base_data));
+        formData.append('activity_data',  JSON.stringify(activity_data));
+        formData.append('activity_name', activity_name);
+        formData.append('custom_data', custom_data);
         $.ajax({
             type: "POST",
             url: '/logbook/save-log',
-            processData: false,
-            data: {form_data: formData, base_data: base_data, activity_data: activity_data, activity: activity_name, custom_data: custom_data},
+            processData : false,
+            contentType : false,
+            //data: {base_data: base_data, activity_data: activity_data, activity: activity_name, custom_data: custom_data},
+            data: formData,
             success: function (data) {
                 if (data == "true") {
                     //window.location.href = "logbook";
@@ -207,13 +210,10 @@ $(function () {
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);
-                alert(xhr.responseText);
                 alert(thrownError);
             }
 
         });
-
-
 
     });
 

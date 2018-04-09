@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
+
+use App\Models\LogAttachment;
 use Validator;
 use App\Models\BaseLog;
 use App\Models\RaftingLog;
@@ -11,7 +14,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
-
 
 class NewLogbooksController extends Controller
 {
@@ -85,7 +87,13 @@ class NewLogbooksController extends Controller
         $blid = $base_log->base_logable_id;
         $activity_log = $bltype::find($blid) ;
 
+        // get the attachements for the log
+        $attach = $base_log->log_attachments()->get();
+
+        // get all templates
         $templates = LogTemplate::all();
+
+
 
         return view('logs.newLogbook', [
             'templates' => $templates,
@@ -93,7 +101,8 @@ class NewLogbooksController extends Controller
             'activity_slug' => $activity_slug,
             'base_log' => $base_log,
             'activity_log' => $activity_log,
-            'editing' => true
+            'editing' => true,
+            'attach' => $attach
         ]);
 
     }
@@ -129,9 +138,9 @@ class NewLogbooksController extends Controller
      */
     public function saveLog(Request $request)
     {
-        $base_data = $request->base_data;
-        $activity_data = $request->activity_data;
-        $activity_name = $request->activity;
+        $base_data = json_decode($request->base_data, true);
+        $activity_data = json_decode($request->activity_data, true);
+        $activity_name = $request->activity_name;
         $custom_data = $request->custom_data;
 
         /* validate the base data */
@@ -183,12 +192,37 @@ class NewLogbooksController extends Controller
                     }
                 };
             }
+
             $log->save();
             $log->baselogs()->save($base);
+
+            // save attachments
+            $files = $request->file('files');
+            $user = Auth::user();
+            foreach($files as $f) {
+
+                $path = $f->store($user->username . '/log-attachments/' . $base->id);
+                $attachment = new LogAttachment();
+                $attachment->original_name = $f->getClientOriginalName();
+                $attachment->storage_path = $path;
+                $attachment->base_log_id = $base->id;
+                $attachment->user_id = $user->id;
+                $attachment->save();
+            }
 
             return json_encode(true);
         }
         return json_encode(false);
+    }
+
+    /**
+     * Helper function to download a log file
+     * @param string $filename file to download
+     */
+    public function download(Request $request) {
+        $id = $request->query('attach_id');
+        $log = LogAttachment::find($id);
+        return Storage::download($log->storage_path, $log->original_name );
     }
 
     public function showTemplateList(Request $request)

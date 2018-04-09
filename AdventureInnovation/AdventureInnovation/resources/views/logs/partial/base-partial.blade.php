@@ -125,9 +125,14 @@
             </div>
         </div>
         <div class="row" style="margin-top: 1em">
-            <div class="col-lg-4">
+            <div class="col-lg-12">
                 {{Form::label('attachement-files', 'Attachement')}}
                 <input type="file" id="attachments" name="attachement-files[]" multiple/>
+                @if (isset($attach))
+                    @foreach($attach as $file)
+                        <div><a href="{{ route('logbook-download-attachment', ['attach_id'=>$file->id]) }}">{{$file->original_name}}</a></div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
