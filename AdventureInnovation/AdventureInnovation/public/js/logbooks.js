@@ -8,8 +8,7 @@
  */
 
 
-var drake = dragula();
-
+var row_drake = null;
 function gather_base_data() {
     var base_data = {};
     var start_time = $('#base-date')[0].value + " " +$('#base-start_time')[0].value;
@@ -141,7 +140,7 @@ function enable_dragndrop() {
     );
 
     // Apply dragula to move rows
-    var drake = dragula([document.getElementById('custom-template')], {
+    row_drake = dragula([document.getElementById('custom-template')], {
         moves: function (el, container, handle) {
             return handle.classList.contains('fa-arrows');
         }
@@ -196,9 +195,18 @@ function enable_dragndrop() {
 
 }
 
+
 function disable_dragndrop() {
+    // remove all drag and drop from rows
+    if (row_drake) {
+        row_drake.destroy();
+    }
     $('#custom-template').find(".row-icons").remove();
-    $('#custom-template').find(".row").unwrap();
+    $('#custom-template').find(".row").each(function() {
+        if ($(this).parent().hasClass('row-parent')) {
+            $(this).unwrap();
+        }
+    });
 
     $('#custom-template').find(".col-sm-2").removeAttr("style");
     $('#custom-template').find(".col-sm-4").removeAttr("style");
@@ -207,6 +215,32 @@ function disable_dragndrop() {
     $('#custom-template').find(".col-sm-10").removeAttr("style");
     $('#custom-template').find(".col-sm-12").removeAttr("style");
 }
+
+
+/**
+ * Set the menu button states for normal mode
+ */
+var editStr = "Edit Template";
+var doneStr = "Done Editing";
+function template_edit_mode() {
+    enable_dragndrop();
+    $('#edit-template-button').html(doneStr);
+    $('#save-log-button')[0].setAttribute("disabled", "disabled");
+    $('#save-template-button')[0].setAttribute("disabled", "disabled");
+    $('#add-new-row')[0].removeAttribute('disabled');
+}
+
+/**
+ * Set the menu button states for edit mode
+ */
+function template_normal_mode() {
+    disable_dragndrop();
+    $('#edit-template-button').html(editStr);
+    $('#save-log-button')[0].removeAttribute('disabled');
+    $('#save-template-button')[0].removeAttribute('disabled');
+    $('#add-new-row')[0].setAttribute("disabled", "disabled");
+}
+
 
 /* document ready jQuery call */
 $(function () {
@@ -217,6 +251,7 @@ $(function () {
      * add callback for template dropdown
      */
     $("#load-template-button").click(function () {
+        template_normal_mode();
         $('#modal-select-logbook-type').modal('show');
     });
 
@@ -240,6 +275,7 @@ $(function () {
      * clear all contents from the customization
      */
     $("#clear-template-button").click(function () {
+        template_normal_mode();
         $("#custom-template").empty();
     });
 
@@ -262,29 +298,19 @@ $(function () {
      * - disable save while editing
      */
     $('#edit-template-button').click(function() {
-        var editStr = "Edit Template";
-        var doneStr = "Done Editing";
+
        if (this.innerHTML == editStr) {
-           enable_dragndrop();
-           this.innerHTML = doneStr;
-           $('#save-log-button')[0].setAttribute("disabled", "disabled");
-           $('#save-template-button')[0].setAttribute("disabled", "disabled");
-           $('#add-new-row')[0].removeAttribute('disabled');
+           template_edit_mode();
        } else {
-           disable_dragndrop();
-           this.innerHTML = editStr;
-           $('#save-log-button')[0].removeAttribute('disabled');
-           $('#save-template-button')[0].removeAttribute('disabled');
-           $('#add-new-row')[0].setAttribute("disabled", "disabled");
+           template_normal_mode();
        }
     });
+
 
     /**
      * initial state for menu buttons
      */
-    $('#save-log-button')[0].removeAttribute('disabled');
-    $('#save-template-button')[0].removeAttribute('disabled');
-    $('#add-new-row')[0].setAttribute("disabled", "disabled");
+    template_normal_mode();
 
 
     /**
@@ -376,7 +402,7 @@ $(function () {
      * styling applied during the setup.
      */
     $("#modal-button-save-type").click(function () {
-        disable_dragndrop();
+        //disable_dragndrop();
         var template_name = $("#logbook-template-name").val();
         var template_desc = $("#logbook-template-desc").val();
         var html_data = $("#custom-template").html();
