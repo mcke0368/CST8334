@@ -7,6 +7,9 @@
  *
  */
 
+
+var drake = dragula();
+
 function gather_base_data() {
     var base_data = {};
     var start_time = $('#base-date')[0].value + " " +$('#base-start_time')[0].value;
@@ -105,8 +108,110 @@ function gather_climbing_data() {
     return climbing_data;
 }
 
+/**
+ * callback function for populating the duration.
+ */
+function checktime() {
+    var start = new Date('2015-03-25T' + $('#base-start_time')[0].value + "Z")
+    var end = new Date('2015-03-25T' + $('#base-end_time')[0].value + "Z")
+    if (start && end) {
+        var diff =  end - start;
+        if (diff >= 0) {
+            var seconds = Math.floor(diff / 1000); //ignore any left over units smaller than a second
+            var minutes = Math.floor(seconds / 60);
+            seconds = seconds % 60;
+            var hours = Math.floor(minutes / 60);
+            minutes = minutes % 60;
+            $('#base-duration')[0].value = "Hr: " + hours + " Min: " + minutes;
+        }
+    }
+}
+
+function enable_dragndrop() {
+    /********************** template stlying in preparation of allowing the drag and drop. ************/
+
+    // Add HTML icons for each rows
+    $("#custom-template").find('.row').wrap("<div class='row-parent'></div>");
+    $("#custom-template").find('.row-parent').prepend(
+        "<div class='row-icons' style='text-align:center'>" +
+        "   <i class='fa fa-arrows' aria-hidden='true'></i>" +
+        "   <i class='fa fa-plus-circle' aria-hidden='true'" +
+        "   ></i><i class='fa fa-times' aria-hidden='true'></i>" +
+        "</div>"
+    );
+
+    // Apply dragula to move rows
+    var drake = dragula([document.getElementById('custom-template')], {
+        moves: function (el, container, handle) {
+            return handle.classList.contains('fa-arrows');
+        }
+    });
+
+    // CSS logbook type
+    $("#custom-template").children().each(function (index) {
+        $(this).css("border-style", "dashed");
+        $(this).css("border-color", "#828282");
+    });
+
+    // CSS row
+    $("#custom-template").find(".row").children().each(function (index) {
+        $(this).css("border-style", "dotted");
+        $(this).css("border-color", "#b7b7b7");
+    });
+
+    // Apply dragula to move elements in a row
+    $("#custom-template").find('.row').each(function (index) {
+        drake = dragula([$(this).get(0)]);
+    });
+
+    // Set row padding
+    $(".row-parent").css("padding-left", "2%");
+    $(".row-parent").css("padding-right", "2%");
+
+    // Set icon margin
+    $("#custom-template i").css("margin-left", "3%");
+    $("#custom-template i").css("margin-right", "3%");
+
+    // Set icon justification
+    $(".row-icons").css("text-align", "center");
+
+    // When clicking deleting-row icon
+    $(".fa-times").click(function () {
+        $('#modal-delete').find("p").attr("id", $(this).parent().parent().index());
+        $('#modal-delete').modal('show');
+    });
+
+    // When clicking adding-element icon
+    $(".fa-plus-circle").click(function () {
+        $('#modal-add').find(".dropdown").attr("id", $(this).parent().parent().index());
+        $('#modal-add').modal('show');
+    });
+
+    // Delete a row in a logbook type
+    $("#modal-button-delete").click(function () {
+        var rowNum = parseInt($('#modal-delete').find("p").attr('id'));
+
+        $('#custom-template').find(".row-parent").slice(rowNum, rowNum + 1).remove();
+    });
+
+}
+
+function disable_dragndrop() {
+    $('#custom-template').find(".row-icons").remove();
+    $('#custom-template').find(".row").unwrap();
+
+    $('#custom-template').find(".col-sm-2").removeAttr("style");
+    $('#custom-template').find(".col-sm-4").removeAttr("style");
+    $('#custom-template').find(".col-sm-6").removeAttr("style");
+    $('#custom-template').find(".col-sm-8").removeAttr("style");
+    $('#custom-template').find(".col-sm-10").removeAttr("style");
+    $('#custom-template').find(".col-sm-12").removeAttr("style");
+}
+
 /* document ready jQuery call */
 $(function () {
+
+
 
     /**
      * add callback for template dropdown
@@ -138,29 +243,48 @@ $(function () {
         $("#custom-template").empty();
     });
 
-    /**
-     * callback function for populating the duration.
-     */
-    function checktime() {
-        var start = new Date('2015-03-25T' + $('#base-start_time')[0].value + "Z")
-        var end = new Date('2015-03-25T' + $('#base-end_time')[0].value + "Z")
-        if (start && end) {
-            var diff =  end - start;
-            var seconds = Math.floor(diff/1000); //ignore any left over units smaller than a second
-            var minutes = Math.floor(seconds/60);
-            seconds = seconds % 60;
-            var hours = Math.floor(minutes/60);
-            minutes = minutes % 60;
-            $('#base-duration')[0].value = "Hr: " + hours + " Min: " + minutes;
-        }
-    }
+
     /**
      * Add callbacks for duration
      */
     $('#base-start_time').change(checktime);
     $('#base-end_time').change(checktime);
+    /**
+     * Call checktime to update the duration if it is already populated
+     */
+    checktime();
 
 
+    /**
+     * Callback for editbutton
+     * - toggle the button name
+     * - call either enable_dragndrop or disable_dragndrop
+     * - disable save while editing
+     */
+    $('#edit-template-button').click(function() {
+        var editStr = "Edit Template";
+        var doneStr = "Done Editing";
+       if (this.innerHTML == editStr) {
+           enable_dragndrop();
+           this.innerHTML = doneStr;
+           $('#save-log-button')[0].setAttribute("disabled", "disabled");
+           $('#save-template-button')[0].setAttribute("disabled", "disabled");
+           $('#add-new-row')[0].removeAttribute('disabled');
+       } else {
+           disable_dragndrop();
+           this.innerHTML = editStr;
+           $('#save-log-button')[0].removeAttribute('disabled');
+           $('#save-template-button')[0].removeAttribute('disabled');
+           $('#add-new-row')[0].setAttribute("disabled", "disabled");
+       }
+    });
+
+    /**
+     * initial state for menu buttons
+     */
+    $('#save-log-button')[0].removeAttribute('disabled');
+    $('#save-template-button')[0].removeAttribute('disabled');
+    $('#add-new-row')[0].setAttribute("disabled", "disabled");
 
 
     /**
@@ -175,10 +299,12 @@ $(function () {
         var formData = new FormData();
         /* base_data */
         var base_data = gather_base_data();
+        /* activity data */
         var activity_data = gather_activity_data();
         var activity_name = $('#logbook-activity-name')[0].innerHTML.trim();
+        /* custom data */
         var custom_data = $('#custom-template').html();
-        // attachments
+        /* attachments */
         var attachments = $('#attachments')[0].files;
 
         for (var i = 0; i < attachments.length; i++) {
@@ -250,25 +376,14 @@ $(function () {
      * styling applied during the setup.
      */
     $("#modal-button-save-type").click(function () {
-
+        disable_dragndrop();
         var template_name = $("#logbook-template-name").val();
         var template_desc = $("#logbook-template-desc").val();
-
-        $(".row-icons").remove();
-        $(".row").unwrap();
-
-        $(".col-sm-2").removeAttr("style");
-        $(".col-sm-4").removeAttr("style");
-        $(".col-sm-6").removeAttr("style");
-        $(".col-sm-8").removeAttr("style");
-        $(".col-sm-10").removeAttr("style");
-        $(".col-sm-12").removeAttr("style");
-
         var html_data = $("#custom-template").html();
 
         $.ajax({
             type: "POST",
-            // url: '/logbook/save-template',
+            url: '/logbook/save-template',
             data: {template_name: template_name, template_desc: template_desc, html_data: html_data},
             success: function (data) {
                 if (data == "true") {
@@ -288,71 +403,6 @@ $(function () {
 
     });
 
-    /********************** template stlying in preparation of allowing the drag and drop. ************/
-
-    // Add HTML icons for each rows
-    $("#custom-template").find('.row').wrap("<div class='row-parent'></div>");
-    $("#custom-template").find('.row-parent').prepend(
-        "<div class='row-icons' style='text-align:center'>" +
-        "   <i class='fa fa-arrows' aria-hidden='true'></i>" +
-        "   <i class='fa fa-plus-circle' aria-hidden='true'" +
-        "   ></i><i class='fa fa-times' aria-hidden='true'></i>" +
-        "</div>"
-    );
-
-    // Apply dragula to move rows
-    var drake = dragula([document.getElementById('custom-template')], {
-        moves: function (el, container, handle) {
-            return handle.classList.contains('fa-arrows');
-        }
-    });
-
-    // CSS logbook type
-    $("#custom-template").children().each(function (index) {
-        $(this).css("border-style", "dashed");
-        $(this).css("border-color", "#828282");
-    });
-
-    // CSS row
-    $("#custom-template").find(".row").children().each(function (index) {
-        $(this).css("border-style", "dotted");
-        $(this).css("border-color", "#b7b7b7");
-    });
-
-    // Apply dragula to move elements in a row
-    $("#custom-template").find('.row').each(function (index) {
-        drake = dragula([$(this).get(0)]);
-    });
-
-    // Set row padding
-    $(".row-parent").css("padding-left", "2%");
-    $(".row-parent").css("padding-right", "2%");
-
-    // Set icon margin
-    $("#custom-template i").css("margin-left", "3%");
-    $("#custom-template i").css("margin-right", "3%");
-
-    // Set icon justification
-    $(".row-icons").css("text-align", "center");
-
-    // When clicking deleting-row icon
-    $(".fa-times").click(function () {
-        $('#modal-delete').find("p").attr("id", $(this).parent().parent().index());
-        $('#modal-delete').modal('show');
-    });
-
-    // When clicking adding-element icon
-    $(".fa-plus-circle").click(function () {
-        $('#modal-add').find(".dropdown").attr("id", $(this).parent().parent().index());
-        $('#modal-add').modal('show');
-    });
-
-    // Delete a row in a logbook type
-    $("#modal-button-delete").click(function () {
-        var rowNum = parseInt($('#modal-delete').find("p").attr('id'));
-
-        $('#custom-template').find(".row-parent").slice(rowNum, rowNum + 1).remove();
-    });
 
 
     /************ Modals for the save and adding new widets ************************/
@@ -496,6 +546,7 @@ $(function () {
             $('#custom-template').find(".row-parent").slice(rowNum, rowNum + 1).find(".row").append(sListscheckboxHTML);
         }
 
+
         $("#custom-template").find(".row").children().each(function (index) {
             $(this).css("border-style", "dotted");
             $(this).css("border-color", "#b7b7b7");
@@ -504,6 +555,7 @@ $(function () {
         $("#custom-template").find('.row').each(function (index) {
             dragula([$(this).get(0)]);
         });
+
 
     });
 
