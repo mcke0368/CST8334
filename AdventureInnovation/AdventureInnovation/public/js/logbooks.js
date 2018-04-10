@@ -122,6 +122,8 @@ function checktime() {
             var hours = Math.floor(minutes / 60);
             minutes = minutes % 60;
             $('#base-duration')[0].value = "Hr: " + hours + " Min: " + minutes;
+        } else {
+            $('#base-duration')[0].value = ""
         }
     }
 }
