@@ -85,14 +85,14 @@
         <div class="row" style="margin-top: 1em">
 
             <div class="col-sm-1  col-sm-offset-3">
-                <label for="weather_temperature" class="col-form-label"><i
+                <label for="weather_temp" class="col-form-label"><i
                             class="wi wi-thermometer wi-size"></i></label>
             </div>
 
             <div class="col-sm-2 ">
                 {{ Form::number('weather_temperature',
-                    isset($base_log) ? $base_log->weather_temperature : null,
-                    array('id' => 'weather_temperature','class' => 'form-control', 'placeholder' => '&#176;C'))
+                    isset($base_log) ? $base_log->weather_temp : null,
+                    array('id' => 'weather_temp','class' => 'form-control', 'placeholder' => '&#176;C'))
                 }}
             </div>
             <div class="col-sm-1  ">

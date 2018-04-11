@@ -7,6 +7,8 @@
  *
  */
 
+
+var row_drake = null;
 function gather_base_data() {
     var base_data = {};
     var start_time = $('#base-date')[0].value + " " +$('#base-start_time')[0].value;
@@ -24,7 +26,6 @@ function gather_base_data() {
     base_data['base-group_size'] = $('#base-group_size')[0].value;
     base_data['base-other_leaders'] = $('#base-other_leaders')[0].value;
 
-
     // sort out the weather
 
     // gather all weather conditions, and put into a string all checked values.
@@ -37,7 +38,7 @@ function gather_base_data() {
         }
     });
     base_data['base-weather_conditions'] = weather_conditions;
-    base_data['base-weather_temp'] = $('#weather_temperature')[0].value;
+    base_data['base-weather_temp'] = $('#weather_temp')[0].value;
     base_data['base-weather_wind'] = $('#weather_wind')[0].value;
     base_data['base-weather_notes'] = $('#weather_notes')[0].value;
     return base_data;
@@ -67,8 +68,8 @@ function gather_kayaking_data() {
     kayaking_data['flow_level'] = $('#kayaking-flow_level')[0].value;
     kayaking_data['launch_site'] = $('#kayaking-launch_site')[0].value;
     kayaking_data['takeout_site'] = $('#kayaking-takeout_site')[0].value;
-    kayaking_data['trip_type'] = $('#kayaking-trip_type')[0].value;
-    kayaking_data['trip_number'] = $('#kayaking-trip_number')[0].value;
+    kayaking_data['distance'] = $('#kayaking-distance')[0].value;
+    kayaking_data['boat_used'] = $('#kayaking-boat_used')[0].value;
     kayaking_data['notes'] = $('#kayaking-notes')[0].value;
     return kayaking_data;
 }
@@ -87,163 +88,47 @@ function gather_rafting_data() {
 
 function gather_climbing_data() {
     var climbing_data = {};
+
+    climbing_data['climb_type'] = $('#climbing-climb_type')[0].value; //done
+    climbing_data['multi_pitch'] = $('#climbing-multi_pitch')[0].value;//done
+    var climbing_conditions = "";
+    $("*[name*='climbing_conditions_']").each(function() {
+        if (this.checked) {
+            var name = this.name;
+            name = name.replace("climbing_conditions_","");
+            climbing_conditions += name + ":";
+        }
+    });
+    climbing_data['climbing_conditions'] = climbing_conditions;
+    climbing_data['rating_difficulty'] = $('#climbing-rating_difficulty')[0].value;//done
+    climbing_data['rating_letter'] = $('#climbing-rating_letter')[0].value;//done
+    climbing_data['height'] = $('#climbing-height')[0].value; //done
+    climbing_data['notes']= $('#climbing-notes')[0].value;//done
     return climbing_data;
 }
 
-/* document ready jQuery call */
-$(function () {
-
-    /**
-     * add callback for template dropdown
-     */
-    $("#load-template-button").click(function () {
-        $('#modal-select-logbook-type').modal('show');
-    });
-
-    /**
-     * Modal for selecting a template.  If an existing template is chosen,
-     * load that one.  If new, remove all content from #custome-template
-     */
-    $("#modal-button-select-type").click(function () {
-
-        var value = $("#logbook-select-template").find(":selected")[0].value
-        if (value == "new") {
-            $("#custom-template").empty();
-        } else {
-            $("#custom-template").empty();
-            $("#custom-template").append(value);
-        }
-
-    });
-
-    /**
-     * clear all contents from the customization
-     */
-    $("#clear-template-button").click(function () {
-        $("#custom-template").empty();
-    });
-
-    /**
-     * callback function for populating the duration.
-     */
-    function checktime() {
-        var start = new Date('2015-03-25T' + $('#base-start_time')[0].value + "Z")
-        var end = new Date('2015-03-25T' + $('#base-end_time')[0].value + "Z")
-        if (start && end) {
-            var diff =  end - start;
-            var seconds = Math.floor(diff/1000); //ignore any left over units smaller than a second
-            var minutes = Math.floor(seconds/60);
+/**
+ * callback function for populating the duration.
+ */
+function checktime() {
+    var start = new Date('2015-03-25T' + $('#base-start_time')[0].value + "Z")
+    var end = new Date('2015-03-25T' + $('#base-end_time')[0].value + "Z")
+    if (start && end) {
+        var diff =  end - start;
+        if (diff >= 0) {
+            var seconds = Math.floor(diff / 1000); //ignore any left over units smaller than a second
+            var minutes = Math.floor(seconds / 60);
             seconds = seconds % 60;
-            var hours = Math.floor(minutes/60);
+            var hours = Math.floor(minutes / 60);
             minutes = minutes % 60;
             $('#base-duration')[0].value = "Hr: " + hours + " Min: " + minutes;
+        } else {
+            $('#base-duration')[0].value = ""
         }
     }
-    /**
-     * Add callbacks for duration
-     */
-    $('#base-start_time').change(checktime);
-    $('#base-end_time').change(checktime);
+}
 
-
-
-
-    /**
-     * callback for submitting a log
-     */
-
-    $('#save-log-button').click(function() {
-
-        /* TODO - make sure we're in a clean state, ie remove all dnd stuff */
-
-        /* gather up all the data */
-
-        /* base_data */
-        var base_data = gather_base_data();
-
-        /* TODO figure out if we want to save the file or path */
-        //base['attachment'] = $('#attachment-file')[0].value;
-
-        var activity_data = gather_activity_data();
-        var activity_name = $('#logbook-activity-name')[0].innerHTML.trim();
-
-        var custom_data = $('#custom-template').html();
-
-
-        $.ajax({
-            type: "POST",
-            url: '/logbook/save-log',
-            data: {base_data: base_data, activity_data: activity_data, activity: activity_name, custom_data: custom_data},
-            success: function (data) {
-                if (data == "true") {
-                    //window.location.href = "logbook";
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status);
-                alert(xhr.responseText);
-                alert(thrownError);
-            }
-
-        });
-
-
-
-    });
-
-    /*
-     * callback for save button hit - this pops up a modal that prompts for
-     * name and has a save button (see call method below)
-     */
-    $("#save-template-button").click(function () {
-        $('#modal-save-logbook-type').modal('show');
-    });
-
-
-    /*
-     * Modal for save - get name an process the dom before saving.
-     * The rows of the form are cleaned up by removing (unwrapping) the extra
-     * styling applied during the setup.
-     */
-    $("#modal-button-save-type").click(function () {
-
-        var template_name = $("#logbook-template-name").val();
-        var template_desc = $("#logbook-template-desc").val();
-
-        $(".row-icons").remove();
-        $(".row").unwrap();
-
-        $(".col-sm-2").removeAttr("style");
-        $(".col-sm-4").removeAttr("style");
-        $(".col-sm-6").removeAttr("style");
-        $(".col-sm-8").removeAttr("style");
-        $(".col-sm-10").removeAttr("style");
-        $(".col-sm-12").removeAttr("style");
-
-        var html_data = $("#custom-template").html();
-
-        $.ajax({
-            type: "POST",
-            url: '/logbook/save-template',
-            data: {template_name: template_name, template_desc: template_desc, html_data: html_data},
-            success: function (data) {
-                if (data == "true") {
-                    // update the options list
-                    $('#logbook-select-template')
-                        .append($("<option></option>").attr("value",html_data).text(template_name));
-
-                    //window.location.href = "logbook";
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status);
-                alert(xhr.responseText);
-                alert(thrownError);
-            }
-        });
-
-    });
-
+function enable_dragndrop() {
     /********************** template stlying in preparation of allowing the drag and drop. ************/
 
     // Add HTML icons for each rows
@@ -257,7 +142,7 @@ $(function () {
     );
 
     // Apply dragula to move rows
-    var drake = dragula([document.getElementById('custom-template')], {
+    row_drake = dragula([document.getElementById('custom-template')], {
         moves: function (el, container, handle) {
             return handle.classList.contains('fa-arrows');
         }
@@ -309,6 +194,243 @@ $(function () {
 
         $('#custom-template').find(".row-parent").slice(rowNum, rowNum + 1).remove();
     });
+
+}
+
+
+function disable_dragndrop() {
+    // remove all drag and drop from rows
+    if (row_drake) {
+        row_drake.destroy();
+    }
+    $('#custom-template').find(".row-icons").remove();
+    $('#custom-template').find(".row").each(function() {
+        if ($(this).parent().hasClass('row-parent')) {
+            $(this).unwrap();
+        }
+    });
+
+    $('#custom-template').find(".col-sm-2").removeAttr("style");
+    $('#custom-template').find(".col-sm-4").removeAttr("style");
+    $('#custom-template').find(".col-sm-6").removeAttr("style");
+    $('#custom-template').find(".col-sm-8").removeAttr("style");
+    $('#custom-template').find(".col-sm-10").removeAttr("style");
+    $('#custom-template').find(".col-sm-12").removeAttr("style");
+}
+
+
+/**
+ * Set the menu button states for normal mode
+ */
+var editStr = "Edit Template";
+var doneStr = "Done Editing";
+function template_edit_mode() {
+    enable_dragndrop();
+    $('#edit-template-button').html(doneStr);
+    $('#save-log-button')[0].setAttribute("disabled", "disabled");
+    $('#save-template-button')[0].setAttribute("disabled", "disabled");
+    $('#add-new-row')[0].removeAttribute('disabled');
+}
+
+/**
+ * Set the menu button states for edit mode
+ */
+function template_normal_mode() {
+    disable_dragndrop();
+    $('#edit-template-button').html(editStr);
+    $('#save-log-button')[0].removeAttribute('disabled');
+    $('#save-template-button')[0].removeAttribute('disabled');
+    $('#add-new-row')[0].setAttribute("disabled", "disabled");
+}
+
+
+/* document ready jQuery call */
+$(function () {
+
+
+
+    /**
+     * add callback for template dropdown
+     */
+    $("#load-template-button").click(function () {
+        template_normal_mode();
+        $('#modal-select-logbook-type').modal('show');
+    });
+
+    /**
+     * Modal for selecting a template.  If an existing template is chosen,
+     * load that one.  If new, remove all content from #custome-template
+     */
+    $("#modal-button-select-type").click(function () {
+
+        var value = $("#logbook-select-template").find(":selected")[0].value
+        if (value == "new") {
+            $("#custom-template").empty();
+        } else {
+            $("#custom-template").empty();
+            $("#custom-template").append(value);
+        }
+
+    });
+
+    /**
+     * clear all contents from the customization
+     */
+    $("#clear-template-button").click(function () {
+        template_normal_mode();
+        $("#custom-template").empty();
+    });
+
+
+    /**
+     * Add callbacks for duration
+     */
+    $('#base-start_time').change(checktime);
+    $('#base-end_time').change(checktime);
+    /**
+     * Call checktime to update the duration if it is already populated
+     */
+    checktime();
+
+
+    /**
+     * Callback for editbutton
+     * - toggle the button name
+     * - call either enable_dragndrop or disable_dragndrop
+     * - disable save while editing
+     */
+    $('#edit-template-button').click(function() {
+
+       if (this.innerHTML == editStr) {
+           template_edit_mode();
+       } else {
+           template_normal_mode();
+       }
+    });
+
+
+    /**
+     * initial state for menu buttons
+     */
+    template_normal_mode();
+
+
+    /**
+     * callback for submitting a log
+     */
+
+    $('#save-log-button').click(function() {
+
+        /* TODO - make sure we're in a clean state, ie remove all dnd stuff */
+
+        /* gather up all the data */
+        var formData = new FormData();
+        /* base_data */
+        var base_data = gather_base_data();
+        /* activity data */
+        var activity_data = gather_activity_data();
+        var activity_name = $('#logbook-activity-name')[0].innerHTML.trim();
+        /* custom data */
+        var custom_data = $('#custom-template').html();
+        /* attachments */
+        var attachments = $('#attachments')[0].files;
+
+        for (var i = 0; i < attachments.length; i++) {
+            var file = attachments[i];
+
+            // Check the file type.
+            if (!file.type.match('image.*')) {
+                continue;
+            }
+
+            // Add the file to the request.
+            formData.append('files[]', file, file.name);
+        }
+        formData.append('base_data', JSON.stringify(base_data));
+        formData.append('activity_data',  JSON.stringify(activity_data));
+        formData.append('activity_name', activity_name);
+        formData.append('custom_data', custom_data);
+        $.ajax({
+            type: "POST",
+            url: '/logbook/save-log',
+            processData : false,
+            contentType : false,
+            //data: {base_data: base_data, activity_data: activity_data, activity: activity_name, custom_data: custom_data},
+            data: formData,
+            success: function (data) {
+                // make sure we didn't get any errors
+                var jdata = JSON.parse(data);
+                if (jdata['error']) {
+                    var errors = jdata['error'];
+                    // clean up error messages by removing 'base-'
+                    errors = errors.map( function(item) {
+                        return item.replace('base-','');});
+
+                    // make error div visible
+                    $("#error-messages").css('display','block');
+                    // remove old meesages
+                    $("#error-messages").find("ul").empty();
+                    // add in each of the errors
+                    $.each( errors, function( key, value ) {
+                        $("#error-messages").find("ul").append('<li>'+value+'</li>');
+                    });
+                }
+                else {
+                    window.location.href = "/logbookMainPage";
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(xhr.responseText);
+                alert(thrownError);
+            }
+
+        });
+
+    });
+
+    /*
+     * callback for save button hit - this pops up a modal that prompts for
+     * name and has a save button (see call method below)
+     */
+    $("#save-template-button").click(function () {
+        $('#modal-save-logbook-type').modal('show');
+    });
+
+
+    /*
+     * Modal for save - get name an process the dom before saving.
+     * The rows of the form are cleaned up by removing (unwrapping) the extra
+     * styling applied during the setup.
+     */
+    $("#modal-button-save-type").click(function () {
+        //disable_dragndrop();
+        var template_name = $("#logbook-template-name").val();
+        var template_desc = $("#logbook-template-desc").val();
+        var html_data = $("#custom-template").html();
+
+        $.ajax({
+            type: "POST",
+            url: '/logbook/save-template',
+            data: {template_name: template_name, template_desc: template_desc, html_data: html_data},
+            success: function (data) {
+                if (data == "true") {
+                    // update the options list
+                    $('#logbook-select-template')
+                        .append($("<option></option>").attr("value",html_data).text(template_name));
+
+                    //window.location.href = "logbook";
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(xhr.responseText);
+                alert(thrownError);
+            }
+        });
+
+    });
+
 
 
     /************ Modals for the save and adding new widets ************************/
@@ -452,6 +574,7 @@ $(function () {
             $('#custom-template').find(".row-parent").slice(rowNum, rowNum + 1).find(".row").append(sListscheckboxHTML);
         }
 
+
         $("#custom-template").find(".row").children().each(function (index) {
             $(this).css("border-style", "dotted");
             $(this).css("border-color", "#b7b7b7");
@@ -460,6 +583,7 @@ $(function () {
         $("#custom-template").find('.row').each(function (index) {
             dragula([$(this).get(0)]);
         });
+
 
     });
 

@@ -11,7 +11,11 @@
     <!-- conditions checkboxes -->
         <div class="row text-center"><h1>Template Title</h1></div>
 
-        <div class="container">
+        <div id="error-messages" class="alert alert-danger" style="display:none">
+            <ul></ul>
+        </div>
+
+            <div class="container">
 
             <!--  Base template -->
 

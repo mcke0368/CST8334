@@ -32,4 +32,12 @@ class BaseLog extends Model
     public function logtype() {
         return $this->hasOne('App\Models\LogType');
     }
+
+    /**********************************************************************************
+     * Log Attachments
+     **********************************************************************************/
+
+    public function log_attachments() {
+        return $this->hasMany('App\Models\LogAttachment');
+    }
 }

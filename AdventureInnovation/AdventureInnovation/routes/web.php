@@ -178,3 +178,4 @@ Route::get('/logbook/{activity_slug}/{id}/', 'NewLogbooksController@edit')->name
 
 Route::post('/logbook/save-template', 'NewLogbooksController@saveTemplate')->name('save-activity-template');
 Route::post('/logbook/save-log', 'NewLogbooksController@saveLog')->name('save-activity-log');
+Route::get('/logbook/download', 'NewLogbooksController@download')->name('logbook-download-attachment');
