@@ -270,6 +270,8 @@ function template_normal_mode() {
 /* document ready jQuery call */
 $(function () {
 
+
+
     /**
      * add callback for template dropdown
      */
@@ -312,7 +314,6 @@ $(function () {
      * Call checktime to update the duration if it is already populated
      */
     checktime();
-
 
     /**
      * Callback for editbutton
