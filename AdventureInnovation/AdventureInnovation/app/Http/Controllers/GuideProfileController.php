@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-
-
-use App\Models\GuideDAO;
 use App\Models\BaseLog;
-use MongoDB\Driver\Exception\ExecutionTimeoutException;
+use App\Models\GuideDAO;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-//use Illuminate\Support\Facades\DB; needed for DB access
-//use Illuminate\Http\Request; needed for DB access
-
+/**
+ *
+ * Controller class for the profile page for Guides.
+ *
+ * Class GuideProfileController
+ * @package App\Http\Controllers
+ */
 class GuideProfileController extends Controller
 {
     private $dao;
@@ -28,6 +29,11 @@ class GuideProfileController extends Controller
         $this->dao = new GuideDAO();
     }
 
+    /**
+     * Get the guide and return a view with all the info needed in the Blade - certificates, videos, social media, etc.
+     * If not a guide, logs out and retirects to home.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
     public function getGuide()
     {
         $user = Auth::user();
@@ -75,6 +81,11 @@ class GuideProfileController extends Controller
         }
     }
 
+    /**
+     * Called when the user edits the guide.
+     * Just send all required info necessary for the Blade
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function editGuide()
     {
         $user = Auth::user();

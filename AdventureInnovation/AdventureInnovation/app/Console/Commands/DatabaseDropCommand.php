@@ -1,7 +1,9 @@
 <?php
 
 
-/* Updated for Laravel 5.0 from 
+/* Updated for Laravel 5.0 from
+Command to drop the database.  Has the user enter the database name to ensure they really want to drop it.
+
 https://anthonysterling.com/posts/using-an-artisan-command-to-create-a-database-in-laravel-or-lumen.html
 */
 

@@ -35,14 +35,3 @@ class LogType extends Model
     }
 
 }
-/*
-mysql> desc log_types;
-+--------------+-------------+------+-----+---------+-------+
-| Field        | Type        | Null | Key | Default | Extra |
-+--------------+-------------+------+-----+---------+-------+
-| logable_type | varchar(64) | NO   | PRI | NULL    |       |
-| description  | longtext    | NO   |     | NULL    |       |
-| created_at   | timestamp   | YES  |     | NULL    |       |
-| updated_at   | timestamp   | YES  |     | NULL    |       |
-+--------------+-------------+------+-----+---------+-------+
-*/

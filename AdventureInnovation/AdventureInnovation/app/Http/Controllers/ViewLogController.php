@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class viewLogController extends Controller
 {
     public function displayLog($log_id){

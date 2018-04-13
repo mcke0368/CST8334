@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use App\Models\GuideDAO;
 use App\Models\BaseLog;
+use App\Models\GuideDAO;
 use App\Models\LogType;
+use Illuminate\Support\Facades\Auth;
 
+/**
+ * Controller class for the main Logbook page.  This page needs info to help populate
+ * the dropdown for log book types and the logbook history.
+ * Class LogbookMainPageController
+ * @package App\Http\Controllers
+ */
 class LogbookMainPageController extends Controller
 {
     private $dao;
@@ -24,7 +29,7 @@ class LogbookMainPageController extends Controller
 
     /**
      * Show the main page.  Just need to populate some information to pass along:
-     * -log list
+     * - log data, log types and log count,
      * -
      */
     public function show() {

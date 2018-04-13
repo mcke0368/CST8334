@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Guide;
 use App\Models\Report;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
+/**
+ * Controller for processing the displaying and saving report forms.
+ * Class ReportController
+ * @package App\Http\Controllers
+ */
 class ReportController extends Controller
 {
     /**

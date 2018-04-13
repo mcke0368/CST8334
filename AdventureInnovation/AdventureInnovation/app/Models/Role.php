@@ -4,8 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-
-// Model for classifying user types, i.e. user can be guide, corporate, admin
+/**
+ * Model for classifying user types, i.e. user can be guide, corporate, admin
+ * Class Role
+ * @package App\Models
+ */
 class Role extends Model
 {
     // define relationation between role and user as many-to-many

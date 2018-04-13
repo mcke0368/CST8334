@@ -4,6 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Model class for the Base logs.  Dependencies are setup for guide, log types and log attachment models.
+ * NOTE: base_logable() doesn't seem to work.... not sure if this is a laravel bug. Following the call stack seems
+ * to get to the query stage with the appropriate table and query params but fails for some reason.  At the moment
+ * the work around is to get the class name of the associated log class (kayaking, for example) the the associated
+ * log and get it that way.
+ * Class BaseLog
+ * @package App\Models
+ */
 class BaseLog extends Model
 {
     protected $fillable = [

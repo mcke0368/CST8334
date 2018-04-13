@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Model class for the Reports.  Sets up the dependency for the user.
+ * Class Report
+ * @package App\Models
+ */
 class Report extends Model
 {
     protected $fillable = [
@@ -13,6 +18,10 @@ class Report extends Model
         'Visit_Facility','Left_Date','Return_Field','Return_Date','Re_Curring','Attachment'
     ];
 
+    /**
+     * Get the associated user.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function user() {
         return $this->belongsToMany('App\Models\User');
     }

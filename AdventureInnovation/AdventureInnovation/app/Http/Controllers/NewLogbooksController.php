@@ -2,49 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Storage;
-
-use App\Models\LogAttachment;
-use Validator;
 use App\Models\BaseLog;
-use App\Models\RaftingLog;
+use App\Models\LogAttachment;
 use App\Models\LogTemplate;
 use App\Models\LogType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Route;
+use Storage;
+use Validator;
 
+
+/**
+ * Controller class for the log books.
+ * Handles showing a new log, loading old logs, saving logs as well as saving a log template.
+ *
+ * Class NewLogbooksController
+ * @package App\Http\Controllers
+ */
 class NewLogbooksController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getWeather(Request $request)
-    {
-
-        $templates = LogTemplate::all();
-        $types = LogType::all();
-
-        return view('logs.testing', ['templates' => $templates, 'log_types' => $types]);
-    }
-
-    public function showTemplate(Request $request)
-    {
-
-        if (Auth::check()) {
-            $user = Auth::user();
-            return view('logs.createLogType');
-        } else {
-            return "No Authentication";
-        }
-
-        return "No Authentication";
-    }
 
     /**
-     * show a new template log based in input activity param
+     * show a new template log based in input activity param.
+     * - templates, log types, activity name/slug are sent to the blade.
      * @param Request $request
      */
     public function create(Request $request) {
@@ -69,7 +49,7 @@ class NewLogbooksController extends Controller
 
     /**
      * Show a given log book.
-     *
+     * - log data for the given log is sent to the blade file.
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -229,18 +209,6 @@ class NewLogbooksController extends Controller
         $id = $request->query('attach_id');
         $log = LogAttachment::find($id);
         return Storage::download($log->storage_path, $log->original_name );
-    }
-
-    public function showTemplateList(Request $request)
-    {
-
-        if (Auth::check()) {
-            $user = Auth::user();
-
-
-            //$logbook_types =
-            //return view('logTemplate-partial', ['logbook_types' => $logbook_types]);
-        }
     }
 
 }
