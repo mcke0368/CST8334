@@ -5,6 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\BaseLog;
 
+/**
+ * Model class for White Water Kayaking.  Sets up dependencies for base logs and template models.
+ * Class KayakingLog
+ * @package App\Models
+ */
 class KayakingLog extends Model
 {
     protected $fillable = [

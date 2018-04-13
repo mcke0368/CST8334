@@ -1,7 +1,9 @@
 <?php
 
 
-/* Updated for Laravel 5.0 from 
+/*
+Command to create a database based on the db name in the env file.
+Updated for Laravel 5.0 from
 https://anthonysterling.com/posts/using-an-artisan-command-to-create-a-database-in-laravel-or-lumen.html
 */
 

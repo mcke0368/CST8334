@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Guide;
-use Illuminate\Http\Request;
 use App\Models\Video;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
+/**
+ * Controller for Videos in the user profile.  This functionionality has been moved to the GuideProfileController
+ * so this could probably be removed.
+ * Class VideoController
+ * @package App\Http\Controllers
+ */
 class VideoController extends Controller
 {
     /**

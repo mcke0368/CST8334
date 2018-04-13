@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Model class for the Guide.  Sets up dependencies for the user, certifications and logbooks models.
+ * Class Guide
+ * @package App\Models
+ */
 class Guide extends Model
 {
     protected $fillable = [

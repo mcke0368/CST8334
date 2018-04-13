@@ -5,6 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\BaseLog;
 
+/**
+ * Model class for Rock Climbing log.  Setups up dependencies for the template and base logs models.
+ * Class ClimbingLog
+ * @package App\Models
+ */
 class ClimbingLog extends Model
 {
     protected $fillable = [

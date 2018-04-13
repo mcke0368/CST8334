@@ -2,13 +2,15 @@
  * Pulled from createLogType inline script into this file
  * by amclean on 2018-03-20.
  *
+ * This script handles all the required js for ajax calls on the logbooks page.
  * Modified by amclean on 2018-03-20
- *
- *
  */
 
-
 var row_drake = null;
+
+/**
+ * Gater all the field data from the base form and the weather form.
+ */
 function gather_base_data() {
     var base_data = {};
     var start_time = $('#base-date')[0].value + " " +$('#base-start_time')[0].value;
@@ -43,7 +45,33 @@ function gather_base_data() {
     base_data['base-weather_notes'] = $('#weather_notes')[0].value;
     return base_data;
 }
+/**
+ * callback function for populating the time duration in base logs.
+ */
+function checktime() {
+    var start = new Date('2015-03-25T' + $('#base-start_time')[0].value + "Z")
+    var end = new Date('2015-03-25T' + $('#base-end_time')[0].value + "Z")
+    if (start && end) {
+        var diff =  end - start;
+        if (diff >= 0) {
+            var seconds = Math.floor(diff / 1000); //ignore any left over units smaller than a second
+            var minutes = Math.floor(seconds / 60);
+            seconds = seconds % 60;
+            var hours = Math.floor(minutes / 60);
+            minutes = minutes % 60;
+            $('#base-duration')[0].value = "Hr: " + hours + " Min: " + minutes;
+        } else {
+            $('#base-duration')[0].value = ""
+        }
+    }
+}
 
+/**
+ * Depending on which activity is loaded, call the requisite gather_[activity]_data function
+ * This works by checking for id tags staring with kayaking, rafting, etc.
+ * TODO: Make this more generalizable.
+ * @returns {{}}
+ */
 function gather_activity_data() {
 
     // check for kayaking
@@ -61,7 +89,9 @@ function gather_activity_data() {
     }
 }
 
-
+/**
+ * Gather up the kayaking data
+ */
 function gather_kayaking_data() {
     var kayaking_data = {};
     kayaking_data['rapid_class'] = $('#kayaking-rapid_class')[0].value;
@@ -74,6 +104,9 @@ function gather_kayaking_data() {
     return kayaking_data;
 }
 
+/**
+ * gather up the rafting data
+ */
 function gather_rafting_data() {
     var rafting_data = {};
     rafting_data['rapid_class'] = $('#rafting-rapid_class')[0].value;
@@ -86,6 +119,9 @@ function gather_rafting_data() {
     return rafting_data;
 }
 
+/**
+ * Gather up the climbing data
+ */
 function gather_climbing_data() {
     var climbing_data = {};
 
@@ -107,27 +143,11 @@ function gather_climbing_data() {
     return climbing_data;
 }
 
-/**
- * callback function for populating the duration.
- */
-function checktime() {
-    var start = new Date('2015-03-25T' + $('#base-start_time')[0].value + "Z")
-    var end = new Date('2015-03-25T' + $('#base-end_time')[0].value + "Z")
-    if (start && end) {
-        var diff =  end - start;
-        if (diff >= 0) {
-            var seconds = Math.floor(diff / 1000); //ignore any left over units smaller than a second
-            var minutes = Math.floor(seconds / 60);
-            seconds = seconds % 60;
-            var hours = Math.floor(minutes / 60);
-            minutes = minutes % 60;
-            $('#base-duration')[0].value = "Hr: " + hours + " Min: " + minutes;
-        } else {
-            $('#base-duration')[0].value = ""
-        }
-    }
-}
 
+/**
+ * Enable drag and drop callback.  All customization rows are wrapped with new divs, styled and passed to
+ * Dragula.
+ */
 function enable_dragndrop() {
     /********************** template stlying in preparation of allowing the drag and drop. ************/
 
@@ -197,12 +217,15 @@ function enable_dragndrop() {
 
 }
 
-
+/**
+ * Remove the styling and clear out drake object.
+ */
 function disable_dragndrop() {
     // remove all drag and drop from rows
     if (row_drake) {
         row_drake.destroy();
     }
+    // unwrap the rows but adds in check to make sure the row-parent is still around!
     $('#custom-template').find(".row-icons").remove();
     $('#custom-template').find(".row").each(function() {
         if ($(this).parent().hasClass('row-parent')) {
@@ -246,8 +269,6 @@ function template_normal_mode() {
 
 /* document ready jQuery call */
 $(function () {
-
-
 
     /**
      * add callback for template dropdown
